@@ -1,0 +1,78 @@
+%!tikz editor 1.0
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[graphics, active, tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%!tikz preamble begin
+
+%!tikz preamble end
+
+
+\begin{document}
+%!tikz source begin
+\begin{tikzpicture}
+\tikzstyle{update}=[dashed, blue]
+\tikzstyle{neuron}=[circle,draw, minimum size=2em]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%
+%%%%% RED NEURONAL
+
+%%%%% ENTRADA
+\coordinate (x_1) at (-3.5, 1.5);
+\coordinate (x_2) at (-3.5, -1.5);
+%%%%% NEURONAS
+\coordinate (f_1) at (0, 3);
+\coordinate (f_2) at (0,0);
+\coordinate (f_3) at (0,-3);
+
+\coordinate (f_4) at (4,1.5);
+\coordinate (f_5) at (4,-1.5);
+
+\coordinate (f_6) at (8,0);
+%%%%% SALIDA
+
+
+%%%%% CAPA ENTRADA
+\node[neuron] (x_1) at (x_1) {$x_1$};
+\node[neuron] (x_2) at (x_2) {$x_2$};
+%%%%%%%%%%%%%%% 
+%%%%% CAPA OCULTA 1
+%%%%% CAPA OCULTA 1
+\node[neuron] (f_1) at (f_1) {$f_1(e)$};
+\node[neuron] (f_2) at (f_2) {$f_2(e)$};
+\node[neuron] (f_3) at (f_3) {$f_3(e)$};
+
+%%%%% CAPA OCULTA 2
+\node[neuron] (f_4) at (f_4) {$f_4(e)$};
+\node[neuron] (f_5) at (f_5) {$f_5(e)$};
+
+%%%%% CAPA SALIDA
+\node[neuron] (f_6) at (f_6) {$f_6(e)$};
+
+
+%%%%% CONEXIONES
+\draw[->] (x_1) --(f_1);
+\draw[->] (x_1) --(f_2);
+\draw[->] (x_1) --(f_3);
+\draw[->] (x_2) --(f_1);
+\draw[->] (x_2) --(f_2);
+\draw[->] (x_2) --(f_3);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%
+%%%%% ENTRENAMIENTO - adelante
+
+%%%%%
+%%%%% RETROPROPAGACIÓN - atrás
+
+\end{tikzpicture}
+%!tikz source end
+
+\end{document}

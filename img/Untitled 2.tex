@@ -1,0 +1,147 @@
+%!tikz editor 1.0
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[graphics, active, tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%!tikz preamble begin
+
+%!tikz preamble end
+
+
+\begin{document}
+%!tikz source begin
+\begin{tikzpicture}
+\tikzstyle{update}=[dashed, blue]
+\tikzstyle{update2}=[dashed, green, font=\small]
+\tikzstyle{neuron}=[circle,draw, minimum size=5em]
+\usetikzlibrary{positioning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%
+%%%%% RED NEURONAL
+
+%%%%% ENTRADA
+\coordinate (x_1) at (-6, 3.5);
+\coordinate (x_2) at (-6, -3.5);
+
+%%%%% NEURONAS
+\coordinate (f_1) at (0, 7);
+\coordinate (f_2) at (0, 0);
+\coordinate (f_3) at (0, -7);
+
+\coordinate (f_4) at (6, 3.5);
+\coordinate (f_5) at (6, -3.5);
+
+\coordinate (f_6) at (10,0);
+
+%%%%% SALIDA
+\coordinate (y_1) at (14,0);
+
+
+%%%%% CAPA ENTRADA
+\node[] (x_1) at (x_1) {$x_1$};
+\node[] (x_2) at (x_2) {$x_2$};
+
+%%%%%%%%%%%%%%% 
+%%%%% CAPAS OCULTAS
+
+%%%%% CAPA OCULTA 1
+\node[neuron] (f_1) at (f_1) {$f_1(e)$};
+\node[neuron] (f_2) at (f_2) {$f_2(e)$};
+\node[neuron] (f_3) at (f_3) {$f_3(e)$};
+
+%%%%% CAPA OCULTA 2
+\node[neuron] (f_4) at (f_4) {$f_4(e)$};
+\node[neuron] (f_5) at (f_5) {$f_5(e)$};
+
+%%%%%%%%%%%%%%% 
+%%%%% CAPA SALIDA
+\node[neuron] (f_6) at (f_6) {$f_6(e)$};
+\node (y_1) at (y_1) {$y_1$};
+
+%%%%%%%%%%%%%%% 
+%%%%% CONEXIONES
+\draw[->] (x_1) -- node[above, pos=0.7] {$w_{11}$} (f_1);
+\draw[->] (x_1) -- node[above, pos=0.7] {$w_{12}$} (f_2);
+\draw[->] (x_1) -- node[above, pos=0.7] {$w_{13}$} (f_3);
+\draw[->] (x_2) -- node[above, pos=0.7] {$w_{21}$} (f_1);
+\draw[->] (x_2) -- node[above, pos=0.7] {$w_{22}$} (f_2);
+\draw[->] (x_2) -- node[above, pos=0.7] {$w_{23}$} (f_3);
+
+
+\draw[->] (f_1) -- node[above, pos=0.75] {$w_{14}$} (f_4);
+\draw[->] (f_1) -- node[above, pos=0.75] {$w_{15}$} (f_5);
+\draw[->] (f_2) -- node[above, pos=0.75] {$w_{24}$} (f_4);
+\draw[->] (f_2) -- node[above, pos=0.75] {$w_{25}$} (f_5);
+\draw[->] (f_3) -- node[above, pos=0.75] {$w_{34}$} (f_4);
+\draw[->] (f_3) -- node[above, pos=0.75] {$w_{35}$} (f_5);
+
+\draw[->] (f_4) -- node[above, pos=0.7] {$w_{46}$} (f_6);
+\draw[->] (f_5) -- node[above, pos=0.7] {$w_{56}$} (f_6);
+
+
+\draw[->] (f_6) --  (y_1);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%
+%%%%% ENTRENAMIENTO
+\newcommand{\f}[1]{${y_#1 = f_#1\left(\sum_{j} w_{ij}x_j\right)}$}
+\node[above right = 0.1 and -1 of f_1,] {\f{1}};
+\node[above right = 0.1 and -1 of f_2] {\f{2}};
+\node[below right = 0.1 and -1 of f_3] {\f{3}};
+
+\node[above right=0.1 and -1 of f_4] {\f{4}};
+\node[below right=0.1 and -1 of f_5] {\f{5}};
+
+\node[above right = 0.1 and -1 of f_6] {\f{6}};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%
+%%%%% RETROPROPAGACIÓN
+% CALCULO DEL ERROR
+% http://stats.stackexchange.com/questions/94387/how-to-derive-errors-in-neural-network-with-the-backpropagation-algorithm
+\node[update, above of= y_1] {$\delta = z - y_1$};
+
+\draw[update, ->] (f_6) to [bend left=20] node[above right=1.0 and -1] {$\mathbf{\delta_4 = w_{46}\delta}$} (f_4);
+\draw[update, ->] (f_6) to [bend left=-20] node[below right=1.0 and -1] {$\mathbf{\delta_5 = w_{56}\delta}$} (f_5);
+
+\node[below right=-0.9 and 0.3 of f_1, blue] {$\mathbf{\delta_1 = w_{14}\delta_4 + w_{15}\delta_5}$};
+\draw[update, ->] (f_4) to [bend left=-20] (f_1);
+\draw[update, ->] (f_5) to [bend left=-20] (f_1);
+
+\node[above right=-0.4 and 0.5 of f_2, blue] {$\mathbf{\delta_2 = w_{24}\delta_4 + w_{25}\delta_5}$};
+\draw[update, ->] (f_4) to [bend left=-20] (f_2);
+\draw[update, ->] (f_5) to [bend left=-20] (f_2);
+
+\node[above right=-0.4 and 0.5 of f_3, blue] {$\mathbf{\delta_2 = w_{34}\delta_4 + w_{35}\delta_5}$};
+\draw[update, ->] (f_4) to [bend left=-20] (f_3);
+\draw[update, ->] (f_5) to [bend left=-20] (f_3);
+
+%%%%%
+%%%%% CALCULO DE LOS PESOS
+% http://galaxy.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html
+% https://theclevermachine.wordpress.com/tag/backpropagation/
+\newcommand{\up}[4]{${#1 += \alpha\cdot#2\frac{d #3(e)}{de}#4}$}
+\draw[update2, ->] (f_1) to [bend right=20] node[above left, pos=0.8] {\up{w_{11}}{\delta_1}{f_1}{x_1}} (x_1);
+\draw[update2, ->] (f_1) to [bend right=20] node[above left, pos=0.8] {\up{w_{21}}{\delta_1}{f_1}{x_2}} (x_2);
+
+\draw[update2, ->] (f_2) to [bend right=20] node[below right, pos=0.8] {\up{w_{12}}{\delta_2}{f_2}{x_1}} (x_1);
+\draw[update2, ->] (f_2) to [bend right=20] node[above right, pos=0.8] {\up{w_{22}}{\delta_2}{f_2}{x_1}} (x_2);
+
+\draw[update2, ->] (f_3) to [bend right=20] node[below right, pos=0.8] {\up{w_{13}}{\delta_3}{f_3}{x_1}} (x_1);
+\draw[update2, ->] (f_3) to [bend right=20] node[above right, pos=0.8] {\up{w_{23}}{\delta_3}{f_3}{x_1}} (x_2);
+
+\end{tikzpicture}
+%!tikz source end
+
+\end{document}

@@ -1,0 +1,53 @@
+\section{Introducción}
+%\subsection{Redes neuronales}
+El primer modelo de red neuronal artificiales (NN) fue propuesto en 1943 por McCulloc y Pitts en términos de un modelo computacional de actividad nerviosa. Las NN se han inspirado en las redes neuronales biológicas y las conexiones que construyen. Este modelo era un modelo binario, donde cada neurona posee un umbral, y sirvió de base para los modelos posteriores.
+
+Las características principales de las NN son las siguientes:
+\begin{enumerate}
+	\item Auto-organización y adaptabilidad: utilizan algoritmos de aprendizaje adaptativo y auto-organizativo, por lo que ofrecen mejores posibilidades de procesado robusto y adaptativo.
+
+	\item Procesado no lineal: aumenta la capacidad de la red para aproximar funciones, clasificar patrones y aumenta su inmunidad frente al ruido.
+
+	\item Procesado paralelo: normalmente se usa un gran número de nodos de procesado, con alto nivel de interconectividad.
+\end{enumerate}
+
+\subsection{Las redes neuronales}
+El elemento básico de las NN es el nodo, que recibe un vector de entrada para producir una salida como muestra en la figura \ref{fig:neurona}. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma de las entradas ponderada por el vector de pesos
+$$ y_{i} = \sum_{j} w_{ij}y_{j} $$
+Donde el resultado puede servir como entrada de otras unidades.
+\begin{imagen}
+	%\centering
+	%\includegraphics{/path/to/figure}
+	\scalebox{1.5}{\input{img/neurona_artificial_img}}
+	\caption{Neurona}
+	\label{fig:neurona}
+\end{imagen}
+
+Existen dos fases importante dentro del modelo
+\begin{itemize}
+	\item Fase de entrenamiento: Se usa un conjunto de datos o patrones de entrenamiento para determinar los pesos que definen el modelo de la NN. Se calculan de manera iterativa, de acuerdo con los valores de entrenamiento, con el objeto de minimizar el error cometido entre la salida obtenida por la NN y la salida deseada.
+
+	\item Fase de prueba: Durante el entrenamiento, el modelo se ajusta al conjunto de entrenamiento, perdiendo la habilidad de generalizar su aprendizaje a casos nuevos, a esta situación se le llama sobreajuste.
+	Para evitar el sobreajuste, se utiliza un segundo grupo de datos diferentes, el conjunto de validación, que permitirá controlar el proceso de aprendizaje.
+\end{itemize}
+Los pesos óptimos se obtienen minimizando una función. Uno de los criterios utilizados es la minimización del error cuadrático medio entre el valor de salida y el valor real esperado.
+
+\section{Algoritmo de retropropagación}
+% Neural Networks for Pattern Recognition - Bishop: 140 - Error backpropagation.
+% Neural Networks for Pattern Recognition - Bishop: 263 - Gradient descent.
+%\section{Reglas de aprendizaje}
+\subsection{Regla delta}
+\subsection{Gradiente descendente}
+\subsection{Gradiente descendente estocástico}
+
+\section{El desvanecimiento del gradiente}
+% http://neuralnetworksanddeeplearning.com/chap5.html
+\subsection{Soluciones}
+\subsection{LEEA}
+\subsection{Simulated Annealing}
+
+\section{Experimentación}
+\subsection{Diseño del experimento}
+Decripción detallada de las redes, descripción de los datos.
+
+\subsection{Resultados de la experimentación}

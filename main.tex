@@ -1,0 +1,108 @@
+\documentclass[informe]{tesis-usach}
+
+\usepackage[linesnumbered, ruled, vlined, boxed, commentsnumbered, spanish]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows, calc, decorations.markings, math}
+\usetikzlibrary{matrix, chains, positioning, decorations.pathreplacing, shapes, snakes}
+
+\usepackage{anyfontsize}
+
+\title{Propuesta de Tesis}
+\informe{Informe}
+\facultad{Facultad de Ingenieria}
+\departamento{Departamento de ingenieria informática}
+
+\author{Felipe Alberto Reyes González}
+\programa{Magíster en Ingeniería Informática}
+\profesor{Victor Parada}
+\celular{890 26 317}
+\correo{felipe.reyesg@usach.cl}
+\date{\today}
+
+
+% \usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+
+
+
+
+
+
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault}
+% \usepackage[T1]{fontenc}
+% %para cambiar el tipo de fuente por defecto
+% \renewcommand{\sfdefault}{phv}
+% % helvética en los títulos
+% \renewcommand{\rmfamily}{phv}
+
+
+% \usepackage{pstricks}
+% \usepackage{epstopdf}
+
+
+
+% \newtheorem{teo}{Teorema}
+% \setcounter{lofdepth}{2}
+
+
+
+% TIPOS DE ENTRADAS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node6.html
+% CAMPOS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node7.html
+\begin{document}
+\renewcommand{\contentsname}{Tabla de contenido}
+\renewcommand{\refname}{Bibliografía}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\appendixname}{Apéndice}
+%\renewcommand{\appendixtocname}{Apéndices}
+%\renewcommand{\appendixpagename}{Apéndices}
+
+% helvetica en el cuerpo del documento
+% \sffamily
+
+% \frontmatter
+\maketitle
+% \aditionalpages
+% \indice
+% \mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio contenido
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+%\include{contenido/informe1}
+\include{contenido/introduccion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fin contenido
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografía
+%%%%%%%%%%%%%%%%%%%%%%%%
+% \addcontentsline{toc}{chapter}{Bibliografía}
+%\bibliografia
+%%\bibliographystyle{apa-good}
+%\bibliographystyle{apalike-es}
+%%\bibliographystyle{apa}
+%\bibliography{referencias}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Fin bibliografía
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Apéndice
+%%%%%%%%%%%%%%%%%%%%%%%%
+% \appendix
+% \clearpage
+% \addappheadtotoc
+% \appendixpage
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Fin apéndice
+%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,62 @@
+\section{La retropropagación}
+\begin{figure}[H]
+	\centering
+    \scalebox{0.8}{\input{img/retro}}
+    \caption{Algoritmo de retropropagación}
+\end{figure}
+
+\section{El gradiente descendente}% http://alejandrosanchezyali.blogspot.cl/2016/01/algoritmo-del-gradiente-descendente-y.html
+El gradiente descendente busca los punto $p \in \Omega$ donde funciones del tipo $f: \Omega\subseteq\mathbb{R}^m \rightarrow \mathbb{R}$ alcanzan su mínimo. La idea de este método se basa en que si $f$ es una función diferenciable en todo su dominio $\Omega$, entonces la derivada de $f$ es un punto $p \in \Omega$ en dirección de un vector unitario $v \in \mathbb{R}^m$ se define como
+
+$$ df_{p}(v) = \nabla f(p)v $$
+
+Observe que la magnitud de la ecuación es
+$$ |d f_{p}(v)| = ||\nabla f(p)|| ||v||\cos\theta = ||\nabla f(p)\cos\theta$$
+
+Dicha magnitud es máxima cuando $\theta = 2n\pi, n \in \mathbb{Z}$. Es decir, para que $|df_{d}(v)|$ sea máxima, los vectores $\nabla f(p)$ y $v$ debe ser paralelo. De esta manera, la función $f$ crece más rápidamente en la dirección del vector $\nabla f(p)$ y decrece más rápidamente en la dirección del vectro $-\nabla f(p)$. Dicha situación sugiere que la dirección negativa del gradiente $-\nabla f(p)$ es una buena dirección de búsqueda para encontrar el minimizador de la función $f$.
+
+Sea $f: \Omega \subseteq \mathbb{R} \rightarrow \mathbb{R}$, si $f$ tiene un mínimo en $p$, para encontrar a $p$ se construye una sucesión de punto $\{p_{t}\}$ tal que $p_{t}$ converge a $p$. Para resolver esto, comenzamos en $p_{t}$ y nos desplazamos una cantidad $-\lambda_{t}\nabla f(p_{t})$ para encontrar el punto $p_{t + 1}$ más cercano a $p$, es decir:
+$$ p_{t + 1} =p_{t} - \lambda _{t}\nabla f(p_{t}) $$
+
+donde $\lambda_{t}$ se selecciona de tal manera que $p_{t + 1} \in \Omega$ y $f(p_{t}) \geq f(p_{t + 1})$
+
+El parámetro $\lambda_{t}$ se seleccionara para maximizar la cantidad a la que decrece la función $f$ en cada paso.
+
+
+\begin{figure}[H]
+	\centering
+    \scalebox{0.6}{\input{img/nn_parada}}
+    \caption{$W^{1}_{ij}$ es el peso de la $n$-ésima neurona en la capa $l - 1$ a la $j$-ésima neurona de la capa $l$ de la red.}
+\end{figure}
+
+\section{El problema del gradiente descendente}
+El proceso iterativo que implementan los algoritmos de optimización, lentamente se dirigen hacia un óptimo local, perturbando los pesos en una dirección deducida mediante el uso del gradiente, de tal manera que disminuye a la función de costo. El algoritmo de gradiente descendente actualiza los pesos por el negativo del gradiente ponderado por un valor escalar entre 0 y 1.
+
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\caption{Algoritmo del gradiente descendente}
+	\KwData{$C$: La función de costo.}
+	\KwResult{Valor óptimo de la función de costo $C$}
+	initialization\;
+	\While{$\frac{\partial C}{\partial W^{l}_{ij}} \rightarrow 0$}{
+		$W^{l}_{ij} = W^{l}_{ij} - \alpha\frac{\partial C}{\partial W^{l}_{ij}}$\;
+	}
+\end{algorithm}
+
+\newpage
+Se busca un algoritmo que permita encontrar pesos y sesgos para que la salida de la red aproxime los valores de $y(x)$ a los valores correspondientes con cada entrada $x$. De esta manera, será posible cuantificar qué tan bien se logra el objetivo mediante la función de costo
+
+$$C(w, b) = \frac{1}{2n}\sum_{x} ||y(x) - a||^2$$
+
+Donde $w$ denota la colección de todos los pesos de la red, $b$ es el sesgo, $n$
+
+
+
+\section{El gradiente descendente estocástico}
+% http://neuralnetworksanddeeplearning.com/chap1.html
+% http://sebastianruder.com/optimizing-gradient-descent/index.html#gradientdescentvariants
+El método del gradiente descendente estocástico (SGD) actualiza los parámetros en cada ejemplo $x_i$ y etiquta $y_i$ de la siguiente manera $$ \theta = \theta - \eta\nabla_\theta $$
+    %\begin{figure}[H]
+    %    \centering
+    %    \scalebox{0.6}{\input{img/backpropagation}}
+    %\end{figure}

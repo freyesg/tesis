@@ -1,0 +1,33 @@
+%!tikz editor 1.0
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[graphics, active, tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%!tikz preamble begin
+\usetikzlibrary{positioning, calc, shapes, snakes}
+%!tikz preamble end
+
+
+\begin{document}
+%!tikz source begin
+\begin{tikzpicture}
+	\node [circle split, draw, rotate=90, inner sep=-1pt]  (neurona) at (0, 0) {\rotatebox{-90}{\scriptsize $\sum$} \nodepart{lower} \rotatebox{-90}{\scriptsize $f(z)$}};
+
+	\node (in_0) at (-2.5, 1.0) {$x_0$};
+	\node (in_i) at (-2.5, 0.0) {$x_i$};	
+	\node (in_n) at (-2.5, -1.0) {$x_n$};	
+	\node (out) at (1.5, 0.0) {$y_0$};	
+
+	\node (d1) at ($(in_0)!0.5!(in_i)$) {$\vdots$};
+	\node (d2) at ($(in_i)!0.5!(in_n)$) {$\vdots$};
+
+
+	\draw[->] (in_0) -- node[above, pos=0.6] {\scriptsize$w_0$} (neurona);
+	\draw[->] (in_i) -- node[above, pos=0.6]  {\scriptsize $w_i$} (neurona);
+	\draw[->] (in_n) -- node[above, pos=0.6] {\scriptsize $w_n$} (neurona);
+	\draw[->] (neurona) -- (out);
+\end{tikzpicture}
+%!tikz source end
+
+\end{document}
