@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.15)  21 APR 2017 22:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.15)  21 APR 2017 23:33
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1216,7 +1216,7 @@ Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS)
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
 
-(./contenido/introduccion.aux))
+(./contenido/informe1.aux))
 \openout1 = `tesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
@@ -1234,8 +1234,7 @@ LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 56.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/ot1phv.fd
+ (/usr/share/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 *geometry* driver: auto-detecting
@@ -1415,14 +1414,8 @@ LaTeX Info: Redefining \% on input line 20.
  (./contenido/informe1.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
-
-Package rerunfilecheck Warning: File `tesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `tesis.out':
-(rerunfilecheck)             Before: 6211F3168688010AEA78B4371E73EB12;871
-(rerunfilecheck)             After:  9D9FD37A71DCE4A055B73F5C7CFCF43C;262.
+Package rerunfilecheck Info: File `tesis.out' has not changed.
+(rerunfilecheck)             Checksum: 9D9FD37A71DCE4A055B73F5C7CFCF43C;262.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  )
 (\end occurred inside a group at level 1)
@@ -1430,58 +1423,31 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 24224 strings out of 493014
- 467759 string characters out of 6122320
- 698486 words of memory out of 5000000
- 27223 multiletter control sequences out of 15000+600000
+ 24203 strings out of 493014
+ 467444 string characters out of 6122320
+ 698444 words of memory out of 5000000
+ 27212 multiletter control sequences out of 15000+600000
  26916 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,75p,553b,17841s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.4.2} has been referenced
- but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.4.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.3.3} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.3.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.3.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.1.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cme
-x10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
-m10.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/
-texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on tesis.pdf (6 pages, 151453 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.
+pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on tesis.pdf (6 pages, 149908 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 135 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
