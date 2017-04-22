@@ -1,13 +1,4 @@
-\BOOKMARK [1][-]{section.1}{Introducci\363n}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Las redes neuronales}{section.1}% 2
-\BOOKMARK [1][-]{section.2}{Algoritmo de retropropagaci\363n}{}% 3
-\BOOKMARK [2][-]{subsection.2.1}{Regla delta}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.2}{Gradiente descendente}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.3}{Gradiente descendente estoc\341stico}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Desvanecimiento del gradiente decendente}{}% 7
-\BOOKMARK [2][-]{subsection.3.1}{Soluciones}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{LEEA}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.3}{Simulated Annealing}{section.3}% 10
-\BOOKMARK [1][-]{section.4}{Experimentaci\363n}{}% 11
-\BOOKMARK [2][-]{subsection.4.1}{Dise\361o del experimento}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.2}{Resultados de la experimentaci\363n}{section.4}% 13
+\BOOKMARK [1][-]{section.1}{La retropropagaci\363n}{}% 1
+\BOOKMARK [1][-]{section.2}{El gradiente descendente}{}% 2
+\BOOKMARK [1][-]{section.3}{El problema del gradiente descendente}{}% 3
+\BOOKMARK [1][-]{section.4}{El gradiente descendente estoc\341stico}{}% 4

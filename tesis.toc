@@ -1,14 +1,5 @@
 \select@language {spanish}
-\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}Las redes neuronales}{3}{subsection.1.1}
-\contentsline {section}{\numberline {2}Algoritmo de retropropagaci\IeC {\'o}n}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Regla delta}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Gradiente descendente}{5}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Gradiente descendente estoc\IeC {\'a}stico}{5}{subsection.2.3}
-\contentsline {section}{\numberline {3}Desvanecimiento del gradiente decendente}{5}{section.3}
-\contentsline {subsection}{\numberline {3.1}Soluciones}{5}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}LEEA}{5}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Simulated Annealing}{5}{subsection.3.3}
-\contentsline {section}{\numberline {4}Experimentaci\IeC {\'o}n}{5}{section.4}
-\contentsline {subsection}{\numberline {4.1}Dise\IeC {\~n}o del experimento}{5}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Resultados de la experimentaci\IeC {\'o}n}{5}{subsection.4.2}
+\contentsline {section}{\numberline {1}La retropropagaci\IeC {\'o}n}{3}{section.1}
+\contentsline {section}{\numberline {2}El gradiente descendente}{3}{section.2}
+\contentsline {section}{\numberline {3}El problema del gradiente descendente}{5}{section.3}
+\contentsline {section}{\numberline {4}El gradiente descendente estoc\IeC {\'a}stico}{6}{section.4}
