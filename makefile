@@ -12,7 +12,7 @@ all: $(MAIN).tex $(REF).bib
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	make clean
 
-sync:
+git:
 	git add .
 	git commit -m "Actualización"
 	git push origin master
