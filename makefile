@@ -12,5 +12,10 @@ all: $(MAIN).tex $(REF).bib
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	make clean
 
+sync:
+	git add .
+	git commit -m "Actualización"
+	git push origin master
+
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.out *.lof *.lot *.toc *.cut ./contenido/*.aux
