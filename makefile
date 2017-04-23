@@ -9,6 +9,8 @@ LATEXFLAGS=-shell-escape -jobname=$(FILENAME) -file-line-error
 
 all: $(MAIN).tex $(REF).bib
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
+	$(BIBTEX) $(FILENAME).aux
+	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	make clean
 

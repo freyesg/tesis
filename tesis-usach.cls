@@ -29,20 +29,9 @@
 
 \ProcessOptions\relax
 
-%\if@infuno
-%	\newcommand{\informe}{Informe N$^\circ$ 1}
-%\fi
-%\if@infdos
-%	\newcommand{\informe}{Informe N$^\circ$ 2}
-%\fi
-%\if@inftres
-%	\newcommand{\informe}{Informe N$^\circ$ 3}
-%\fi
-
-
 \if@escrito
 	\LoadClass[12pt, oneside]{book}
-	\usepackage{titlesec}
+	\RequirePackage{titlesec}
 	\titleformat{\chapter}[display]{\normalfont\bfseries}{\chaptertitlename\ \thechapter}{10pt}{}
 	\titlespacing*{\chapter}{0pt}{0pt}{10pt}
 	\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{10pt}{}
@@ -55,19 +44,13 @@
 	% Interlineado
 	\renewcommand{\baselinestretch}{1.5}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Tamaño de la hoja
-	\usepackage{anysize} % Soporte para el comando \marginsize
-	\usepackage[papersize={21.6cm, 27.9cm}]{geometry}
-	\geometry{left=4cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
-
 \fi
 
 \if@inf
 	\LoadClass[12pt, oneside]{article}
-	\usepackage{titlesec}
+	\RequirePackage{titlesec}
 	\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{14pt}{}
 	\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{14pt}{}
 	\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{14pt}{}
@@ -80,42 +63,52 @@
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Tamaño de la hoja
-	\usepackage{anysize} % Soporte para el comando \marginsize
-	%\usepackage[papersize={22cm,27cm},lmargin=2cm, rmargin=2cm,top=2cm,bottom=2cm]{geometry}
-	\usepackage[papersize={22cm,27cm}]{geometry}
-	\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+	%\usepackage{anysize} % Soporte para el comando \marginsize
+	%%\usepackage[papersize={22cm,27cm},lmargin=2cm, rmargin=2cm,top=2cm,bottom=2cm]{geometry}
+	%\usepackage[papersize={22cm,27cm}]{geometry}
+	%\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
+%\if@infuno
+%	\newcommand{\informe}{Informe N$^\circ$ 1}
+%\fi
+%\if@infdos
+%	\newcommand{\informe}{Informe N$^\circ$ 2}
+%\fi
+%\if@inftres
+%	\newcommand{\informe}{Informe N$^\circ$ 3}
+%\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tamaño de la hoja
+\usepackage{anysize} % Soporte para el comando \marginsize
+\usepackage[papersize={21.6cm, 27.9cm}]{geometry}
+\geometry{left=4cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografía y referencias
+%\RequirePackage[natbibapa]{apacite}
+\RequirePackage{hyperref}
+\RequirePackage[apaciteclassic]{apacite}
 
-
-
-
-
-\newcommand{\signature}{\underline{\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Idioma español y carácteres utf8x
 \usepackage[utf8]{inputenc}
 \usepackage{url}
-
-\usepackage{multicol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tamaño de fuente
-% \usepackage{anyfontsize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figuras y tablas
 \usepackage[pdftex]{graphicx} % PDFLaTeX
-%\usepackage{subfigure}
 \usepackage{float}
-%\usepackage{tikz}
+\usepackage{multicol}
 \usepackage{multirow}
-% \DeclareGraphicsExtensions{.png,.pdf,.jpg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{comment}
 \usepackage{color} % http://latexcolor.com/
@@ -123,20 +116,14 @@
 
 
 \usepackage[spanish, es-lcroman, es-tabla, es-noquoting]{babel}
-%\selectbiblanguage{spanish}
 \usepackage{enumerate}
 \usepackage{appendix}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tamaño de la fuente
-% \usepackage{anyfontsize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuente matemática
 \usepackage{amssymb}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tablas
-% \usepackage{tabulary}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Estilo de página
@@ -155,25 +142,50 @@
 	\fancyfoot[L, C]{}
 	\fancyfoot[R]{\thepage}
 }
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliografía
-%\usepackage{natbib}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% indentacion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Identación y spacing
+\usepackage{setspace}
 \usepackage{indentfirst}
 \setlength{\parindent}{18pt}
 \setlength{\parskip}{3pt}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% spacing
-\usepackage{setspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % references
 \usepackage{varioref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lorem ipsum
+\usepackage{lipsum}
+\makeatletter
+	\renewcommand\lips@dolipsum{%
+		\ifnum\value{lips@count}<\lips@max\relax
+			\addtocounter{lips@count}{1}%
+			\csname lipsum@\romannumeral\c@lips@count\endcsname
+			\lips@dolipsum
+		\fi
+	}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+\newcommand{\signature}{\underline{\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}}
+
+
+
+
+
+
 
 %Definiciones
 \newtheorem{defin}{Definición}
@@ -558,18 +570,6 @@
 	\newpage
 }
 \makeatother
-
-\usepackage{lipsum}
-\makeatletter
-	\renewcommand\lips@dolipsum{%
-		\ifnum\value{lips@count}<\lips@max\relax
-			\addtocounter{lips@count}{1}%
-			\csname lipsum@\romannumeral\c@lips@count\endcsname
-			\lips@dolipsum
-		\fi
-	}
-\makeatother
-
 
 \newenvironment{descripcion}{
 \scriptsize

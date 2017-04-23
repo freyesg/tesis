@@ -1,0 +1,16 @@
+
+\begin{tikzpicture}
+\begin{axis}[ymin=-1, ymax = 1, axis lines = left, legend pos=south east, width=15cm, xmajorticks=false, ytick={-1, +1}, axis lines=middle, y post scale=0.4, ymajorgrids=true, major grid style={dashed, line width=0.8pt}, yticklabel pos=left]
+%Here the blue parabloa is defined
+\addplot[domain=-10:10, samples=1000, color=blue, line width=2pt]{1/(1 + exp(-x))};
+\addplot[domain=-10:10, samples=1000, color=red, line width=2pt]{(1 - e^(-x))/(1 + e^(-x))};
+\addlegendentry{$f(x) = \frac{1}{1+\exp(-x)}$}
+\addlegendentry{$f(x) = \frac{1 - \exp(-x)}{1 + \exp(-x)}$}
+\end{axis}
+%\begin{axis}[ymin=-1, ymax = 1, axis lines = left, xlabel = $x$, ylabel = {$f(x)$}]
+%%Here the blue parabloa is defined
+%\addplot[domain=-10:10, samples=1000, color=red]{(1 - e^(-x))/(1 + e^(-x))};
+%\addlegendentry{$(1 - \exp(-x))/(1 + \exp(-x))$}
+%\end{axis}
+\end{tikzpicture}
+% 1/(1+exp(-x))

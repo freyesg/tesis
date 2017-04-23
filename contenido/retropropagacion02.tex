@@ -1,0 +1,110 @@
+\section{Algoritmo de retropropagación}
+% Neural Networks for Pattern Recognition - Bishop: 140 - Error backpropagation.
+% Neural Networks for Pattern Recognition - Bishop: 263 - Gradient descent.
+El algoritmo de retropropagación es el método de entrenamiento más utilizado en redes con conexión hacia adelante. Es un método de aprendizaje supervisado de gradiente descendente, en el que se distinguen claramente dos fases:
+\begin{enumerate}
+	\item Se aplica un patrón de entrada, el cual se propaga por las distintas capas que componen la red hasta producir la salida de la misma. Esta salida se compara con la salida deseada y se calcula el error cometido por cada neurona de salida.
+
+	\item Estos errores se transmiten desde la capa de salida, hacia todas neuronas de las capas anteriores (Fritsch, 1996). Cada neurona recibe un error que es proporcional a su contribución sobre el error total de la red. Basándose en el error recibido, se ajustan los errores de los pesos sinápticos de cada neurona.
+\end{enumerate}
+
+La entrada total que recibe una neurona oculta $j$ es $$ net_{j}^{p}(t) = \sum_{j}^{N} w_{ij}^{p}(t) + \theta_{j} $$ donde $\theta_{j}$ es el umbral de la neurona que se considera como un peso asociado a una neurona ficticia con valor de salida igual a 1.
+
+El valor de la neurona oculta $j$, se obtiene aplicando la función de activación $f$ sobre su entrada $$ y_{j}^{p}(t) = f(net_{j}^{p}(t)) $$
+
+De la misma forma, la entrada que recibe una neurona de salida $k$ es $$ net_{k}^{p} = \sum_{j}^{H} v_{kj}*y_{j}^{p}(t) + \theta_{k} $$
+
+Por último, el valor de salida de la neurona de salida $k$ es $$ y_{k}^{p}(t) = f(net_{k}^{p}(t)) $$
+
+La salida de la red de cada neurona $y_{k}^{p}$ se compara con la salida deseada $d_{k}$ para calcular el error en cada unidad de salida $$ \delta_{k} = (d_{k} - y_{k}^{p}) $$
+
+El objetivo es minimizar el error entre la salida obtenida por la red y la salida deseada.
+
+La función de error que se buscar minimizar viene dada por $$ E^{p} = \frac{\sum_{k = 1}^{M}(d_{k} - y_{k}^{p})^{2}}{2} $$
+
+Este proceso se repite para el número total de patrones de entrenamiento $p$, para un proceso de aprendizaje exitoso el algoritmo debe actualizar todos los pesos y ganancias de la red minimizando el error cuádratico medio ({\em Mean Square Error}, $MSE$) $$ E = \sum_{p = 1}^{P} E^{p} $$
+
+La base del algoritmo de repropropagación para la modiciación de los pesos es la técnica conocida como gradiente descendente, que se describe como $$ W(t + 1) = W(t) + \Delta W(t) $$
+
+El error que genera una red neuronal en función de sus pesos, genera un espacio $n$-dimensional, donde $n$ es el número de pesos de conexión de la red, al evaluar el gradiente del error en un punto de esta superficie se obtendrá la dirección en la cual la función del error tendrá un mayor crecimiento, como el objetivo del proceso de aprendizaje es minimizar el error debe tomarse la direccón negativa del gradiente para obtener el mayor decremento del error, y de esa forma nu minimización, condición requerida para realizar la actualización de la matriz de pesos $$ W(t + 1) = W(t) - \alpha\nabla E( W(t)) $$ siendo $\alpha$ la tasa de aprendizaje, que suele ser una constante de tamaño reduciso $0 < \alpha < 1$
+
+La variación de los pesos será proporcional al gradiente de la función de error, de esa manera, en una neruona de salida
+\begin{eqnarray*}
+	\Delta v_{kj}(t + 1)	&=& -\alpha\frac{\partial E^{p}}{\partial v_{kj}}\\
+							&=& -\alpha\frac{\partial}{\partial v_{kj}}\left(\frac{1}{2}\sum_{k = 1}^{M}(d_{k} - y_{k}^{p})^2\right)\\
+							&=& -\alpha\frac{\partial}{\partial v_{kj}}\left(\frac{1}{2}\sum_{k = 1}^{M}(d_{k} - f(net_{k}^{p}(t)))^2\right)\\
+							&=& -\alpha\frac{\partial}{\partial v_{kj}}\left(\frac{1}{2}\sum_{k = 1}^{M}\left(d_{k} - f\left(\sum_{j = 1}^{H}v_{kj}y_{j}^{p}(t) + \theta_{k}\right)\right)^2\right)\\
+							&=& \alpha\left(d_{k} - f\left(\sum_{j = 1}^{H}v_{kj}y_{j}^{p}(t) + \theta_{k}\right)\right)\frac{\partial y_{k}^{p}}{\partial v_{kj}}\\
+							&=& \alpha(d_{k} - y_{k}^{p})\frac{\partial y_{k}^{p}}{\partial v_{kj}}\\
+							&=& \alpha\delta_{k}\frac{\partial y_{k}^{p}}{\partial v_{kj}}
+\end{eqnarray*}
+
+Para calcular $\frac{\partial y_{k}^{p}}{\partial v_{kj}}$ se debe utilizar la regla de la cadena, pues el error no es una función explícita de los pesos de la red, así obtenemos que $$ \frac{\partial y_{k}^{p}}{\partial v_{kj}} = \frac{\partial y_{k}^{p}}{\partial net_{k}^{p}} \frac{\partial net_{k}^{p}}{\partial v_{kj}} $$
+donde
+\begin{eqnarray*}
+	\frac{\partial y_{k}^{p}}{\partial net_{k}^{p}}	&=& \frac{\partial}{\partial net_{k}^{p}}f(net_{k}^{p}(t))\\
+													&=& f'(net_{k}^{p}(t))
+\end{eqnarray*}
+y
+\begin{eqnarray*}
+	\frac{\partial net_{k}^{p}}{\partial n_{kj}}	&=& \frac{\partial}{\partial v_{kj}}\left(\sum_{j = 1}^{H} v_{kj}y_{j}^{p}(t) + \theta_{k}\right)\\
+														&=& y_{j}^{p}(t)
+\end{eqnarray*}
+
+Por lo tanto se tiene
+\begin{eqnarray*}
+	\Delta v_{kj}(t + 1)	&=& -\alpha\frac{\partial E^{p}}{\partial v_{kj}}\\
+							&=& \alpha\delta_{k}^{p}y_{j}^{p}
+\end{eqnarray*}
+donde $$ \delta_{k}^{p} = \delta_{k}f'(net_{k}^{p}(t))$$
+
+Este algoritmo se denomina de retroprogpragación ({\em Backpropagation}, BP) debido a que el error se propaga en sentido inverso, de esta manera, el algritmos encuentra el error en el proceso de aprendizaje desde la capa de salida hasta llegar a la capa de entrada. Basado en el calculo del error se procesderá a actualizar los pesos de cada capa.
+
+Después de conocer el error en la capa de salida, se busca el error en la capa oculta, que está dad por:
+\begin{eqnarray*}
+	\Delta w_{ji}(t + 1)	&=& -\alpha\frac{\partial E^{p}}{\partial w_{ji}}\\
+							&=& -\alpha\frac{\partial}{\partial w_{ji}} \left(\frac{1}{2}\sum_{k = 1}^{M}\left(d_k - y_{k}^{p}\right)^2\right)\\
+							&=& -\alpha\frac{\partial}{\partial w_{ji}} \left(\frac{1}{2}\sum_{k = 1}^{M}\left(d_k - f(net_{k}^{p})\right)^2\right)\\
+							&=& -\alpha\frac{\partial}{\partial w_{ji}} \left(\frac{1}{2}\sum_{k = 1}^{M}\left(d_k - f\left(\sum_{k=1}^{H}v_{kj}y_{j}^{p}(t) + \theta_{k}\right)\right)^2\right)\\
+							&\vdots&\\
+							&\vdots&\\
+							&\vdots&\\
+							&=& \alpha\sum_{k=1}^{M} \delta_{k}^{p}\frac{\partial y_{k}^{p}}{\partial w_{ji}}\\
+\end{eqnarray*}
+
+Para calcular $\frac{\partial y_{k}^{p}}{\partial w_{ji}}$ se debe aplicar la regla de la cadena en varias ocasiones puesto que la salida de la red no es una función explícita de los pesos de la conexión entre la cada de entrada y la capa oculta
+\newpage
+
+
+
+
+
+
+
+%\section{Reglas de aprendizaje}
+\section{El gradiente descendente}% http://alejandrosanchezyali.blogspot.cl/2016/01/algoritmo-del-gradiente-descendente-y.html
+El gradiente descendente busca los punto $p \in \Omega$ donde funciones del tipo $f: \Omega\subseteq\mathbb{R}^m \rightarrow \mathbb{R}$ alcanzan su mínimo. La idea de este método se basa en que si $f$ es una función diferenciable en todo su dominio $\Omega$, entonces la derivada de $f$ es un punto $p \in \Omega$ en dirección de un vector unitario $v \in \mathbb{R}^m$ se define como
+
+$$ df_{p}(v) = \nabla f(p)v $$
+
+Observe que la magnitud de la ecuación es
+$$ |d f_{p}(v)| = ||\nabla f(p)|| ||v||\cos\theta = ||\nabla f(p)\cos\theta$$
+
+Dicha magnitud es máxima cuando $\theta = 2n\pi, n \in \mathbb{Z}$. Es decir, para que $|df_{d}(v)|$ sea máxima, los vectores $\nabla f(p)$ y $v$ debe ser paralelo. De esta manera, la función $f$ crece más rápidamente en la dirección del vector $\nabla f(p)$ y decrece más rápidamente en la dirección del vectro $-\nabla f(p)$. Dicha situación sugiere que la dirección negativa del gradiente $-\nabla f(p)$ es una buena dirección de búsqueda para encontrar el minimizador de la función $f$.
+
+Sea $f: \Omega \subseteq \mathbb{R} \rightarrow \mathbb{R}$, si $f$ tiene un mínimo en $p$, para encontrar a $p$ se construye una sucesión de punto $\{p_{t}\}$ tal que $p_{t}$ converge a $p$. Para resolver esto, comenzamos en $p_{t}$ y nos desplazamos una cantidad $-\lambda_{t}\nabla f(p_{t})$ para encontrar el punto $p_{t + 1}$ más cercano a $p$, es decir:
+$$ p_{t + 1} =p_{t} - \lambda _{t}\nabla f(p_{t}) $$
+
+donde $\lambda_{t}$ se selecciona de tal manera que $p_{t + 1} \in \Omega$ y $f(p_{t}) \geq f(p_{t + 1})$
+
+El parámetro $\lambda_{t}$ se seleccionara para maximizar la cantidad a la que decrece la función $f$ en cada paso.
+
+
+\begin{figure}[H]
+	\centering
+    \scalebox{0.6}{\input{img/nn_parada}}
+    \caption{$W^{1}_{ij}$ es el peso de la $n$-ésima neurona en la capa $l - 1$ a la $j$-ésima neurona de la capa $l$ de la red.}
+\end{figure}
+
+\subsection{El desvanecimiento del gradiente}
+% http://neuralnetworksanddeeplearning.com/chap5.html
