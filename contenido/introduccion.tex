@@ -24,8 +24,10 @@ Las características principales de las NN son las siguientes:
 \end{imagen}
 
 \subsection{Las redes neuronales}
-El elemento básico de las NN es el nodo, que recibe un vector de entrada para producir una salida como muestra en la figura \ref{fig:perceptron}. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma de las entradas ponderada por el vector de pesos
-$$ y_{i} = \sum_{j} w_{ij}y_{j} $$
+El elemento básico de las NN es el nodo, que recibe un vector de entrada para producir una salida como muestra en la figura \ref{fig:perceptron}. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma de las entradas ponderada por el vector de pesos como en la ecuacion \ref{eq:entrada}.
+\begin{eqnarray}
+	y_{i} = \sum_{j} w_{ij}y_{j}\label{eq:entrada}
+\end{eqnarray}
 Donde el resultado puede servir como entrada de otras unidades.
 
 Existen dos fases importante dentro del modelo

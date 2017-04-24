@@ -30,7 +30,7 @@
 \ProcessOptions\relax
 
 \if@escrito
-	\LoadClass[12pt, oneside]{book}
+	\LoadClass[10pt, oneside]{book}
 	\RequirePackage{titlesec}
 	\titleformat{\chapter}[display]{\normalfont\bfseries}{\chaptertitlename\ \thechapter}{10pt}{}
 	\titlespacing*{\chapter}{0pt}{0pt}{10pt}
@@ -60,32 +60,14 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Interlineado
 	\renewcommand{\baselinestretch}{3}
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Tamaño de la hoja
-	%\usepackage{anysize} % Soporte para el comando \marginsize
-	%%\usepackage[papersize={22cm,27cm},lmargin=2cm, rmargin=2cm,top=2cm,bottom=2cm]{geometry}
-	%\usepackage[papersize={22cm,27cm}]{geometry}
-	%\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
-%\if@infuno
-%	\newcommand{\informe}{Informe N$^\circ$ 1}
-%\fi
-%\if@infdos
-%	\newcommand{\informe}{Informe N$^\circ$ 2}
-%\fi
-%\if@inftres
-%	\newcommand{\informe}{Informe N$^\circ$ 3}
-%\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \usepackage{anysize} % Soporte para el comando \marginsize
 \usepackage[papersize={21.6cm, 27.9cm}]{geometry}
-\geometry{left=4cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliografía y referencias
@@ -334,7 +316,7 @@
 \if@escrito
 \makeatletter
 \def \maketitle {%
-	\newgeometry{left=4cm, right=2.5cm, top=4cm, bottom=2.5cm}
+	\geometry{left=4cm, top=4cm, right=2.5cm, bottom=2.5cm}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% PORTADA
 	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
