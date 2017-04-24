@@ -3,9 +3,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Introducción}
+\chapter{Introducción}
 %\subsection{Redes neuronales}
-El primer modelo de red neuronal artificiales (NN) fue propuesto en 1943 por McCulloc y Pitts en términos de un modelo computacional de actividad nerviosa. Las NN se han inspirado en las redes neuronales biológicas y las conexiones que construyen. Este modelo era un modelo binario, donde cada neurona posee un umbral, y sirvió de base para los modelos posteriores.
+\citeA{McCulloch1943} presentaron el primer modelo de redes neuronales artificiales ({\em Neural networks}, NN) en términos de un modelo computacional de actividad nerviosa. Las NN se han inspirado en las redes neuronales biológicas y las conexiones que construyen. Este modelo era un modelo binario, donde cada neurona posee un umbral, y sirvió de base para los modelos posteriores.
 
 Las características principales de las NN son las siguientes:
 \begin{enumerate}
@@ -16,85 +16,8 @@ Las características principales de las NN son las siguientes:
 	\item Procesado paralelo: normalmente se usa un gran número de nodos de procesado, con alto nivel de interconectividad.
 \end{enumerate}
 
-\subsection{El perceptrón simple}
-\begin{imagen}
-	\scalebox{1.5}{\input{img/neurona_artificial_img}}
-	\caption{Perceptrón simple}
-	\label{fig:perceptron}
-\end{imagen}
-
-\subsection{Las redes neuronales}
-El elemento básico de las NN es el nodo, que recibe un vector de entrada para producir una salida como muestra en la figura \ref{fig:perceptron}. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma de las entradas ponderada por el vector de pesos como en la ecuacion \ref{eq:entrada}.
-\begin{eqnarray}
-	y_{i} = \sum_{j} w_{ij}y_{j}\label{eq:entrada}
-\end{eqnarray}
-Donde el resultado puede servir como entrada de otras unidades.
-
-Existen dos fases importante dentro del modelo
-\begin{itemize}
-	\item Fase de entrenamiento: Se usa un conjunto de datos o patrones de entrenamiento para determinar los pesos que definen el modelo de la NN. Se calculan de manera iterativa, de acuerdo con los valores de entrenamiento, con el objeto de minimizar el error cometido entre la salida obtenida por la NN y la salida deseada.
-
-	\item Fase de prueba: Durante el entrenamiento, el modelo se ajusta al conjunto de entrenamiento, perdiendo la habilidad de generalizar su aprendizaje a casos nuevos, a esta situación se le llama sobreajuste.
-	Para evitar el sobreajuste, se utiliza un segundo grupo de datos diferentes, el conjunto de validación, que permitirá controlar el proceso de aprendizaje.
-\end{itemize}
-Los pesos óptimos se obtienen minimizando una función. Uno de los criterios utilizados es la minimización del error cuadrático medio entre el valor de salida y el valor real esperado.
+\section{Redes neuronales}
+Una NN relaciona un conjunto de entradas $\{x_{i}\}, i = 1, 2, \cdots, k$, con un conjunto de una o más variables de salida $\{y_j\}, j = 1, 2, \cdots, k^{*}$. Utilizan una o más capas ocultas, en donde las variables de entrada son transformadas por una función conocida como funcion de activación.
 
 
 
-
-
-
-
-
-
-\subsection{El perceptrón multicapa}
-El perceptrón multicapa es una generalización del perceptrón simple, y surgió como consecuencia de las limitaciones de dicha arquitectura para resolver problemas de clasificación no lineal. Minsky y Papert \cite{Newell1969b} mostraron que el uso de varios perceptrones simples podía resultar una solución para resolver problemas no lineales. Sin embargo, dicha propuesta no presentaba una solución al problema de la actualización de los pesos de las capas, pues la regla de aprendizaje del perceptrón simple no era aplicable. Rummelhart, Hinton y Wilians presentaron la {\em regla delta generalizada}, una forma de propagar el error de la red desde la capa de salida hacia las capas anteriores.
-
-Las redes neuronales, el perceptrón multicapa es una de las arquitecturas más usadas para resolver problemas. Esto es debido a que poseen la capacidad de ser un aproximador universal. Esto no implica que sea una de las redes más potentes o con mejores resultados, el perceptrón multicapa posee una serie de limitaciones, como el proceso de aprendizaje para problemas que dependan de un gran número de variables, la dificultad para realizar un análisis teórico de la red debido a la presencia de componentes no lineales y a la alta conectividad.
-
-\subsubsection{Arquitectura}
-El perceptron multicapa posee una estructura de capas compuestas por neuronas. Cada una de las capas está formada por un conjunto de neuronas y se distinguen tres tipos de capas: la capa de entrada, las capas ocultas y la capa de salida.
-
-Las neurones de la capa de entrada se encargan de recibir los patrónes y propagar dichas señales a las neuronas de la capa siguiente. La última capa, la capa de salida, proporciona la respuesta de la red al patrón presentado. Las neuronas de las capas ocultas realizan el procesado de las señales generadas por el patrón de entrada.
-\begin{imagen}
-	\scalebox{0.8}{\input{img/neural_network_img}}
-	\caption{Neurona}
-	\label{fig:neurona}
-\end{imagen}
-
-En la figura \ref{fig:neurona} se observa que las conexiones van siempre hacia adelante, es decir, las neuronas de la capa $l$ se conectan con las neuronas de la capa $l + 1$. Las neuronas de una capa están conectadas a todas las neuronas de la capa siguiente.
-
-\subsubsection{Propagación de la entrada}
-El perceptrón multicapa define una relación entre la entrada y la salida. Esta relación se obtiene propagando hacia adelante los valores de las variables de entrada, es por esto que también se les llama redes {\em feedforward}. Cada neurona de la red procesa la entrada recibida y produce una respuesta que se propaga, mediante las conexiones, hacia las neuronas de la capa siguiente.
-
-Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde $W_c = (w^{c}_{ij})$ es la matriz de pesos, donde $w^{c}_{ij}$ representa el peso de la conexion de la neurona $i$ de la capa $c$. Denotaremos $a^{c}_{i}$ a la activación de la neurona $i$ de la capa $c$ que se calcula de la siguiente manera
-\begin{itemize}
-	\item Activación de una neurona de la capa de entrada: Las neuronas se encargan de transmitir la entrada recibida, por lo tanto $$ a^{1}_{i} = x_{i}, i = 1, 2, \cdots, n$$ donde $X = (x_1, x_2, \cdots, x_n)$ representa el vector de entrada.
-
-	\item Activación de una neurona de la capa oculta: Las neuronas de una capa oculta procesa la información recibida aplicando la función de activación $f$ a la suma de los productos de la entrada por sus pesos, es decir $$ a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{c - 1}_{ji}a^{c - 1}_{j} + \theta^{c}_{i}\right), i = 1, 2, \cdots, n_c; c = 2, 3, \cdots, C - 1$$ donde $a^{c - 1}_{j}$ es la salida de la capa anterior a $c$.
-
-	\item Activación de una neurona de la capa de salida: La activación de una neurona de la capa de salida viene dada por la función de activación $f$ aplicada a la suma de los productos de la entrada por sus pesos, es decir $$ y_{i} = a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{C - 1}_{ji}a^{C - 1}_{j} + \theta^{C}_{i}\right), i = 1, \cdots, n_c$$ donde $Y = (y_1, y_2, \cdots, y_{n_{c}})$ es el vector de salida.
-\end{itemize}
-
-La función $f$ es la función de activación de la neurona. Las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica (ver ecuación \ref{eq:sigm} y \ref{eq:tanh} respectivamente).
-\begin{eqnarray}
-	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}
-\end{eqnarray}
-\begin{eqnarray}
-	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
-\end{eqnarray}
-
-Ambas funciones poseen como imagen intervalo de valores entre $[0, 1]$ y $[-1, 1]$ como se observa en la figura \ref{fig:funciones}.% y están descritas por las ecuaciones \ref{eq:sigm} y \ref{eq:tanh}.
-
-\begin{imagen}
-	\scalebox{1.0}{\input{img/funciones}}
-	\caption{Funciones de activación mas utilizadas.}
-	\label{fig:funciones}
-\end{imagen}
-
-
-
-%\begin{imagen}
-%	\scalebox{1.0}{\input{img/tangente}}
-%	\caption{Función tangente}
-%\end{imagen}

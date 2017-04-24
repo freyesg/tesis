@@ -40,11 +40,6 @@
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Interlineado
-	\renewcommand{\baselinestretch}{1.5}
-
-
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
 
@@ -57,9 +52,6 @@
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Interlineado
-	\renewcommand{\baselinestretch}{3}
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
@@ -154,6 +146,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Interlineado
+\renewcommand{\baselinestretch}{1.5}
 
 
 
@@ -316,7 +311,7 @@
 \if@escrito
 \makeatletter
 \def \maketitle {%
-	\geometry{left=4cm, top=4cm, right=2.5cm, bottom=2.5cm}
+	\newgeometry{left=4cm, top=4cm, right=2.5cm, bottom=2.5cm}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% PORTADA
 	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
@@ -403,8 +398,6 @@
 
 	\vspace{1em}
 	\begin{center}
-%		{\fontsize{12}{1} {\bf \@tema}}\\
-%		\vspace{1em}
 		{\fontsize{12}{1} {\bf \@informe}}
 	\end{center}
 
@@ -425,10 +418,6 @@
     \end{flushleft}
     \end{minipage}
 
-%	\vfill
-%	\begin{center}
-%		{\fontsize{10}{1} Santiago, Chile\\ \the\year}
-%	\end{center}
 	\newpage
 	\restoregeometry
 }
