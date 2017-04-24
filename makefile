@@ -17,7 +17,7 @@ all: $(MAIN).tex $(REF).bib
 
 git:
 	git add .
-	git commit --author="freyesg <felipe.reyesg@usach.cl>" -m "Actualización"
+	git commit --author="freyesg <felipe.reyesg@usach.cl>" -m "$(shell date +%FT%T%Z)"
 	git push origin master
 
 clean:
