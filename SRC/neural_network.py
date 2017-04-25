@@ -9,8 +9,6 @@ from keras.layers import Dense
 import theano
 from numpy import linalg as LA
 
-
-
 class Net:
 	def __init__(self, net_input=1, net_output=1, opt='sgd', f_perdida='mse', i=0, j=0):
 		np.random.seed(datetime.datetime.now().microsecond)
@@ -24,24 +22,19 @@ class Net:
 		self.model.add(Dense(L2[i], 						kernel_initializer=kernel[j], activation='sigmoid', bias_initializer='zeros'))
 		self.model.add(Dense(net_output,					kernel_initializer=kernel[j], activation='sigmoid', bias_initializer='zeros'))
 
-		self.model.compile(loss=f_perdida, optimizer=opt, metrics=['accuracy'])
+		self.model.compile(loss=f_perdida, optimizer=opt, metrics=['accuracy'])#
 		self.h = None
 
 	def entrenar(self, x, y, verb=0, n_epoch=100):
 		call = []
 		t_i = time()
+		#self.h = self.model.fit(x, y, epochs=n_epoch, batch_size=10, callbacks=call, verbose=verb, validation_split=0.33)
 		self.h = self.model.fit(x, y, epochs=n_epoch, batch_size=10, callbacks=call, verbose=verb)
 		t_f = time()
 		return self.evaluar(x, y), t_f - t_i
 
 	def evaluar(self, x, y, v=0):
-		if len(x) > 1:
-			scores = self.model.evaluate(x, y, verbose=v)
-			n = len(scores)
-			err = sum(scores)
-			scores = err/n
-		else:
-			scores = self.model.evaluate(x, y, verbose=v)
+		scores = self.model.evaluate(x, y, verbose=v)
 		return scores
 
 	def predecir(self, x, b_s=32, v=0):
@@ -51,9 +44,19 @@ class Net:
 		plt.plot(self.h.history['loss']) # history.history['loss']
 		plt.show()
 
-	def dibujar(self):
+	def dibujar(self, filename="nn"):
+		"""
+		print self.h.history
 		plt.plot(self.h.history['loss']) # history.history['loss']
-		plt.savefig("nn.png", bbox_inches='tight')
+		plt.savefig(filename, bbox_inches='tight')
+		"""
+		plt.plot(self.h.history['loss'])
+		#plt.plot(self.h.history['val_loss'])
+		plt.title('model loss')
+		plt.ylabel('loss')
+		plt.xlabel('epoch')
+		plt.legend(['train', 'validation'], loc='upper left')
+		plt.savefig(filename+'_loss'+'.png', bbox_inches='tight')
 
 	def set_weights(self, w):
 		for l, layer in enumerate(self.model.layers):

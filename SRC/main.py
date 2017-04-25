@@ -1,41 +1,31 @@
-import numpy as np
+import dataset
+import sannealing as sa
+import neural_network as nn
+## ENTRADAS : 8
+#x, y, size = dataset.dataset3()
+# ENTRADAS : 2
+x, y, size = dataset.dataset1()
 
-class NN(object):
-    def __init__(self):
-        #Define Hyperparameters
-        self.inputLayerSize = 2
-        self.outputLayerSize = 1
-        self.hiddenLayerSize = 3
+SOLUCIONES, T_0, cte = 2, 50, 0.9
+#SOL_ARRAY = [2, 5, 10, 15]
+#R_ARRAY = [15, 20, 30, 40]
+SOL_ARRAY = [15]
+R_ARRAY = [20]
 
-        #Weights (parameters)
-        self.W1 = np.random.randn(self.inputLayerSize, self.hiddenLayerSize)
-        self.W2 = np.random.randn(self.hiddenLayerSize, self.outputLayerSize)
+print "SIMULATED ANNEALING"
+#print "(soluciones, radio, error)"
+for s in SOL_ARRAY:
+	for r in R_ARRAY:
+		#(soluciones, radio, error)
+		#print ("%4.0i\t%4.10f\t")%(s, r),
+		sanet = sa.SANet(input=size, solutions=s, T=T_0, c=cte)
+		print sanet.entrenar(x, y, r)
+print
+sanet.dibujar()
+sanet = None
 
-    def forward(self, X):
-        #Propagate inputs though network
-        self.z2 = np.dot(X, self.W1)
-        self.a2 = self.sigmoid(self.z2)
-        self.z3 = np.dot(self.a2, self.W2)
-        yHat = self.sigmoid(self.z3)
-        return yHat
+print "SGD"
+net = nn.Net(net_input=size)
+print net.entrenar(x, y, verb=0)
 
-    def sigmoid(self, z):
-        #Apply sigmoid activation function to scalar, vector, or matrix
-        return 1/(1+np.exp(-z))
-
-
-
-# X = (hours sleeping, hours studying), y = Score on test
-X = np.array(([3,5], [5,1], [10,2]), dtype=float)
-y = np.array(([75], [82], [93]), dtype=float)
-
-# Normalize
-X = X/np.amax(X, axis=0)
-y = y/100 #Max test score is 100
-
-
-
-nn = NN()
-yHat = nn.forward(X)
-print type(yHat), yHat
-print type(y), y
+net.dibujar()

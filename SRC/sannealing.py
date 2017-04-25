@@ -89,7 +89,7 @@ class SANet():
 
 			for i in range(self.n_sol):
 				aux = rnd.randint(0, len(s)-1)
-				new, old = s[aux].evaluar(x_0, y_0), self.net.evaluar(x_0, y_0)
+				new, old = s[aux].evaluar(x_0, y_0)[0], self.net.evaluar(x_0, y_0)[0]
 				d = new - old
 				r = rnd.uniform(0, 1)
 				bla = -d/k*T
@@ -102,7 +102,7 @@ class SANet():
 
 			T *= c
 			contador += 1
-			self.error_array.append(self.net.evaluar(x_0, y_0))
+			self.error_array.append(self.net.evaluar(x_0, y_0)[0])
 		t_f = time()
 		return self.net.evaluar(x_0, y_0), t_f - t_i
 
@@ -123,9 +123,16 @@ class SANet():
 		plt.plot(self.error_array) # history.history['loss']
 		plt.show()
 
-	def dibujar(self):
-		plt.plot(self.error_array) # history.history['loss']
-		plt.savefig("nnsa.png", bbox_inches='tight')
+	def dibujar(self, filename="nnsa"):
+		#plt.plot(self.error_array) # history.history['loss']
+		#plt.savefig(filename, bbox_inches='tight')
+		plt.plot(self.error_array)
+		#plt.plot(self.h.history['val_loss'])
+		plt.title('model loss')
+		plt.ylabel('loss')
+		plt.xlabel('epoch')
+		plt.legend(['train', 'validation'], loc='upper left')
+		plt.savefig(filename+'_loss'+'.png', bbox_inches='tight')
 
 if __name__ == "__main__":
 	import dataset

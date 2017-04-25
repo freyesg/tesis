@@ -15,6 +15,9 @@ all: $(MAIN).tex $(REF).bib
 	make clean
 	@echo $(shell date +%FT%T%Z)
 
+upgrade:
+	git pull origin master
+
 git:
 	git add .
 	git commit --author="freyesg <felipe.reyesg@usach.cl>" -m "ACTUALIZACIÓN $(shell date +%FT%T%Z)"
