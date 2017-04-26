@@ -1,10 +1,10 @@
 \chapter{Redes neuronales}
-\section{El perceptrón simple}
-\begin{imagen}
-	\scalebox{1.5}{\input{img/neurona_artificial_img}}
-	\caption{Perceptrón simple}
-	\label{fig:perceptron}
-\end{imagen}
+%\section{El perceptrón simple}
+%\begin{imagen}
+%	\scalebox{1.5}{\input{img/neurona_artificial_img}}
+%	\caption{Perceptrón simple}
+%	\label{fig:perceptron}
+%\end{imagen}
 
 \section{Las redes neuronales}
 El elemento básico de las NN es el nodo, que recibe un vector de entrada para producir una salida como muestra en la figura \ref{fig:perceptron}. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma de las entradas ponderada por el vector de pesos como en la ecuacion \ref{eq:entrada}.
@@ -28,9 +28,9 @@ Los pesos óptimos se obtienen minimizando una función. Uno de los criterios ut
 
 
 \section{El perceptrón multicapa}
-El perceptrón multicapa es una generalización del perceptrón simple, y surgió como consecuencia de las limitaciones de dicha arquitectura para resolver problemas de clasificación no lineal. Minsky y Papert \cite{Newell1969b} mostraron que el uso de varios perceptrones simples podía resultar una solución para resolver problemas no lineales. Sin embargo, dicha propuesta no presentaba una solución al problema de la actualización de los pesos de las capas, pues la regla de aprendizaje del perceptrón simple no era aplicable. Rummelhart, Hinton y Wilians presentaron la {\em regla delta generalizada}, una forma de propagar el error de la red desde la capa de salida hacia las capas anteriores.
+El perceptrón multicapa es una generalización del perceptrón simple, y surgió como consecuencia de las limitaciones de dicha arquitectura para resolver problemas de clasificación no lineal. \citeA{Minsky1969b} mostraron que el uso de varios perceptrones simples podía resultar una solución para resolver problemas no lineales. Sin embargo, dicha propuesta no presentaba una solución al problema de la actualización de los pesos de las capas, pues la regla de aprendizaje del perceptrón simple no era aplicable. Rummelhart, Hinton y Wilians presentaron la {\em regla delta generalizada}, una forma de propagar el error de la red desde la capa de salida hacia las capas anteriores.
 
-Las redes neuronales, el perceptrón multicapa es una de las arquitecturas más usadas para resolver problemas. Esto es debido a que poseen la capacidad de ser un aproximador universal. Esto no implica que sea una de las redes más potentes o con mejores resultados, el perceptrón multicapa posee una serie de limitaciones, como el proceso de aprendizaje para problemas que dependan de un gran número de variables, la dificultad para realizar un análisis teórico de la red debido a la presencia de componentes no lineales y a la alta conectividad.
+Dentro de las redes neuronales, el perceptrón multicapa es una de las arquitecturas más usadas para resolver problemas. Esto es debido a que poseen la capacidad de ser un aproximador universal. Esto no implica que sea una de las redes más potentes o con mejores resultados, el perceptrón multicapa posee una serie de limitaciones, como el proceso de aprendizaje para problemas que dependan de un gran número de variables, la dificultad para realizar un análisis teórico de la red debido a la presencia de componentes no lineales y a la alta conectividad.
 
 \subsection{Arquitectura}
 El perceptron multicapa posee una estructura de capas compuestas por neuronas. Cada una de las capas está formada por un conjunto de neuronas y se distinguen tres tipos de capas: la capa de entrada, las capas ocultas y la capa de salida.
@@ -56,11 +56,9 @@ Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde
 	\item Activación de una neurona de la capa de salida: La activación de una neurona de la capa de salida viene dada por la función de activación $f$ aplicada a la suma de los productos de la entrada por sus pesos, es decir $$ y_{i} = a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{C - 1}_{ji}a^{C - 1}_{j} + \theta^{C}_{i}\right), i = 1, \cdots, n_c$$ donde $Y = (y_1, y_2, \cdots, y_{n_{c}})$ es el vector de salida.
 \end{itemize}
 
-La función $f$ es la función de activación de la neurona. Las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica (ver ecuación \ref{eq:sigm} y \ref{eq:tanh} respectivamente).
+La función $f$ es la función de activación de la neurona. Las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
 \begin{eqnarray}
-	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}
-\end{eqnarray}
-\begin{eqnarray}
+	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}\\
 	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
 \end{eqnarray}
 
@@ -104,7 +102,7 @@ Si bien el aprendizaje de la red busca minimizar el error total de la red, el pr
 
 donde $e(i)$ es el error para el patrón de entrada $i$ dado por la ecuación \ref{eq:error_patron}, y $\alpha$ es la tasa de aprendizaje, éste último determina el desplazamiento en la superficie del error.
 
-Como las neuronas están ordenadas por capas y en distintos niveles, es posible aplicar el método del gradiente de forma eficiente, resultando en el {\em algoritmo de retropropagación} \cite{Rumelhart1986} o {\em regla delta generalizada}. El término retropropagación es utilizado debido a la forma de implementar el método del gradiente en las redes multicapa, pues el error cometido en la salida de la red es propagado hacia atrás, transformándolo en un erro para cada una de las neuronas ocultas de la red.
+Como las neuronas están ordenadas por capas y en distintos niveles, es posible aplicar el método del gradiente de forma eficiente, resultando en el {\em algoritmo de retropropagación} \cite{Rumelhart1986} o {\em regla delta generalizada}. El término retropropagación es utilizado debido a la forma de implementar el método del gradiente en las redes multicapa, pues el error cometido en la salida de la red es propagado hacia atrás, transformándolo en un error para cada una de las neuronas ocultas de la red.
 
 
 
@@ -117,7 +115,7 @@ El algoritmo de retropropagación es el método de entrenamiento más utilizado 
 \begin{enumerate}
 	\item Se aplica un patrón de entrada, el cual se propaga por las distintas capas que componen la red hasta producir la salida de la misma. Esta salida se compara con la salida deseada y se calcula el error cometido por cada neurona de salida.
 
-	\item Estos errores se transmiten desde la capa de salida, hacia todas neuronas de las capas anteriores (Fritsch, 1996). Cada neurona recibe un error que es proporcional a su contribución sobre el error total de la red. Basándose en el error recibido, se ajustan los errores de los pesos sinápticos de cada neurona.
+	\item Estos errores se transmiten desde la capa de salida, hacia todas neuronas de las capas anteriores {\Huge (FRITSCH, 1996)}. Cada neurona recibe un error que es proporcional a su contribución sobre el error total de la red. Basándose en el error recibido, se ajustan los errores de los pesos sinápticos de cada neurona.
 \end{enumerate}
 
 
@@ -129,6 +127,7 @@ El algoritmo de retropropagación es el método de entrenamiento más utilizado 
 
 %\section{Reglas de aprendizaje}
 \section{El gradiente descendente}% http://alejandrosanchezyali.blogspot.cl/2016/01/algoritmo-del-gradiente-descendente-y.html
+\begin{comment}
 El gradiente descendente busca los punto $p \in \Omega$ donde funciones del tipo $f: \Omega\subseteq\mathbb{R}^m \rightarrow \mathbb{R}$ alcanzan su mínimo. La idea de este método se basa en que si $f$ es una función diferenciable en todo su dominio $\Omega$, entonces la derivada de $f$ es un punto $p \in \Omega$ en dirección de un vector unitario $v \in \mathbb{R}^m$ se define como
 
 $$ df_{p}(v) = \nabla f(p)v $$
@@ -144,7 +143,7 @@ $$ p_{t + 1} =p_{t} - \lambda _{t}\nabla f(p_{t}) $$
 donde $\lambda_{t}$ se selecciona de tal manera que $p_{t + 1} \in \Omega$ y $f(p_{t}) \geq f(p_{t + 1})$
 
 El parámetro $\lambda_{t}$ se seleccionara para maximizar la cantidad a la que decrece la función $f$ en cada paso.
-
+\end{comment}
 
 %\begin{imagen}[H]
 %	\scalebox{0.6}{\input{img/nn_parada}}
@@ -153,3 +152,6 @@ El parámetro $\lambda_{t}$ se seleccionara para maximizar la cantidad a la que 
 
 \subsection{El desvanecimiento del gradiente}
 % http://neuralnetworksanddeeplearning.com/chap5.html
+El problema del gradiente desvaneciente nace en las NN profundas, éstas utilizan funciones cuyo gradiente tienden a estar entre 0 y 1. Debido a que estos gradientes pequeños se multiplican durante la retropropagación, tienden a {\em desvanecerse} a través de las capas, evitando que la red aprenda en redes muy profundas.
+
+Si se tiene una NN, la activación de una neurona de una capa intermedia $i$ con función de activación $f_i$ y con entrada $net_{i}(t) = \sum_{j}w_{ij}y^{j}(t - 1)$ es $y^{i}(t) = f_{i}(net_{i}(t))$

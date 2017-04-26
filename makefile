@@ -13,7 +13,6 @@ all: $(MAIN).tex $(REF).bib
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	make clean
-	@echo $(shell date +%FT%T%Z)
 
 upgrade:
 	git pull origin master

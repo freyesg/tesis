@@ -16,10 +16,61 @@ Las características principales de las NN son las siguientes:
 	\item Procesado paralelo: normalmente se usa un gran número de nodos de procesado, con alto nivel de interconectividad.
 \end{enumerate}
 
+\section{Las neuronas biológicas}
+El sistema nervioso y hormonal permite la comunicación de los distintos órganos que componen el cuerpo humano, esto a través de las neuronas, que permiten la realización de potenciales eléctricos.
+
+El sistema de comunicación se compone de tres partes:
+\begin{enumerate}
+    \item Los {\em receptores}, que recogen la información en forma de estímulo.
+    \item El {\em sistema nervioso}, que recibe y envía al resto de los órganos.
+    \item Los {\em órganos diana} o {\em órganos efectores} que reciben la información y la interpretan en forma de acciones.
+\end{enumerate}
+
+La estructura base del sistema de comunicación son las neuronas. Éstas utilizan reacciones químicas para la transmisión de información en forma de potenciales eléctricos, esta información se envía a través de prolongaciones de las mismas neuronas, formando una red neuronal. Las neuronas se componen de {\em dendritas}, que propagan la información al interior de la neurona, el {\em cuerpo}, que procesa la información hasta generar una respuesta, y el {\em axón}, para la salida de la información mediante la propagación de impulsos electro-químicos (ver figura \ref{fig:neurona_biologica}).
+\begin{imagen}
+    \scalebox{0.1}{\input{img/neurona}}
+    \caption{Neurona biológica.}
+    \label{fig:neurona_biologica}
+\end{imagen}
+
+Éstas realizan una serie de funciones, dentro de las cuales se destacan las siguientes
+\begin{itemize}
+    \item Recogen información que viene en forma de impulso desde otras neuronas.
+    \item Integran la información antes de la activación.
+    \item Transmiten la información en forma de impulsos a través de su axón.
+    \item A través de las ramificaciones el axón distribuye la información.
+    \item Transmite la información a las neuronas adyacentes o células efectoras.
+\end{itemize}
+
+
 \section{Redes neuronales}
-Una NN relaciona un conjunto de entradas $\{x_{i}\}, i = 1, 2, \cdots, k$, con un conjunto de una o más variables de salida $\{y_j\}, j = 1, 2, \cdots, k^{*}$. Utilizan una o más capas ocultas, en donde las variables de entrada son transformadas por una función conocida como funcion de activación.
+Los primeros trabajos sobre redes neuronales artificiales datan del siglo XIX con los trabajos de Sigmund Freud, pero es en la década de los 40 que de la mano de \citeA{mcculloch_pitts1943} realizaron el primer modelo matemático de una Red Neuronal Artificial. Este modelo está basado en la idea de la utilización de los impulsos binarios. Introducen la utilización de una función de paso por umbral para la activación.
 
+Posteriormente, Donald Hebb desarrolla un procedimiento matemático de aprendizaje descrito en su libro {\em Organization of Behavior} \cite{hebb2002}, describiendo un paradigma de aprendizaje que lleva su nombre.
 
+% En 1951, Marvin Munsky obtuvo los primeros resultados prácticos, Minsky y Edmons diseñaron una máquina con 40 neuronas, donde sus conexiones se ajustaban según ciertos sucesos. La máquina estaba construída con tubos, motores y relés, y pudo modelar con éxito el comportamiento de una rata buscando comida en un laberinto.
 
-% [Eco H] Cómo se hace una tesis - Técnicas y procedimientos de estudio, investigación y escritura
-% [Gómez M, Deslauries J-P, Alzate M] Cómo hacer tesis de maestría y doctorado - Investigación, escritura y publicación
+Con los trabajos de \citeA{rosenblatt1957} y \citeA{rosenblatt1958} se generalizó el modelo de \citeA{mcculloch_pitts1943}, agregándole el proceso de aprendizaje, llamandolo {\em perceptrón}. El modelo ajustaba los pesos de las conexiones de las entradas y salidas en forma proporcional al error. Dos años después, Bernard Widrow diseñó un perceptrón llamado {\em ADALINE} (Adaptative Linear Element), este ajusta los pesos entre los niveles de entrada y salida en función del error entre el valor esperado y el valor obtenido.
+
+\citeA{kohonen1972, kohonen1974}, desarrolló estudios entorno a la memoria asociativa y matrices de correlación, similar a los trabajos desarrollados por \citeA{anderson1968, anderson1970} y \citeA{steinbuch1961, steinbuch1963}.
+
+\citeA{hopfield1982} describe un método de análisis del estado estable de una red autoasociativa. Demostró que se puede construir una ecuación de energía capaz de describir la actividad de una Red Neuronal Monocapa, y que el sistema puede converger a un mínimo local, este resultado hizo resurgir el interés de aplicar las redes neuronales para la resolución de problemas difíciles que los computadores no pudiesen resolver.
+
+\section{El perceptrón}
+El perceptrón fue concebido como un sistema que permite la clasificación de forma automática. Busca disponer de un sistema que fuera capaz de determinar la frontera de un grupo de clases diferentes. Los diversos ejemplos de cada clase existente conformaban los patrones, los que aportan la información necesaria para lograr la discriminación de las clases existentes. Finalmente, el sistema determinaba a que clase correspondía cada uno de los ejemplos presentados, incluso de ejemplos nuevos.
+
+\subsection{Arquitectura del perceptrón}
+Es una arquitectura monocapa conformada por una capa de entrada y una capa de salida, donde cada capa contiene tantas neuronas como sean necesarias. Cada una de las neuronas de entrada está conectada con todas las neuronas de salida y son estas conexiones las encargadas de determinar las superficies de discriminación del sistema.
+\begin{imagen}
+	\scalebox{1.5}{\input{img/neurona_artificial_img}}
+	\caption{Perceptrón simple}
+	\label{fig:perceptron}
+\end{imagen}
+
+Se entenderá que un perceptrón simple es una neurona artificial, que es la unidad básica de inferencia en forma de discriminador lineal \cite{Cruz2011}. Consiste en la suma ponderada del vector de características que, en la fase inicial, permite a la red ser entrenada mediante el uso de un patrón definido, logrando determinar la salida de la red (ver figura \ref{fig:perceptron}). Si la suma ponderada del vector de entrada es mayor o menor que el patrón definido la salida de la red será uno (1), y en caso contrario la salida será cero (0). Dada la naturaleza del perceptrón, este no es capaz de distinguir patrones complejos.
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale=0.5]{img/perceptron.png}
+%    \caption{Estructura del perceptrón.}
+%    \label{fig:perceptron}
+%\end{figure}

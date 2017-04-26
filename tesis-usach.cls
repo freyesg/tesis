@@ -331,7 +331,8 @@
 		\end{minipage}
 		\begin{minipage}{0.15\textwidth}
 			\begin{center}
-				\includegraphics[scale=0.06]{img/usach.png}
+				%\includegraphics[scale=0.06]{img/usach.png}
+				\scalebox{0.17}{\input{img/logo}}
 			\end{center}
 		\end{minipage}
 	\end{figure}
@@ -480,7 +481,8 @@
 		\end{minipage}
 		\begin{minipage}{0.15\textwidth}
 			\begin{flushright}
-				\includegraphics[scale=0.05]{img/usach.png}
+				%\includegraphics[scale=0.05]{img/usach.png}
+				\scalebox{0.17}{\input{img/logo}}
 			\end{flushright}
 		\end{minipage}
 	\end{figure}

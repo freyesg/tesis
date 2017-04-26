@@ -124,14 +124,11 @@ class SANet():
 		plt.show()
 
 	def dibujar(self, filename="nnsa"):
-		#plt.plot(self.error_array) # history.history['loss']
-		#plt.savefig(filename, bbox_inches='tight')
 		plt.plot(self.error_array)
-		#plt.plot(self.h.history['val_loss'])
 		plt.title('model loss')
 		plt.ylabel('loss')
 		plt.xlabel('epoch')
-		plt.legend(['train', 'validation'], loc='upper left')
+		plt.legend(['train'], loc='upper left')
 		plt.savefig(filename+'_loss'+'.png', bbox_inches='tight')
 
 if __name__ == "__main__":

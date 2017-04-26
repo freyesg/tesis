@@ -55,7 +55,7 @@ class Net:
 		plt.title('model loss')
 		plt.ylabel('loss')
 		plt.xlabel('epoch')
-		plt.legend(['train', 'validation'], loc='upper left')
+		plt.legend(['train'], loc='upper left')
 		plt.savefig(filename+'_loss'+'.png', bbox_inches='tight')
 
 	def set_weights(self, w):
