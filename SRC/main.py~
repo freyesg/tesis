@@ -2,9 +2,9 @@ import dataset
 import sannealing as sa
 import neural_network as nn
 ## ENTRADAS : 8
-x, y, size = dataset.dataset2()
+#x, y, size = dataset.dataset3()
 # ENTRADAS : 2
-#x, y, size = dataset.dataset1()
+x, y, size = dataset.dataset1()
 
 SOLUCIONES, T_0, cte = 2, 50, 0.9
 #SOL_ARRAY = [2, 5, 10, 15]

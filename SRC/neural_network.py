@@ -45,11 +45,7 @@ class Net:
 		plt.show()
 
 	def dibujar(self, filename="nn"):
-		"""
-		print self.h.history
-		plt.plot(self.h.history['loss']) # history.history['loss']
-		plt.savefig(filename, bbox_inches='tight')
-		"""
+
 		plt.plot(self.h.history['loss'])
 		#plt.plot(self.h.history['val_loss'])
 		plt.title('model loss')
