@@ -123,6 +123,9 @@ class SANet():
 		plt.plot(self.error_array) # history.history['loss']
 		plt.show()
 
+	def get_data(self):
+		return self.error_array
+
 	def dibujar(self, filename="nnsa"):
 		plt.plot(self.error_array)
 		plt.title('model loss')

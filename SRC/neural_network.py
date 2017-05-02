@@ -44,8 +44,10 @@ class Net:
 		plt.plot(self.h.history['loss']) # history.history['loss']
 		plt.show()
 
-	def dibujar(self, filename="nn"):
+	def get_data(self):
+		return self.h.history['loss']
 
+	def dibujar(self, filename="nn"):
 		plt.plot(self.h.history['loss'])
 		#plt.plot(self.h.history['val_loss'])
 		plt.title('model loss')
