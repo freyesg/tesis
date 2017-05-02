@@ -48,9 +48,9 @@ def dibujar(DATA, title="Model loss", filename="plot"):
 	plt.cla()
 	plt.close()
 
-n = 20
+n = 10
+i = 0
 for x, y, size in [dataset.dataset1(), dataset.dataset2(), dataset.dataset3()]:
-	i = 0
 	for j in range(n):
 		##print "SIMULATED ANNEALING".
 		##(soluciones, radio, error)
