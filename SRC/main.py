@@ -28,8 +28,10 @@ class Data:
 		self.name = name
 
 	def write(self, f):
-		f = csv.writer(open(f, 'w'))
-		writer.writerow(f)
+		f = open(self.name + f + ".dat", 'w')
+		writer = csv.writer(f)
+		writer.writerow(self.data)
+
 
 def dibujar(DATA, title="Model loss", filename="plot"):
 	label = []
@@ -46,20 +48,25 @@ def dibujar(DATA, title="Model loss", filename="plot"):
 	plt.cla()
 	plt.close()
 
-i = 1
+n = 20
 for x, y, size in [dataset.dataset1(), dataset.dataset2(), dataset.dataset3()]:
-	print "SIMULATED ANNEALING"
-	#(soluciones, radio, error)
-	sanet = sa.SANet(input=size, solutions=15, T=T_0, c=cte)
-	print sanet.entrenar(x, y, 20)
+	i = 0
+	for j in range(n):
+		##print "SIMULATED ANNEALING".
+		##(soluciones, radio, error)
+		sanet = sa.SANet(input=size, solutions=15, T=T_0, c=cte)
+		sanet.entrenar(x, y, 20)
 
-	print "SGD"
-	net = nn.Net(net_input=size)
-	print net.entrenar(x, y, verb=0)
+		##print "SGD"
+		net = nn.Net(net_input=size)
+		net.entrenar(x, y, verb=0)
 
-	r = [
-		Data(sanet.get_data(), "SA", "data_"+str(i)),
-		Data(net.get_data(), "SGD", "data_"+str(i))
-	]
-	dibujar(r, filename="plot_"+str(i))
+		s = "_"+ str(i) +"_"+ str(j)
+		r = [
+			Data(sanet.get_data(), "SA"),
+			Data(net.get_data(), "SGD")
+		]
+		for k in r:
+			k.write("data"+ s)
+		dibujar(r, filename="plot"+ s)
 	i += 1

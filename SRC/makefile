@@ -6,4 +6,4 @@ all: $(MAIN).py
 	$(PYTHON) $(MAIN).py
 
 clean:
-	rm -f *.pyc
+	rm -f *.pyc *.png *.dat
