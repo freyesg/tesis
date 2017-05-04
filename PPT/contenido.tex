@@ -1,0 +1,169 @@
+\section{Introducción}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Las redes neuronales no son más que muy buenos aproximadores de función.\bigskip
+
+        \item Le das una red entrenada, un vector de entrada, realiza una serie de operaciones, y se produce un vector de salida.\bigskip
+
+        \item Para entrenar a nuestra red para que estimar una función desconocida, le damos una colección de puntos de datos o {\bf conjunto de entrenamiento} que la red va a aprender y generalizar para hacer inferencias futuras.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Las redes neuronales se estructuran como una serie de capas.\bigskip
+
+        \item Cada capa está compuesta de una o más neuronas.\bigskip
+
+        \item Cada neurona produce una salida, o se activa, basándose en las salidas de la capa anterior y un conjunto de pesos.
+    \end{itemize}
+    \begin{figure}[H]
+        \centering
+        \scalebox{0.6}{\input{img/nn}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Cuando se utiliza una red neural para aproximar una función, los datos se transmiten a través de la red, capa por capa, hasta llegar a la capa final.\bigskip
+
+        \item La activación de la capa final corresponde a la predicción realizada por la red.\bigskip
+
+        \item La clave es encontrar el conjunto adecuado de pesos para todas las conexiones.
+    \end{itemize}
+\end{frame}
+
+\section{La función de costo}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \begin{itemize}
+            \small
+            \item Cuando se entrena la red, es conveniente tener alguna métrica de lo bueno o malo que estamos haciendo.
+
+            \item Se denomina a esta métrica como {\bf función de coste} y denotaremos $J(W)$.\bigskip
+
+            \item La diferencia entre los resultados de las estimaciones y los puntos de datos de entrenamiento son los valores principales de nuestra función de coste.\bigskip
+
+            \item El objetivo será lograr que el valor de la función de coste sea lo más bajo posible .\bigskip
+
+            \item La función de costo debe ser más o menos convexa
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \begin{figure}[H]
+            \includegraphics[scale=0.3]{img/convexa.png}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+%\begin{frame}{\titulo}{\subtitulo}
+%    \begin{itemize}
+        %\item En realidad, es imposible para cualquier red o función de costes sean verdaderamente convexa.\bigskip
+
+        %\item Sin embargo, como veremos pronto, los mínimos locales pueden no ser un gran problema, siempre y cuando todavía hay una tendencia general que debemos seguir para llegar a la parte inferior.\bigskip
+
+        %\item Además, observe que la función de coste es parametrizada por los pesos de nuestra red - controlamos nuestra función de pérdida cambiando los pesos.
+    %\end{itemize}
+%\end{frame}
+
+\section{Minimizar la función de costo}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Se deben encontrar los pesos que harán que la puntuación más baja posible.\bigskip
+
+        \item La primera solución es derivar la función de coste e igualarla a cero, ásí se obtendría la ubicación de cada mínimo/máximo en la función.\bigskip
+
+        \item Este intuitivo método tiene algunos problemas:
+        \begin{enumerate}
+            \item La función de costo no es una función simple, y el cálculo de su derivada no es sencillo.\medskip
+
+            \item La función de costo es multidimensional (una dimensión por cada peso).\medskip
+
+            \item Existe mas de un mínimo y máximo asociados a la función.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\section{El algoritmo de retropopagación}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{figure}[H]
+        \centering
+        %\scalebox{0.6}{\input{img/nn_parada}}
+        \scalebox{0.6}{\input{img/nn_parada}}
+    \end{figure}
+\end{frame}
+
+\subsection{El gradiente descendente}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Como el tamaño de las redes comienza a ampliar, la solución para los pesos se convierte directamente cada vez inviable.\bigskip
+
+        \item En su lugar, nos fijamos en una clase diferente de algoritmos, llamados algoritmos de optimización iterativos, que funciona progresivamente su camino hacia la solución óptima.\bigskip
+
+        \item El más básico de estos algoritmos es el de gradiente descendente.\bigskip
+
+        \item Recordemos que nuestra función de coste será esencialmente convexa, y queremos llegar lo más cerca posible del mínimo global.\bigskip
+
+        \item En lugar de resolver analíticamente, el gradiente descendente sigue los derivados esencialmente a "rodar" por la pendiente hasta que encuentra su camino hacia el centro.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Tomemos una red neuronal de un solo peso, cuya función de costes se representa a continuación.
+        \begin{figure}[H]
+            \includegraphics[scale=0.15]{img/gd1.png}
+        \end{figure}
+
+        \item Comenzamos por la inicialización de nuestro peso al azar, lo que nos sitúa en el punto rojo en el diagrama anterior.\bigskip
+
+        \item Tomando la derivada, vemos la pendiente en este punto es un número positivo muy grande.\bigskip
+
+        \item Queremos ir más cerca del centro, para eso hay que tomar un paso bastante grande en la dirección opuesta de la pendiente.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \footnotesize
+        \item Si repetimos el proceso lo suficiente, pronto nos encontramos casi en la parte inferior de nuestra curva y mucho más cerca de la configuración óptima del peso de nuestra red.
+        \begin{figure}[H]
+            \includegraphics[scale=0.15]{img/gd2.png}
+        \end{figure}
+
+        \item Más formalmente, el gradiente descendente se describe como sigue $$ W = W - \alpha\frac{\partial J}{\partial W} $$
+
+        \item Para actualizar el peso se le resta la derivada de la función de coste escalada por una tasa de aprendizaje.\bigskip
+
+        \item Usted verá que a medida que se acerca cada vez más cerca del centro, el término derivado se hace más pequeña, que converge a cero al aproximarse a la solución.\bigskip
+
+        \item El mismo proceso se aplica con redes que tienen decenas, cientos, miles o más parámetros.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        %\item Yo quiero decir unas pocas palabras más sobre la tasa de aprendizaje, porque es uno de los más importantes hiperparamétrico que usted tiene control sobre.\bigskip
+
+        \item Si la tasa de aprendizaje es demasiado alta, podría saltar demasiado lejos en la otra dirección, y nunca llegar al mínimo que está buscando.\bigskip
+
+        \item Establece demasiado bajo, y su red se llevará a las edades para encontrar los pesos adecuados, o puede quedar atrapado en un mínimo local.\bigskip
+
+        \item No hay "número mágico", para usar cuando se trata de una tasa de aprendizaje, y por lo general es mejor que probar varios y escoger el que funciona mejor para su red y conjunto de datos individual.\bigskip
+
+        \item En la práctica, muchos optan por recocer la tasa de aprendizaje en el tiempo - que comienza alta, porque es más alejado de la solución, y se desintegra ya que se acerca.
+    \end{itemize}
+\end{frame}
+
+\subsection{El desvanecimiento del gradiente}
+\begin{frame}{\titulo}{\subtitulo}
+	\begin{figure}[H]
+        \centering
+        %\scalebox{0.6}{\input{img/nn_parada}}
+        \scalebox{0.6}{\input{img/vanishing_img}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\titulo}{\subtitulo}
+\end{frame}

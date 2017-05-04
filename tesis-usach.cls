@@ -27,6 +27,12 @@
 \newif\if@desc
 \DeclareOption{descrip}{\@desctrue}
 
+\newif\if@by
+\DeclareOption{by}{\@bytrue}
+
+
+\newif\ifpropuesta\propuestafalse
+\DeclareOption{propuesta}{\propuestatrue}
 \ProcessOptions\relax
 
 \if@escrito
@@ -145,6 +151,11 @@
 \makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para crear argumentos para los comandos
+\RequirePackage{xkeyval}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Interlineado
@@ -440,14 +451,14 @@
 
 \makeatletter
 \def \aditionalpages {%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % COPYRIGHT
-    \setlength{\unitlength}{1cm} %Especificar unidad de trabajo
-    \thispagestyle{empty}
-    \vspace*{18cm}
-    \hspace*{-2.0cm}$\copyright$ \@author\\
-    Queda prohibida la reproducción parcial o total de esta obra en cualquier forma, medio o procedimiento sin permiso por escrito del autor.
-    \newpage
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% COPYRIGHT
+    %\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
+    %\thispagestyle{empty}
+    %\vspace*{18cm}
+    %\hspace*{-2.0cm}$\copyright$ \@author\\
+    %Queda prohibida la reproducción parcial o total de esta obra en cualquier forma, medio o procedimiento sin permiso por escrito del autor.
+    %\newpage
 
 
 
@@ -543,6 +554,23 @@
 	\newpage
 }
 \makeatother
+
+\newcommand{\makecopyright}[1]{
+	\null
+	\vfill
+    \ifpropuesta
+        % no va copyright
+    \else
+        \begin{flushleft}
+		\copyright\;
+			\@author - \the\year\\
+			\if@by
+			\scalebox{0.3}{\input{img/by}}
+			~$\bullet$~~ Algunos derechos reservados. Esta obra está bajo una Licencia Creative Commons Atribución-Chile 3.0. Sus condiciones de uso pueden ser revisadas en: \url{http://creativecommons.org/licenses/by/3.0/cl/}.
+			\fi
+        \end{flushleft}
+    \fi
+}
 
 \newenvironment{descripcion}{
 \scriptsize

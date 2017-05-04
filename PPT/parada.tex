@@ -1,0 +1,103 @@
+%\section{Actualización de los pesos}
+%\begin{frame}{\titulo}{\subtitulo}
+%    \begin{figure}[H]
+%        \centering
+%        \scalebox{0.55}{\input{img/neural_network}}
+%    \end{figure}
+%
+%    \begin{itemize}
+%        \item $W^{l}_{ij}$ es el peso de la conexión entre la neurona $i$ de la capa $l$ con la neurona $j$ de la capa $l + 1$.
+%    \end{itemize}
+%\end{frame}
+%
+%\section{El algoritmo de retropropagación}
+%\begin{frame}{\titulo}{\subtitulo}
+%    \begin{itemize}
+%        \item Para cualquier problema de aprendizaje supervisado queremos encontrar un conjunto de pesos $W$ que minimice la salida de $J(W)$.\bigskip
+%
+%        \item Cada neurona es una función de la neurona anterior conectada a ella.
+%
+%        \item Si uno cambiara el valor de $w_1$, las neuronas "ocultas 1" y "ocultas 2" cambiarían.
+%
+%        \item Debido a esta noción de dependencias funcionales, podemos formular matemáticamente el resultado como una función compuesta extensa:
+%        \begin{eqnarray*}
+%            output &=&  act(w_3*h_2)\\
+%            h_2 &=&     act(w_2*h_1)\\
+%            h_1 &=&     act(w_1*input)\\
+%            &\Downarrow&\\
+%            output &=&  act(w_3*act(w_2*act(w_1*input)))
+%        \end{eqnarray*}
+%
+%        \item La salida es una función compuesta de los pesos, entradas y funciónes de activación.
+%    \end{itemize}
+%\end{frame}
+
+%\begin{frame}{\titulo}{\subtitulo}
+%\begin{itemize}
+%    \item Si tomáramos entonces la derivada de dicha función con respecto a algún peso arbitrario, aplicaríamos iterativamente la regla de la cadena. El resultado sería similar al siguiente
+%    \begin{eqnarray*}
+%    \frac{\partial output}{\partial w_1}
+%    =
+%    \frac{\partial output}{\partial h_2}
+%    \frac{\partial h_2}{\partial h_1}
+%    \frac{\partial h_1}{\partial w_1}
+%    \end{eqnarray*}
+%
+%    \item Ahora, vamos a adjuntar una caja negra a la cola de nuestra red neuronal. Esta caja negra calculará y devolverá el error - usando la función de coste - de nuestra salida
+%    \begin{figure}[H]
+%        \centering
+%        \scalebox{0.55}{\input{img/backpropagation}}
+%    \end{figure}
+%\end{itemize}
+%\end{frame}
+
+
+%\begin{frame}
+%    \begin{itemize}
+%        \item Cada uno de estos derivados puede simplificarse una vez que elegimos una función de activación y error, de tal manera que el resultado completo representaría un valor numérico.\bigskip
+%
+%        \item En ese punto, cualquier abstracción se ha eliminado, y la derivada de error se puede utilizar en el descenso del gradiente para mejorar iterativamente el peso.\bigskip
+%
+%        \item Se calculan las derivadas de error cada otro peso en la red y aplicar descenso gradiente de la misma manera.\bigskip
+%
+%        \item Esto es retropropagación - simplemente el cálculo de derivados que se alimentan a un algoritmo de optimización convexa.\bigskip
+%
+%        \item Lo llamamos "retropropagación" porque casi parece como si estuviéramos atravesando desde el error de salida a los pesos, tomando pasos iterativos usando la cadena de la regla hasta que "alcancemos" nuestro peso.
+%    \end{itemize}
+%\end{frame}
+
+\section{El Gradiente Descendente}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Se busca un algoritmo que permita encontrar pesos y sesgos para que la salida de la red aproxime los valores de $y(x)$ a los valores correspondientes con cada entrada $x$.\bigskip
+
+        \item Para cuantificar qué tan bien estamos logrando este objetivo definimos una función de costo
+
+    \end{itemize}
+\end{frame}
+
+
+\section{El Gradiente Descendente Estocástico}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item El método del gradiente descendente estocástico (SGD) actualiza los parámetros en cada ejemplo $x_i$ y etiquta $y_i$ de la siguiente manera $$ \theta = \theta - \eta\nabla_\theta $$
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{figure}[H]
+        \centering
+        \scalebox{0.6}{\input{img/backpropagation}}
+    \end{figure}
+\end{frame}
+
+\subsection{El desvanecimiento del gradiente}
+\begin{frame}{\titulo}{\subtitulo}
+	\begin{figure}[H]
+        \centering
+        %\scalebox{0.6}{\input{img/nn_parada}}
+        \scalebox{0.6}{\input{img/vanishing_img}}
+    \end{figure}
+\end{frame}

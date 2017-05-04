@@ -1,0 +1,20 @@
+\section{Sección}
+\begin{frame}{\titulo}{\subtitulo}
+    \begin{itemize}
+        \item Desde un punto de vista biológico, todo sistema nervioso consta de elementos básicos, las neuronas.
+
+        \item Para una red neuronal, el elemento básico es conocido en forma genera como un combinador lineal adaptativo (adaptative linear combiner), el cual tiene una respuesta $S_k$ para una serie de entradas del vector $X_k$.
+
+        \item en este elemento, se muestra que la entrada $X_k$ es modificada por ciertos coeficientes, denominados pesos (weights) que forman parte del vector $W_k$, y cuyo valor es el resultado de comparar la salida $S_k$ con el valor de salida deseado $d_k$.
+
+        \item La señal de error que es generada se usa a su vez para actualizar los pesos $W_{0k}, W_{1k}, \hdots, W_{nk}$, de tal manera que mediante eun proceso iterativo la salida se aproxime al valor deseado y a un error $\epsilon_k$ de cero.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\titulo}{\subtitulo}
+    %\scalebox{0.5}{\input{img/combinador}}
+    \begin{figure}
+        \centering
+        \scalebox{0.5}{\input{img/nn}}
+    \end{figure}
+\end{frame}

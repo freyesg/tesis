@@ -1,0 +1,52 @@
+\documentclass[ppt3]{ppt}
+
+\usetikzlibrary{arrows,calc,decorations.markings,math,arrows.meta}
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
+
+\usepackage{lipsum}
+\makeatletter
+  \renewcommand\lips@dolipsum{%
+    \ifnum\value{lips@count}<\lips@max\relax
+      \addtocounter{lips@count}{1}%
+      \csname lipsum@\romannumeral\c@lips@count\endcsname
+      \lips@dolipsum
+    \fi
+  }
+\makeatother
+
+\newcommand{\titulo}{\insertsectionhead}
+\newcommand{\subtitulo}{\insertsubsectionhead}
+\newcommand{\subsubtitulo}{\insertsubsubsectionhead}
+
+\institute[USACH]{Universidad de Santiago de Chile\\Facultad de Ingeniería\\Magíster en Ingeniería Informática}
+\title{Algoritmos Genéticos y el problema del desvanecimiento del gradiente}
+\subtitle{Informe III}
+\author[Reyes F.]{Felipe Reyes González}
+\date{\today}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{frame}{\titulo}{\subtitulo}
+\maketitle
+\end{frame}
+
+\thispagestyle{empty}
+\begin{frame}{\titulo}{\subtitulo}
+	\tableofcontents
+\end{frame}
+\setcounter{framenumber}{0}
+
+\input{contenido}
+
+
+%\section{Bibliografía}
+%\begin{frame}{\titulo}{\subtitulo}
+%    \cite{*}
+%    %\cite{Dan}
+%    %\cite{Baz}
+%    \bibliographystyle{plain}
+%    \bibliography{bibliografia}
+%\end{frame}
+\end{document}
