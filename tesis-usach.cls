@@ -38,7 +38,7 @@
 \if@escrito
 	\LoadClass[10pt, oneside]{book}
 	\RequirePackage{titlesec}
-	\titleformat{\chapter}[display]{\normalfont\bfseries}{\chaptertitlename\ \thechapter}{10pt}{}
+	\titleformat{\chapter}[display]{\normalfont\bfseries}{}{10pt}{}%\chaptertitlename\ \thechapter
 	\titlespacing*{\chapter}{0pt}{0pt}{10pt}
 	\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{10pt}{}
 	\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{10pt}{}

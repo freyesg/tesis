@@ -145,17 +145,30 @@ donde $\lambda_{t}$ se selecciona de tal manera que $p_{t + 1} \in \Omega$ y $f(
 El parámetro $\lambda_{t}$ se seleccionara para maximizar la cantidad a la que decrece la función $f$ en cada paso.
 \end{comment}
 
-\subsection{El desvanecimiento del gradiente}
-
 % http://neuralnetworksanddeeplearning.com/chap5.html
 % ME ESTOY BASANDO EN : [1998b] Hochreiter
+\subsection{El desvanecimiento del gradiente}
 El problema del gradiente desvaneciente nace en las NN profundas, éstas utilizan funciones cuyo gradiente tienden a estar entre 0 y 1. Debido a que estos gradientes pequeños se multiplican durante la retropropagación, tienden a {\em desvanecerse} a través de las capas, evitando que la red aprenda en redes muy profundas.
 
-Si se tiene una NN, la activación de una neurona de una capa intermedia $i$ con función de activación $f_i$ y con entrada $net_{i}(t) = \sum_{j}w_{ij}y^{j}(t - 1)$ es $y^{i}(t) = f_{i}(net_{i}(t))$. Además $w_{ij}$ es el peso de la conexión desde la unidad $j$ hasta la unidad $i$, $d_{k}(t)$ será la respuesta esperada de la unidad $k$ de la capa de salida en el tiempo $t$. Usando el error cuadrático medio ({\em Mean square error}, MSE), el error de $k$ será $$ E_{k}(t) = (d_{k}(t) - y^{k}(t))^2 $$
+%%%% VER QUE LA NOTACIÓN SEA COMPATIBLE
+Si se tiene una NN, la activación de una neurona de una capa intermedia $i$ con función de activación $f_i$ y con entrada $$ net_{i}(t) = \sum_{j}w_{ij}y^{j}(t - 1) $$ es $y^{i}(t) = f_{i}(net_{i}(t))$. Además $w_{ij}$ es el peso de la conexión desde la unidad $j$ hasta la unidad $i$, $d_{k}(t)$ será la respuesta esperada de la unidad $k$ de la capa de salida en el tiempo $t$. Usando el error cuadrático medio ({\em Mean square error}, MSE), el error de $k$ será
+$$ E_{k}(t) = (d_{k}(t) - y^{k}(t))^2 $$
 
-En un tiempo $\tau \leq t$ cualquiera, el error de una neurona $j$ que no sea una neurona de entrada es la suma de los errores externos y el error propagado hacia atrás desde la neurona previa será $$ \vartheta_{j}(\tau) = f'_{j}(net_{j}(\tau))\left(E_{j}(\tau) + \sum_{i} w_{ij}\vartheta_{i}(\tau + 1)\right) $$ El peso actualizado en el tiempo $\tau$ resulta $$ w_{jl}^{new} = w_{jl}^{old} + \alpha\vartheta_{j}(\tau) y^{l}(\tau - 1)$$
+En un tiempo $\tau \leq t$ cualquiera, el error de una neurona $j$ que no sea una neurona de entrada es la suma de los errores externos y el error propagado hacia atrás desde la neurona previa será
+$$ \vartheta_{j}(\tau) = f'_{j}(net_{j}(\tau))\left(E_{j}(\tau) + \sum_{i} w_{ij}\vartheta_{i}(\tau + 1)\right) $$
+
+El peso actualizado en el tiempo $\tau$ resulta
+$$ w_{jl}^{new} = w_{jl}^{old} + \alpha\vartheta_{j}(\tau) y^{l}(\tau - 1)$$
 donde $\alpha$ es la tasa de aprendizaje, y $l$ es una unidad arbitraria conectada a la unidad $j$.
 
+En un tiempo arbitrario $\tau \leq t$, el error de la señal en una unidad $j$, que no sea de entrada, será la suma de los errores externos y la señal propagada anterioremente como muestra la ecuación \ref{eq:propagation_error}.
+\begin{eqnarray}
+	\vartheta(\tau) &=& f'_{j}(net_{j}(\tau)) \left(E_{j}(\tau) + \sum_{i}w_{ij}\vartheta_{i}(\tau + 1)\right)
+	\label{eq:propagation_error}
+\end{eqnarray}
+
+Entonces, los pesos actualizados serán $$ w_{jl}^{new} = w_{jl}^{old} + \alpha\vartheta_{j}(\tau)y^{l}(\tau - 1) $$
+\begin{comment}
 Error en el factor de escala. Véase también las contribuciones anteriroes al análisis del desvanecimiento del gradiente \cite{Hochreiter1997a, Bengio1994, Hochreiter1991}. Propagando el error de una unidad $u$ en el timpo $t$ hacia una unidad $v$ {\Huge for $q$ time steps}, el error escala como muestra la ecuación \ref{eq:scale_error}
 \begin{eqnarray}
 	\frac{\partial \vartheta_{v}(t - q)}{\partial \vartheta_{u}(t)}
@@ -168,6 +181,7 @@ Error en el factor de escala. Véase también las contribuciones anteriroes al a
 	\end{array}
 	\right.\label{eq:scale_error}
 \end{eqnarray}
+\end{comment}
 
 \begin{imagen}
 	\scalebox{1.0}{\input{img/vanishing_img}}
