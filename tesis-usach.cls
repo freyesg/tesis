@@ -70,28 +70,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliografía y referencias
 %\RequirePackage[natbibapa]{apacite}
-\RequirePackage{hyperref}
+\RequirePackage[hidelinks]{hyperref}
 \RequirePackage[apaciteclassic]{apacite}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Idioma español y carácteres utf8x
-\usepackage[utf8]{inputenc}
-\usepackage{url}
+%\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{url}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figuras y tablas
-\usepackage[pdftex]{graphicx} % PDFLaTeX
-\usepackage{float}
-\usepackage{multicol}
-\usepackage{multirow}
+\RequirePackage[pdftex]{graphicx} % PDFLaTeX
+\RequirePackage{float}
+\RequirePackage{multicol}
+\RequirePackage{multirow}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{comment}
-\usepackage{color} % http://latexcolor.com/
+\RequirePackage{comment}
+\RequirePackage{color} % http://latexcolor.com/
 \definecolor{gray}{rgb}{0.5, 0.5, 0.5}
 
 

@@ -17,6 +17,15 @@ class SANet():
 		self.c = c
 		self.error_array = []
 
+	def get_trainable_params(self):
+		"""
+		params = []
+		for layer in self.model.layers:
+			params.append(layer.get_weights())
+		return params
+		"""
+		return self.net.get_trainable_params()
+
 	"""
 	def solution_set(self):
 		s = []

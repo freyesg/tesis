@@ -80,7 +80,7 @@
 \section{El Gradiente Descendente Estocástico}
 \begin{frame}{\titulo}{\subtitulo}
     \begin{itemize}
-        \item El método del gradiente descendente estocástico (SGD) actualiza los parámetros en cada ejemplo $x_i$ y etiquta $y_i$ de la siguiente manera $$ \theta = \theta - \eta\nabla_\theta $$
+        \item El método del gradiente descendente estocástico (SGD) actualiza los parámetros en cada ejemplo $x_i$ y etiqueta $y_i$ de la siguiente manera $$ \theta = \theta - \eta\nabla_\theta $$
     \end{itemize}
 \end{frame}
 
@@ -98,6 +98,9 @@
 	\begin{figure}[H]
         \centering
         %\scalebox{0.6}{\input{img/nn_parada}}
-        \scalebox{0.6}{\input{img/vanishing_img}}
+        \scalebox{0.50}{\input{img/vanishing_img}}
     \end{figure}
+	%$$ f'(a_j) \sum_{i} w_{ji}^{l} \delta_{i}^{l + 1} $$
+	$$ f'(a_j) \sum_{i} w_{ji}^{l} f'(y) $$
+	$$ \underbrace{f_{a_{j}}'(a_j) \sum_{m} w_{jm}^{l} \overbrace{\left(f'(a_j) \sum_{n} w_{jn}^{l} f'(y)\right)}^{\delta_{k}^{l + 1}}}_{\delta_{j}^{l}} $$
 \end{frame}

@@ -1,3 +1,5 @@
+# https://docs.python.org/2/library/multiprocessing.html
+
 import matplotlib.pyplot as plt
 import dataset
 import sannealing as sa
@@ -28,10 +30,16 @@ class Data:
 		self.name = name
 
 	def write(self, f):
-		f = open(self.name + f + ".dat", 'w')
+		f = open("./DATA/"+ self.name + f + ".dat", 'w')
 		writer = csv.writer(f)
 		writer.writerow(self.data)
 
+def write_net(net, name):
+	f = open("./NET/"+ name +".dat", "w")
+	#f.write(net.get_trainable_params())
+	for i in net.get_trainable_params():
+		f.write(str(i))
+	f.close()
 
 def dibujar(DATA, title="Model loss", filename="plot"):
 	label = []
@@ -43,7 +51,7 @@ def dibujar(DATA, title="Model loss", filename="plot"):
 	plt.ylabel('loss')
 	plt.xlabel('epoch')
 	plt.legend(label, loc='upper right')
-	plt.savefig(filename+'.png', bbox_inches='tight')
+	plt.savefig("./PLOT/"+ filename+'.png', bbox_inches='tight')
 	plt.clf()
 	plt.cla()
 	plt.close()
@@ -52,16 +60,20 @@ n = 10
 i = 0
 for x, y, size in [dataset.dataset1(), dataset.dataset2(), dataset.dataset3()]:
 	for j in range(n):
-		##print "SIMULATED ANNEALING".
-		##(soluciones, radio, error)
-		sanet = sa.SANet(input=size, solutions=15, T=T_0, c=cte)
-		sanet.entrenar(x, y, 20)
-
-		##print "SGD"
-		net = nn.Net(net_input=size)
-		net.entrenar(x, y, verb=0)
-
 		s = "_"+ str(i) +"_"+ str(j)
+		###print "SIMULATED ANNEALING".
+		###(soluciones, radio, error)
+		sanet = sa.SANet(input=size, solutions=15, T=T_0, c=cte)
+		write_net(sanet, "sanet"+ s +"_init")
+		sanet.entrenar(x, y, 20)
+		write_net(sanet, "sanet"+ s +"_end")
+
+		###print "SGD"
+		net = nn.Net(net_input=size)
+		write_net(net, "net"+ s +"_init")
+		net.entrenar(x, y, verb=0)
+		write_net(net, "net"+ s +"_end")
+
 		r = [
 			Data(sanet.get_data(), "SA"),
 			Data(net.get_data(), "SGD")
