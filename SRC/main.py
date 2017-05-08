@@ -56,7 +56,7 @@ def dibujar(DATA, title="Model loss", filename="plot"):
 	plt.cla()
 	plt.close()
 
-n = 10
+n = 20
 i = 0
 for x, y, size in [dataset.dataset1(), dataset.dataset2(), dataset.dataset3()]:
 	for j in range(n):
