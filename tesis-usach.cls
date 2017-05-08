@@ -27,8 +27,7 @@
 \newif\if@desc
 \DeclareOption{descrip}{\@desctrue}
 
-\newif\if@by
-\DeclareOption{by}{\@bytrue}
+%\DeclareOption{by}{\@bytrue}
 
 
 \newif\ifpropuesta\propuestafalse
@@ -61,6 +60,7 @@
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
+\newcommand{\autor}{\@author}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \usepackage{anysize} % Soporte para el comando \marginsize
@@ -556,23 +556,6 @@
 }
 \makeatother
 
-\newcommand{\makecopyright}[1]{
-	\null
-	\vfill
-    \ifpropuesta
-        % no va copyright
-    \else
-        \begin{flushleft}
-		\copyright\;
-			\@author - \the\year\\
-			\if@by
-			\scalebox{0.3}{\input{img/by}}
-			~$\bullet$~~ Algunos derechos reservados. Esta obra está bajo una Licencia Creative Commons Atribución-Chile 3.0. Sus condiciones de uso pueden ser revisadas en: \url{http://creativecommons.org/licenses/by/3.0/cl/}.
-			\fi
-        \end{flushleft}
-    \fi
-}
-
 \newenvironment{descripcion}{
 \scriptsize
 	\begin{quote}\color{gray}
@@ -605,8 +588,34 @@
 \RequirePackage{xkeyval}
 \makeatletter
 \define@key{tikzimg}{scale}{\def\escala{#1}}
+%\define@key{makecopyright}{by}[false]{\newif\ifby\by#1}
 \makeatother
 %\define@key{imagen}{b}{\renewcommand*\verbsetb{#1}}
+
+%\define@key{mybox}{background}{\def\background{#1}}
+%\def\mybox{\@ifnextchar[\@mybox{\@mybox[]}}
+%\def\@mybox[#1]#2{%
+%	\setkeys{mybox}{#1}%
+%}
+
+\newcommand{\makecopyright}{
+	%\setkeys{makecopyright}{#1}%
+	\null
+	\vfill
+    \ifpropuesta
+        % no va copyright
+    \else
+        \begin{flushleft}
+		\copyright\;
+			\autor - \the\year\\
+			%\ifby
+			\scalebox{0.3}{\input{img/by}}
+			~$\bullet$~~ Algunos derechos reservados. Esta obra está bajo una Licencia Creative Commons Atribución-Chile 3.0. Sus condiciones de uso pueden ser revisadas en: \url{http://creativecommons.org/licenses/by/3.0/cl/}.
+			%\fi
+        \end{flushleft}
+    \fi
+}
+
 
 \newenvironment{imagen}{
 \setkeys{tikzimg}{scale=1.0}

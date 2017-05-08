@@ -39,7 +39,7 @@
 
 % \frontmatter
 \maketitle
-\makecopyright{by}
+\makecopyright
 %\doclicenseThis
 % \aditionalpages
  \indice
@@ -49,8 +49,11 @@
 % Inicio contenido
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\tableofcontents
-\include{contenido/introduccion}
-\include{contenido/redes_neuronales}
+\include{contenido/capitulox01}
+\include{contenido/capitulox02}
+\include{contenido/capitulox03}
+%\include{contenido/introduccion}
+%\include{contenido/redes_neuronales}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fin contenido
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,7 +63,8 @@
 % Bibliografía
 %%%%%%%%%%%%%%%%%%%%%%%%
 %\addcontentsline{toc}{chapter}{Bibliografía}
-%\bibliografia
+\cite{*}
+\bibliografia
 \bibliographystyle{apacite}
 \bibliography{referencias}
 %%%%%%%%%%%%%%%%%%%%%%%%
