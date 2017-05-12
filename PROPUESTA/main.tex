@@ -1,0 +1,130 @@
+%\documentclass[informe]{tesis-usach}
+\documentclass[tesis]{tesis-usach}
+
+\newcommand{\bp}{$BP$} % Blood Pressure
+\newcommand{\cbfv}{$CBFV$} % Cerebral Blood Flow Velocity
+\newcommand{\mcbfv}{$MCBFV$} % Cerebral Blood Flow Velocity
+\newcommand{\cvr}{$CVR$} % Cerebral vascular resistance
+\newcommand{\cbf}{$CBF$} % Cerebral Blood Flow
+\newcommand{\ca}{$CA$} % Cerebral Autorregulation
+\newcommand{\dca}{$DCA$} % Dynamic Cerebral Autorregulation
+\newcommand{\pam}{$MABP$} % Media Arterial Blood Pressure
+\newcommand{\cpp}{$CPP$} % Cerebral Perfusion Pressure
+\newcommand{\abp}{$ABP$} % Arterial Blood Pressure
+\newcommand{\etcoo}{$EtCO_2$} %
+\newcommand{\coo}{$CO_2$} % Dioxido de Carbono
+\newcommand{\pacoo}{$PaCO_2$} % Presión de CO_2 arterial
+\newcommand{\svm}{$SVM$} % Support Vector Machine
+\newcommand{\ar}{$AR$} % Autoregressive model
+\newcommand{\fir}{$FIR$} % Autoregressive model
+\newcommand{\pdm}{$PDM$} % Autoregressive model
+\newcommand{\ari}{$ARI$} % Índice ARI
+\newcommand{\sari}{$sARi$} % Índice ARI
+\newcommand{\vm}{$VM$} %
+\newcommand{\pe}{$PE$} %
+\newcommand{\sv}{$SV$} % Support Vector
+
+\newcommand{\hz}[1]{$#1Hz$}
+\newcommand{\mmhg}[1]{$#1mmHg$}
+\newcommand{\ai}[1]{$AI_{#1}$}
+
+%\setcitestyle{square}
+
+\title{Evaluación del aprendizaje lineal y no lineal de la autorregulación del flujo sanguíneo cerebral basado en frecuencias}
+\informe{Informe Final\\Propuesta de tesis}
+\facultad{Facultad de Ingeniería}
+\departamento{Departamento de ingeniería informática}
+\author{Felipe Alberto Reyes González}
+\programa{Magíster en Ingeniería Informática}
+\profesor{Max Chacón}
+\celular{890 26 317}
+\correo{felipe.reyesg@usach.cl}
+\date{\today}
+
+\usepackage{amsmath}
+\usepackage[colorlinks=false]{hyperref}
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
+% \usepackage[scaled]{helvet}
+% \renewcommand\familydefault{\sfdefault}
+% \usepackage[T1]{fontenc}
+% \renewcommand{\sfdefault}{phv} % Para cambiar el tipo de fuente por defecto
+% \renewcommand{\rmfamily}{phv} % Helvética en los títulos
+
+
+% \usepackage{pstricks}
+% \usepackage{epstopdf}
+
+
+
+% \newtheorem{teo}{Teorema}
+% \setcounter{lofdepth}{2}
+
+
+
+% TIPOS DE ENTRADAS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node6.html
+% CAMPOS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node7.html
+\begin{document}
+\renewcommand{\contentsname}{Tabla de contenido}
+\renewcommand{\refname}{Bibliografía}
+\renewcommand{\appendixname}{Apéndice}
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
+\renewcommand{\tablename}{Tabla}
+
+% helvetica en el cuerpo del documento
+% \sffamily
+
+% \frontmatter
+\maketitle
+% \aditionalpages
+% \indice
+% \mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio cosas importante
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\tableofcontents
+\newpage
+
+\input{contenido/01-problema}
+\input{contenido/02-objetivos}
+\input{contenido/03-solucion}
+\input{contenido/04-metodologia}
+\input{contenido/05-plan}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fin cosas importante
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografía
+%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Bibliografía}
+\newpage
+\bibliografia
+\bibliographystyle{apalike}
+\bibliography{referencias}
+% \bibliographystyle{apa-good}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Fin bibliografía
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Apéndice
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \appendix
+% \clearpage
+% \addappheadtotoc
+% \appendixpage
+%
+\input{contenido/07-anexo}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Fin apéndice
+%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
