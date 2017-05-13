@@ -27,17 +27,25 @@
 \newif\if@desc
 \DeclareOption{descrip}{\@desctrue}
 
-%\DeclareOption{by}{\@bytrue}
-
-
-\newif\ifpropuesta\propuestafalse
-\DeclareOption{propuesta}{\propuestatrue}
 \ProcessOptions\relax
 
+%\if@infuno
+%	\newcommand{\informe}{Informe N$^\circ$ 1}
+%\fi
+%\if@infdos
+%	\newcommand{\informe}{Informe N$^\circ$ 2}
+%\fi
+%\if@inftres
+%	\newcommand{\informe}{Informe N$^\circ$ 3}
+%\fi
+
+\newcommand{\inegrotrz}{\input{img/inegrotrz}}
+
+
 \if@escrito
-	\LoadClass[10pt, oneside]{book}
-	\RequirePackage{titlesec}
-	\titleformat{\chapter}[display]{\normalfont\bfseries}{}{10pt}{}%\chaptertitlename\ \thechapter
+	\LoadClass[12pt, oneside]{article}
+	\usepackage{titlesec}
+	\titleformat{\chapter}[display]{\normalfont\bfseries}{\chaptertitlename\ \thechapter}{10pt}{}
 	\titlespacing*{\chapter}{0pt}{0pt}{10pt}
 	\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{10pt}{}
 	\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{10pt}{}
@@ -45,66 +53,94 @@
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Interlineado
+	\renewcommand{\baselinestretch}{1.5}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Tamaño de la hoja
+	\usepackage{anysize} % Soporte para el comando \marginsize
+	\usepackage[papersize={21.6cm, 27.9cm}]{geometry}
+	\geometry{left=4cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
+
 \fi
 
 \if@inf
 	\LoadClass[12pt, oneside]{article}
-	\RequirePackage{titlesec}
+	\usepackage{titlesec}
 	\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{14pt}{}
 	\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{14pt}{}
 	\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{14pt}{}
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Interlineado
+	\renewcommand{\baselinestretch}{3}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Tamaño de la hoja
+	\usepackage{anysize} % Soporte para el comando \marginsize
+	%\usepackage[papersize={22cm,27cm},lmargin=2cm, rmargin=2cm,top=2cm,bottom=2cm]{geometry}
+	\usepackage[papersize={22cm,27cm}]{geometry}
+	\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
-\newcommand{\autor}{\@author}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tamaño de la hoja
-\usepackage{anysize} % Soporte para el comando \marginsize
-\usepackage[papersize={21.6cm, 27.9cm}]{geometry}
-\geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliografía y referencias
-%\RequirePackage[natbibapa]{apacite}
-\RequirePackage[hidelinks]{hyperref}
-\RequirePackage[apaciteclassic]{apacite}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\newcommand{\signature}{\underline{\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}}
+
+
+\RequirePackage{xkeyval}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Idioma español y carácteres utf8x
-%\RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage{url}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{url}
 
+\usepackage{multicol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tamaño de fuente
+% \usepackage{anyfontsize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figuras y tablas
-\RequirePackage[pdftex]{graphicx} % PDFLaTeX
-\RequirePackage{float}
-\RequirePackage{multicol}
-\RequirePackage{multirow}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftex]{graphicx} % PDFLaTeX
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{multirow}
+% \DeclareGraphicsExtensions{.png,.pdf,.jpg}
 
-\RequirePackage{comment}
-\RequirePackage{color} % http://latexcolor.com/
+\usepackage{comment}
+\usepackage{color} % http://latexcolor.com/
 \definecolor{gray}{rgb}{0.5, 0.5, 0.5}
 
 
-\usepackage[spanish, es-lcroman, es-tabla, es-noquoting]{babel}
+\usepackage[spanish, es-lcroman, es-tabla]{babel}
 \usepackage{enumerate}
 \usepackage{appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tamaño de la fuente
+% \usepackage{anyfontsize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuente matemática
 \usepackage{amssymb}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tablas
+% \usepackage{tabulary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Estilo de página
@@ -123,58 +159,28 @@
 	\fancyfoot[L, C]{}
 	\fancyfoot[R]{\thepage}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Identación y spacing
-\usepackage{setspace}
+% Bibliografía
+%\usepackage[round]{natbib}
+%\usepackage[style=apa]{biblatex}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[apaciteclassic]{apacite}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% indentacion
 \usepackage{indentfirst}
 \setlength{\parindent}{18pt}
 \setlength{\parskip}{3pt}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+\usepackage{setspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % references
 \usepackage{varioref}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Lorem ipsum
-\usepackage{lipsum}
-\makeatletter
-	\renewcommand\lips@dolipsum{%
-		\ifnum\value{lips@count}<\lips@max\relax
-			\addtocounter{lips@count}{1}%
-			\csname lipsum@\romannumeral\c@lips@count\endcsname
-			\lips@dolipsum
-		\fi
-	}
-\makeatother
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Para crear argumentos para los comandos
-\RequirePackage{xkeyval}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Interlineado
-\renewcommand{\baselinestretch}{1.5}
-
-
-
-
-
-
-
-\newcommand{\signature}{\underline{\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}}
-
-
-
-
-
-
 
 %Definiciones
 \newtheorem{defin}{Definición}
@@ -323,7 +329,7 @@
 \if@escrito
 \makeatletter
 \def \maketitle {%
-	\newgeometry{left=4cm, top=4cm, right=2.5cm, bottom=2.5cm}
+	\newgeometry{left=4cm, right=2.5cm, top=4cm, bottom=2.5cm}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% PORTADA
 	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
@@ -343,8 +349,9 @@
 		\end{minipage}
 		\begin{minipage}{0.15\textwidth}
 			\begin{center}
-				%\includegraphics[scale=0.06]{img/usach.png}
-				\scalebox{0.17}{\input{img/logo}}
+				%\includegraphics[scale=0.06]{img/usach.psd}
+				\scalebox{0.3}{\inegrotrz}
+				%\scalebox{0.7}{\inegrotrz}
 			\end{center}
 		\end{minipage}
 	\end{figure}
@@ -411,6 +418,8 @@
 
 	\vspace{1em}
 	\begin{center}
+%		{\fontsize{12}{1} {\bf \@tema}}\\
+%		\vspace{1em}
 		{\fontsize{12}{1} {\bf \@informe}}
 	\end{center}
 
@@ -431,6 +440,10 @@
     \end{flushleft}
     \end{minipage}
 
+%	\vfill
+%	\begin{center}
+%		{\fontsize{10}{1} Santiago, Chile\\ \the\year}
+%	\end{center}
 	\newpage
 	\restoregeometry
 }
@@ -448,120 +461,22 @@
 
 
 
-
-
+\usepackage{lipsum}
 \makeatletter
-\def \aditionalpages {%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% COPYRIGHT
-    %\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
-    %\thispagestyle{empty}
-    %\vspace*{18cm}
-    %\hspace*{-2.0cm}$\copyright$ \@author\\
-    %Queda prohibida la reproducción parcial o total de esta obra en cualquier forma, medio o procedimiento sin permiso por escrito del autor.
-    %\newpage
-
-
-
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% PRIMERA HOJA
-	\setcounter{page}{1}
-	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
-	\begin{center}
-		{\fontsize{14}{1} {\bf \@title}}
-	\end{center}
-	\vfill
-	\begin{center}
-		{\fontsize{12}{1} Trabajo de Titulación presentado a la \facultad, en cumplimiento a los requisitos exigidos para optar al título de Analista Computacional Científico.}
-	\end{center}
-	\vfill
-	\begin{center}
-		{\fontsize{14}{1} \usach\\Santiago, Chile\\ \the\year}
-	\end{center}
-	\newpage
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% SEGUNDA HOJA
-	\begin{figure}[h]
-		\begin{minipage}{0.70\textwidth}
-			\begin{flushleft}
-				{\fontsize{12}{1} \usach}\\
-				{\fontsize{12}{1} \facultad}\\
-				{\fontsize{12}{1} \depto}
-			\end{flushleft}
-		\end{minipage}
-		\begin{minipage}{0.15\textwidth}
-			\begin{flushright}
-				%\includegraphics[scale=0.05]{img/usach.png}
-				\scalebox{0.17}{\input{img/logo}}
-			\end{flushright}
-		\end{minipage}
-	\end{figure}
-    \vspace{1em}%\vfill
-	\begin{center}
-		{\fontsize{14}{1} {\bf \@title}}
-	\end{center}
-	\vspace{1em}%\vfill
-	\begin{center}
-		\begin{tabular}{cc}
-			\@author\\
-		\end{tabular}
-	\end{center}
-
-    \vspace{1em}
-    El presente trabajo se desarrolló en el Laboratorio de Computación del \depto\ (DMCC) de la \usach\ (USACH). Bajo la supervisión del profesor guía \@prof\ y ha sido aprobado por los miembros de la comisión calificadora \@revisorU\ y \@revisorD.
-
-    \hspace*{-2.5cm}
-    \begin{minipage}[b]{0.65\textwidth}
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@director\\
-		    \fontsize{12}{2} Director
-		    \end{tabular}
-    \end{table}
-    \end{minipage}
-    \begin{minipage}[b]{0.5\textwidth}
-	\vspace*{1cm}
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@prof\\
-		    \fontsize{12}{2} Profesor Guía\\
-		    \\
-		    \end{tabular}
-    \end{table}\bigskip
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@revisorU\\
-		    \fontsize{12}{2} Profesor Informante\\
-		    \\
-		    \end{tabular}
-    \end{table}\bigskip
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@revisorD\\
-		    \fontsize{12}{2} Profesor Informante
-		    \end{tabular}
-    \end{table}
-    \end{minipage}
-	\newpage
-}
+	\renewcommand\lips@dolipsum{%
+		\ifnum\value{lips@count}<\lips@max\relax
+			\addtocounter{lips@count}{1}%
+			\csname lipsum@\romannumeral\c@lips@count\endcsname
+			\lips@dolipsum
+		\fi
+	}
 \makeatother
 
+
 \newenvironment{descripcion}{
-\scriptsize
-	\begin{quote}\color{gray}
+	\begingroup\color{gray}
 } {
-	\end{quote}
-	\bigskip
+	\endgroup
 }
 \newenvironment{arreglar}{
 	\begingroup\color{red}
@@ -570,57 +485,16 @@
 }
 \newenvironment{falta}{
 	\begingroup\color{red}
-	\newline\newline\sc {\large Falta}
-	\begin{itemize}
+	{\bf {\large Falta}}
 } {
-\end{itemize}
 	\endgroup
-}
-
-
-%\begin{figure}[H]
-%	\centering
-%	\scalebox{0.1}{\input{img/neurona}}
-%	\caption{Neurona}
-%	\label{fig:neurona}
-%\end{figure}
-
-\RequirePackage{xkeyval}
-\makeatletter
-\define@key{tikzimg}{scale}{\def\escala{#1}}
-%\define@key{makecopyright}{by}[false]{\newif\ifby\by#1}
-\makeatother
-%\define@key{imagen}{b}{\renewcommand*\verbsetb{#1}}
-
-%\define@key{mybox}{background}{\def\background{#1}}
-%\def\mybox{\@ifnextchar[\@mybox{\@mybox[]}}
-%\def\@mybox[#1]#2{%
-%	\setkeys{mybox}{#1}%
-%}
-
-\newcommand{\makecopyright}{
-	%\setkeys{makecopyright}{#1}%
-	\null
-	\vfill
-    \ifpropuesta
-        % no va copyright
-    \else
-        \begin{flushleft}
-		\copyright\;
-			\autor - \the\year\\
-			%\ifby
-			\scalebox{0.3}{\input{img/by}}
-			~$\bullet$~~ Algunos derechos reservados. Esta obra está bajo una Licencia Creative Commons Atribución-Chile 3.0. Sus condiciones de uso pueden ser revisadas en: \url{http://creativecommons.org/licenses/by/3.0/cl/}.
-			%\fi
-        \end{flushleft}
-    \fi
 }
 
 
 \newenvironment{imagen}{
 %\setkeys{tikzimg}{scale=1.0}
-	\begin{figure}[H]
-	\centering
+        \begin{figure}[H]
+        \centering
 } {
-	\end{figure}
+        \end{figure}
 }

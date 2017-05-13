@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	%\node [circle split, draw, rotate=90, inner sep=-1pt]  (neurona) at (0, 0) {\rotatebox{-90}{\scriptsize $\sum$} \nodepart{lower} \rotatebox{-90}{\scriptsize $f(z)$}};
+	\node [circle, draw, inner sep=1pt] (neurona) at (0, 0) {\scriptsize $\sum_i w_{i}x_{i}$};
+
+	\node (in_0) at (-2.5, 1.5) {$x_0$};
+	\node (in_1) at (-2.5, 0.5) {$x_1$};
+	\node (in_2) at (-2.5, -0.5) {$x_2$};
+	\node (in_n) at (-2.5, -1.5) {$x_n$};
+	\node (out) at (2.0, 0.0) {$y_0$};
+
+	\node (d2) at ($(in_2)!0.5!(in_n)$) {$\mathbf{\vdots}$};
+
+
+	\draw[->] (in_0) -- node[above, pos=0.40] {\scriptsize$w_0$} (neurona);
+	\draw[->] (in_1) -- node[above, pos=0.40] {\scriptsize$w_1$} (neurona);
+	\draw[->] (in_2) -- node[above, pos=0.40] {\scriptsize$w_i$} (neurona);
+	\draw[->] (in_n) -- node[above, pos=0.40] {\scriptsize$w_n$} (neurona);
+	\draw[->] (neurona) -- node[above] {$f$} (out);
+\end{tikzpicture}

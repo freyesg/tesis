@@ -3,7 +3,7 @@ BIBTEX=bibtex
 
 MAIN=main
 REF=referencias
-FILENAME=informe_final
+FILENAME=propuesta
 DIR=./
 
 LATEXFLAGS= -shell-escape -jobname=$(FILENAME) -file-line-error -output-directory=$(DIR)
