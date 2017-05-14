@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.15)  14 MAY 2017 02:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.15)  14 MAY 2017 12:59
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1154,7 +1154,43 @@ File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
-))) (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+))) (/usr/share/texmf-dist/tex/latex/pgfgantt/pgfgantt.sty
+Package: pgfgantt 2013/06/01 v4.0 Draw Gantt diagrams with TikZ
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+backgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.3)
+\pgf@layerbox@background=\box87
+\pgf@layerboxsaved@background=\box88
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+patterns.code.tex
+File: tikzlibrarypatterns.code.tex 2008/01/15 v3.0.1a (rcs-revision 1.2)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+File: pgflibrarypatterns.code.tex 2008/03/03 v3.0.1a (rcs-revision 1.13)
+))
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
+File: pgfcalendar.code.tex 2007/07/23 v3.0.1a (rcs-revision 1.11)
+\pgfcalendarcurrentjulian=\count151
+))
+\gtt@currentline=\count152
+\gtt@lasttitleline=\count153
+\gtt@currgrid=\count154
+\gtt@chartwidth=\count155
+\gtt@lasttitleslot=\count156
+\gtt@elementid=\count157
+\gtt@today@slot=\count158
+\gtt@startjulian=\count159
+\gtt@endjulian=\count160
+\gtt@calendar@slots=\count161
+\gtt@calendar@weeknumber=\count162
+\gtt@calendar@startofweek=\count163
+\gtt@left@slot=\count164
+\gtt@right@slot=\count165
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/03/10 v2.15b AMS math features
 \@mathmargin=\skip62
 
@@ -1174,30 +1210,30 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count151
+\inf@bad=\count166
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count152
-\leftroot@=\count153
+\uproot@=\count167
+\leftroot@=\count168
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count154
-\DOTSCASE@=\count155
+\classnum@=\count169
+\DOTSCASE@=\count170
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box87
-\strutbox@=\box88
+\Mathstrutbox@=\box89
+\strutbox@=\box90
 \big@size=\dimen257
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count156
-\c@MaxMatrixCols=\count157
+\macc@depth=\count171
+\c@MaxMatrixCols=\count172
 \dotsspace@=\muskip11
-\c@parentequation=\count158
-\dspbrk@lvl=\count159
+\c@parentequation=\count173
+\dspbrk@lvl=\count174
 \tag@help=\toks44
-\row@=\count160
-\column@=\count161
-\maxfields@=\count162
+\row@=\count175
+\column@=\count176
+\maxfields@=\count177
 \andhelp@=\toks45
 \eqnshift@=\dimen258
 \alignsep@=\dimen259
@@ -1217,20 +1253,20 @@ LaTeX Info: Redefining \% on input line 20.
 )
 \openout1 = `propuesta.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1266,27 +1302,27 @@ LaTeX Font Info:    ... okay on input line 23.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box89
-Package hyperref Info: Link coloring OFF on input line 23.
+\AtBeginShipoutBox=\box91
+Package hyperref Info: Link coloring OFF on input line 24.
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count163
+\c@section@level=\count178
 LaTeX Info: Redefining \Ref on input line 513.
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
 
 (.//propuesta.out) (.//propuesta.out)
 \@outlinefile=\write5
 \openout5 = `propuesta.out'.
 
-LaTeX Info: Redefining \Ref on input line 23.
-\c@maskedRefs=\count164
+LaTeX Info: Redefining \Ref on input line 24.
+\c@maskedRefs=\count179
 
 (/usr/share/texmf-dist/tex/latex/apacite/spanish.apc
 File: spanish.apc 2013/07/21 v6.03 apacite language file
@@ -1295,16 +1331,16 @@ LaTeX Info: Redefining \BHBI on input line 139.
 )
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count165
+\scratchcounter=\count180
 \scratchdimen=\dimen264
-\scratchbox=\box90
-\nofMPsegments=\count166
-\nofMParguments=\count167
+\scratchbox=\box92
+\nofMPsegments=\count181
+\nofMParguments=\count182
 \everyMPshowfont=\toks48
-\MPscratchCnt=\count168
+\MPscratchCnt=\count183
 \MPscratchDim=\dimen265
-\MPnumerator=\count169
-\makeMPintoPDFobject=\count170
+\MPnumerator=\count184
+\makeMPintoPDFobject=\count185
 \everyMPtoPDFconversion=\toks49
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1321,15 +1357,15 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \. on input line 23.
-LaTeX Info: Redefining \% on input line 23.
+LaTeX Info: Redefining \. on input line 24.
+LaTeX Info: Redefining \% on input line 24.
 
 ABD: EveryShipout initializing macros
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
 your preamble.
- on input line 23.
+ on input line 24.
 
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
@@ -1363,16 +1399,16 @@ your preamble.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 35.
+LaTeX Font Info:    Try loading font information for U+msa on input line 36.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 35.
+LaTeX Font Info:    Try loading font information for U+msb on input line 36.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (36.96248pt too wide) in paragraph at lines 35--35
+Overfull \hbox (36.96248pt too wide) in paragraph at lines 36--36
 []  
  []
 
@@ -1417,38 +1453,48 @@ l.11     \item D
 (./contenido-nuevo/03-solucion.tex Excluding 'comment' comment.
 Excluding 'comment' comment. [11]) (./contenido-nuevo/04-metodologia.tex
 [12]) (./contenido-nuevo/05-plan.tex [13]
-Overfull \hbox (25.4946pt too wide) in paragraph at lines 48--49
+Overfull \hbox (31.6666pt too wide) in paragraph at lines 15--16
+[][] 
+ []
+
+
+Overfull \hbox (693.11124pt too wide) in paragraph at lines 24--29
+[][] 
+ []
+
+
+Overfull \hbox (25.4946pt too wide) in paragraph at lines 75--76
  [][] 
  []
 
-) [14pdfTeX warning (ext4): destination with the same identifier (name{table.1}
-) has been already used, duplicate ignored
+) [14] [15pdfTeX warning (ext4): destination with the same identifier (name{tab
+le.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.62 \newpage
-             ] (.//propuesta.bbl) (./contenido/07-anexo.tex) [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
+l.63 \newpage
+             ] (.//propuesta.bbl) (./contenido/07-anexo.tex) [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
 
 (.//propuesta.aux
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 85.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
 Package rerunfilecheck Info: File `propuesta.out' has not changed.
 (rerunfilecheck)             Checksum: 75476F1C05BA63F3741836EF5739A0A0;1407.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 85.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
  ) 
 Here is how much of TeX's memory you used:
- 32282 strings out of 493014
- 755770 string characters out of 6122320
- 1395638 words of memory out of 5000000
- 35154 multiletter control sequences out of 15000+600000
+ 33637 strings out of 493014
+ 790805 string characters out of 6122320
+ 1455335 words of memory out of 5000000
+ 36489 multiletter control sequences out of 15000+600000
  16420 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,21n,92p,1042b,2213s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 74i,21n,92p,1042b,2211s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/pub
@@ -1464,10 +1510,10 @@ type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
 2.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/sh
 are/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on .//propuesta.pdf (15 pages, 229925 bytes).
+Output written on .//propuesta.pdf (16 pages, 239876 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
- 257 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 299 PDF objects out of 1000 (max. 8388607)
+ 260 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
  165 words of extra memory for PDF output out of 10000 (max. 10000000)
 
