@@ -4,6 +4,7 @@ En la presente sección se describe el estado del arte y las características de
 \end{comment}
 
 \subsection{Estado del arte}
+Describir como solucionan el problema.
 \begin{comment}
 La más frecuente técnica para inducir cambios rápidos y significativos en la \pam\, ha sido la deflación repentina de los manguitos sobre el muslo \citep{Aaslid1989, Aaslid1991,Lagi1994, Newell1994, Strebel1995, Tiecks1995a}. Con este enfoque, se colocan los manguitos alrededor de ambos muslos y se  genera una presión de \mmhg{20-40} por encima de la presión sistólica durante 2 minutos. Sin embargo, con una autorregulación normal la \cbfv\, vuelve y alcanza su estado basal antes que la \pam. \cite{Aaslid1989} demuestran que la velocidad de recuperación se ve afectada de manera significativa por los niveles de la \pacoo.
 
@@ -74,19 +75,21 @@ Para resolver el problema de la regresión no lineal basta con cambiar el produc
 \end{comment}
 
 \subsection{Características de la solución}
-La solución propone un análisis teórico mediante la aplicación de minería de datos, donde se estudiarán las capacidades de aprendizaje de los modelos lineales y no lineales basado en los datos que describen la autorregulación cerebral para un problema aplicado a la investigación en las ramas de la biología y medicina. Se utilizarán modelos lineales y no lineales extraídos de la literatura para determinar los modelos que se evaluarán.
+La solución propóne un análisis práctico de la convergencia de las redes neuronales profundas mediante la aplicación de la regla de aprendizaje basada en el algoritmo {\em simulated annealing}. El análisis se realizará sobre conjuntos de datos de diferente indole, utilizados en otras investigaciones. Se comparará su desempeño frente a otras reglas de aprendizaje definidas en la literatura.
 
 \subsection{Propósitos de la solución}
-El propósito del presente trabajo es comparar los resultados del aprendizaje de los métodos dinámicos de la autorregulación cerebral en los seres humanos, determinando las características del proceso en función de las bandas de frecuencias y ruido.
+El propósito del presente trabajo es analizar la convergencia de las redes neuronales profundas, determinando el comportamiento de diferentes reglas de aprendizaje.
+
+%El propósito del presente trabajo es comparar los resultados del aprendizaje de los métodos dinámicos de la autorregulación cerebral en los seres humanos, determinando las características del proceso en función de las bandas de frecuencias y ruido.
 
 \subsection{Alcances o limitaciones de la solución}
 Los alcances y limitaciones descritos para el trabajo son los siguientes
 \begin{itemize}
-	\item El estudio se plantea desde una perspectiva teórica y no precisa de la experimentación con pacientes.
+	\item El estudio se plantea desde una perspectiva práctica, precisando conjuntos de datos acotados.
 
-    \item Los datos que se utilizarán son los obtenidos por \cite{Mahony2000} en su publicación, datos que fueron extraídos con el consentimiento de los pacientes y aceptados por el comité respectivo.
+    \item Los datos que se utilizarán son utilizados por \citeA{Morse2016} en su publicación.
 
-	\item Se estudiarán los modelos que describen la denominada autorregulación dinámica.
+	\item Se estudiarán las reglas de aprendizaje definidas por el gradiente estocástico y {\em simulated annealing}.
 
-	\item El ruido presente en las señales será generado de forma sintética.
+	\item Las redes neuronales utilizarán la misma configuración para todos los experimentos salvo por la regla de aprendizaje.
 \end{itemize}
