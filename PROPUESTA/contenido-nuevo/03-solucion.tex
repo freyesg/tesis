@@ -4,7 +4,23 @@ En la presente sección se describe el estado del arte y las características de
 \end{comment}
 
 \subsection{Estado del arte}
-Describir como solucionan el problema.
+Muchos de los métodos utilizados (MUCHAS REFERENCIAS) sufren del desvanecimiento del gradiente. Para solventar el problema hay cuatro tipos de soluciones:
+\begin{enumerate}
+	\item Métodos que no utilizan el gradiente.
+	\item Métodos que obligan el uso de gradiente mas altos.
+	\item Métodos que operan en niveles mas altos.
+	\item Métodos que utilizan arquitecturas especiales.
+\end{enumerate}
+
+Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing}, {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
+
+% [1998b] Hochreiter
+Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror. Presentan problemas para almacenar información real de gran valor en el tiempo.
+
+
+
+
+
 \begin{comment}
 La más frecuente técnica para inducir cambios rápidos y significativos en la \pam\, ha sido la deflación repentina de los manguitos sobre el muslo \citep{Aaslid1989, Aaslid1991,Lagi1994, Newell1994, Strebel1995, Tiecks1995a}. Con este enfoque, se colocan los manguitos alrededor de ambos muslos y se  genera una presión de \mmhg{20-40} por encima de la presión sistólica durante 2 minutos. Sin embargo, con una autorregulación normal la \cbfv\, vuelve y alcanza su estado basal antes que la \pam. \cite{Aaslid1989} demuestran que la velocidad de recuperación se ve afectada de manera significativa por los niveles de la \pacoo.
 

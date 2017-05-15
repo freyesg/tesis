@@ -16,3 +16,8 @@ all: $(MAIN).tex $(REF).bib
 
 clean:
 	rm -f *.aux *.log *.out *.lof *.lot *.toc *.cut ./contenido/*.aux *.bbl *.blg *.bcf
+
+epub:
+	latexml --dest=$(MAIN).xml $(MAIN).tex
+	latexmlpost -dest=$(MAIN).html $(MAIN).xml
+	ebook-convert $(MAIN).html $(MAIN).epub --language en --no-default-epub-cover

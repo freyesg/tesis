@@ -17,8 +17,6 @@ Los pesos óptimos se obtienen minimizando una función. Uno de los criterios ut
 
 
 \subsection{El perceptrón multicapa}
-%El perceptrón multicapa es una generalización del perceptrón simple, y surgió como consecuencia de las limitaciones de dicha arquitectura para resolver problemas de clasificación no lineal. \citeA{Minsky1969b} mostró que el uso de varios perceptrones simples podía resultar una solución para resolver problemas no lineales. Sin embargo, dicha propuesta no presentaba una solución al problema de la actualización de los pesos de las capas, pues la regla de aprendizaje del perceptrón simple no era aplicable. Rummelhart, Hinton y Wilians presentaron la {\em regla delta generalizada}, una forma de propagar el error de la red desde la capa de salida hacia las capas anteriores.
-
 Dentro de las redes neuronales, el perceptrón multicapa es una de las arquitecturas más usadas para resolver problemas. Esto es debido a que poseen la capacidad de ser un aproximador universal \cite{Minsky1969b}. Esto no implica que sea una de las redes más potentes o con mejores resultados, el perceptrón multicapa posee una serie de limitaciones, como el proceso de aprendizaje para problemas que dependan de un gran número de variables, la dificultad para realizar un análisis teórico de la red debido a la presencia de componentes no lineales y a la alta conectividad.
 
 \subsubsection{Arquitectura}
@@ -101,32 +99,40 @@ El algoritmo de retropropagación es el método de entrenamiento más utilizado 
 
 
 
-%\section{Reglas de aprendizaje}
-%\subsection{El gradiente descendente}% http://alejandrosanchezyali.blogspot.cl/2016/01/algoritmo-del-gradiente-descendente-y.html
-
 % http://neuralnetworksanddeeplearning.com/chap5.html
 % ME ESTOY BASANDO EN : [1998b] Hochreiter
 \subsection{El desvanecimiento del gradiente}
 El problema del gradiente desvaneciente nace en las NN profundas, éstas utilizan funciones cuyo gradiente se encuentran entre 0 y 1. Debido a que estos gradientes pequeños se multiplican durante la retropropagación, tienden a {\em desvanecerse} a través de las capas, evitando que la red aprenda.
 
-%%%% VER QUE LA NOTACIÓN SEA COMPATIBLE
 Si se tiene una NN, la activación de una neurona de una capa intermedia $i$ con función de activación $f_i$ y con entrada $$ net_{i}(t) = \sum_{j}w_{ji}y^{j}(t - 1) $$ es $$y^{i}(t) = f_{i}(net_{i}(t))$$ Además $w_{ji}$ es el peso de la conexión desde la unidad $j$ de la capa anterior hasta la unidad $i$ de la capa actual, $d_{k}(t)$ será la respuesta esperada de la unidad $k$ de la capa de salida en el tiempo $t$. Usando el error cuadrático medio ({\em Mean square error}, MSE), el error de $k$ será
 $$ E_{k}(t) = (d_{k}(t) - y^{k}(t))^2 $$
 
 En un tiempo $\tau \leq t$ cualquiera, el error de una neurona $j$ que no sea una neurona de entrada es la suma de los errores externos y el error propagado hacia atrás desde la neurona previa será
 $$ \vartheta_{j}(\tau) = f'_{j}(net_{j}(\tau))\left(E_{j}(\tau) + \sum_{i} w_{ij}\vartheta_{i}(\tau + 1)\right) $$
 
-El peso actualizado en el tiempo $\tau$ resulta
-$$ w_{jl}^{new} = w_{jl}^{old} + \alpha\vartheta_{j}(\tau) y^{l}(\tau - 1)$$
-donde $\alpha$ es la tasa de aprendizaje, y $l$ es una unidad arbitraria conectada a la unidad $j$.
+El peso actualizado en el tiempo $\tau$ resulta $w_{jl}^{new} = w_{jl}^{old} + \alpha\vartheta_{j}(\tau) y^{l}(\tau - 1)$ donde $\alpha$ es la tasa de aprendizaje, y $l$ es una unidad arbitraria conectada a la unidad $j$.
 
-En un tiempo arbitrario $\tau \leq t$, el error de la señal en una unidad $j$, que no sea de entrada, será la suma de los errores externos y la señal propagada anterioremente como muestra la ecuación \ref{eq:propagation_error}.
+%\citeA{Puskorius1994}
+La propagación hacia atrás de un error que ocurre en una unidad $u$ en un tiempo $t$ hacia una unidad $v$ para $q$ pasos, escala el error de la siguiente manera
 \begin{eqnarray}
-	\vartheta(\tau) &=& f'_{j}(net_{j}(\tau)) \left(E_{j}(\tau) + \sum_{i}w_{ij}\vartheta_{i}(\tau + 1)\right)
-	\label{eq:propagation_error}
+\frac{\partial\vartheta_{v}(t - q)}{\partial\vartheta_{u}(t)} =
+\left\{
+\begin{array}{lr}
+	f^{'}_{v}(net_{v}(t - 1))w_{uv}	& q = 1\\
+	\\
+	f^{'}_{v}(net_{v}(t - q))\sum^{n}_{l=1}\frac{\partial\vartheta(t - q + 1)}{\partial\vartheta_{u}(t)}w_{lv}	& q > 1
+\end{array}
+\right.
 \end{eqnarray}
 
-Entonces, los pesos actualizados serán $$ w_{jl}^{new} = w_{jl}^{old} + \alpha\vartheta_{j}(\tau)y^{l}(\tau - 1) $$
+Con $l_{q} = v$ y $l_{0} = u$, el factor de escalamiento es
+\begin{eqnarray}
+\frac{\partial\vartheta_{v}(t - q)}{\partial\vartheta_{u}(t)} =
+\sum^{n}_{l_{1}=1}\cdots\sum^{n}_{l_{q - 1}=1}\prod^{q}_{m = 1}f^{'}_{l_{m}}(net_{l_{m}}(t - m))w_{l_{m}l_{m - 1}}\label{eq:vanishing}
+\end{eqnarray}
+
+La sumatoria de los $n^{q - 1}$ términos $\prod^{q}_{m = 1}f^{'}_{l_{m}}(net_{l_{m}}(t - m))w_{l_{m}l_{m - 1}}$ escalan el error. Los distintos términos pueden tener signos diferentes, por lo tanto, el aumento del número de unidades $n$ no implica un incremento del error absoluto. Pero con mas unidades se incrementa la expectativa de que el valor absoluto del error aumente. Si $\rho(m, l_{m}, l_{m - 1}) := |f^{'}_{l_{m}}(net_{l_{m}}(t - m))w_{l_{m}l_{m - 1}}| < 1.0$
+para todo $m$, el producto en (\ref{eq:vanishing}) decrece exponencialmente con $q$, es decir, el error se desvanece como muestra la figura \ref{fig:vanishing}. Un error que se desvanece a lo largo del flujo casi no tiene efecto en la actualización de los pesos. %Dada la constante $y^{l_{m - 1}} \neq 0$, $\rho(m, l_{m}, l_{m - 1})$ es máximo cuanto $w_{l_{m}l_{m - 1}} = \frac{1}{y^{l_{m - 1}}}\coth(\frac{net_{l_{m}}}{2})$.
 
 \begin{imagen}
 	\scalebox{1.0}{\input{img/vanishing_img}}
