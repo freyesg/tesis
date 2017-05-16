@@ -65,7 +65,8 @@
 % Tamaño de la hoja
 \usepackage{anysize} % Soporte para el comando \marginsize
 \usepackage[papersize={21.6cm, 27.9cm}]{geometry}
-\geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}
+\geometry{left=2.0cm, top=2.0cm, right=2.0cm, bottom=2.0cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliografía y referencias

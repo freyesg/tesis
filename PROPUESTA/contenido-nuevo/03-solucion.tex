@@ -12,14 +12,25 @@ Muchos de los métodos utilizados (MUCHAS REFERENCIAS) sufren del desvanecimient
 	\item Métodos que utilizan arquitecturas especiales.
 \end{enumerate}
 
-Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing}, {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
+(i) Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing}, {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
 
 % [1998b] Hochreiter
-Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror. Presentan problemas para almacenar información real de gran valor en el tiempo.
+(ii) Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror. Presentan problemas para almacenar información real de gran valor en el tiempo.
+
+(iii) Anteriormente se ha propuesto un enfoque EM para la propagación del objetivo \cite{Bengio1993}. Este enfoque utiliza un número discreto de estados y, por lo tanto, tendrá problemas con valores continuos.
+
+Las técnicas de filtrado de Kallman se utilizan para el entrenamiento de redes recurrentes \cite{Puskorius1994}. Sin embargo, un factor de descuento derivado conduce a problemas de desvanecimiento del gradiente.
+
+Si un problema de retraso a largo plazo contiene regularidades locales, un sistema jerárquico chunket funciona bien \cite{Schmidhuber1992}.
 
 
+Las redes de segundo orden (utilizando unidades sigma-pi) son, en principio, capaces de aumentar el flujo de error, pero los problemas derivados del desvanecimiento del gradiente difícilmente pueden evitarse ref-22-23.
 
+Con una red neuronal con retardo ({\em Time-Delay Neural Network}, TDNN ref-24), las activaciones de la red de pasos de tiempo anteriores son devueltas a la red usando líneas de retardo fijo. En las TDNN la disminución de error se ralentiza porque el error utiliza "accesos rápidos" a medida que se propagan de nuevo. Las TDNN tienen que hacer frente a un trade-off: el aumento de la longitud de la línea de retardo aumenta el flujo de error, pero la red tiene más parámetros/unidades. Casos especiales de TDNN son las redes NARX ref-25, y la suma ponderada de los viejos activaciones en lugar de una línea de retardo fijo ref-26. Una versión más compleja de un TDNN, llamada "Memoria Gamma", se propuso red-27, pero su rendimiento en problemas que implican dependencias a largo plazo no parece ser mejor que el rendimiento de TDNNs.
 
+En algunas arquitecturas, las constantes de tiempo determinan el factor de escala del error si se propaga de nuevo para un paso de tiempo en una sola unidad ref-3. Sin embargo, los intervalos de tiempo prolongado no se pueden procesar debido a que una constante de tiempo apropiada es casi imposible.
+
+La actualización de una sola unidad mediante la adición de la antigua activación y la entrada de red actual escalada evita una fuga del gradiente ref-38. Pero el valor almacenado es sensible a las perturbaciones de insumos netos posteriores irrelevantes. La memoria de corto plazo ({\em Long Short Term Memory}, LSTM ref-10-11-1) utiliza una arquitectura especial para reforzar el flujo constante de errores a través de unidades especiales (incluyendo un mapeo de conservación de volumen). A diferencia del método que evita la fuga del gradiente ref-28 mencionado anteriormente, las perturbaciones por las señales irrelevantes actuales son impedidas por unidades multiplicativas.
 
 \begin{comment}
 La más frecuente técnica para inducir cambios rápidos y significativos en la \pam\, ha sido la deflación repentina de los manguitos sobre el muslo \citep{Aaslid1989, Aaslid1991,Lagi1994, Newell1994, Strebel1995, Tiecks1995a}. Con este enfoque, se colocan los manguitos alrededor de ambos muslos y se  genera una presión de \mmhg{20-40} por encima de la presión sistólica durante 2 minutos. Sin embargo, con una autorregulación normal la \cbfv\, vuelve y alcanza su estado basal antes que la \pam. \cite{Aaslid1989} demuestran que la velocidad de recuperación se ve afectada de manera significativa por los niveles de la \pacoo.

@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Descripci\363n del problema}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{El perceptr\363n multicapa}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Arquitectura}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Propagaci\363n de la entrada y el algoritmo de retropropagaci\363n}{subsection.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.2}{El desvanecimiento del gradiente}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{Objetivos del proyecto}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Objetivo general}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Objetivos espec\355ficos}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{Descripci\363n de la soluci\363n}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Estado del arte}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Caracter\355sticas de la soluci\363n}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Prop\363sitos de la soluci\363n}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{Alcances o limitaciones de la soluci\363n}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{Metodolog\355a, herramientas y ambiente de desarrollo}{}% 14
+\BOOKMARK [2][-]{subsection.4.1}{Metodolog\355a a usar}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.2}{Herramientas de desarrollo}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.3}{Ambiente de desarrollo}{section.4}% 17
+\BOOKMARK [1][-]{section.5}{Plan de trabajo}{}% 18
+\BOOKMARK [1][-]{table.1}{Bibliograf\355a}{}% 19
