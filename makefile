@@ -17,6 +17,10 @@ all: $(MAIN).tex $(REF).bib
 upgrade:
 	git pull origin master
 
+
+
+
+paohfpdofj
 git:
 	git add .
 	git commit --author="freyesg <felipe.reyesg@usach.cl>" -m "ACTUALIZACIÓN $(shell date +%FT%T%Z)"
