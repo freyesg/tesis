@@ -65,6 +65,36 @@ Bengio, Y.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Elman%
+}{%
+Elman%
+}{%
+{\protect \APACyear {1990}}%
+}]{%
+Elman1990}
+\APACinsertmetastar {%
+Elman1990}%
+\begin{APACrefauthors}%
+Elman, J\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1990}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Finding structure in time} {Finding structure in
+  time}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Cognitive Science}{14}{2}{179 - 211}.
+\newblock
+\begin{APACrefURL}
+  \url{http://www.sciencedirect.com/science/article/pii/036402139090002E}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{https://doi.org/10.1016/0364-0213(90)90002-E}
+  \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Fritsch%
 }{%
 Fritsch%
@@ -148,6 +178,58 @@ Morse, G.%
   \end{APACrefURL}
 \newblock
 \begin{APACrefDOI} \doi{10.1145/2908812.2908916} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Pearlmutter%
+}{%
+Pearlmutter%
+}{%
+{\protect \APACyear {1989}}%
+}]{%
+Pearlmutter1989}
+\APACinsertmetastar {%
+Pearlmutter1989}%
+\begin{APACrefauthors}%
+Pearlmutter, B\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1989}{June}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Learning State Space Trajectories in Recurrent Neural
+  Networks} {Learning state space trajectories in recurrent neural
+  networks}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Neural Computation}{1}{2}{263-269}.
+\newblock
+\begin{APACrefDOI} \doi{10.1162/neco.1989.1.2.263} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Pearlmutter%
+}{%
+Pearlmutter%
+}{%
+{\protect \APACyear {1995}}%
+}]{%
+Pearlmutter1995}
+\APACinsertmetastar {%
+Pearlmutter1995}%
+\begin{APACrefauthors}%
+Pearlmutter, B\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1995}{Sep}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Gradient calculations for dynamic recurrent neural
+  networks: a survey} {Gradient calculations for dynamic recurrent neural
+  networks: a survey}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{IEEE Transactions on Neural Networks}{6}{5}{1212-1228}.
+\newblock
+\begin{APACrefDOI} \doi{10.1109/72.410363} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -235,16 +317,41 @@ Schmidhuber%
 Schmidhuber%
 }{%
 {\protect \APACyear {1992}}%
-}]{%
-Schmidhuber1992}
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+Schmidhuber1992b}
 \APACinsertmetastar {%
-Schmidhuber1992}%
+Schmidhuber1992b}%
 \begin{APACrefauthors}%
 Schmidhuber, J.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{1992}{{\APACmonth{03}}}{}.
+\APACrefYearMonthDay{1992{\protect \BCnt {1}}}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A Fixed Size Storage O(n3) Time Complexity Learning
+  Algorithm for Fully Recurrent Continually Running Networks} {A fixed size
+  storage o(n3) time complexity learning algorithm for fully recurrent
+  continually running networks}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Neural Computation}{4}{}{243-248}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Schmidhuber%
+}{%
+Schmidhuber%
+}{%
+{\protect \APACyear {1992}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+Schmidhuber1992a}
+\APACinsertmetastar {%
+Schmidhuber1992a}%
+\begin{APACrefauthors}%
+Schmidhuber, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1992{\protect \BCnt {2}}}{mar}{}.
 \newblock
 {\BBOQ}\APACrefatitle {Learning Complex, Extended Sequences Using the Principle
   of History Compression} {Learning complex, extended sequences using the

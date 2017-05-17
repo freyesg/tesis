@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: propuesta.aux
 The style file: apacite.bst
@@ -12,51 +12,48 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: referencias.bib
-A bad cross reference---entry "Bengio1993"
-refers to entry "DBLP:conf/nips/1993", which doesn't exist
-Warning--I didn't find a database entry for "DBLP:conf/nips/1993"
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--No institution in Schmidhuber1996
 Warning--No address in Schmidhuber1996
-You've used 10 entries,
+You've used 14 entries,
             6951 wiz_defined-function locations,
-            1350 strings with 12590 characters,
-and the built_in function-call counts, 19293 in all, are:
-= -- 2460
-> -- 143
-< -- 885
-+ -- 894
-- -- 20
-* -- 1223
-:= -- 3505
-add.period$ -- 46
-call.type$ -- 10
-change.case$ -- 180
+            1378 strings with 13226 characters,
+and the built_in function-call counts, 26493 in all, are:
+= -- 3356
+> -- 184
+< -- 1256
++ -- 1244
+- -- 29
+* -- 1723
+:= -- 4872
+add.period$ -- 62
+call.type$ -- 14
+change.case$ -- 268
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 447
-empty$ -- 770
-format.name$ -- 216
-if$ -- 3717
+cite$ -- 30
+duplicate$ -- 605
+empty$ -- 1058
+format.name$ -- 272
+if$ -- 5078
 int.to.chr$ -- 0
-int.to.str$ -- 30
+int.to.str$ -- 46
 missing$ -- 0
-newline$ -- 259
-num.names$ -- 80
-pop$ -- 377
+newline$ -- 355
+num.names$ -- 112
+pop$ -- 464
 preamble$ -- 1
-purify$ -- 48
+purify$ -- 68
 quote$ -- 0
-skip$ -- 1263
+skip$ -- 1755
 stack$ -- 0
-substring$ -- 987
-swap$ -- 286
-text.length$ -- 39
+substring$ -- 1363
+swap$ -- 394
+text.length$ -- 51
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 992
+type$ -- 1312
 warning$ -- 2
-while$ -- 82
+while$ -- 106
 width$ -- 0
-write$ -- 308
-(There was 1 error message)
+write$ -- 412
+(There were 2 warnings)
