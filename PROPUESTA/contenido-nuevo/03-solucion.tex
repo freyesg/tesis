@@ -4,7 +4,7 @@ En la presente sección se describe el estado del arte y las características de
 \end{comment}
 
 \subsection{Estado del arte}
-Muchos de los métodos utilizados (\cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} ref-13-14-15-16-17) sufren del desvanecimiento del gradiente. Para solventar el problema hay cuatro tipos de soluciones.
+Muchos de los métodos utilizados (\cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} ref-13-14-15-16-17) sufren del desvanecimiento del gradiente. Para solventar el problema hay cuatro tipos de soluciones
 %% 13. S. E. Fahlman, "The recurrent cascade-correlation learning algorithm", in Advances in Neural Information Processing Systems 3, ed. R. P. Lippmann et al. (Morgan Kaufmann, San Mateo, 1991), pages 190-196.
 
 % 14. R. J. Williams, "Complexity of exact gradient computation algorithms for recurrent neural networks" , Technical Report NU-CCS-89-27, Boston: Northeastern Univ., College of Computer Science, 1989.
@@ -15,17 +15,18 @@ Muchos de los métodos utilizados (\cite{Elman1990, Schmidhuber1992b, Pearlmutte
 
 %% 17B. A. Pearlmutter, "Gradient calculations for dynamic recurrent neural networks: A survey", IEEE Transactions on Neural Networks, 6(5):1212{1228 (1995).
 
-%\begin{enumerate}
-%	\item Métodos que no utilizan el gradiente.
-%	\item Métodos que obligan el uso de gradiente mas altos.
-%	\item Métodos que operan en niveles mas altos.
-%	\item Métodos que utilizan arquitecturas especiales.
-%\end{enumerate}
+\begin{enumerate}
+	\item Métodos que no utilizan el gradiente.
+	\item Métodos que refuerzan el gradiente.
+	\item Métodos que operan en niveles mas altos.
+	\item Métodos que utilizan arquitecturas especiales.
+\end{enumerate}
 
-\paragraph{(i) Métodos que no utilizan el gradiente} Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing}, {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
+\subsubsection{(i) Métodos que no utilizan el gradiente}
+Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing}, {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
 
 % [1998b] Hochreiter
-\paragraph{(ii) Métodos que obligan el uso de gradiente mas altos} Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror. Presentan problemas para almacenar información real de gran valor en el tiempo.
+\paragraph{(ii) Métodos que refuerzan el gradiente} Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror. Presentan problemas para almacenar información real de gran valor en el tiempo.
 
 \paragraph{(iii) Métodos que operan en niveles mas altos} Anteriormente se ha propuesto un enfoque EM para la propagación del objetivo \cite{Bengio1993}. Este enfoque utiliza un número discreto de estados y, por lo tanto, tendrá problemas con valores continuos.
 
