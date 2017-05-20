@@ -1,11 +1,16 @@
 \documentclass[informe]{tesis-usach}
-
+\usepackage[spanish, boxed, linesnumbered, ruled, vlined]{algorithm2e}
 \usepackage{tikz}
 \usetikzlibrary{arrows, calc, decorations.markings, math, arrows}
 \usetikzlibrary{matrix, chains, positioning, decorations.pathreplacing, shapes, snakes}
 \usepackage{pgfplots}
+%\usepackage{pgfgantt}
 
-\usepackage{pgfgantt}
+\SetKwInput{KwData}{Entrada}
+\SetKwInput{KwResult}{Salida}
+\SetKwFor{While}{Mientras}{hacer}{fin}
+\SetKwIF{If}{ElseIf}{Else}{si}{entonces}{entonces si}{en otro caso}{fin}
+\SetKwRepeat{Repeat}{Repetir}{Mientras}%
 
 \title{Análisis de la convergencia del algoritmo {\em simulated annealing} para redes neuronales profundas}
 \informe{Propuesta de tesis}
@@ -28,6 +33,7 @@
 \renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixpagename}{Apéndices}
 \renewcommand{\tablename}{Tabla}
+\renewcommand{\BOthers}[1]{et al.\hbox{}}
 
 % helvetica en el cuerpo del documento
 % \sffamily
@@ -63,6 +69,7 @@
 \newpage
 %\bibliografia
 \bibliographystyle{apacite}
+%\bibliographystyle{newapa}
 \bibliography{referencias}
 % \bibliographystyle{apa-good}
 %%%%%%%%%%%%%%%%%%%%%%%%

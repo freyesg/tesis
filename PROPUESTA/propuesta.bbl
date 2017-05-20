@@ -2,40 +2,6 @@
 
 \bibitem [\protect \citeauthoryear {%
 Bengio%
-\ \BBA {} Frasconi%
-}{%
-Bengio%
-\ \BBA {} Frasconi%
-}{%
-{\protect \APACyear {1993}}%
-}]{%
-Bengio1993}
-\APACinsertmetastar {%
-Bengio1993}%
-\begin{APACrefauthors}%
-Bengio, Y.%
-\BCBT {}\ \BBA {} Frasconi, P.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1993}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Credit Assignment through Time: Alternatives to
-  Backpropagation} {Credit assignment through time: Alternatives to
-  backpropagation}.{\BBCQ}
-\newblock
-\BIn{} \APACrefbtitle {Advances in Neural Information Processing Systems 6,
-  [7th {NIPS} Conference, Denver, Colorado, USA, 1993]} {Advances in neural
-  information processing systems 6, [7th {NIPS} conference, denver, colorado,
-  usa, 1993]}\ (\BPGS\ 75--82).
-\newblock
-\begin{APACrefURL}
-  \url{http://papers.nips.cc/paper/724-credit-assignment-through-time-alternatives-to-backpropagation}
-  \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Bengio%
 , Simard%
 \BCBL {}\ \BBA {} Frasconi%
 }{%
@@ -118,6 +84,36 @@ Fritsch, J.%
 \unskip\
 \newblock
 \APACaddressSchool {}{KIT}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Hochreiter%
+\ \BBA {} Schmidhuber%
+}{%
+Hochreiter%
+\ \BBA {} Schmidhuber%
+}{%
+{\protect \APACyear {1997}}%
+}]{%
+Hochreiter1997a}
+\APACinsertmetastar {%
+Hochreiter1997a}%
+\begin{APACrefauthors}%
+Hochreiter, S.%
+\BCBT {}\ \BBA {} Schmidhuber, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1997}{{\APACmonth{11}}}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Long Short-Term Memory} {Long short-term memory}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Neural Comput.}{9}{8}{1735--1780}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1162/neco.1997.9.8.1735}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1162/neco.1997.9.8.1735} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -233,35 +229,6 @@ Pearlmutter, B\BPBI A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Puskorius%
-\ \BBA {} Feldkamp%
-}{%
-Puskorius%
-\ \BBA {} Feldkamp%
-}{%
-{\protect \APACyear {1994}}%
-}]{%
-Puskorius1994}
-\APACinsertmetastar {%
-Puskorius1994}%
-\begin{APACrefauthors}%
-Puskorius, G\BPBI V.%
-\BCBT {}\ \BBA {} Feldkamp, L\BPBI A.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1994}{Mar}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Neurocontrol of nonlinear dynamical systems with Kalman
-  filter trained recurrent networks} {Neurocontrol of nonlinear dynamical
-  systems with kalman filter trained recurrent networks}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{IEEE Transactions on Neural Networks}{5}{2}{279-297}.
-\newblock
-\begin{APACrefDOI} \doi{10.1109/72.279191} \end{APACrefDOI}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
 Rumelhart%
 , Hinton%
 \BCBL {}\ \BBA {} Williams%
@@ -317,7 +284,7 @@ Schmidhuber%
 Schmidhuber%
 }{%
 {\protect \APACyear {1992}}%
-{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+}]{%
 Schmidhuber1992b}
 \APACinsertmetastar {%
 Schmidhuber1992b}%
@@ -326,7 +293,7 @@ Schmidhuber, J.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{1992{\protect \BCnt {1}}}{}{}.
+\APACrefYearMonthDay{1992}{}{}.
 \newblock
 {\BBOQ}\APACrefatitle {A Fixed Size Storage O(n3) Time Complexity Learning
   Algorithm for Fully Recurrent Continually Running Networks} {A fixed size
@@ -334,35 +301,6 @@ Schmidhuber, J.%
   continually running networks}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Neural Computation}{4}{}{243-248}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Schmidhuber%
-}{%
-Schmidhuber%
-}{%
-{\protect \APACyear {1992}}%
-{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
-Schmidhuber1992a}
-\APACinsertmetastar {%
-Schmidhuber1992a}%
-\begin{APACrefauthors}%
-Schmidhuber, J.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1992{\protect \BCnt {2}}}{mar}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Learning Complex, Extended Sequences Using the Principle
-  of History Compression} {Learning complex, extended sequences using the
-  principle of history compression}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Neural Comput.}{4}{2}{234--242}.
-\newblock
-\begin{APACrefURL} \url{http://dx.doi.org/10.1162/neco.1992.4.2.234}
-  \end{APACrefURL}
-\newblock
-\begin{APACrefDOI} \doi{10.1162/neco.1992.4.2.234} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

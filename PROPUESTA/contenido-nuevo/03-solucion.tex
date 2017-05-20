@@ -4,7 +4,7 @@ En la presente sección se describe el estado del arte y las características de
 \end{comment}
 
 \subsection{Estado del arte}
-Muchos de los métodos utilizados (\cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} ref-13-14-15-16-17) sufren del desvanecimiento del gradiente. Para solventar el problema hay cuatro tipos de soluciones
+Muchos de los métodos utilizados (\cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} ref-13-14-15-16-17) sufren del desvanecimiento del gradiente. Para solventar el problema hay diversos métodos que lo evitan.
 %% 13. S. E. Fahlman, "The recurrent cascade-correlation learning algorithm", in Advances in Neural Information Processing Systems 3, ed. R. P. Lippmann et al. (Morgan Kaufmann, San Mateo, 1991), pages 190-196.
 
 % 14. R. J. Williams, "Complexity of exact gradient computation algorithms for recurrent neural networks" , Technical Report NU-CCS-89-27, Boston: Northeastern Univ., College of Computer Science, 1989.
@@ -15,42 +15,74 @@ Muchos de los métodos utilizados (\cite{Elman1990, Schmidhuber1992b, Pearlmutte
 
 %% 17B. A. Pearlmutter, "Gradient calculations for dynamic recurrent neural networks: A survey", IEEE Transactions on Neural Networks, 6(5):1212{1228 (1995).
 
-\begin{enumerate}
-	\item Métodos que no utilizan el gradiente.
-	\item Métodos que refuerzan el gradiente.
-	\item Métodos que operan en niveles mas altos.
-	\item Métodos que utilizan arquitecturas especiales.
-\end{enumerate}
+%\begin{enumerate}
+%	\item Métodos que no utilizan el gradiente.
+%	\item Métodos que refuerzan el gradiente.
+%	\item Métodos que operan en niveles mas altos.
+%	\item Métodos que utilizan arquitecturas especiales.
+%\end{enumerate}
 
 \subsubsection{(i) Métodos que no utilizan el gradiente}
-Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing}, {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
+Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing} (SA), {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
+
+El método SA es un algoritmo de búsqueda meta-heurística para problemas de optimización global. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. La analogía se entenderá de la siguiente manera (ver algoritmo \ref{alg:sa}), el estado de la materia corresponderá al problema, la energía del estado corresponde al costo de la solución y la temperatura será el parámetro de control.
+
+\begin{algorithm}[H]
+    \SetAlgoLined
+	Inicializar la configuración del sistema\;
+	Escoger $x_{0}$ aleatorio\;
+	Inicializar $T$ con un valor alto\;
+	\Repeat{$T$ suficientemente pequeño}{
+		\Repeat{El número de transiciones aceptadas es inferior a un nivel umbral}{
+			Perturbar el estado $x = x + \Delta x$\;
+			Evaluar $\Delta E(x) = E(x + \Delta x) - E(x)$\;
+			\uIf{$\Delta E(x) < 0$}{
+				Mantener el nuevo estado\;
+			}
+			\Else{
+				Aceptar el nuevo estado con probabilidad $P = e^{-\frac{\delta E}{T}}$\;
+			}
+		}
+	}
+	\caption{Simulated annealing}
+	\label{alg:sa}
+\end{algorithm}
 
 % [1998b] Hochreiter
-\paragraph{(ii) Métodos que refuerzan el gradiente} Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror. Presentan problemas para almacenar información real de gran valor en el tiempo.
+% Y. Bengio, P. Simard, and P. Frasconi, "Learning long-term dependencies with gradient descent is dicult", IEEE Transactions on Neural Networks, 5(2):157{166 (1994).
+%\subsubsection{(ii) Métodos que refuerzan el gradiente}
+%Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror \cite{Bengio1994}. Presentan problemas para almacenar información real de gran valor en el tiempo.
 
-\paragraph{(iii) Métodos que operan en niveles mas altos} Anteriormente se ha propuesto un enfoque EM para la propagación del objetivo \cite{Bengio1993}. Este enfoque utiliza un número discreto de estados y, por lo tanto, tendrá problemas con valores continuos.
+%\subsubsection{(iii) Métodos que operan en niveles mas altos}
+%Anteriormente se ha propuesto un enfoque EM para la propagación del objetivo \cite{Bengio1993}. Este enfoque utiliza un número discreto de estados y, por lo tanto, tendrá problemas con valores continuos.
+%Las técnicas de filtrado de Kallman se utilizan para el entrenamiento de redes recurrentes \cite{Puskorius1994}. Sin embargo, un factor de descuento derivado conduce a problemas de desvanecimiento del gradiente.
+%Si un problema de retraso a largo plazo contiene regularidades locales, un sistema jerárquico chunket funciona bien \cite{Schmidhuber1992a}.
 
-Las técnicas de filtrado de Kallman se utilizan para el entrenamiento de redes recurrentes \cite{Puskorius1994}. Sin embargo, un factor de descuento derivado conduce a problemas de desvanecimiento del gradiente.
-
-Si un problema de retraso a largo plazo contiene regularidades locales, un sistema jerárquico chunket funciona bien \cite{Schmidhuber1992a}.
-
-\paragraph{(iv) Métodos que utilizan arquitecturas especiales} Las redes de segundo orden (utilizando unidades sigma-pi) son, en principio, capaces de aumentar el flujo de error, pero los problemas derivados del desvanecimiento del gradiente difícilmente pueden evitarse ref-22-23.
-
-Con una red neuronal con retardo ({\em Time-Delay Neural Network}, TDNN ref-24), las activaciones de la red de pasos de tiempo anteriores son devueltas a la red usando líneas de retardo fijo. En las TDNN la disminución de error se ralentiza porque el error utiliza "accesos rápidos" a medida que se propagan de nuevo. Las TDNN tienen que hacer frente a un trade-off: el aumento de la longitud de la línea de retardo aumenta el flujo de error, pero la red tiene más parámetros/unidades. Casos especiales de TDNN son las redes NARX ref-25, y la suma ponderada de los viejos activaciones en lugar de una línea de retardo fijo ref-26. Una versión más compleja de un TDNN, llamada "Memoria Gamma", se propuso red-27, pero su rendimiento en problemas que implican dependencias a largo plazo no parece ser mejor que el rendimiento de TDNNs.
-
-En algunas arquitecturas, las constantes de tiempo determinan el factor de escala del error si se propaga de nuevo para un paso de tiempo en una sola unidad ref-3. Sin embargo, los intervalos de tiempo prolongado no se pueden procesar debido a que una constante de tiempo apropiada es casi imposible.
-
-%La actualización de una sola unidad mediante la adición de la antigua activación y la entrada de red actual escalada evita una fuga del gradiente ref-38. Pero el valor almacenado es sensible a las perturbaciones de insumos netos posteriores irrelevantes. La memoria de corto plazo ({\em Long Short Term Memory}, LSTM ref-10-11-1) utiliza una arquitectura especial para reforzar el flujo constante de errores a través de unidades especiales (incluyendo un mapeo de conservación de volumen). A diferencia del método que evita la fuga del gradiente ref-28 mencionado anteriormente, las perturbaciones por las señales irrelevantes actuales son impedidas por unidades multiplicativas.
-
-
-Horchreiter y Schmidhuber (1997) introdujeron las LSTM como solución al problemas del devanecimiento del gradiente. La red LSTM se basa en el bloque de memoria, que se componse de una o más celdas de memoria, una compuerta de entrada y una compuerta de salida. Las entradas son unidades multiplicativas con activación continua y son compartidas por todas las celdas de un mismo bloque de memoria. Cada celda contiene una unidad lineal con una conexión recurrente local llamada carrusel de errro constante (CEC), se conocerá como estado de la celda a la activación del CEC.
+%\subsubsection{(iv) Métodos que utilizan arquitecturas especiales}
+\subsubsection{El modelo de memoria a corto y largo plazo}
+\citeA{Hochreiter1997a} introdujeron el modelo de memoria a corto y largo plazo ({\em Long short-term memory}, LSTM) como solución al problema del devanecimiento del gradiente. La red LSTM se basa en el bloque de memoria, que se componse de una o más celdas de memoria, una compuerta de entrada y una compuerta de salida. Las entradas son unidades multiplicativas con activación continua y son compartidas por todas las celdas de un mismo bloque de memoria. Cada celda contiene una unidad lineal con una conexión recurrente local llamada carrusel de error constante (CEC), se conocerá como estado de la celda a la activación del CEC.
 
 Cada celda recibe una entrada ponderada por los pesos correspondientes a la capa anterior. La compuerta de entrada se encarga de de permitir o impedir el acceso de estos valores al CEC del interior de la celda. La compuerta de salida realiza una acción similar sobre la salida de la celda, tolerando o reprimiendo la difusión del estado del CEC al resto de la red.
 
 Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina nerupna de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LiuShenxiu.pdf
+% Conquering vanishing gradient: Tensor Tree LSTM on aspect-sentiment classification
+% - Tree-structures LSTMs
+% - Tensor Tree LSTM
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lipton2015
+% Truncated backpropagation through time (TBPTT) is one solution to the exploding gradient problem for continuously running networks [Williams and Zipser, 1989]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Squartini2003a
+% PREPROCESSING BASED SOLUTION FOR THE VANISHING
+% Squartini2003b
+% Attempting to reduce the vanishing gradient effect through a novel recurrent multiscale architecture
 
 
 

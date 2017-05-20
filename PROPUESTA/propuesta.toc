@@ -9,10 +9,8 @@
 \contentsline {subsection}{\numberline {2.2}Objetivos espec\IeC {\'\i }ficos}{10}{subsection.2.2}
 \contentsline {section}{\numberline {3}Descripci\IeC {\'o}n de la soluci\IeC {\'o}n}{10}{section.3}
 \contentsline {subsection}{\numberline {3.1}Estado del arte}{10}{subsection.3.1}
-\contentsline {paragraph}{(i) M\IeC {\'e}todos que no utilizan el gradiente}{10}{paragraph*.1}
-\contentsline {paragraph}{(ii) M\IeC {\'e}todos que obligan el uso de gradiente mas altos}{11}{paragraph*.2}
-\contentsline {paragraph}{(iii) M\IeC {\'e}todos que operan en niveles mas altos}{11}{paragraph*.3}
-\contentsline {paragraph}{(iv) M\IeC {\'e}todos que utilizan arquitecturas especiales}{11}{paragraph*.4}
+\contentsline {subsubsection}{\numberline {3.1.1}(i) M\IeC {\'e}todos que no utilizan el gradiente}{10}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}El modelo de memoria a corto y largo plazo}{11}{subsubsection.3.1.2}
 \contentsline {subsection}{\numberline {3.2}Caracter\IeC {\'\i }sticas de la soluci\IeC {\'o}n}{12}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Prop\IeC {\'o}sitos de la soluci\IeC {\'o}n}{12}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Alcances o limitaciones de la soluci\IeC {\'o}n}{12}{subsection.3.4}
