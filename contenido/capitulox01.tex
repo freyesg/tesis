@@ -17,17 +17,17 @@ El gradiente descendente es el mas simple de los métodos. Este requiere informa
 El método de Newton es un método de segundo orden, pues hace uso de la matriz Hessiana. El objetivo de este método es encontrar una mejor dirección de entrenamiento mediante el uso de la segunda derivada de la función de perdida. Considera una aproximación cuadrática de la función en la solución inicial utilizando una expansión de la serie de Taylor. De esta manera, el método de Newton permite mover la solución inicial en función de la inversa de la matriz Hessiana, que pasará a ser la dirección de entrenamiento de Newton.
 
 %El método del gradiente conjugado, fue propuesto por Fletcher and Reeves (1964), es un punto intermedio entre el gradiente descendente y el método de Newton. Utiliza sucesivas direcciones
-El método del gradiente del conjugado fue propuesto por \citeA{Fletcher1964}, utiliza sucesivas direcciones conjugadas basadas en el gradiente y el residuo. Si la función objetivo es cuadrática y la dirección de búsqueda es minimizada exactamente en cada iteración, el método converge de forma cuadrática. \citeA{Leonard1990} ha utilizado el método para entrenar redes neuronales como alternativa a la retropropagación. Los pesos de una red se actualizan de acuerdo con una búsqueda unidencial en la dirección de descenso $S(n)$ de la siguiente forma:
+El método del gradiente del conjugado fue propuesto por \citeA{Fletcher1964}, utiliza sucesivas direcciones conjugadas basadas en el gradiente y el residuo. Si la función objetivo es cuadrática y la dirección de búsqueda es minimizada exactamente en cada iteración, el método converge de forma cuadrática. \citeA{Leonard1990} han utilizado el método para entrenar redes neuronales como alternativa a la retropropagación. Los pesos de una red se actualizan de acuerdo con una búsqueda unidencial en la dirección de descenso $S(n)$ de la siguiente forma:
 \begin{eqnarray}
 	\Delta W(n) = \lambda(n)S(n)
 \end{eqnarray}
 
 Y la dirección de descenso $S(n)$ se calcula a partir del gradiente de iteraciones pasadas y presentes como muestra la ecuación \ref{eq:s(n)}
 \begin{eqnarray}
-	S(n) = G(n) + \frac{||G(n)||}{||G(n - 1)||}S((n - 1))\label{eq:s(n)}
+	S(n) &=& G(n) + \frac{||G(n)||}{||G(n - 1)||}S((n - 1))\label{eq:s(n)}
 \end{eqnarray}
 
-Para que las direcciones de descenso permanezcan verdaderamente conjugadas, la búsqueda unidirecional, en cada iteración, tiene que ser llevada con alta precisión. Sin embargo, después de muchas iteraciones, las direcciones podrían llegar a ser casi paralelas; Para superar esta dificultad, Tletcher y Reeves (1964) sugirieron reiniciar el procedimiento igualando la dirección de descenso al gradiente en cada iteración (t + 1), donde (t) es el número total de pesos en la red.
+Para que las direcciones de descenso permanezcan conjugadas, la búsqueda unidirecional, en cada iteración, tiene que ser llevada con alta precisión. Sin embargo, después de muchas iteraciones, las direcciones podrían llegar a ser casi paralelas. Para superar esta dificultad, \citeA{Fletcher1964} sugieren volver a iniciar el procedimiento igualando la dirección de descenso al gradiente en cada iteración $(t + 1)$, donde $(t)$ es el número total de pesos en la red.
 %\paragraph{Aprendizaje por corrección del error}: La salida de la NN se compara con la salida esperada, y la diferencia entre ambos valores se utiliza para corregir los pesos de las neuronas. Los pesos de las neuronas se ajustan en función de dicho error hasta ajustarse a los datos que se utilizan para el entrenamiento.
 
 %\paragraph{Aprendizaje estocástico}: Consiste en modificar aleatoriamente los valores de los pesos y observar los resultados para evaluarlos respecto de la salida deseada. Las redes que utilizan este tipo de aprendizaje son una analogía de algún proceso físico basado en estados de energía, donde la red sería el grado de estabilidad y se buscaría el estado de mínima energía, que es el estado donde la respuesta de la red se ajusta de mejor manera a los datos. [37]
