@@ -9,7 +9,7 @@
 %%%% T_max - T_min > 25 tiembla
 \usepackage{pgfplots}
 
-\title{Propuesta de Tesis}
+\title{Análisis de la eficiencia del entrenamiento basado en simulated annealing en redes neuronales profundas}
 \informe{Informe}
 \facultad{Facultad de Ingenieria}
 \departamento{Departamento de ingenieria informática}
@@ -24,62 +24,61 @@
 %\usepackage[type={CC}, modifier={by-nc-sa}, version={3.0},]{doclicense}
 % \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{helvet}
-\renewcommand\familydefault{\sfdefault}
+%\usepackage{helvet}
+%\renewcommand\familydefault{\sfdefault}
 
 % TIPOS DE ENTRADAS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node6.html
 % CAMPOS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node7.html
 \begin{document}
-\renewcommand{\contentsname}{Tabla de contenidosssss}
-\renewcommand{\refname}{Bibliografía}
-\renewcommand{\tablename}{Tabla}
-\renewcommand{\appendixname}{Apéndice}
-%\renewcommand{\appendixtocname}{Apéndices}
-%\renewcommand{\appendixpagename}{Apéndices}
+	\renewcommand{\contentsname}{Tabla de contenidos}
+	\renewcommand{\refname}{Referencias bibliográficas}
+	\renewcommand{\tablename}{Tabla}
+	\renewcommand{\appendixname}{Apéndice}
+	\renewcommand{\BOthers}[1]{et al.\hbox{}}
+	%\renewcommand{\appendixtocname}{Apéndices}
+	%\renewcommand{\appendixpagename}{Apéndices}
 
-% \frontmatter
-\maketitle
-\makecopyright
-%\doclicenseThis
-% \aditionalpages
- \indice
-% \mainmatter
+	\maketitle
+	\makecopyright
+	\frontmatter
+	\indice
+	\mainmatter
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Inicio contenido
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\tableofcontents
-\include{contenido/capitulox01}
-\include{contenido/capitulox02}
-\include{contenido/capitulox03}
-%\include{contenido/introduccion}
-%\include{contenido/redes_neuronales}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fin contenido
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliografía
-%%%%%%%%%%%%%%%%%%%%%%%%
-%\addcontentsline{toc}{chapter}{Bibliografía}
-\cite{*}
-\bibliografia
-\bibliographystyle{apacite}
-\bibliography{referencias}
-%%%%%%%%%%%%%%%%%%%%%%%%
-% Fin bibliografía
-%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Inicio contenido
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\tableofcontents
+	\include{contenido/capitulox01}
+	\include{contenido/capitulox02}
+	%\include{contenido/capitulox03}
+	%\include{contenido/introduccion}
+	%\include{contenido/redes_neuronales}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Fin contenido
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-% Apéndice
-%%%%%%%%%%%%%%%%%%%%%%%%
-% \appendix
-% \clearpage
-% \addappheadtotoc
-% \appendixpage
-%%%%%%%%%%%%%%%%%%%%%%%%
-% Fin apéndice
-%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	% Bibliografía
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	%\addcontentsline{toc}{chapter}{Bibliografía}
+	%\cite{*}
+	%\bibliografia
+	\bibliographystyle{apacite}
+	\bibliography{referencias}
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	% Fin bibliografía
+	%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	% Apéndice
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	% \appendix
+	% \clearpage
+	% \addappheadtotoc
+	% \appendixpage
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	% Fin apéndice
+	%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

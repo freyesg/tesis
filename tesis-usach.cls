@@ -37,11 +37,34 @@
 \if@escrito
 	\LoadClass[10pt, oneside]{book}
 	\RequirePackage{titlesec}
-	\titleformat{\chapter}[display]{\normalfont\bfseries}{}{10pt}{}%\chaptertitlename\ \thechapter
-	\titlespacing*{\chapter}{0pt}{0pt}{10pt}
-	\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{10pt}{}
-	\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{10pt}{}
-	\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{10pt}{}
+	%\titleformat{\chapter}[display]{\normalfont\bfseries}{}{10pt}{}%\chaptertitlename\ \thechapter
+	%\titlespacing*{\chapter}{0pt}{0pt}{10pt}
+	%\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{10pt}{}
+	%\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{10pt}{}
+	%\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{10pt}{}
+	\titleformat{\chapter}
+	{\bfseries\Large\vspace*{-4.0cm}} %Formato título
+	{ % Contenido de la etiqueta
+	    \filright
+	    \Large\MakeUppercase\chaptertitlename\ \thechapter.\
+	} %Contenido de la etiqueta
+	{0pt} % espacio mínimo entre etiqueta y cuerpo
+	{\filright\MakeUppercase} %código que precede al cuerpo del título
+	[\vspace{1.5pt}] %1,5
+
+	\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
+
+	\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
+
+	\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
+
+	\titlespacing*{\chapter} {0pt}{85pt}{20pt}
+	\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+	\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+	\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+	\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+	\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
@@ -51,9 +74,9 @@
 \if@inf
 	\LoadClass[12pt, oneside]{article}
 	\RequirePackage{titlesec}
-	\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{14pt}{}
-	\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{14pt}{}
-	\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{14pt}{}
+	%\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{14pt}{}
+	%\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{14pt}{}
+	%\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{14pt}{}
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
@@ -61,6 +84,9 @@
 \fi
 
 \newcommand{\autor}{\@author}
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \usepackage{anysize} % Soporte para el comando \marginsize
@@ -298,10 +324,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Índice
 \newcommand{\indice}{
+	%\setcounter{page}{0}
+	%\renewcommand{\thepage}{\roman{page}}
 	\tableofcontents
 	\listoftables
 	\listoffigures
 	\newpage
+	%\setcounter{page}{1}
+	%\renewcommand{\thepage}{\arabic{page}}
 }
 
 
@@ -371,7 +401,7 @@
     \begin{minipage}[h]{0.5\textwidth}
     \begin{flushleft}
         {\fontsize{10}{1} Profesor Guía: \@prof}\\
-        {\fontsize{10}{1} Memoria para obtener el título de Analista en Computación Científica}
+        {\fontsize{10}{1} Tesis de grado presentada en conformidad a los requisitos para obtener el grado de Magíster en Ingeniería Informática}
     \end{flushleft}
     \end{minipage}
 
@@ -449,113 +479,6 @@
 
 
 
-
-\makeatletter
-\def \aditionalpages {%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% COPYRIGHT
-    %\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
-    %\thispagestyle{empty}
-    %\vspace*{18cm}
-    %\hspace*{-2.0cm}$\copyright$ \@author\\
-    %Queda prohibida la reproducción parcial o total de esta obra en cualquier forma, medio o procedimiento sin permiso por escrito del autor.
-    %\newpage
-
-
-
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% PRIMERA HOJA
-	\setcounter{page}{1}
-	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
-	\begin{center}
-		{\fontsize{14}{1} {\bf \@title}}
-	\end{center}
-	\vfill
-	\begin{center}
-		{\fontsize{12}{1} Trabajo de Titulación presentado a la \facultad, en cumplimiento a los requisitos exigidos para optar al título de Analista Computacional Científico.}
-	\end{center}
-	\vfill
-	\begin{center}
-		{\fontsize{14}{1} \usach\\Santiago, Chile\\ \the\year}
-	\end{center}
-	\newpage
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% SEGUNDA HOJA
-	\begin{figure}[h]
-		\begin{minipage}{0.70\textwidth}
-			\begin{flushleft}
-				{\fontsize{12}{1} \usach}\\
-				{\fontsize{12}{1} \facultad}\\
-				{\fontsize{12}{1} \depto}
-			\end{flushleft}
-		\end{minipage}
-		\begin{minipage}{0.15\textwidth}
-			\begin{flushright}
-				%\includegraphics[scale=0.05]{img/usach.png}
-				\scalebox{0.17}{\input{img/logo}}
-			\end{flushright}
-		\end{minipage}
-	\end{figure}
-    \vspace{1em}%\vfill
-	\begin{center}
-		{\fontsize{14}{1} {\bf \@title}}
-	\end{center}
-	\vspace{1em}%\vfill
-	\begin{center}
-		\begin{tabular}{cc}
-			\@author\\
-		\end{tabular}
-	\end{center}
-
-    \vspace{1em}
-    El presente trabajo se desarrolló en el Laboratorio de Computación del \depto\ (DMCC) de la \usach\ (USACH). Bajo la supervisión del profesor guía \@prof\ y ha sido aprobado por los miembros de la comisión calificadora \@revisorU\ y \@revisorD.
-
-    \hspace*{-2.5cm}
-    \begin{minipage}[b]{0.65\textwidth}
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@director\\
-		    \fontsize{12}{2} Director
-		    \end{tabular}
-    \end{table}
-    \end{minipage}
-    \begin{minipage}[b]{0.5\textwidth}
-	\vspace*{1cm}
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@prof\\
-		    \fontsize{12}{2} Profesor Guía\\
-		    \\
-		    \end{tabular}
-    \end{table}\bigskip
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@revisorU\\
-		    \fontsize{12}{2} Profesor Informante\\
-		    \\
-		    \end{tabular}
-    \end{table}\bigskip
-    \begin{table}[H]
-	    \begin{tabular}{c}
-		    \fontsize{12}{2} \signature\\
-		    \\
-		    \fontsize{12}{2} \@revisorD\\
-		    \fontsize{12}{2} Profesor Informante
-		    \end{tabular}
-    \end{table}
-    \end{minipage}
-	\newpage
-}
-\makeatother
-
 \newenvironment{descripcion}{
 \scriptsize
 	\begin{quote}\color{gray}
@@ -600,6 +523,7 @@
 
 \newcommand{\makecopyright}{
 	%\setkeys{makecopyright}{#1}%
+	\thispagestyle{empty}
 	\null
 	\vfill
     \ifpropuesta

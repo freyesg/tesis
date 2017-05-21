@@ -1,125 +1,108 @@
 \section{Descripción de la solución}
+\begin{comment}
 En la presente sección se describe el estado del arte y las características de la solución. Se explicara cual es el propósito de la solución, y posteriormente los alcances y limitaciones establecidas.
+\end{comment}
 
 \subsection{Estado del arte}
-La más frecuente técnica para inducir cambios rápidos y significativos en la \pam\, ha sido la deflación repentina de los manguitos sobre el muslo \citep{Aaslid1989, Aaslid1991,Lagi1994, Newell1994, Strebel1995, Tiecks1995a}. Con este enfoque, se colocan los manguitos alrededor de ambos muslos y se  genera una presión de \mmhg{20-40} por encima de la presión sistólica durante 2 minutos. Sin embargo, con una autorregulación normal la \cbfv\, vuelve y alcanza su estado basal antes que la \pam. \cite{Aaslid1989} demuestran que la velocidad de recuperación se ve afectada de manera significativa por los niveles de la \pacoo.
+Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} sufren del desvanecimiento del gradiente. Para solventar el problema hay diversos métodos que lo evitan.
+%% 13. S. E. Fahlman, "The recurrent cascade-correlation learning algorithm", in Advances in Neural Information Processing Systems 3, ed. R. P. Lippmann et al. (Morgan Kaufmann, San Mateo, 1991), pages 190-196.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%% TRANSFER FUNCTION ANALYSIS %%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-La evaluación de la \ca\, mediante el análisis de la función de transferencia está basado en minimizar, en la \ca, el efecto de la oscilación espontánea sobre la \cbfv. El método ha sido extensamente utilizado, por ejemplo, en la investivación del control cardiocasvular, arrítmia sinusal respiratoria y autoregulación renal \citep{Saul1989, Saul1991, Holstein1991}. El análisis espectral, al igual que la transformada rápida de Fourier, transforma la serie en el tiempo de la \bp\, y la \cbfv\, al dominio de la frecuencia. Entonces, la función de transferencia entre las dos señales se calcula como: $$ H(f) = \frac{S_{xy}(f)}{S_{xx}(f)} $$ donde $S_{xx}(f)$ es el autoespectro entre la señal de entrada, \bp, y la de señal de salida, \cbfv \citep{Ainslie2008}. Con la función de potencia relativa asociada (ganancia) y al tiempo (fase) puede ser descrito usando la parte real $H_{R}(f)$ y la parte imaginaria $H_{I}(f)$ de la función de transferencia compleja
-\begin{eqnarray}
-    \mbox{ganancia : } |H(f)| &=& \sqrt{|H_{R}(f)|^2 + |H_{I}(f)|^2}\\
-    \mbox{fase : } \Phi(f) &=& \tan^{-1}\left(\frac{|H_{R}(f)|}{|H_{I}(f)|}\right)
-\end{eqnarray}
+% 14. R. J. Williams, "Complexity of exact gradient computation algorithms for recurrent neural networks" , Technical Report NU-CCS-89-27, Boston: Northeastern Univ., College of Computer Science, 1989.
 
-Una estimación de la fiabilidad de la relación entre las dos señales se puede encontrar como la coherencia cuadrado:
-\begin{eqnarray}
-    \mbox{coherencia : } MSC(f) &=& \frac{|S_{xy}(f)|^2}{S_{xx}(f)S_{yy}(f)}
-\end{eqnarray}
-donde $S_{yy}(f)$ es el autoespectro del cambio en la \cbfv.
+%% 15. J. Schmidhuber, "A fixed size storage O(n^3) time complexity learning algorithm for fully recurrent continually running networks", Neural Computation, 4(2).243-248 (1992).
+
+%% 16. B. A. Pearlmutter, "Learning state space trajectories in recurrent neural networks", Neural Computation, 1(2):263{269 (1989).
+
+%% 17B. A. Pearlmutter, "Gradient calculations for dynamic recurrent neural networks: A survey", IEEE Transactions on Neural Networks, 6(5):1212{1228 (1995).
 
 
+\subsubsection{Métodos de búsqueda global}
+Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing} (SA), {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
 
-Como una representación de la relación lineal entre la fluctuación de la presión arterial y el flujo sanguíneo cerebral, la coherencia también se utiliza como una medida de \ca. Una coherencia cercana a cero indica que no hay relación entre la presión arterial y el flujo sanguíneo cerebral, mientras que una coherencia cercana a la unidad sugiere una relación lineal indicando problemas en la \ca.
+El método SA es un algoritmo de búsqueda meta-heurística para problemas de optimización global. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, al evaluar cada perturbación se actualizará la solución actual en caso de que la perturbación sea mejor que la solución actual, y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
 
-En los primeros estudios de la \ca\, usando la función de transferencia y la fluctuación espontánea de la \bp, se obtuvieron las estimaciones de la respuesta de la frecuencia de amplitud (ganancia) y la coherencia, pero no la respuesta de frecuencia de fase \citep{Giller1990}.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%% VOLTERRA %%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-La presencia de no linealidades en la hemodinámica cerebral se ha sugerido en numerosos estudios \citep{Mitsis2002, Zhang1998, Mitsis2004a, Giller2003}. Por lo tanto, un modelo general de Volterra de dos entradas permitiría describir cuantitativamente los efectos dinámicos de la \abp\, espontánea media y la presión de \etcoo.
-%Se ha descrito la serie de expansión de Volterra como una solución para un sistema dinámico no lineal, y puede ser descrito como
-%\begin{equation}
-%    V_M(t) = k_0 + \sum_{m = 0}^{L - 1} k_1(m)P(t - 1) + \sum_{m_1 = 0}^{L - 1} \sum_{m_2 = 0}^{L - 1} k_2(m_1, m_2)\cdot P(t - m_1)\cdot P(t - m_2) + \cdots\label{eq:volterra}
-%\end{equation}
-
-%Donde $P(t)$ es la entrada de \abp\, y $V_M(t)$ es el modelo de velocidad de salida. $k_1(t)$ y $k_2(t)$ son los núcleos de primer y segundo orden. Y $L$ es el número de intervalos de tiempo de retardo utilizados para representar la duración de los núcleos. %Los núcleos de primer y segundo orden pueden obtenerse como sigue
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% RECURRENT NEURAL NETWORK %%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cite{Panerai2004} propone las redes neuronales recurrentes con retraso ({\em Time Lagged Recurrent Network}, TLRN) para modelar la relación dinámica entre la \pam\, y la \cbfv. Esta arquitectura particular, representa una visión general para explorar la aplicabilidad de una RNA para el modelamiento de la \cbf, debido a la flexibilidad de utilizar diferentes elementos de proceso ({\em Processing elements}, PE), que contiene información que permite modelar comportamiento dinámico. Memorias a corto plazo de Gamma y Laguerre han sido sugueridos como bloques de construcción para este fin. %La memoria Laguerre tiene un solo parámetro de $\mu$, que es posible calcularla mediante la forma recursiva
-%\begin{eqnarray}
-%    L_{k}(z, \mu) &=& G_{k - 1}(z)\frac{\sqrt{1 - (1 - \mu)^{2}}}{1 - (1 - \mu)z^{-1}}\\
-%    G_{k - 1} &=& \prod_{i = 1}^{k - 1} \left(\frac{z^{-1}(1 - \mu)}{1 - (1 - \mu)z^{-1}}\right)i
-%\end{eqnarray}
-
-La memoria de Laguerre es una combinación en cascada de filtros de paso bajo y paso todo. Las señales basales se obtienen de la convolución de la entrada del filtro de pasa bajo con un conjunto ortogonal de la función de paso todo, por lo cual la correlación de la base es menor que la de una memoria Gamma y la velocidad de adaptación aumenta. Cada filtro de paso todo coloca un cero en el círculo unitario, lo que indica el polo de la etapa anterior. Como resultado, la memoria de Laguerre no atenúa las señales de base.
-
-La arquitectura propuesta por \cite{Panerai2004} posee una memoria Laguerre con tres entradas basales de \abp, una capa oculta con \pe\, no lineales conectados directamente a la \abp\, actual de base, las bases restantes de la memoria Laguerre, y los ciclos de retroalimentación de la memoria \cbfv. Se establece un umbral \pe\, para ajustar la salida. Finalmente, una capa de salida para la \cbfv\, contiene otra memoria Laguerre con tres bases con ciclos de retroalimentación de retardo a la capa oculta \pe.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\scalebox{0.8}{\begin{algorithm}[H]
+    \SetAlgoLined
+	\DontPrintSemicolon
+	\KwData{Temperatura $T$, constante de Boltzmann $k$, factor de reducción $c$}
+	Seleccionar el mejor vector solución $x_{0}$ a optimizar\;
+	\While{El criterio no se cumpla}{
+		\While{Existan soluciones en el conjunto}{
+			Seleccionar una solución $x_{0} + \Delta x$\;
+			\uIf{$f(x_{0} + \Delta x) < f(x_{0})$}{
+				$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+			}
+			\Else{
+				$\Delta f = f(x_{0} + \Delta x) - f(x_{0})$\;
+				\uIf{$rand(0, 1) > \exp{(-\Delta f/kT}$)}{
+					$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+				}\Else{
+					$f_{new} = f(x_{0})$\;
+				}
+			}
+			$f = f_{new}$; $T = cT$\;
+		}
+	}
+	\caption{Simulated annealing}
+	\label{alg:sa}
+\end{algorithm}}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% SUPPORT VECTOR MACHINE %%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cite{Chacon2011} presenta un modelo basado en $v-SVM$, introducido por \cite{Scholkopf2000}. El algoritmo se basa en el aprendizaje estadístico que funciona como un tubo de radio $\varepsilon$ que encierra a los datos. La frontera de decisión que determina el radio $\varepsilon$ del tubo se obtiene mediante el uso de un subconjunto de ejemplos de entrenamiento llamado Vector de Soporte ({\em Support vector}, \sv). Si $\vec{x}$ representa al vector de datos de entrada, el valor de salida $f(\vec{x})$ está dado por la regresión \svm\, utilizando un vector de pesos $\vec{w}$
-%\begin{equation}
-%    f(\vec{x}) = (\vec{w}\cdot\vec{x}) + b \,\,\,\,\,\, \vec{w}, \vec{x} \in \mathbb{R}^{N}, b \in \mathbb{R}\label{eq:svm}
-%\end{equation}
-%donde $b$ es una constante obtenida desde $\vec{w}$.
 
-Una característica importante de las \svm\, es que ponen énfasis en la distancia de los datos a la línea de regresión utilizando funciones de pérdida, como la función de pérdida $\varepsilon$-sensitiva.
-%\begin{equation}
-%    |f(\vec{x}) - y|_{\varepsilon} =
-%    \left\{
-%    \begin{array}{ll}
-%        0                               & \mbox{si\,\, }|f(\vec{x}) - y| < \varepsilon\\
-%        |f(\vec{x}) - y| - \varepsilon     & eoc
-%    \end{array}
-%    \right.
-%\end{equation}
-%donde $\varepsilon > 0$ es un valor escogido con anterioridad.
+% [1998b] Hochreiter
+% Y. Bengio, P. Simard, and P. Frasconi, "Learning long-term dependencies with gradient descent is dicult", IEEE Transactions on Neural Networks, 5(2):157{166 (1994).
+%\subsubsection{(ii) Métodos que refuerzan el gradiente}
+%Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror \cite{Bengio1994}. Presentan problemas para almacenar información real de gran valor en el tiempo.
 
-El algoritmo minimiza el riesgo funcional $||\vec{w}||^2$ a la que se añade una penalización dada por las variables de holgura $\xi$ dependiendo de la distancia del dato hasta la línea de regresión.
-%\begin{equation}
-%    minimize\, \theta(\vec{w}, \xi) = \frac{1}{2}||\vec{w}||^2 + C\sum_{i = 1}^{l}\xi_{i}
-%\end{equation}
+%\subsubsection{(iii) Métodos que operan en niveles mas altos}
+%Anteriormente se ha propuesto un enfoque EM para la propagación del objetivo \cite{Bengio1993}. Este enfoque utiliza un número discreto de estados y, por lo tanto, tendrá problemas con valores continuos.
+%Las técnicas de filtrado de Kallman se utilizan para el entrenamiento de redes recurrentes \cite{Puskorius1994}. Sin embargo, un factor de descuento derivado conduce a problemas de desvanecimiento del gradiente.
+%Si un problema de retraso a largo plazo contiene regularidades locales, un sistema jerárquico chunket funciona bien \cite{Schmidhuber1992a}.
 
-%$C$ es un parámetro del modelo para determinar la compensación entre la complejidad del modelo, expresada por $\vec{w}$ y los puntos que quedan fuera de la región descrita por el tubo
+%\subsubsection{(iv) Métodos que utilizan arquitecturas especiales}
+\subsubsection{El modelo de memoria a corto y largo plazo}
+\citeA{Hochreiter1997a} introdujeron el modelo de memoria a corto y largo plazo ({\em Long short-term memory}, LSTM) como solución al problema del devanecimiento del gradiente. La red LSTM se basa en el bloque de memoria, que se componse de una o más celdas de memoria, una compuerta de entrada y una compuerta de salida. Las entradas son unidades multiplicativas con activación continua y son compartidas por todas las celdas de un mismo bloque de memoria. Cada celda contiene una unidad lineal con una conexión recurrente local llamada carrusel de error constante (CEC), se conocerá como estado de la celda a la activación del CEC.
 
-La variación de la $v-SVM$ de \cite{Scholkopf2000} consiste en agregar $\varepsilon$ al problema de minimización, ponderando por una variable $v$ que ajusta la contribución de $\varepsilon$ entre $0$ y $1$
-%\begin{equation}
-%    minimize\, \theta(\vec{w}, \xi) = \frac{1}{2}||\vec{w}||^2 + C\left(lv\varepsilon + \sum_{i = 1}^{l}\xi_{i}\right)
-%\end{equation}
-%donde $l$ representa la dimensión del vector de datos.
-La solución a este problema de minimización para obtener el vector de peso $\vec{w}$ se encuentra mediante el procedimiento estándar para un problema con restricciones de desigualdad en la aplicación de las condiciones de Kuhn-Tuker al problema dual. La principal ventaja del uso del parámetro $v$ es poder controlar el error y el número de \sv\, con un solo parámetro normalizado.
+Cada celda recibe una entrada ponderada por los pesos correspondientes a la capa anterior. La compuerta de entrada se encarga de de permitir o impedir el acceso de estos valores al CEC del interior de la celda. La compuerta de salida realiza una acción similar sobre la salida de la celda, tolerando o reprimiendo la difusión del estado del CEC al resto de la red.
 
-Para resolver el problema de la regresión no lineal basta con cambiar el producto interno entre dos variables independientes $\vec{x_i}\cdot\vec{x_j}$ por una función Kernel $K(\Phi(\vec{x_i})\cdot\Phi(\vec{x_j}))$. Algunas funciones Kernel que se puede utilizar puede ser la función de base radial gaussiano ($RBF$)
-%Para resolver el problema de la regresión no lineal basta con cambiar el producto interno entre dos variables independientes $\vec{x_i}\cdot\vec{x_j}$ (ecuación \ref{eq:svm}) por una función Kernel $K(\Phi(\vec{x_i})\cdot\Phi(\vec{x_j}))$. Algunas funciones Kernel que se puede utilizar puede ser la función de base radial gaussiano ($RBF$)
-%\begin{equation}
-%    K(\vec{x_i}, \vec{x_j}) = \exp\left(\frac{-||\vec{x_i} - \vec{x_j}||^2}{2\sigma^2}\right)
-%\end{equation}
-%o la función polinomial $K(\vec{x_i}, \vec{x_j}) = (\vec{x_i}, \vec{x_j})^p$
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina nerupna de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LiuShenxiu.pdf
+% Conquering vanishing gradient: Tensor Tree LSTM on aspect-sentiment classification
+% - Tree-structures LSTMs
+% - Tensor Tree LSTM
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lipton2015
+% Truncated backpropagation through time (TBPTT) is one solution to the exploding gradient problem for continuously running networks [Williams and Zipser, 1989]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Squartini2003a
+% PREPROCESSING BASED SOLUTION FOR THE VANISHING
+% Squartini2003b
+% Attempting to reduce the vanishing gradient effect through a novel recurrent multiscale architecture
+\subsubsection{Preprocesamiento de la señal}
+\citeA{Squartini2003a} propone pre-procesar la señal de entrada a través de una descomposición wavelet, buscando separar la información a corto plazo de la información a largo plazo, y entrenando diferentes NN. Los resultados son combinados para alcanzar el objetivo final. Este enfoque simplifica el proceso de aprendizaje de la NN, evitando cambios relevantes en la arquitectura de la red y las técnicas de aprendizaje.
 
 \subsection{Características de la solución}
-La solución propone un análisis teórico mediante la aplicación de minería de datos, donde se estudiarán las capacidades de aprendizaje de los modelos lineales y no lineales basado en los datos que describen la autorregulación cerebral para un problema aplicado a la investigación en las ramas de la biología y medicina. Se utilizarán modelos lineales y no lineales extraídos de la literatura para determinar los modelos que se evaluarán.
+La solución propóne un análisis práctico de la convergencia de las redes neuronales profundas mediante la aplicación de la regla de aprendizaje basada en el algoritmo {\em simulated annealing}. El análisis se realizará sobre conjuntos de datos de diferente indole, utilizados en otras investigaciones. Se comparará su desempeño frente a otras reglas de aprendizaje definidas en la literatura.
 
 \subsection{Propósitos de la solución}
-El propósito del presente trabajo es comparar los resultados del aprendizaje de los métodos dinámicos de la autorregulación cerebral en los seres humanos, determinando las características del proceso en función de las bandas de frecuencias y ruido.
+El propósito del presente trabajo es analizar la convergencia de las redes neuronales profundas, determinando el comportamiento de diferentes reglas de aprendizaje.
+
+%El propósito del presente trabajo es comparar los resultados del aprendizaje de los métodos dinámicos de la autorregulación cerebral en los seres humanos, determinando las características del proceso en función de las bandas de frecuencias y ruido.
 
 \subsection{Alcances o limitaciones de la solución}
 Los alcances y limitaciones descritos para el trabajo son los siguientes
 \begin{itemize}
-	\item El estudio se plantea desde una perspectiva teórica y no precisa de la experimentación con pacientes.
+	\item El estudio se plantea desde una perspectiva práctica, precisando conjuntos de datos acotados.
 
-    \item Los datos que se utilizarán son los obtenidos por \cite{Mahony2000} en su publicación, datos que fueron extraídos con el consentimiento de los pacientes y aceptados por el comité respectivo.
+    \item Los datos que se utilizarán son utilizados por \citeA{Morse2016} en su publicación.
 
-	\item Se estudiarán los modelos que describen la denominada autorregulación dinámica.
+	\item Se estudiarán las reglas de aprendizaje definidas por el gradiente estocástico y {\em simulated annealing}.
 
-	\item El ruido presente en las señales será generado de forma sintética.
+	\item Las redes neuronales utilizarán la misma configuración para todos los experimentos salvo por la regla de aprendizaje.
 \end{itemize}

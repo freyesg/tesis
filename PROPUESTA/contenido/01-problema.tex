@@ -1,22 +1,103 @@
 \section{Descripción del problema}
-La autorregulación del flujo sanguíneo muestra la capacidad de un órgano para mantener una perfusión\footnote{Introducción lenta y continuada de una sustancia medicamentosa o de sangre en un organismo u órgano por vía intravenosa, subcutánea o rectal.} constante frente a los cambios de presión arterial. El caso particular de la autorregulación cerebral ({\em Cerebral Autorregulation}, \ca), se puede definir en términos de los cambios en la resistencia vascular, y su alteración ha atraído una atención especial en el campo cerebrovascular. La \ca\, opera con una presión arterial media ({\em Media Arterial Blood Pressure}, \pam) del orden de los 60 y 150 mmHg. Estos límites no son totalmente fijos y puede ser modulada por la actividad nervioso-simpático, o cualquier factor que disminuya o aumente el flujo sanguíneo cerebral ({\em Cerebral Blood Flow}, \cbf), pero en particular los cambios en la presión arterial de dióxido de carbono. Dentro de estos límites, la \ca\, protege al cerebro de la isquemia debido a la hipotensión y también previene el daño capilar, debido a los aumentos repentinos de la presión arterial.
+%\subsection{Las redes neuronales}
+El elemento básico de las redes neuronales ({\em Neural Networks}, NN) es el nodo, que recibe un vector de entrada para producir una salida. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma ponderada de las entradas ponderada
+%\begin{eqnarray}
+%	$$ y_{i} = \sum_{j} w_{ij}y_{j}\label{eq:entrada} $$
+%\end{eqnarray}
+donde el resultado puede servir como entrada de otras unidades.
 
-Los primeros estudios de autorregulación cerebral en seres humanos se basaron en métodos que permitían la medición del \cbf\,, pero no proporcionaban información sobre el tiempo que tardaba en recuperarse el \cbf\, luego de un cambio brusco en la presión sanguínea ({\em Blood Pressure}, \bp) \citep{Lassen1959}. Esta limitación fue superada con la introducción de la {\em <<Ecografía Doppler Transcranial>>} ({\em TCD}), la que permitía visualizar la velocidad del flujo sanguíneo cerebral ({\em Cerebral blood flow velocity}, \cbfv) frente a los cambios repentinos de la \pam. Este nuevo enfoque para estudiar la autorregulación cerebral se denominó autorregulación cerebral dinámica ({\em Dynamic cerebral autorregulation}, \dca), en contraste con los métodos basados en mediciones del \cbf\, y \bp\, promedio durante varios minutos que ahora se denominan autorregulación cerebral estática \citep{Aaslid1989, Panerai1998a, Tiecks1995a}.
+Existen dos fases importante dentro del modelo
+\begin{itemize}
+	\item Fase de entrenamiento: Se usa un conjunto de datos o patrones de entrenamiento para determinar los pesos que definen el modelo de la NN. Se calculan de manera iterativa, de acuerdo con los valores de entrenamiento, con el objeto de minimizar el error cometido entre la salida obtenida por la NN y la salida deseada.
 
-El análisis de la función de transferencia de los cambios en la \bp\ y en el \cbf\, permiten medir la relación dinámica entre ambos. Las amplitudes, que se describen por dicha oscilación, son pequeñas, varian en forma considerable y no pueden ser controlados, por eso su importancia clínica ha sido cuestionada.
+	\item Fase de prueba: Durante el entrenamiento, el modelo se ajusta al conjunto de entrenamiento, perdiendo la habilidad de generalizar su aprendizaje a casos nuevos, a esta situación se le llama sobreajuste.
+	Para evitar el sobreajuste, se utiliza un segundo grupo de datos diferentes, el conjunto de validación, que permitirá controlar el proceso de aprendizaje.
+\end{itemize}
+Los pesos óptimos se obtienen minimizando una función. Uno de los criterios utilizados es la minimización del error cuadrático medio entre el valor de salida y el valor real esperado.
 
-El análisis espectral de una señal permite cuantificar las oscilaciones de la \bp\, y de la \cbfv\, y estimar la fase, la función de transferencia, la amplitud (ganancia) y la coherencia. Se ha sugerido que la autorregulación cerebral es más eficaz en frecuencias bajas en comparación con altas frecuencias \citep{Diehl1995, Diehl1998, Giller1990, Panerai1998b, Zhang1998}, sin embargo, el método tiene como limitante lo pequeño que resultan las magnitudes de las oscilaciones de la \bp\, y la \cbfv.
 
-\subsection{Motivación}
-En los estudios de la autorregulación con modelos lineales, los parámetros utilizados se obtienen desde la frecuencia, el impulso, o la etapa de respuesta. Algunos de los parámetros utilizados incluyen la ganancia y la fase \citep{Zhang1998, Birch1995, Panerai1999, Liu2003}. Un método alternativo para medir la autorregulación es el índice ARI \citep{Tiecks1995a}, que varía desde 0 (ausencia de autorregulación) y 9 (buena autorregulación). Por otra parte, la función de transferencia en el análisis líneal y en modelos Volterra en el análisis no lineal, han demostrado que la autorregulación cerebral es más eficaz en el espectro de frecuencias por debajo de \hz{0.1}, donde se encuentra gran parte de la potencia del espectro de la \abp, es decir, cambios espontáneos en la \pam\, no provocan grandes variaciones sobre la \cbfv\, media (\mcbfv).
+\subsection{El perceptrón multicapa}
+Dentro de las redes neuronales, el perceptrón multicapa es una de las arquitecturas más usadas para resolver problemas. Esto es debido a que poseen la capacidad de ser un aproximador universal \cite{Minsky1969b}. Esto no implica que sea una de las redes más potentes o con mejores resultados, el perceptrón multicapa posee una serie de limitaciones, como el proceso de aprendizaje para problemas que dependan de un gran número de variables, la dificultad para realizar un análisis teórico de la red debido a la presencia de componentes no lineales y a la alta conectividad.
 
-Dado que la cavidad cerebrovascular es controlada por mecanismos metabólicos y miogénicos\footnote{mecanismo por el cual las arterias y arteriolas reaccionan ante un aumento o descenso de la presión arterial para mantener el flujo sanguineo dentro de lo normal en los vasos sanguíneos}, relaciones con el endotelio y mecanismos neuronales \citep{Faraci1998, Panerai1999, Paulson1990} es que la dinámica de la autorregulación cerebral son ampliamente activos en diferentes bandas de frecuencia, desde \hz{0.005} hasta los \hz{0.5}. \cite{Zhang1998} muestra que los mecanismos metabólicos son más activos a frecuencias muy bajas; los mecanismos miogénicos son más activos a altas frecuencias, mientras que los mecanísmos relacionados del endotelio se encuentra entre las bandas de frecuencias intermedias.
+\subsubsection{Arquitectura}
+El perceptron multicapa posee una estructura de capas compuestas por neuronas. Cada una de las capas está formada por un conjunto de neuronas y se distinguen tres tipos de capas: la capa de entrada, las capas ocultas y la capa de salida.
 
-La literatura describe técnicas que permiten estimar la autorregulación logrando representar la relación existente entre la \pam\, y la \cbfv. La mayoría de los estudios de autorregulación se enfocan en el uso de métodos lineales \citep{Zhang1998, Birch1995, Panerai1999, Simpson2001, Panerai2004} mientras que algunos trabajos como los de \cite{Panerai1999, Panerai2004, Mitsis2004a, Mitsis2002, Angarita2011} desarrollaron métodos no lineales. A pesar de que las técnicas no lineales proporcionan un modelo de ajuste mejor, no se ha comprobado su efectividad evaluando la autorregulación frente a las técnicas lineales y en distintos rangos de frecuencia.
+\begin{imagen}
+	\scalebox{0.8}{\input{img/neural_network_img}}
+	\caption{Perceptrón multicapa}
+	\label{fig:neurona}
+\end{imagen}
 
-\subsection{Definición del problema}
-Para el estudio de la \ca\, dinámica se han utilizado diversas técnicas para inducir cambios rápidos en la \pam. Estos incluyen la deflación repentina de puños apretados \citep{Aaslid1989, Tiecks1995a}, las maniobras de Valsalva \citep{Greenfield1984, Tiecks1995a}, la respiración forzada \citep{Diehl1995}, en cuclillas periódica \citep{Birch1995}, o la inclinación \citep{Anthony1993}. Otros investigadores se han basado en las fluctuaciones espontáneas en \pam\, para observar los correspondientes cambios transitorios en la velocidad del \cbf.
+En la figura \ref{fig:neurona} se observa que las conexiones van siempre hacia adelante. Las neuronas de la capa $l$ se conectan con las neuronas de la capa $l + 1$. Las neuronas de la capa de entrada se encargan de recibir los patrónes y propagar dichas señales a las neuronas de la capa siguiente. La última capa, la capa de salida, proporciona la respuesta de la red al patrón presentado. Las neuronas de las capas ocultas realizan el procesado de las señales generadas por el patrón de entrada.
 
-Los actuales modelos de entrenamiento, que permiten evaluar el proceso de la autorregulación, realizan su trabajo utilizando todo el espectro de frecuencias que se puede encontrar durante el proceso. \cite{Zhang1998} muestra que los mecanismos metabólicos presentan mayor actividad en frecuencias muy bajas, que figuran entre los 0.07 y los 0.3Hz, mientras que los mecanísmos miogénicos son más activos a altas frecuencias, mientras que los mecanísmos relacionados del endotelio se encuentra entre las bandas de frecuencias intermedias. Entonces surge la duda sobre los resultados que se obtendrán si se filtran los rangos de frecuencias asociados sólo al proceso de autorregulación.
+\subsubsection{Propagación de la entrada y el algoritmo de retropropagación}
+El perceptrón multicapa define una relación entre la entrada y la salida. Esta relación se obtiene propagando hacia adelante los valores de las variables de entrada, es por esto que también se les llama redes {\em feedforward}. Cada neurona de la red procesa la entrada recibida y produce una respuesta que se propaga, mediante las conexiones, hacia las neuronas de la capa siguiente.
 
-Se desconoce a priori cómo es que aprenden los distintos modelos frente a señales alteradas y en distintos espectros de frecuencias y si acaso serán más eficientes que los modelos entrenados en todo el espectro de frecuencias.
+Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde $W_c = (w^{c}_{ij})$ es la matriz de pesos, $w^{c}_{ij}$ representará el peso de la conexion de la neurona $i$ de la capa $c$ hasta la neurona $j$ de la capa siguiente. Denotaremos $a^{c}_{i}$ a la activación de la neurona $i$ de la capa $c$ que se calcula de la siguiente manera:
+\begin{itemize}
+	\item {\bf Activación de una neurona de la capa de entrada}: Las neuronas se encargan de transmitir la entrada recibida, por lo tanto $$ a^{1}_{i} = x_{i}, i = 1, 2, \cdots, n$$ donde $X = (x_1, x_2, \cdots, x_n)$ representa el vector de entrada.
+
+	\item {\bf Activación de una neurona de la capa oculta}: Las neuronas de una capa oculta procesa la información recibida aplicando la función de activación $f$ a la suma de los productos de la entrada por sus pesos, es decir $$ a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{c - 1}_{ji}a^{c - 1}_{j} + \theta^{c}_{i}\right), i = 1, 2, \cdots, n_c; c = 2, 3, \cdots, C - 1$$ donde $a^{c - 1}_{j}$ es la salida de la capa anterior a $c$.
+
+	\item {\bf Activación de una neurona de la capa de salida}: La activación de una neurona de la capa de salida viene dada por la función de activación $f$ aplicada a la suma de los productos de la entrada por sus pesos, es decir $$ y_{i} = a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{C - 1}_{ji}a^{C - 1}_{j} + \theta^{C}_{i}\right), i = 1, \cdots, n_c$$ donde $Y = (y_1, y_2, \cdots, y_{n_{c}})$ es el vector de salida.
+\end{itemize}
+
+La función $f$ es la función de activación de la neurona. Las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
+\begin{eqnarray}
+	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}\\
+	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
+\end{eqnarray}
+
+Ambas funciones poseen como imagen intervalo de valores entre $[0, 1]$ y $[-1, 1]$ como se observa en la figura \ref{fig:funciones}.% y están descritas por las ecuaciones \ref{eq:sigm} y \ref{eq:tanh}.
+
+\begin{imagen}
+	\scalebox{1.0}{\input{img/funciones}}
+	\caption{Funciones de activación mas utilizadas.}
+	\label{fig:funciones}
+\end{imagen}
+
+
+%\subsection{Algoritmo de retropropagación}
+El perceptrón multicapa actualiza sus pesos en función de una regla de aprendizaje, de tal manera que los nuevos pesos permitan reducir el error de salida. Por tanto, para cada patrón de entrada a la red es necesario disponer de un patrón de salida deseada. El objetivo es que la salida de la red sea lo más próxima posible a la salida deseada, debido a esto es que el aprendizaje de la red se describe como un problema de minimización de la siguiente manera $$ \min_{W} E $$ donde $W$ es el conjunto de parámetros de la red (pesos y umbrales) y $E$ es una función de error que evalúa la diferencia entre las salidas de la red y las salidas deseadas. En la mayor parte de los casos, la función de error se define como:
+\begin{eqnarray}
+	E = \frac{1}{N}\sum^{N}_{i = 1} e(i)
+\end{eqnarray}
+
+Donde $N$ es el número de muestras y $e(n)$ es el error cometido por la red para el patrón $i$, definido de la siguiente manera
+\begin{eqnarray}
+	e(i) = \frac{1}{n_{C}}\sum^{n_{C}}_{j = 1} (s_{j}(i) - y^{j}(n))^2\label{eq:error_patron}
+\end{eqnarray}
+
+Siendo $Y(i) = (y_{1}(i), y_{2}(i), \cdots, y_{n_{C}}(i))$ y $S(i) = (s_{1}(i), s_{2}(i), \cdots, s_{n_{C}}(i))$ los vectores de salida y salidas deseadas para el patrón $i$ respectivamente.
+
+De esta manera, si $W^{*}$ es un mínimo de la función de error $E$, en dicho punto el error será cercano a cero, y en consecuencia, la salida de la red será próxima a la salida deseada. La presencia de funciones de activación no lineales hace que la respuesta de la red sea no lineal respecto a los parámetros ajustables, por lo que el problema de minimización es un problema no lineal y se hace necesario el uso de técnicas de optimización no lineales para su resolución.
+
+Las técnicas utilizadas suelen basarse en la actualización de los parámetros de la red mediante la determinación de una dirección de búsqueda. En el caso de las redes neuronales multicapa, la dirección de búsqueda más utilizada se basa en la dirección contraria del gradiente de la función de error $E$, el método de gradiente descendente.
+
+Si bien el aprendizaje de la red busca minimizar el error total de la red, el procedimiento está basado en métodos del gradiente estocástico, que son una sucesión de minimizaciones del error $e(i)$ por cada patrón, en lugar de minimizar el error total $E$ de la red. Aplicando el método del gradiente estocástico, cada parámetro $w$ se modifica para cada patrón de entrada $n$ según la siguiente regla de aprendizaje
+\begin{eqnarray}
+	w(i) = w(n - 1) - \alpha\frac{\partial e(i)}{\partial w}
+\end{eqnarray}
+
+donde $e(i)$ es el error para el patrón de entrada $i$ dado por la ecuación \ref{eq:error_patron}, y $\alpha$ es la tasa de aprendizaje, éste último determina el desplazamiento en la superficie del error.
+
+Como las neuronas están ordenadas por capas y en distintos niveles, es posible aplicar el método del gradiente de forma eficiente, resultando en el {\em algoritmo de retropropagación} \cite{Rumelhart1986} o {\em regla delta generalizada}. El término retropropagación es utilizado debido a la forma de implementar el método del gradiente en las redes multicapa, pues el error cometido en la salida de la red es propagado hacia atrás, transformándolo en un error para cada una de las neuronas ocultas de la red.
+
+% Neural Networks for Pattern Recognition - Bishop: 140 - Error backpropagation.
+% Neural Networks for Pattern Recognition - Bishop: 263 - Gradient descent.
+El algoritmo de retropropagación es el método de entrenamiento más utilizado en redes con conexión hacia adelante. Es un método de aprendizaje supervisado, en el que se distinguen claramente dos fases:
+\begin{enumerate}
+	\item Se aplica un patrón de entrada, el cual se propaga por las distintas capas que componen la red hasta producir la salida de la misma. Esta salida se compara con la salida deseada y se calcula el error cometido por cada neurona de salida.
+
+	\item Estos errores se transmiten desde la capa de salida, hacia todas neuronas de las capas anteriores \cite{Fritsch1996}. Cada neurona recibe un error que es proporcional a su contribución sobre el error total de la red. Basándose en el error recibido, se ajustan los errores de los pesos sinápticos de cada neurona.
+\end{enumerate}
+
+
+
+
+
+
+
+
+% http://neuralnetworksanddeeplearning.com/chap5.html
+% ME ESTOY BASANDO EN : [1998b] Hochreiter

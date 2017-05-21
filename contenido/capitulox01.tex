@@ -1,17 +1,81 @@
 \chapter{Introducción}
 \section{Antecedentes y motivación}
+Las redes neuronales ({\em Neural Networks}, NN) son sistemas de procesamiento de información que basan su estructura en una analogía de las redes neuronales biológicas. Consisten en un conjunto de elementos de procesamiento simple llamados nodos, estos nodos están dispuestos en una estructura jerarquica y conectadas entre si mediante un valor numérico llamado peso que, mediante un proceso de entrenamiento, varia su valor.
+
+La actividad que una neurona realiza en una NN es simple. El proceso consiste en ponderar las entradas de la neurona por los pesos de las conexiones de la neurona para luego ser sumadas y entregadas a la función de activación asociada a la neurona \cite{McCulloch1943}. La salida corresponderá a la respuesta que la neurona genera a la entrada que se presentada.
+
+El conjunto de $n$ neuronas se llamará capa, y una NN puede estar compuesta de una o más capas. Cada capa estará compuesta por una cantidad de neuronas que no necesariamente será la misma para todas las capas, y estarán dispuesta en forma consecutiva de tal manera que las capas se conecten unas con otras y siempre hacia adelante. La primera capa, la de entrada, recibirá un patrón que será entregado a las distintas neuronas que la capa posea. Cada neurona de la capa de entrada procesará los datos y generará una salida que servirá de entrada para la capa siguiente, repitiendo el proceso para cada una de las capas de la NN hasta llegar a la capa de salida, en cuyo caso la salida representará la respuesta de la red, concretando así el ciclo.
+
+Las NN han sido utilizadas para la clasificación de entradas, y han sido diseñados diversos métodos para entrenar la red y que los pesos se adapten de tal manera que la salida de la red sea representativa de la salida esperada, a esto método de entrenamiento se le llama supervisado.
+
+% https://www.neuraldesigner.com/blog/5_algorithms_to_train_a_neural_network
+Dentro de los métodos de entrenamiento existentes se encuentra el método del gradiente descendente, el método de Newton, el gradiente conjugado, el método quasi-Newton, o el algoritmo Levenberg-Marquardt. El más utilizado es el método del gradiente, que consiste en actualizar los pesos de las distintas neuronas en función de la dirección contraría al gradiente de la función de activación, logrando minimizar el error.
+
+%\paragraph{Aprendizaje por corrección del error}: La salida de la NN se compara con la salida esperada, y la diferencia entre ambos valores se utiliza para corregir los pesos de las neuronas. Los pesos de las neuronas se ajustan en función de dicho error hasta ajustarse a los datos que se utilizan para el entrenamiento.
+
+%\paragraph{Aprendizaje estocástico}: Consiste en modificar aleatoriamente los valores de los pesos y observar los resultados para evaluarlos respecto de la salida deseada. Las redes que utilizan este tipo de aprendizaje son una analogía de algún proceso físico basado en estados de energía, donde la red sería el grado de estabilidad y se buscaría el estado de mínima energía, que es el estado donde la respuesta de la red se ajusta de mejor manera a los datos. [37]
 
 \section{Descripción del problema}
+%\subsection{El desvanecimiento del gradiente}
+La retropropagación basa su funcionamiento en la regla de la cadena para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red él gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para una red de muchas capas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
 
 \section{Solución propuesta}
 \subsection{Características de la solución}
-\subsection{Propósito de la solución}
+Mediante el uso de el algoritmo {\em simulated annealing} se busca analizar la eficiencia que la NN alcanza en una red neuronal profunda frente a otros métodos de aprendizaje.
 
+\subsection{Propósito de la solución}
+El propósito de la solución es aportar en el campo de las redes neuronales y la clasificación de datos, proporcionando un análisis comparativo de la convergencia de distintas redes.
 \section{Objetivos y alcances del proyecto}
 \subsection{Objetivo general}
+Evaluar el desempeño del algoritmo {\em simulated annealing} y su efecto sobre entrenamiento de redes neuronales profundas.
+
 \subsection{Objetivos específicos}
+Los objetivos establecidos para el presente trabajo son descritos a continuación
+\begin{enumerate}
+    \item Definir las reglas de aprendizaje a implementar.
+    \item Construir los conjuntos de datos de entrada y salida a analizar.
+	\item Establecer los parámetros de las redes neuronales para la experimentación.
+	\item Entrenar las redes con los distintos conjuntos de datos.
+    \item Establecer las conclusiones del trabajo.
+\end{enumerate}
+
 \subsection{Alcances}
 
 \section{Metodología y herramientas utilizadas}
 \subsection{Metodología de trabajo}
+Considerando el aspecto investigativo del trabajo, se considera la utilización del método científico. Entre las actividades que componen la metodología, \citeA{Sampieri2006} describe los siguientes pasos para desarrollar una investigación:
+
+\begin{itemize}
+	\item Formulación de la hipótesis: Las redes neuronales que adolecen del desvanecimiento del gradiente se ven beneficiadas por el uso del algoritmo {\em simulated annealing} en la convergencia.
+
+	\item Marco teórico: Una revisión de la literatura donde se aborda el problema planteado, para situarse en el contexto actual de los problemas. Se describirán redes neuronales que buscan solucionar el mismo problema.
+
+	\item Diseño de la solución: Se deberá diseñar el experimento para generar los datos que permitan sustentar las comparaciones entre las distintas redes. Diseñar y ejecutar el experimento basado en entradas equivalentes.
+
+	\item Análisis y verificación de los resultados: Los resultados se analizarán considerando los valores de convergencia de los distintos métodos.
+
+	\item Presentación de los resultados: Se presentarán tablas que describan los resultados obtenidos y que se consideren pertinentes.
+
+	\item Conclusiones obtenidas en el desarrollo de la investigación.
+\end{itemize}
+
 \subsection{Herramientas de desarrollo}
+Para el desarrollo y ejecución de los experimentos se utilizará un equipo con las siguientes características
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}\hline
+        Sistema Operativo	& Solus 2017.04.18.0 64-bit\\\hline
+        Procesador					& Intel$^\circledR$ Core\texttrademark i5-2450M CPU @ 2.50GHz x 4\\\hline
+        RAM								& 7.7Gb\\\hline
+		Gráficos				& Intel$^\circledR$ Sandybridge Mobile\\\hline
+		Almacenamiento	& 935,6 GB\\\hline
+	\end{tabular}
+\end{table}
+
+El software que se utilizará es:
+\begin{itemize}
+	\item Plataforma de desarrollo: Atom.
+	\item Lenguaje de programación: Python.
+	\item Sistema de redes neuronales: Keras API \cite{Keras2015}.
+	\item Herramienta ofimática: \LaTeX.
+\end{itemize}

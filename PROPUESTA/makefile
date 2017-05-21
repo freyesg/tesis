@@ -13,6 +13,7 @@ all: $(MAIN).tex $(REF).bib
 	$(BIBTEX) $(FILENAME).aux
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
+	make clean
 
 clean:
 	rm -f *.aux *.log *.out *.lof *.lot *.toc *.cut ./contenido/*.aux *.bbl *.blg *.bcf

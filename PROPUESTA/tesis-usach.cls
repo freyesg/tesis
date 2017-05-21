@@ -45,7 +45,8 @@
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
-	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
+	\addcontentsline{toc}{chapter}{Bibliografía}
+	%\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
 
 \if@inf
