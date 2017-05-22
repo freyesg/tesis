@@ -10,13 +10,47 @@ Las neuronas con una función de activación umbral, fueron estudiadas por \cite
 El conjunto de $n$ neuronas se llamará capa, y una NN puede estar compuesta de una o más capas. Cada capa estará compuesta por una cantidad de neuronas que no necesariamente será la misma para todas las capas, y estarán dispuesta en forma consecutiva de tal manera que las capas se conecten unas con otras y siempre hacia adelante. La primera capa, la de entrada, recibirá un patrón que será entregado a las distintas neuronas que la capa posea. Cada neurona de la capa de entrada procesará los datos y generará una salida que servirá de entrada para la capa siguiente, repitiendo el proceso para cada una de las capas de la NN hasta llegar a la capa de salida, en cuyo caso la salida representará la respuesta de la red, concretando así el ciclo.
 
 % https://www.neuraldesigner.com/blog/5_algorithms_to_train_a_neural_network
-Las NN han sido utilizadas para la clasificación de entradas, y han sido diseñados diversos métodos para entrenar la red y que los pesos se adapten de tal manera que la salida de la red sea representativa de la salida esperada, a esto método de entrenamiento se le llama supervisado. Dentro de los métodos de entrenamiento existentes se encuentra el método del gradiente descendente, el método de Newton, el gradiente conjugado, el método quasi-Newton, o el algoritmo Levenberg-Marquardt. El más utilizado es el método del gradiente, que consiste en actualizar los pesos de las distintas neuronas en función de la dirección contraría al gradiente de la función de activación, logrando minimizar el error.
+Las NN han sido utilizadas para la clasificación de entradas, y han sido diseñados diversos métodos para entrenar la red y que los pesos se adapten de tal manera que la salida de la red sea representativa de la salida esperada, a esto método de entrenamiento se le llama supervisado. Dentro de los métodos clásicos de entrenamiento se encuentra el método del gradiente descendente, el método de Newton, el gradiente conjugado, el método quasi-Newton, o el algoritmo Levenberg-Marquardt. El más utilizado es el método del gradiente, que consiste en actualizar los pesos de las distintas neuronas en función de la dirección contraría al gradiente de la función de activación, logrando minimizar el error.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% BACKPROPAGATION
+La técnica de minimización más simple, cuando el gradiente está disponible, es seleccionar la dirección de descenso más empinada y aplicar una búsqueda unidireccional a lo largo de esta dirección. Esta técnica de optimización de descenso más pronunciada se define por
+
+\begin{eqnarray}
+	\Delta(n) W &=& -\lambda(n)G(n)
+\end{eqnarray}
+
+Donde $\Delta W(n$ es la variación de los pesos para una iteración y $\lambda(n$ es un coeficiente que minimiza la función en la dirección de descenso. Se ha demostrado que no hay ventaja en encontrar el mínimo exacto en la dirección de búsqueda en cada iteración (Dennis y Schnabel, 1983). El algoritmo de retropropagación propuesto por Werbos (1974) y popularizado por Rumelhart et al (1986) se basa en una variación de la técnica de pendiente más pronunciada. No se utiliza búsqueda unidireccional sino un paso de descenso fijo, $\eta$, llamado tasa de aprendizaje, que se añade a una fracción de la última variación, $\alpha$, llamada momentum. El último término introduce algunos elementos del método de gradiente conjugado. Este algoritmo se define por:
+
+\begin{eqnarray}
+	\nabla_{p}W_{ij}^{(L)}(n) &=& -\eta G_{p_{ij}}^{(L)}(n) + \alpha\Delta_{p}W_{ij}^{L}(n - 1)
+\end{eqnarray}
+
+Al hacer una actualización continua por:
+\begin{eqnarray}
+	\Delta W(n) &=& -\eta G(n) + \alpha\Delta W(n - 1)
+\end{eqnarray}
+
+Cuando se elige un procedimiento de actualización por lotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% GRADIENTE DESCENDENTE
 El gradiente descendente es el mas simple de los métodos. Este requiere información del gradiente del vector, por lo tanto corresponde a un método de primer orden. El método comienza en un punto inicial y, mientras el criterio de parada no se cumpla, la solución inicial se moverá en la dirección contraria al gradiente a razón de una taza de aprendizaje establecida. La taza de aprendizaje es quién decide cuan largo será el paso, si éste es muy grande, puede que la convergencia a la solución sea superada por un paso muy grande, en cambio, una taza de aprendizaje my pequeña puede demorar la convergencia.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% MÉTODO DE NEWTON
 El método de Newton es un método de segundo orden, pues hace uso de la matriz Hessiana. El objetivo de este método es encontrar una mejor dirección de entrenamiento mediante el uso de la segunda derivada de la función de perdida. Considera una aproximación cuadrática de la función en la solución inicial utilizando una expansión de la serie de Taylor. De esta manera, el método de Newton permite mover la solución inicial en función de la inversa de la matriz Hessiana, que pasará a ser la dirección de entrenamiento de Newton.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%El método del gradiente conjugado, fue propuesto por Fletcher and Reeves (1964), es un punto intermedio entre el gradiente descendente y el método de Newton. Utiliza sucesivas direcciones
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% GRADIENTE CONJUGADO
+% [1996] Robitaille B, Marcos B, Veillette M, Payre G
 El método del gradiente del conjugado fue propuesto por \citeA{Fletcher1964}, utiliza sucesivas direcciones conjugadas basadas en el gradiente y el residuo. Si la función objetivo es cuadrática y la dirección de búsqueda es minimizada exactamente en cada iteración, el método converge de forma cuadrática. \citeA{Leonard1990} han utilizado el método para entrenar redes neuronales como alternativa a la retropropagación. Los pesos de una red se actualizan de acuerdo con una búsqueda unidencial en la dirección de descenso $S(n)$ de la siguiente forma:
 \begin{eqnarray}
 	\Delta W(n) = \lambda(n)S(n)
@@ -28,12 +62,17 @@ Y la dirección de descenso $S(n)$ se calcula a partir del gradiente de iteracio
 \end{eqnarray}
 
 Para que las direcciones de descenso permanezcan conjugadas, la búsqueda unidirecional, en cada iteración, tiene que ser llevada con alta precisión. Sin embargo, después de muchas iteraciones, las direcciones podrían llegar a ser casi paralelas. Para superar esta dificultad, \citeA{Fletcher1964} sugieren volver a iniciar el procedimiento igualando la dirección de descenso al gradiente en cada iteración $(t + 1)$, donde $(t)$ es el número total de pesos en la red.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 %\paragraph{Aprendizaje por corrección del error}: La salida de la NN se compara con la salida esperada, y la diferencia entre ambos valores se utiliza para corregir los pesos de las neuronas. Los pesos de las neuronas se ajustan en función de dicho error hasta ajustarse a los datos que se utilizan para el entrenamiento.
 
 %\paragraph{Aprendizaje estocástico}: Consiste en modificar aleatoriamente los valores de los pesos y observar los resultados para evaluarlos respecto de la salida deseada. Las redes que utilizan este tipo de aprendizaje son una analogía de algún proceso físico basado en estados de energía, donde la red sería el grado de estabilidad y se buscaría el estado de mínima energía, que es el estado donde la respuesta de la red se ajusta de mejor manera a los datos. [37]
 
 \section{Descripción del problema}
-%\subsection{El desvanecimiento del gradiente}
+% USAR [2003b] Squartini S, Hussain A, Piazza F
 La retropropagación basa su funcionamiento en la regla de la cadena para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red él gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para una red de muchas capas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
 
 \section{Solución propuesta}
