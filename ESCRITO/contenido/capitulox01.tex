@@ -20,23 +20,26 @@ La técnica de minimización más simple, cuando el gradiente está disponible, 
 	\Delta(n) W &=& -\lambda(n)G(n)
 \end{eqnarray}
 
-Donde $\Delta W(n$ es la variación de los pesos para una iteración y $\lambda(n$ es un coeficiente que minimiza la función en la dirección de descenso. Se ha demostrado que no hay ventaja en encontrar el mínimo exacto en la dirección de búsqueda en cada iteración (Dennis y Schnabel, 1983). El algoritmo de retropropagación propuesto por Werbos (1974) y popularizado por Rumelhart et al (1986) se basa en una variación de la técnica de pendiente más pronunciada. No se utiliza búsqueda unidireccional sino un paso de descenso fijo, $\eta$, llamado tasa de aprendizaje, que se añade a una fracción de la última variación, $\alpha$, llamada momentum. El último término introduce algunos elementos del método de gradiente conjugado. Este algoritmo se define por:
+Donde $\Delta W(n)$ es la variación de los pesos para una iteración y $\lambda(n$ es un coeficiente que minimiza la función en la dirección de descenso. %Se ha demostrado que no hay ventaja en encontrar el mínimo exacto en la dirección de búsqueda en cada iteración (Dennis y Schnabel, 1983).
+El algoritmo de retropropagación propuesto por Werbos (1974) y popularizado por Rumelhart et al (1986) se basa en una variación de la técnica de pendiente más pronunciada. No se utiliza búsqueda unidireccional sino un paso de descenso fijo, $\eta$, llamado tasa de aprendizaje, que se añade a una fracción de la última variación, $\alpha$, llamada momentum. El último término introduce algunos elementos del método de gradiente conjugado. % Este algoritmo se define por:
+%\begin{eqnarray}
+%	\nabla_{p}W_{ij}^{(L)}(n) &=& -\eta G_{p_{ij}}^{(L)}(n) + \alpha\Delta_{p}W_{ij}^{L}(n - 1)
+%\end{eqnarray}
+%
+%Al hacer una actualización continua por:
+Así la actualización se realiza como en la ecuación \ref{eq:bp_wupdate}
 \begin{eqnarray}
-	\nabla_{p}W_{ij}^{(L)}(n) &=& -\eta G_{p_{ij}}^{(L)}(n) + \alpha\Delta_{p}W_{ij}^{L}(n - 1)
+	W(n) &=& -\eta G(n) + \alpha\Delta W(n - 1)\label{eq:bp_wupdate}
 \end{eqnarray}
 
-Al hacer una actualización continua por:
-\begin{eqnarray}
-	\Delta W(n) &=& -\eta G(n) + \alpha\Delta W(n - 1)
-\end{eqnarray}
+%Cuando se elige un procedimiento de actualización por lotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Cuando se elige un procedimiento de actualización por lotes
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% MÉTODO QUASI-NEWTON
-Mediante el cálculo de las segundas derivadas de la función objetivo, se obtiene una mejor comprensión de la topología de la función, que conduce a su vez a elegir una dirección decente más eficiente. Dejar:
+El método quasi-Newton utiliza el cálculo de las segundas derivadas de la función objetivo, se obtiene una mejor comprensión de la topología de la función, que conduce a su vez a elegir una dirección decente más eficiente. Dejar:
 \begin{eqnarray}
 	\Delta W(n) &=& \lambda(n)S(n)
 \end{eqnarray}
@@ -57,8 +60,9 @@ Y donde $H(n)$ es la matriz Hessiana. La principal dificultad con este enfoque e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%% GRADIENTE DESCENDENTE
-El gradiente descendente es el mas simple de los métodos. Este requiere información del gradiente del vector, por lo tanto corresponde a un método de primer orden. El método comienza en un punto inicial y, mientras el criterio de parada no se cumpla, la solución inicial se moverá en la dirección contraria al gradiente a razón de una taza de aprendizaje establecida. La taza de aprendizaje es quién decide cuan largo será el paso, si éste es muy grande, puede que la convergencia a la solución sea superada por un paso muy grande, en cambio, una taza de aprendizaje my pequeña puede demorar la convergencia.
+%%%%%%%%%% GRADIENTE DESCENDENTE - BACKPROPAGATON
+% [1996] Robitaille B, Marcos B, Veillette M, Payre G
+%El gradiente descendente es el mas simple de los métodos. Este requiere información del gradiente del vector, por lo tanto corresponde a un método de primer orden. El método comienza en un punto inicial y, mientras el criterio de parada no se cumpla, la solución inicial se moverá en la dirección contraria al gradiente a razón de una taza de aprendizaje establecida. La taza de aprendizaje es quién decide cuan largo será el paso, si éste es muy grande, puede que la convergencia a la solución sea superada por un paso muy grande, en cambio, una taza de aprendizaje my pequeña puede demorar la convergencia.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

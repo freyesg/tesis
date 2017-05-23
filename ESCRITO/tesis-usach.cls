@@ -37,7 +37,7 @@
 \if@escrito
 	\LoadClass[10pt, oneside]{book}
 	\RequirePackage{titlesec}
-	%\titleformat{\chapter}[display]{\normalfont\bfseries}{}{10pt}{}%\chaptertitlename\ \thechapter
+	%\titleformat{\chapter}[display]{\normalfont\bfseries}{}{85pt}{}%\chaptertitlename\ \thechapter
 	%\titlespacing*{\chapter}{0pt}{0pt}{10pt}
 	%\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{10pt}{}
 	%\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{10pt}{}
@@ -53,8 +53,11 @@
 	[\vspace{1.5pt}] %1,5
 
 	\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
+
 	\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
+
 	\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
+
 
 	\titlespacing*{\chapter} {0pt}{85pt}{20pt}
 	\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
@@ -63,8 +66,8 @@
 	\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
 	\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 
-	%\setcounter{secnumdepth}{3}
-	%\setcounter{tocdepth}{3}
+	\setcounter{secnumdepth}{3}
+	\setcounter{tocdepth}{3}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
