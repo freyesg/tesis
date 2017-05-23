@@ -53,9 +53,7 @@
 	[\vspace{1.5pt}] %1,5
 
 	\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
-
 	\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
-
 	\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
 
 	\titlespacing*{\chapter} {0pt}{85pt}{20pt}
@@ -65,8 +63,8 @@
 	\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
 	\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 
-	\setcounter{secnumdepth}{3}
-	\setcounter{tocdepth}{3}
+	%\setcounter{secnumdepth}{3}
+	%\setcounter{tocdepth}{3}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
@@ -86,6 +84,7 @@
 \newcommand{\autor}{\@author}
 \renewcommand{\rmdefault}{phv} % Arial
 \renewcommand{\sfdefault}{phv} % Arial
+%\setlength{\parindent}{0cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
@@ -155,7 +154,7 @@
 % Identación y spacing
 \usepackage{setspace}
 \usepackage{indentfirst}
-\setlength{\parindent}{18pt}
+\setlength{\parindent}{0pt}
 \setlength{\parskip}{3pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -206,7 +205,7 @@
 \newtheorem{defin}{Definición}
 \newtheorem{teorema}{Teorema}
 \newtheorem{obs}{Observación}
-\setlength{\parindent}{2cm}                                             % Sangrado
+%\setlength{\parindent}{2cm} % Sangrado
 \renewcommand{\baselinestretch}{1.5}                                    % Espaciado 1.5
 \renewcommand{\and}{\\&}
 
