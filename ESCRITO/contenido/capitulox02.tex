@@ -1,7 +1,7 @@
 \chapter{Aspectos teóricos y revisión de la literatura}
 \section{Aspectos teóricos}
 \subsection{Algoritmo de retropropagación}
-El elemento básico de las redes neuronales ({\em Neural Networks}, NN) es el nodo, que recibe un vector de entrada para producir una salida. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma ponderada de las entradas ponderada
+El elemento básico de las redes neuronales ({\em Neural Networks}, NN) es el nodo, que recibe un vector de entrada para producir una salida. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma ponderada de las entradas
 %\begin{eqnarray}
 %	$$ y_{i} = \sum_{j} w_{ij}y_{j}\label{eq:entrada} $$
 %\end{eqnarray}
@@ -49,7 +49,7 @@ La función $f$ es la función de activación de la neurona. Las funciones de ac
 	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
 \end{eqnarray}
 
-Ambas funciones poseen como imagen intervalo de valores entre $[0, 1]$ y $[-1, 1]$ como se observa en la figura \ref{fig:funciones}.% y están descritas por las ecuaciones \ref{eq:sigm} y \ref{eq:tanh}.
+Ambas funciones poseen como imagen un intervalo de valores entre $[0, 1]$ y $[-1, 1]$ como se observa en la figura \ref{fig:funciones}.% y están descritas por las ecuaciones \ref{eq:sigm} y \ref{eq:tanh}.
 
 \begin{imagen}
 	\scalebox{1.0}{\input{img/funciones}}
@@ -142,7 +142,7 @@ para todo $m$, el producto en (\ref{eq:vanishing}) decrece exponencialmente con 
 \end{imagen}
 
 \section{Revisión de la literatura}
-Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} sufren del desvanecimiento del gradiente. Para solventar el problema hay diversos métodos que lo evitan.
+Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} sufren del desvanecimiento del gradiente. Para solventar el problema hay diversos métodos que lo evitan, como los métodos de búsqueda global, el modelo de memoria a corto y largo plazo o el preprocesamiento de las señales.
 %% 13. S. E. Fahlman, "The recurrent cascade-correlation learning algorithm", in Advances in Neural Information Processing Systems 3, ed. R. P. Lippmann et al. (Morgan Kaufmann, San Mateo, 1991), pages 190-196.
 
 % 14. R. J. Williams, "Complexity of exact gradient computation algorithms for recurrent neural networks" , Technical Report NU-CCS-89-27, Boston: Northeastern Univ., College of Computer Science, 1989.
@@ -157,7 +157,7 @@ Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter
 \subsection{Métodos de búsqueda global}
 Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing} (SA), {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
 
-El método SA es un algoritmo de búsqueda meta-heurística para problemas de optimización global. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, al evaluar cada perturbación se actualizará la solución actual en caso de que la perturbación sea mejor que la solución actual, y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
+El método SA es un algoritmo de búsqueda meta-heurística para problemas de optimización global. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, en el caso de que al evaluar la perturbación se obtenga un mejor desempleo que la solución actual, se actualizará la solución actual; y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
 
 \scalebox{0.8}{\begin{algorithm}[H]
     \SetAlgoLined
@@ -203,7 +203,7 @@ El método SA es un algoritmo de búsqueda meta-heurística para problemas de op
 
 Cada celda recibe una entrada ponderada por los pesos correspondientes a la capa anterior. La compuerta de entrada se encarga de de permitir o impedir el acceso de estos valores al CEC del interior de la celda. La compuerta de salida realiza una acción similar sobre la salida de la celda, tolerando o reprimiendo la difusión del estado del CEC al resto de la red.
 
-Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina nerupna de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
+Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina neurona de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LiuShenxiu.pdf

@@ -3,14 +3,14 @@
 %[Bishop] Neural Network for pattern recognition :: 77 y 116
 Las redes neuronales ({\em Neural Networks}, NN) son sistemas de procesamiento de información que basan su estructura en una analogía de las redes neuronales biológicas. Consisten en un conjunto de elementos de procesamiento simple llamados nodos, estos nodos están dispuestos en una estructura jerarquica y conectadas entre si por un valor numérico llamado peso que, mediante un proceso de entrenamiento, varia su valor.
 
-La actividad que una neurona realiza en una NN es simple. El proceso consiste en ponderar las entradas de la neurona por los pesos de las conexiones de la neurona para luego ser sumadas y entregadas a la función de activación asociada a la neurona \cite{McCulloch1943}. La salida corresponderá a la respuesta que la neurona genera a la entrada que se presentada.
+La actividad que una neurona realiza en una NN consiste en ponderar las entradas de la neurona por los pesos de las conexiones de la neurona para luego ser sumadas y entregadas a la función de activación asociada \cite{McCulloch1943}. La salida corresponderá a la respuesta que la neurona genera a la entrada.
 
-Las neuronas con una función de activación umbral, fueron estudiadas por \citeA{Rosenblatt1962} quién las denominó {\em perceptrón}. El modelo básico se compone de 3 capas conectadas consecutivamente. La primera capa corresponde a la capa de entrada, que recibe el patrón de entrada a clasificar. La segunda capa contiene las neuronas de asociación o detección de características. Y la tercera capa es la capa de salida, que contiene las neuronas que reconocen los patrones. La limitación de los perceptrones se debe a capacidad de clasificación basado en el umbral, lo que no permite clasificar patrones mas complejos.
+Las neuronas con una función de activación umbral, fueron estudiadas por \citeA{Rosenblatt1962} quién las denominó {\em perceptrón}. El modelo básico se compone de 3 capas conectadas consecutivamente. La primera capa corresponde a la capa de entrada, que recibe el patrón de entrada a clasificar. La segunda capa contiene las neuronas de asociación o detección de características. Y la tercera capa es la capa de salida, que contiene las neuronas que reconocen los patrones. La limitación de los perceptrones se debe a la capacidad de clasificación basado en el umbral, lo que no permite clasificar patrones más complejos.
 
 El conjunto de $n$ neuronas se llamará capa, y una NN puede estar compuesta de una o más capas. Cada capa estará compuesta por una cantidad de neuronas que no necesariamente será la misma para todas las capas, y estarán dispuesta en forma consecutiva de tal manera que las capas se conecten unas con otras y siempre hacia adelante. La primera capa, la de entrada, recibirá un patrón que será entregado a las distintas neuronas que la capa posea. Cada neurona de la capa de entrada procesará los datos y generará una salida que servirá de entrada para la capa siguiente, repitiendo el proceso para cada una de las capas de la NN hasta llegar a la capa de salida, en cuyo caso la salida representará la respuesta de la red, concretando así el ciclo.
 
 % https://www.neuraldesigner.com/blog/5_algorithms_to_train_a_neural_network
-Las NN han sido utilizadas para la clasificación de entradas, y han sido diseñados diversos métodos para entrenar la red y que los pesos se adapten de tal manera que la salida de la red sea representativa de la salida esperada, a esto método de entrenamiento se le llama supervisado. Dentro de los métodos clásicos de entrenamiento se encuentra el método del gradiente descendente, el método de Newton, el gradiente conjugado, el método quasi-Newton, o el algoritmo Levenberg-Marquardt. El más utilizado es el método del gradiente, que consiste en actualizar los pesos de las distintas neuronas en función de la dirección contraría al gradiente de la función de activación, logrando minimizar el error.
+Las NN han sido utilizadas para la clasificación de entradas, y han sido diseñados diversos métodos para entrenar la red y que los pesos se adapten, de tal manera que la salida de la red sea representativa de la salida esperada; a este método de entrenamiento se le llama supervisado. Dentro de los métodos clásicos de entrenamiento se encuentra el método del gradiente descendente, el método de Newton, el gradiente conjugado, el método quasi-Newton, o el algoritmo Levenberg-Marquardt. El más utilizado es el método del gradiente, que consiste en actualizar los pesos de las distintas neuronas en función de la dirección contraría al gradiente de la función de activación, logrando minimizar el error.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% BACKPROPAGATION
@@ -39,7 +39,7 @@ Así la actualización se realiza como en la ecuación \ref{eq:bp_wupdate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% MÉTODO QUASI-NEWTON
-El método quasi-Newton utiliza el cálculo de las segundas derivadas de la función objetivo, se obtiene una mejor comprensión de la topología de la función, que conduce a su vez a elegir una dirección decente más eficiente. Dejar:
+El método quasi-Newton utiliza el cálculo de las segundas derivadas de la función objetivo, se obtiene una mejor comprensión de la topología de la función, que conduce a su vez a elegir una dirección decendente más eficiente. Dejar:
 \begin{eqnarray}
 	\Delta W(n) &=& \lambda(n)S(n)
 \end{eqnarray}
@@ -98,7 +98,7 @@ Para que las direcciones de descenso permanezcan conjugadas, la búsqueda unidir
 
 \section{Descripción del problema}
 % USAR [2003b] Squartini S, Hussain A, Piazza F
-La retropropagación basa su funcionamiento en la regla de la cadena para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red él gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para una red de muchas capas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
+La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red él gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
 
 \section{Solución propuesta}
 \subsection{Características de la solución}
@@ -108,19 +108,24 @@ Mediante el uso de el algoritmo {\em simulated annealing} se busca analizar la e
 El propósito de la solución es aportar en el campo de las redes neuronales y la clasificación de datos, proporcionando un análisis comparativo de la convergencia de distintas redes.
 \section{Objetivos y alcances del proyecto}
 \subsection{Objetivo general}
-Evaluar el desempeño del algoritmo {\em simulated annealing} y su efecto sobre entrenamiento de redes neuronales profundas.
+Evaluar el desempeño del algoritmo {\em simulated annealing} y su efecto sobre el entrenamiento de redes neuronales profundas.
 
 \subsection{Objetivos específicos}
 Los objetivos establecidos para el presente trabajo son descritos a continuación
 \begin{enumerate}
-    \item Definir las reglas de aprendizaje a implementar.
-    \item Construir los conjuntos de datos de entrada y salida a analizar.
+	\item Definir las reglas de aprendizaje a implementar.
+	\item Construir los conjuntos de datos de entrada y salida a analizar.
 	\item Establecer los parámetros de las redes neuronales para la experimentación.
+	\item Establecer los algoritmos de aprendizaje a comparar.
 	\item Entrenar las redes con los distintos conjuntos de datos.
-    \item Establecer las conclusiones del trabajo.
+	\item Establecer las conclusiones del trabajo.
 \end{enumerate}
 
 \subsection{Alcances}
+\begin{enumerate}
+	\item Se analizará la misma arquitectura con diferentes reglas de aprendizaje.
+	\item Los conjunto de datos para el entrenamiento a utilizar son los propuestos en \cite{Morse2016}.
+\end{enumerate}
 
 \section{Metodología y herramientas utilizadas}
 \subsection{Metodología de trabajo}
@@ -131,13 +136,13 @@ Considerando el aspecto investigativo del trabajo, se considera la utilización 
 
 	\item Marco teórico: Una revisión de la literatura donde se aborda el problema planteado, para situarse en el contexto actual de los problemas. Se describirán redes neuronales que buscan solucionar el mismo problema.
 
-	\item Diseño de la solución: Se deberá diseñar el experimento para generar los datos que permitan sustentar las comparaciones entre las distintas redes. Diseñar y ejecutar el experimento basado en entradas equivalentes.
+	\item Diseño de la solución: Se deberá diseñar el experimento para generar los datos que permitan sustentar las comparaciones entre las distintas redes.% Diseñar y ejecutar el experimento basado en entradas equivalentes.
 
 	\item Análisis y verificación de los resultados: Los resultados se analizarán considerando los valores de convergencia de los distintos métodos.
 
 	\item Presentación de los resultados: Se presentarán tablas que describan los resultados obtenidos y que se consideren pertinentes.
 
-	\item Conclusiones obtenidas en el desarrollo de la investigación.
+	\item Conclusiones obtenidas en el desarrollo de Tla investigación.
 \end{itemize}
 
 \subsection{Herramientas de desarrollo}
@@ -145,9 +150,9 @@ Para el desarrollo y ejecución de los experimentos se utilizará un equipo con 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|}\hline
-        Sistema Operativo	& Solus 2017.04.18.0 64-bit\\\hline
-        Procesador				 & Intel$^\circledR$ Core\texttrademark i5-2450M CPU @ 2.50GHz x 4\\\hline
-        RAM							  & 7.7Gb\\\hline
+		Sistema Operativo	& Solus 2017.04.18.0 64-bit\\\hline
+		Procesador				 & Intel$^\circledR$ Core\texttrademark i5-2450M CPU @ 2.50GHz x 4\\\hline
+		RAM							  & 7.7Gb\\\hline
 		Gráficos					& Intel$^\circledR$ Sandybridge Mobile\\\hline
 		Almacenamiento	   & 935.6 GB\\\hline
 	\end{tabular}
@@ -156,7 +161,7 @@ Para el desarrollo y ejecución de los experimentos se utilizará un equipo con 
 
 El software que se utilizará es:
 \begin{itemize}
-	\item Plataforma de desarrollo: Atom.
+	%\item Plataforma de desarrollo: Atom.
 	\item Lenguaje de programación: Python.
 	\item Sistema de redes neuronales: Keras API \cite{Keras2015}.
 	\item Herramienta ofimática: \LaTeX.
