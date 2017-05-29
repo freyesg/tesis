@@ -1,26 +1,11 @@
 \chapter{Aspectos teóricos y revisión de la literatura}
-\section{Aspectos teóricos}
-\subsection{Algoritmo de retropropagación}
-El elemento básico de las redes neuronales ({\em Neural Networks}, NN) es el nodo, que recibe un vector de entrada para producir una salida. Cada entrada tiene asociado un vector de pesos $w$, que se va modificando durante el proceso de aprendizaje. Cada unidad aplica una función $f$ sobre la suma ponderada de las entradas
-%\begin{eqnarray}
-%	$$ y_{i} = \sum_{j} w_{ij}y_{j}\label{eq:entrada} $$
-%\end{eqnarray}
-donde el resultado puede servir como entrada de otras unidades.
+En esta sección se abarcan los aspectos relacionados al conocimiento general para la comprensión del presente trabajo y la revisión de la literatura asociada al trabajo presentado. Para realizar un análisis de la eficiencia en la convergencia de los algoritmos de aprendizaje es necesario conocer la base teórica de ésta. Para ellos, se describen los conceptos necesarios de las redes neuronales y el desvanecimiento del gradiente. La sección \ref{sec:aspectos_teoricos} se centra en explicar las partes fundamentales para el entendimiento del problema en cuestión.
 
-Existen dos fases importante dentro del modelo
-\begin{itemize}
-	\item Fase de entrenamiento: Se usa un conjunto de datos o patrones de entrenamiento para determinar los pesos que definen el modelo de la NN. Se calculan de manera iterativa, de acuerdo con los valores de entrenamiento, con el objeto de minimizar el error cometido entre la salida obtenida por la NN y la salida deseada.
-
-	\item Fase de prueba: Durante el entrenamiento, el modelo se ajusta al conjunto de entrenamiento, perdiendo la habilidad de generalizar su aprendizaje a casos nuevos, a esta situación se le llama sobreajuste.
-	Para evitar el sobreajuste, se utiliza un segundo grupo de datos diferentes, el conjunto de validación, que permitirá controlar el proceso de aprendizaje.
-\end{itemize}
-Los pesos óptimos se obtienen minimizando una función. Uno de los criterios utilizados es la minimización del error cuadrático medio entre el valor de salida y el valor real esperado.
-
-
-\subsection{El perceptrón multicapa}
+\section{Aspectos teóricos}\label{sec:aspectos_teoricos}
+\subsection{El perceptrón multicapa y su arquitectura}
 Dentro de las redes neuronales, el perceptrón multicapa es una de las arquitecturas más usadas para resolver problemas. Esto es debido a que poseen la capacidad de ser un aproximador universal \cite{Minsky1969b}. Esto no implica que sea una de las redes más potentes o con mejores resultados, el perceptrón multicapa posee una serie de limitaciones, como el proceso de aprendizaje para problemas que dependan de un gran número de variables, la dificultad para realizar un análisis teórico de la red debido a la presencia de componentes no lineales y a la alta conectividad.
 
-\subsubsection{Arquitectura}
+%\subsubsection{Arquitectura}
 El perceptron multicapa posee una estructura de capas compuestas por neuronas. Cada una de las capas está formada por un conjunto de neuronas y se distinguen tres tipos de capas: la capa de entrada, las capas ocultas y la capa de salida.
 
 \begin{imagen}
@@ -31,8 +16,19 @@ El perceptron multicapa posee una estructura de capas compuestas por neuronas. C
 
 En la figura \ref{fig:neurona} se observa que las conexiones van siempre hacia adelante. Las neuronas de la capa $l$ se conectan con las neuronas de la capa $l + 1$. Las neuronas de la capa de entrada se encargan de recibir los patrónes y propagar dichas señales a las neuronas de la capa siguiente. La última capa, la capa de salida, proporciona la respuesta de la red al patrón presentado. Las neuronas de las capas ocultas realizan el procesado de las señales generadas por el patrón de entrada.
 
-\subsubsection{Propagación de la entrada y el algoritmo de retropropagación}
+\subsection{Propagación de la entrada y el algoritmo de retropropagación}
 El perceptrón multicapa define una relación entre la entrada y la salida. Esta relación se obtiene propagando hacia adelante los valores de las variables de entrada, es por esto que también se les llama redes {\em feedforward}. Cada neurona de la red procesa la entrada recibida y produce una respuesta que se propaga, mediante las conexiones, hacia las neuronas de la capa siguiente.
+
+Existen dos fases importante dentro del modelo
+\begin{itemize}
+	\item Fase de entrenamiento: Se usa un conjunto de datos o patrones de entrenamiento para determinar los pesos que definen el modelo de la NN. Se calculan de manera iterativa, de acuerdo con los valores de entrenamiento, con el objeto de minimizar el error cometido entre la salida obtenida por la NN y la salida deseada.
+
+	Los pesos óptimos se obtienen minimizando una función. Uno de los criterios utilizados es la minimización del error cuadrático medio entre el valor de salida y el valor real esperado.
+
+	\item Fase de prueba: Durante el entrenamiento, el modelo se ajusta al conjunto de entrenamiento, perdiendo la habilidad de generalizar su aprendizaje a casos nuevos, a esta situación se le llama sobreajuste.
+
+	Para evitar el sobreajuste, se utiliza un segundo grupo de datos diferentes, el conjunto de validación, que permitirá controlar el proceso de aprendizaje.
+\end{itemize}
 
 Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde $W_c = (w^{c}_{ij})$ es la matriz de pesos, $w^{c}_{ij}$ representará el peso de la conexion de la neurona $i$ de la capa $c$ hasta la neurona $j$ de la capa siguiente. Denotaremos $a^{c}_{i}$ a la activación de la neurona $i$ de la capa $c$ que se calcula de la siguiente manera:
 \begin{itemize}
@@ -137,8 +133,8 @@ para todo $m$, el producto en (\ref{eq:vanishing}) decrece exponencialmente con 
 
 \begin{imagen}
 	\scalebox{1.0}{\input{img/vanishing_img}}
-	\label{fig:vanishing}
 	\caption{Gradiente descendente}
+	\label{fig:vanishing}
 \end{imagen}
 
 \section{Revisión de la literatura}
@@ -204,6 +200,8 @@ El método SA es un algoritmo de búsqueda meta-heurística para problemas de op
 Cada celda recibe una entrada ponderada por los pesos correspondientes a la capa anterior. La compuerta de entrada se encarga de de permitir o impedir el acceso de estos valores al CEC del interior de la celda. La compuerta de salida realiza una acción similar sobre la salida de la celda, tolerando o reprimiendo la difusión del estado del CEC al resto de la red.
 
 Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina neurona de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
+
+% http://zacklipton.com/media/papers/recurrent-network-review-lipton-2015v2.pdf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LiuShenxiu.pdf

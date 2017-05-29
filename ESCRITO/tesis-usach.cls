@@ -9,6 +9,7 @@
 \ProvidesClass{tesis-usach}
 
 
+
 \newif\if@uno
 \DeclareOption{ppt1}{\@unotrue}
 
@@ -51,13 +52,9 @@
 	{0pt} % espacio mínimo entre etiqueta y cuerpo
 	{\filright\MakeUppercase} %código que precede al cuerpo del título
 	[\vspace{1.5pt}] %1,5
-
 	\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
-
 	\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
-
 	\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
-
 
 	\titlespacing*{\chapter} {0pt}{85pt}{20pt}
 	\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
@@ -114,6 +111,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figuras y tablas
 \RequirePackage[pdftex]{graphicx} % PDFLaTeX
+%\RequirePackage[font=small]{caption}
 \RequirePackage{float}
 \RequirePackage{multicol}
 \RequirePackage{multirow}
@@ -513,15 +511,7 @@
 \RequirePackage{xkeyval}
 \makeatletter
 \define@key{tikzimg}{scale}{\def\escala{#1}}
-%\define@key{makecopyright}{by}[false]{\newif\ifby\by#1}
 \makeatother
-%\define@key{imagen}{b}{\renewcommand*\verbsetb{#1}}
-
-%\define@key{mybox}{background}{\def\background{#1}}
-%\def\mybox{\@ifnextchar[\@mybox{\@mybox[]}}
-%\def\@mybox[#1]#2{%
-%	\setkeys{mybox}{#1}%
-%}
 
 \newcommand{\makecopyright}{
 	%\setkeys{makecopyright}{#1}%
@@ -549,4 +539,38 @@
 	\centering
 } {
 	\end{figure}
+}
+
+\hypersetup{
+    bookmarksopen, bookmarksnumbered, pdfdisplaydoctitle=true,
+    pdftitle=\@title,
+    pdfauthor=\@autor,
+    pdfsubject=Tesis de grado,
+    pdfkeywords=,
+    pdfcreator=Universidad de Santiago de Chile,
+    pdfproducer=Felipe Reyes Gonz\'{a}lez,
+    colorlinks=true,
+    % linkcolor=red,
+    % citecolor=green,
+    % filecolor=magenta,
+    % urlcolor=cyan,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=black,
+    linkbordercolor={1 0 0},
+    citebordercolor={0 1 0}
+}
+
+\addto\captionsspanish{
+    \def\bibname{REFERENCIAS BIBLIOGRÁFICAS}
+    \def\contentsname{TABLA DE CONTENIDO}
+    \def\listtablename{ÍNDICE DE TABLAS}
+    \def\listfigurename{ÍNDICE DE ILUSTRACIONES}
+    \def\listalgorithmname{ÍNDICE DE ALGORITMOS}
+    \def\appendixname{APÉNDICE}
+    \def\tablename{Tabla}
+    \def\figurename{Figura}
+    \def\lstlistingname{Código}
+    \def\chaptername{Capítulo}
 }
