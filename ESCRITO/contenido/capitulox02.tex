@@ -90,12 +90,6 @@ El algoritmo de retropropagación es el método de entrenamiento más utilizado 
 \end{enumerate}
 
 
-
-
-
-
-
-
 % http://neuralnetworksanddeeplearning.com/chap5.html
 % ME ESTOY BASANDO EN : [1998b] Hochreiter
 \subsection{El desvanecimiento del gradiente}
@@ -149,37 +143,63 @@ Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter
 
 %% 17B. A. Pearlmutter, "Gradient calculations for dynamic recurrent neural networks: A survey", IEEE Transactions on Neural Networks, 6(5):1212{1228 (1995).
 
+\subsection{Gradiente descendente}
+\subsection{Gradiente estocástico descendente}
+% http://www.ctrl.cinvestav.mx/~yuw/pdf/MaTesER.pdf
+El método del gradiente estocástica descendente ({\em Stochastic gradient descent}, SGD) es una aproximación estocástica del método del gradiente descendente para la minimización de la función objetivo mediante la actualización de los pesos en cada iteración.
 
-\subsection{Métodos de búsqueda global}
-Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing} (SA), {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
-
-El método SA es un algoritmo de búsqueda meta-heurística para problemas de optimización global. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, en el caso de que al evaluar la perturbación se obtenga un mejor desempleo que la solución actual, se actualizará la solución actual; y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
-
-\scalebox{0.8}{\begin{algorithm}[H]
+\begin{algorithm}[H]
     \SetAlgoLined
-	\DontPrintSemicolon
-	\KwData{Temperatura $T$, constante de Boltzmann $k$, factor de reducción $c$}
-	Seleccionar el mejor vector solución $x_{0}$ a optimizar\;
-	\While{El criterio no se cumpla}{
-		\While{Existan soluciones en el conjunto}{
-			Seleccionar una solución $x_{0} + \Delta x$\;
-			\uIf{$f(x_{0} + \Delta x) < f(x_{0})$}{
-				$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
-			}
-			\Else{
-				$\Delta f = f(x_{0} + \Delta x) - f(x_{0})$\;
-				\uIf{$rand(0, 1) > \exp{(-\Delta f/kT}$)}{
-					$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
-				}\Else{
-					$f_{new} = f(x_{0})$\;
-				}
-			}
-			$f = f_{new}$; $T = cT$\;
-		}
+	\KwData{Vector de pesos $W$, taza de aprendizaje $\eta$, conjunto $S$ de entrenamiento}
+	\Repeat{}{
+		Mezclar en forma aleatoria el conjunto $S$\;
+		Evaluar la red con un patrón y calcular el error\;
+		Actualizar los pesos $W = W - \eta\nabla Q_{i}(W)$\;
 	}
-	\caption{Simulated annealing}
-	\label{alg:sa}
-\end{algorithm}}
+	\caption{SGD}
+	\label{alg:sgd}
+\end{algorithm}
+
+El algoritmo SGD (ver \ref{alg:sgd}) trabaja como el método del gradiente descendente tradicional, pero acelera su funcionamiento
+% http://climin.readthedocs.io/en/latest/rmsprop.html
+\subsection{RMSProp}
+\citeA{Tieleman2012} presentan un optimizador que utiliza la magnitud del gradiente para normalizar los gradientes. Siempre mantiene una media móvil sobre la raíz cuadrática media de los gradientes, por el cual se divide el gradiente actual. Sea $f'(\theta_{t})$ la derivada de la función de pérdida con respecto a los parámetros en la etapa $t$ del tiempo. En su forma básica, dada una tasa de paso $\alpha$ y un término de decaimiento $\gamma$ se realizan las siguientes actualizaciones:
+\begin{eqnarray}
+	r_{t} &=& (1 - \gamma)f'(\theta_{t})^2 + \gamma r_{t - 1}\\
+	v_{t + 1} &=& \frac{\alpha}{\sqrt{r_{t}}}f'(\theta_{t})\\
+	\theta_{t + 1} &=& \theta_{t} - v_{t + 1}
+\end{eqnarray}
+
+%\subsection{Métodos de búsqueda global}
+%Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing} (SA), {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
+%
+%El método SA es un algoritmo de búsqueda meta-heurística para problemas de optimización global. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, en el caso de que al evaluar la perturbación se obtenga un mejor desempleo que la solución actual, se actualizará la solución actual; y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
+%
+%\scalebox{0.8}{\begin{algorithm}[H]
+%    \SetAlgoLined
+%	\DontPrintSemicolon
+%	\KwData{Temperatura $T$, constante de Boltzmann $k$, factor de reducción $c$}
+%	Seleccionar el mejor vector solución $x_{0}$ a optimizar\;
+%	\While{El criterio no se cumpla}{
+%		\While{Existan soluciones en el conjunto}{
+%			Seleccionar una solución $x_{0} + \Delta x$\;
+%			\uIf{$f(x_{0} + \Delta x) < f(x_{0})$}{
+%				$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+%			}
+%			\Else{
+%				$\Delta f = f(x_{0} + \Delta x) - f(x_{0})$\;
+%				\uIf{$rand(0, 1) > \exp{(-\Delta f/kT}$)}{
+%					$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+%				}\Else{
+%					$f_{new} = f(x_{0})$\;
+%				}
+%			}
+%			$f = f_{new}$; $T = cT$\;
+%		}
+%	}
+%	\caption{Simulated annealing}
+%	\label{alg:sa}
+%\end{algorithm}}
 
 
 
@@ -193,32 +213,33 @@ El método SA es un algoritmo de búsqueda meta-heurística para problemas de op
 %Las técnicas de filtrado de Kallman se utilizan para el entrenamiento de redes recurrentes \cite{Puskorius1994}. Sin embargo, un factor de descuento derivado conduce a problemas de desvanecimiento del gradiente.
 %Si un problema de retraso a largo plazo contiene regularidades locales, un sistema jerárquico chunket funciona bien \cite{Schmidhuber1992a}.
 
-%\subsubsection{(iv) Métodos que utilizan arquitecturas especiales}
-\subsection{El modelo de memoria a corto y largo plazo}
-\citeA{Hochreiter1997a} introdujeron el modelo de memoria a corto y largo plazo ({\em Long short-term memory}, LSTM) como solución al problema del devanecimiento del gradiente. La red LSTM se basa en el bloque de memoria, que se componse de una o más celdas de memoria, una compuerta de entrada y una compuerta de salida. Las entradas son unidades multiplicativas con activación continua y son compartidas por todas las celdas de un mismo bloque de memoria. Cada celda contiene una unidad lineal con una conexión recurrente local llamada carrusel de error constante (CEC), se conocerá como estado de la celda a la activación del CEC.
-
-Cada celda recibe una entrada ponderada por los pesos correspondientes a la capa anterior. La compuerta de entrada se encarga de de permitir o impedir el acceso de estos valores al CEC del interior de la celda. La compuerta de salida realiza una acción similar sobre la salida de la celda, tolerando o reprimiendo la difusión del estado del CEC al resto de la red.
-
-Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina neurona de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
-
-% http://zacklipton.com/media/papers/recurrent-network-review-lipton-2015v2.pdf
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% LiuShenxiu.pdf
-% Conquering vanishing gradient: Tensor Tree LSTM on aspect-sentiment classification
-% - Tree-structures LSTMs
-% - Tensor Tree LSTM
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Lipton2015
-% Truncated backpropagation through time (TBPTT) is one solution to the exploding gradient problem for continuously running networks [Williams and Zipser, 1989]
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Squartini2003a
-% PREPROCESSING BASED SOLUTION FOR THE VANISHING
-% Squartini2003b
-% Attempting to reduce the vanishing gradient effect through a novel recurrent multiscale architecture
-\subsection{Preprocesamiento de la señal}
-\citeA{Squartini2003a} propone pre-procesar la señal de entrada a través de una descomposición wavelet, buscando separar la información a corto plazo de la información a largo plazo, y entrenando diferentes NN. Los resultados son combinados para alcanzar el objetivo final. Este enfoque simplifica el proceso de aprendizaje de la NN, evitando cambios relevantes en la arquitectura de la red y las técnicas de aprendizaje.
+%%\subsubsection{(iv) Métodos que utilizan arquitecturas especiales}
+%\subsection{El modelo de memoria a corto y largo plazo}
+%\citeA{Hochreiter1997a} introdujeron el modelo de memoria a corto y largo plazo ({\em Long short-term memory}, LSTM) como solución al problema del devanecimiento del gradiente. La red LSTM se basa en el bloque de memoria, que se componse de una o más celdas de memoria, una compuerta de entrada y una compuerta de salida. Las entradas son unidades multiplicativas con activación continua y son compartidas por todas las celdas de un mismo bloque de memoria. Cada celda contiene una unidad lineal con una conexión recurrente local llamada carrusel de error constante (CEC), se conocerá como estado de la celda a la activación del CEC.
+%
+%Cada celda recibe una entrada ponderada por los pesos correspondientes a la capa anterior. La compuerta de entrada se encarga de de permitir o impedir el acceso de estos valores al CEC del interior de la celda. La compuerta de salida realiza una acción similar sobre la salida de la celda, tolerando o reprimiendo la difusión del estado del CEC al resto de la red.
+%
+%Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina neurona de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
+%
+%% http://zacklipton.com/media/papers/recurrent-network-review-lipton-2015v2.pdf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LiuShenxiu.pdf
+%% Conquering vanishing gradient: Tensor Tree LSTM on aspect-sentiment classification
+%% - Tree-structures LSTMs
+%% - Tensor Tree LSTM
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Lipton2015
+%% Truncated backpropagation through time (TBPTT) is one solution to the exploding gradient problem for continuously running networks [Williams and Zipser, 1989]
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Squartini2003a
+%% PREPROCESSING BASED SOLUTION FOR THE VANISHING
+%% Squartini2003b
+%% Attempting to reduce the vanishing gradient effect through a novel recurrent multiscale architecture
+%\subsection{Preprocesamiento de la señal}
+%\citeA{Squartini2003a} propone pre-procesar la señal de entrada a través de una descomposición wavelet, buscando separar la información a corto plazo de la información a largo plazo, y entrenando diferentes NN. Los resultados son combinados para alcanzar el objetivo final. Este enfoque simplifica el proceso de aprendizaje de la NN, evitando cambios relevantes en la arquitectura de la red y las técnicas de aprendizaje.
+%
