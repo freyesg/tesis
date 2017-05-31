@@ -14,7 +14,7 @@ El perceptron multicapa posee una estructura de capas compuestas por neuronas. C
 	\label{fig:neurona}
 \end{imagen}
 
-En la figura \ref{fig:neurona} se observa que las conexiones van siempre hacia adelante. Las neuronas de la capa $l$ se conectan con las neuronas de la capa $l + 1$. Las neuronas de la capa de entrada se encargan de recibir los patrónes y propagar dichas señales a las neuronas de la capa siguiente. La última capa, la capa de salida, proporciona la respuesta de la red al patrón presentado. Las neuronas de las capas ocultas realizan el procesado de las señales generadas por el patrón de entrada.
+En la figura \ref{fig:neurona} se observa que las conexiones van siempre hacia adelante. Las neuronas de la capa $l$ se conectan con las neuronas de la capa $l + 1$. Las neuronas de la capa de entrada se encargan de recibir los patrones y propagar dichas señales a las neuronas de la capa siguiente. La última capa, la capa de salida, proporciona la respuesta de la red al patrón presentado. Las neuronas de las capas ocultas realizan el procesado de las señales generadas por el patrón de entrada.
 
 \subsection{Propagación de la entrada y el algoritmo de retropropagación}
 El perceptrón multicapa define una relación entre la entrada y la salida. Esta relación se obtiene propagando hacia adelante los valores de las variables de entrada, es por esto que también se les llama redes {\em feedforward}. Cada neurona de la red procesa la entrada recibida y produce una respuesta que se propaga, mediante las conexiones, hacia las neuronas de la capa siguiente.
@@ -60,7 +60,7 @@ Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde
 	\label{tab:f_activacion}
 \end{table}
 
-La función $f$ es la función de activación de la neurona. Aunque existe gran variedad de funciones de activación (ver table \ref{tab:f_activacion}), las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
+La función $f$ es la función de activación de la neurona. Aunque existe gran variedad de funciones de activación (ver tabla \ref{tab:f_activacion}), las funciones de activación más utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
 \begin{eqnarray}
 	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}\\
 	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
@@ -107,14 +107,14 @@ El algoritmo de retropropagación es el método de entrenamiento más utilizado 
 \begin{enumerate}
 	\item Se aplica un patrón de entrada, el cual se propaga por las distintas capas que componen la red hasta producir la salida de la misma. Esta salida se compara con la salida deseada y se calcula el error cometido por cada neurona de salida.
 
-	\item Estos errores se transmiten desde la capa de salida, hacia todas neuronas de las capas anteriores \cite{Fritsch1996}. Cada neurona recibe un error que es proporcional a su contribución sobre el error total de la red. Basándose en el error recibido, se ajustan los errores de los pesos sinápticos de cada neurona.
+	\item Estos errores se transmiten desde la capa de salida, hacia todas las neuronas de las capas anteriores \cite{Fritsch1996}. Cada neurona recibe un error que es proporcional a su contribución sobre el error total de la red. Basándose en el error recibido, se ajustan los errores de los pesos sinápticos de cada neurona.
 \end{enumerate}
 
 
 % http://neuralnetworksanddeeplearning.com/chap5.html
 % ME ESTOY BASANDO EN : [1998b] Hochreiter
 \subsection{El desvanecimiento del gradiente}\label{sec:desvanecimiento_del_gradiente}
-El problema del gradiente desvaneciente nace en las NN profundas, éstas utilizan funciones cuyo gradiente se encuentran entre 0 y 1. Debido a que estos gradientes pequeños se multiplican durante la retropropagación, tienden a {\em desvanecerse} a través de las capas, evitando que la red aprenda.
+El problema del gradiente desvaneciente nace en las NN profundas, éstas utilizan funciones cuyo gradiente se encuentran entre 0 y 1. Debido a que estos gradientes pequeños se multiplican durante la retropropagación, tienden a desvanecerse a través de las capas, evitando que la red aprenda.
 
 Si se tiene una NN, la activación de una neurona de una capa intermedia $i$ con función de activación $f_i$ y con entrada $$ net_{i}(t) = \sum_{j}w_{ji}y^{j}(t - 1) $$ es $$y^{i}(t) = f_{i}(net_{i}(t))$$ Además $w_{ji}$ es el peso de la conexión desde la unidad $j$ de la capa anterior hasta la unidad $i$ de la capa actual, $d_{k}(t)$ será la respuesta esperada de la unidad $k$ de la capa de salida en el tiempo $t$. Usando el error cuadrático medio ({\em Mean square error}, MSE), el error de $k$ será
 $$ E_{k}(t) = (d_{k}(t) - y^{k}(t))^2 $$
