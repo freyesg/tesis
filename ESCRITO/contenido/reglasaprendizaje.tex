@@ -1,0 +1,74 @@
+El aprendizaje de las NN resulta ser difícil debido a la propagación de la señal a través de unidades no lineales. El primer algoritmo fue la retropropagación del error \cite{Werbos1974, Rumelhart1986}, existiendo distintas alternativas.
+
+\subsection{Retropropagación del error}
+El método de retropropagación del error busca minimizar una función de error, como puede ser el error cuadrático medio ({\em Mean square error}, MSE) entre las respuestas calculadas por la red y las respuestas deseadas, para luego modificar los pesos de la NN en cada epoca.
+
+El algoritmo consta de dos fases, la primera consiste en propagar la señal desde la capa de entrada hacia la capa de salida a través de las capas ocultas. La segunda fase se realiza la corrección de los pesos de la NN en sentido inverso, es decir, desde la capa de salida hacia la capa de entrada.
+
+\subsection{Levenberg-Marquardt}
+El método de Levenberg-Marquardt (LM) \cite{Levenberg1944, Marquardt1963} es propuesto originalmente en \cite{Marquardt1963}, pero es \citeA{Hagan1994} quién lo utiliza por primera vez en una NN. El método se basa en el método de Newton, que es un método de segundo orden. El paso básico del método de Newton durante una éopca $n$ es
+\begin{eqnarray}
+	W(n + 1) &=& W(n) - H(n)^{-1}g(n)
+\end{eqnarray}
+
+donde $W$ es el vector de pesos, $g(n)$ es el vector gradiente actual y $H(n)$ es la matriz Hessiana de la función de error respecto de los pesos. El método de Newton converge mas rápido que los métodos de gradiente conjugado.
+
+El algoritmo LM fue diseñado para realizar entrenamientos rápidos de segundo orden sin necesidad de calcular la matriz Hessiana. En el caso que la función de error tiene la forma de una suma de cuadrados, la matriz Hessiana es posible aproximarla como en la ecuación \ref{eq:lm_hessiana}
+\begin{eqnarray}
+	H &=& J^{T}J\label{eq:lm_hessiana}
+\end{eqnarray}
+
+ donde $J$ es la matriz Jacobiana que contiene las primeras derivadas de la función de error de la red respecto de los pesos de la NN, mientras que el gradiente se obtendrá como se muestra en la ecuación \ref{eq:lm_grad}
+ \begin{eqnarray}
+	 g &=& J^{T}e\label{eq:lm_grad}
+ \end{eqnarray}
+
+siendo $e$ el vector de errores de la red. El cálculo de la matriz Jacobiana se reduce a un cálculo del método de retropropagación \cite{Hagan1994} mas sencillo que el calculo de la matriz Hessiana.
+
+El método actualizará los pesos de forma similar a como lo hace el método de Newton:
+\begin{eqnarray}
+	W(n + 1) &=& W(n) - [J^{T}J + \alpha I]^{-1}J^{T}e
+\end{eqnarray}
+
+donde $\alpha$ es la tasa de aprendizaje. Cuando $\alpha$ es igual a cero, el método se convierte en el método de Newton utilizando una aproximación del calculo de la matriz Hessiana
+\begin{eqnarray}
+	W(n + 1) &=& W(n) - H(n)^{-1}g(n)
+\end{eqnarray}
+
+y cuando $\alpha$ es grande, el aporte de la matriz Hessiana es despreciable, obteniendo como resultado el método del gradiente descendente con una tasa de aprendizaje $\frac{1}{\alpha}$
+\begin{eqnarray}
+	W(n + 1) &=& W(n) - \frac{1}{\alpha}g(n)
+\end{eqnarray}
+
+\subsection{Regularización bayesiana}
+El método de regularización bayesiana (BR) consiste en modificar la función de costo. La función de costo mas utilizada es el MSE, que es la suma de cuadrados de los errores individuales $e_{i}$ (ver \ref{eq:mse})
+\begin{eqnarray}
+	MSE_{d} = \frac{1}{N}\sum_{i = 1}^{N}e_{i}^{2}\label{eq:mse}
+\end{eqnarray}
+
+El método de BR consiste en mejorar la capacidad de generalización del modelo. A la función de coste de la ecuación \ref{eq:mse} se le agrega el término $MSE_{w}$, que incluye el efecto de la suma de cuadrados de los pesos de la NN
+\begin{eqnarray}
+	MSE_{w} &=& \frac{1}{N}\sum_{i = 1}^{N}w_{i}^{2}
+\end{eqnarray}
+
+Y la función de coste śe obtendría de la siguiente manera
+\begin{eqnarray}
+	MSE &=& \beta MSE_{d} + \mu MSE_{w}
+\end{eqnarray}
+
+donde $\beta$ y $\mu$ son parámetros que deben ser ajustados según la metodología Bayesiana de MacKay \cite{MacKay1992a, MacKay1992b}. La metodología asume que los pesos son variables aleatorias que sond escritas por distribuciones específicas, comunmente Gaussianas. Los parámetros de regularización están relacionados con las varianzas desconocidas asociadas a estas distribuciones, y es posible estimarlas mediante técnicas estadísticas. Una de las particularidades del algoritmo es que proporciona una medida de cuántos parámetros de la NN están siendo utilizados.
+
+\subsection{Retropropagación resiliente}
+En las capas ocultas de las NN se utilizan con frecuencia funciones de activación sigmoidales, y estas reducen la entrada a un rango finito de salida. Se caracterizan por sus pendientes próximas a cero para entradas muy grandes, y esto representa un problema cuando se utiliza el gradiente descendente para el entrenamiento, pues se acentúa el problema del desvanecimiento del gradiente descrito en la sección \ref{sec:desvanecimiento_del_gradiente}.
+
+\citeA{Riedmiller1993} presenta el algoritmo de retropropagación resiliente ({\em Resilient retropropagation}, RPROP), con el que busca eliminar los efectos del desvanecimiento del gradiente, esto mediante el uso del signo de la derivada para determinar la dirección del ajuste de los pesos, haciendo que la magnitud de la derivada no tenga efecto sobre la actualización de los pesos de la NN. Los pesos de la NN se incrementarán por un factor $\Delta{i}$ cuando la derivada de la función respecto a dicho peso tenga el mismo signo que las dos iteraciones anteriores. Mientras que si la derivada de la función respecto a dicho peso cambia de signo respecto de la iteración anterior los pesos se decrementarán por un factor $\Delta_{d}$. En caso de que la derivada de la función respecto de dicho peso sea igual a cero, el valor de actualización no varía.
+
+%\subsubsection{Root Mean Square RPROP}
+\citeA{Tieleman2012} presentan el algoritmo de la raíz cuadratica media de retropropagación resiliente ({\em Root mean square resilient retropropagation}, RMSPROP), una variante  del algoritmo RPROP. Se propone mantener una media móvil del cuadrado del gradiente para cada peso
+\begin{eqnarray}
+	MeanSquare(w, t) &=& 0.9MeanSquare(w, t - 1) + 0.1\frac{\partial E}{\partial w^{(t)}}^{2}
+\end{eqnarray}
+
+Y dividiendo el gradiente por $\sqrt{MeanSquare(w, t)}$ hace que el aprendizaje funcione de mejor manera.
+
+%\subsection{}

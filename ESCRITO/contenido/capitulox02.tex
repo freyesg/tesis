@@ -39,7 +39,28 @@ Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde
 	\item {\bf Activación de una neurona de la capa de salida}: La activación de una neurona de la capa de salida viene dada por la función de activación $f$ aplicada a la suma de los productos de la entrada por sus pesos, es decir $$ y_{i} = a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{C - 1}_{ji}a^{C - 1}_{j} + \theta^{C}_{i}\right), i = 1, \cdots, n_c$$ donde $Y = (y_1, y_2, \cdots, y_{n_{c}})$ es el vector de salida.
 \end{itemize}
 
-La función $f$ es la función de activación de la neurona. Las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|}\hline
+		{\bf Función}	& {\bf Fórmula}	& {\bf Rango}\\\hline
+		Identidad & $f(x) = x$	& $[-\infty, \infty]$\\\hline
+		Lineal por tramos &
+		$f(x) = \left\{
+		\begin{array}{ll}
+			-1		& x < -1\\
+			a*x		& -1 \leq x \leq 1\\
+			1		& x > 1
+		\end{array}
+		\right. $	& $[-1, 1]$\\\hline
+		Sinusoidal	& $ f(x) = \sin(\omega x + \varphi) $	& $[-1, 1]$\\\hline
+		Sigmoidal	& $f(x) = \frac{1}{1 + \exp{-x}}$	& $[0, 1]$\\\hline
+		Tangente hiperbólica	& $\frac{1 - \exp(-x)}{1 + \exp(-x)}$	& $[-1, 1]$\\\hline
+	\end{tabular}
+	\caption{Algunas funciones de activaciones.}
+	\label{tab:f_activacion}
+\end{table}
+
+La función $f$ es la función de activación de la neurona. Aunque existe gran variedad de funciones de activación (ver table \ref{tab:f_activacion}), las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
 \begin{eqnarray}
 	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}\\
 	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
@@ -92,7 +113,7 @@ El algoritmo de retropropagación es el método de entrenamiento más utilizado 
 
 % http://neuralnetworksanddeeplearning.com/chap5.html
 % ME ESTOY BASANDO EN : [1998b] Hochreiter
-\subsection{El desvanecimiento del gradiente}
+\subsection{El desvanecimiento del gradiente}\label{sec:desvanecimiento_del_gradiente}
 El problema del gradiente desvaneciente nace en las NN profundas, éstas utilizan funciones cuyo gradiente se encuentran entre 0 y 1. Debido a que estos gradientes pequeños se multiplican durante la retropropagación, tienden a {\em desvanecerse} a través de las capas, evitando que la red aprenda.
 
 Si se tiene una NN, la activación de una neurona de una capa intermedia $i$ con función de activación $f_i$ y con entrada $$ net_{i}(t) = \sum_{j}w_{ji}y^{j}(t - 1) $$ es $$y^{i}(t) = f_{i}(net_{i}(t))$$ Además $w_{ji}$ es el peso de la conexión desde la unidad $j$ de la capa anterior hasta la unidad $i$ de la capa actual, $d_{k}(t)$ será la respuesta esperada de la unidad $k$ de la capa de salida en el tiempo $t$. Usando el error cuadrático medio ({\em Mean square error}, MSE), el error de $k$ será
@@ -132,7 +153,8 @@ para todo $m$, el producto en (\ref{eq:vanishing}) decrece exponencialmente con 
 \end{imagen}
 
 \section{Revisión de la literatura}
-Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} sufren del desvanecimiento del gradiente. Para solventar el problema hay diversos métodos que lo evitan, como los métodos de búsqueda global, el modelo de memoria a corto y largo plazo o el preprocesamiento de las señales.
+\import{contenido/}{reglasaprendizaje.tex}
+%Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} sufren del desvanecimiento del gradiente. Para solventar el problema hay diversos métodos que lo evitan, como los métodos de búsqueda global, el modelo de memoria a corto y largo plazo o el preprocesamiento de las señales.
 %% 13. S. E. Fahlman, "The recurrent cascade-correlation learning algorithm", in Advances in Neural Information Processing Systems 3, ed. R. P. Lippmann et al. (Morgan Kaufmann, San Mateo, 1991), pages 190-196.
 
 % 14. R. J. Williams, "Complexity of exact gradient computation algorithms for recurrent neural networks" , Technical Report NU-CCS-89-27, Boston: Northeastern Univ., College of Computer Science, 1989.
@@ -143,32 +165,32 @@ Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter
 
 %% 17B. A. Pearlmutter, "Gradient calculations for dynamic recurrent neural networks: A survey", IEEE Transactions on Neural Networks, 6(5):1212{1228 (1995).
 
-\subsection{Gradiente descendente}
-\subsection{Gradiente estocástico descendente}
+%\subsection{Gradiente descendente}
+%\subsection{Gradiente estocástico descendente}
 % http://www.ctrl.cinvestav.mx/~yuw/pdf/MaTesER.pdf
-El método del gradiente estocástica descendente ({\em Stochastic gradient descent}, SGD) es una aproximación estocástica del método del gradiente descendente para la minimización de la función objetivo mediante la actualización de los pesos en cada iteración.
+%El método del gradiente estocástica descendente ({\em Stochastic gradient descent}, SGD) es una aproximación estocástica del método del gradiente descendente para la minimización de la función objetivo mediante la actualización de los pesos en cada iteración.
 
-\begin{algorithm}[H]
-    \SetAlgoLined
-	\KwData{Vector de pesos $W$, taza de aprendizaje $\eta$, conjunto $S$ de entrenamiento}
-	\Repeat{}{
-		Mezclar en forma aleatoria el conjunto $S$\;
-		Evaluar la red con un patrón y calcular el error\;
-		Actualizar los pesos $W = W - \eta\nabla Q_{i}(W)$\;
-	}
-	\caption{SGD}
-	\label{alg:sgd}
-\end{algorithm}
+%\begin{algorithm}[H]
+%    \SetAlgoLined
+%	\KwData{Vector de pesos $W$, taza de aprendizaje $\eta$, conjunto $S$ de entrenamiento}
+%	\Repeat{}{
+%		Mezclar en forma aleatoria el conjunto $S$\;
+%		Evaluar la red con un patrón y calcular el error\;
+%		Actualizar los pesos $W = W - \eta\nabla Q_{i}(W)$\;
+%	}
+%	\caption{SGD}
+%	\label{alg:sgd}
+%\end{algorithm}
 
-El algoritmo SGD (ver \ref{alg:sgd}) trabaja como el método del gradiente descendente tradicional, pero acelera su funcionamiento
+%El algoritmo SGD (ver \ref{alg:sgd}) trabaja como el método del gradiente descendente tradicional, pero acelera su funcionamiento
 % http://climin.readthedocs.io/en/latest/rmsprop.html
-\subsection{RMSProp}
-\citeA{Tieleman2012} presentan un optimizador que utiliza la magnitud del gradiente para normalizar los gradientes. Siempre mantiene una media móvil sobre la raíz cuadrática media de los gradientes, por el cual se divide el gradiente actual. Sea $f'(\theta_{t})$ la derivada de la función de pérdida con respecto a los parámetros en la etapa $t$ del tiempo. En su forma básica, dada una tasa de paso $\alpha$ y un término de decaimiento $\gamma$ se realizan las siguientes actualizaciones:
-\begin{eqnarray}
-	r_{t} &=& (1 - \gamma)f'(\theta_{t})^2 + \gamma r_{t - 1}\\
-	v_{t + 1} &=& \frac{\alpha}{\sqrt{r_{t}}}f'(\theta_{t})\\
-	\theta_{t + 1} &=& \theta_{t} - v_{t + 1}
-\end{eqnarray}
+%\subsection{RMSProp}
+%\citeA{Tieleman2012} presentan un optimizador que utiliza la magnitud del gradiente para normalizar los gradientes. Siempre mantiene una media móvil sobre la raíz cuadrática media de los gradientes, por el cual se divide el gradiente actual. Sea $f'(\theta_{t})$ la derivada de la función de pérdida con respecto a los parámetros en la etapa $t$ del tiempo. En su forma básica, dada una tasa de paso $\alpha$ y un término de decaimiento $\gamma$ se realizan las siguientes actualizaciones:
+%\begin{eqnarray}
+%	r_{t} &=& (1 - \gamma)f'(\theta_{t})^2 + \gamma r_{t - 1}\\
+%	v_{t + 1} &=& \frac{\alpha}{\sqrt{r_{t}}}f'(\theta_{t})\\
+%	\theta_{t + 1} &=& \theta_{t} - v_{t + 1}
+%\end{eqnarray}
 
 %\subsection{Métodos de búsqueda global}
 %Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing} (SA), {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.

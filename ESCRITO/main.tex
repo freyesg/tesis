@@ -2,12 +2,13 @@
 
 \usepackage[linesnumbered, ruled, vlined, boxed, commentsnumbered, spanish]{algorithm2e}
 \usepackage{algpseudocode}
+\usepackage{pgfplots}
 \usepackage{tikz}
-
+\usepackage{import}
 \usetikzlibrary{arrows, calc, decorations.markings, math}
 \usetikzlibrary{matrix, chains, positioning, decorations.pathreplacing, shapes, snakes}
 %%%% T_max - T_min > 25 tiembla
-\usepackage{pgfplots}
+%\usepackage{lipsum}
 
 \title{Análisis de la eficiencia del entrenamiento de redes neuronales profundas basado en simulated annealing }
 \informe{Informe}
@@ -21,24 +22,7 @@
 \correo{felipe.reyesg@usach.cl}
 \date{\today}
 
-%%\setlength{\parindent}{0cm}
-%\usepackage[type={CC}, modifier={by-nc-sa}, version={3.0},]{doclicense}
-% \usepackage{amssymb}
-\usepackage{amsmath}
-%\usepackage{helvet}
-%\renewcommand\familydefault{\sfdefault}
-
-% TIPOS DE ENTRADAS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node6.html
-% CAMPOS : http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node7.html
 \begin{document}
-	%\renewcommand{\contentsname}{Tabla de contenidos}
-	%\renewcommand{\refname}{Referencias bibliográficas}
-	%\renewcommand{\tablename}{Tabla}
-	%\renewcommand{\appendixname}{Apéndice}
-	%\renewcommand{\BOthers}[1]{et al.\hbox{}}
-	%%\renewcommand{\appendixtocname}{Apéndices}
-	%%\renewcommand{\appendixpagename}{Apéndices}
-
 	\maketitle
 	\makecopyright
 	\frontmatter
@@ -48,12 +32,9 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Inicio contenido
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%\tableofcontents
-	\include{contenido/capitulox01}
-	\include{contenido/capitulox02}
+	\import{contenido/}{capitulox01}
+	\import{contenido/}{capitulox02}
 	%\include{contenido/capitulox03}
-	%\include{contenido/introduccion}
-	%\include{contenido/redes_neuronales}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Fin contenido
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,9 +43,6 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%
 	% Bibliografía
 	%%%%%%%%%%%%%%%%%%%%%%%%
-	%\addcontentsline{toc}{chapter}{Bibliografía}
-	%\cite{*}
-	%\bibliografia
 	\bibliographystyle{apacite}
 	\bibliography{referencias}
 	%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,7 +55,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%
 	% \appendix
 	% \clearpage
-	% \addappheadtotoc
+	 %\addappheadtotoc
 	% \appendixpage
 	%%%%%%%%%%%%%%%%%%%%%%%%
 	% Fin apéndice

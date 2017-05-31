@@ -28,9 +28,6 @@
 \newif\if@desc
 \DeclareOption{descrip}{\@desctrue}
 
-%\DeclareOption{by}{\@bytrue}
-
-
 \newif\ifpropuesta\propuestafalse
 \DeclareOption{propuesta}{\propuestatrue}
 \ProcessOptions\relax
@@ -38,20 +35,7 @@
 \if@escrito
 	\LoadClass[10pt, oneside]{book}
 	\RequirePackage{titlesec}
-	%\titleformat{\chapter}[display]{\normalfont\bfseries}{}{85pt}{}%\chaptertitlename\ \thechapter
-	%\titlespacing*{\chapter}{0pt}{0pt}{10pt}
-	%\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{10pt}{}
-	%\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{10pt}{}
-	%\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{10pt}{}
-	\titleformat{\chapter}
-	{\bfseries\Large\vspace*{-4.0cm}} %Formato título
-	{ % Contenido de la etiqueta
-	    \filright
-	    \Large\MakeUppercase\chaptertitlename\ \thechapter.\
-	} %Contenido de la etiqueta
-	{0pt} % espacio mínimo entre etiqueta y cuerpo
-	{\filright\MakeUppercase} %código que precede al cuerpo del título
-	[\vspace{1.5pt}] %1,5
+	\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
 	\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
 	\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
 	\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
@@ -72,24 +56,21 @@
 \if@inf
 	\LoadClass[12pt, oneside]{article}
 	\RequirePackage{titlesec}
-	%\titleformat{\section}[hang]{\bf}{{\bf \thesection\enspace}}{14pt}{}
-	%\titleformat{\subsection}[hang]{\bf}{{\bf \thesubsection\enspace}}{14pt}{}
-	%\titleformat{\subsubsection}[hang]{\bf}{{\bf \thesubsubsection\enspace}}{14pt}{}
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
+
 \newcommand{\autor}{\@author}
 \renewcommand{\rmdefault}{phv} % Arial
 \renewcommand{\sfdefault}{phv} % Arial
-%\setlength{\parindent}{0cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
-\usepackage{anysize} % Soporte para el comando \marginsize
-\usepackage[papersize={21.6cm, 27.9cm}]{geometry}
+\RequirePackage{anysize} % Soporte para el comando \marginsize
+\RequirePackage[papersize={21.6cm, 27.9cm}]{geometry}
 \geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,6 +78,11 @@
 %\RequirePackage[natbibapa]{apacite}
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage[apaciteclassic]{apacite}
+%\RequirePackage{tocbibind} % Agregar referencias al índice
+\RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
+%\setcounter{secnumdepth}{2} %Mostrar numeración en las subsecciones (subsubsecciones no llevan números)
+%\setcounter{tocdepth}{2} %Mostrar las subsubsecciones en el índice
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -122,19 +108,20 @@
 \definecolor{gray}{rgb}{0.5, 0.5, 0.5}
 
 
-\usepackage[spanish, es-lcroman, es-tabla, es-noquoting]{babel}
-\usepackage{enumerate}
-\usepackage{appendix}
+\RequirePackage[spanish, es-lcroman, es-tabla, es-noquoting]{babel}
+\RequirePackage{enumerate}
+\RequirePackage{appendix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuente matemática
-\usepackage{amssymb}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Estilo de página
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 \renewcommand{\headrulewidth}{0pt}
 \pagestyle{fancy}
 \lfoot{}
@@ -153,20 +140,20 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Identación y spacing
-\usepackage{setspace}
-\usepackage{indentfirst}
+\RequirePackage{setspace}
+\RequirePackage{indentfirst}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{3pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % references
-\usepackage{varioref}
+\RequirePackage{varioref}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Lorem ipsum
-\usepackage{lipsum}
+\RequirePackage{lipsum}
 \makeatletter
 	\renewcommand\lips@dolipsum{%
 		\ifnum\value{lips@count}<\lips@max\relax
@@ -327,7 +314,9 @@
 	%\setcounter{page}{0}
 	%\renewcommand{\thepage}{\roman{page}}
 	\tableofcontents
+	\newpage
 	\listoftables
+	\newpage
 	\listoffigures
 	\newpage
 	%\setcounter{page}{1}
@@ -500,19 +489,12 @@
 	\endgroup
 }
 
-
-%\begin{figure}[H]
-%	\centering
-%	\scalebox{0.1}{\input{img/neurona}}
-%	\caption{Neurona}
-%	\label{fig:neurona}
-%\end{figure}
-
 \RequirePackage{xkeyval}
 \makeatletter
 \define@key{tikzimg}{scale}{\def\escala{#1}}
 \makeatother
 
+\makeatletter
 \newcommand{\makecopyright}{
 	%\setkeys{makecopyright}{#1}%
 	\thispagestyle{empty}
@@ -531,6 +513,7 @@
         \end{flushleft}
     \fi
 }
+\makeatother
 
 
 \newenvironment{imagen}{
@@ -562,6 +545,10 @@
     citebordercolor={0 1 0}
 }
 
+% Cambios al default de spanish
+\deactivatetilden
+\decimalpoint
+
 \addto\captionsspanish{
     \def\bibname{REFERENCIAS BIBLIOGRÁFICAS}
     \def\contentsname{TABLA DE CONTENIDO}
@@ -574,3 +561,18 @@
     \def\lstlistingname{Código}
     \def\chaptername{Capítulo}
 }
+
+\renewcommand{\appendixname}{APÉNDICES}
+\renewcommand{\appendixtocname}{APÉNDICES}
+\renewcommand{\appendixpagename}{APÉNDICES}
+
+%Se agrega la palabra 'Figura' al índice de figuras
+\usepackage{tocloft}
+\renewcommand{\cftfigfont}{Figura }
+%Lo mismo para el índice de tablas
+\renewcommand{\cfttabfont}{Tabla }
+
+%Se cambia el tamaño del título de la lista de figuras, tablas e índice de contenido dejándolos igual que los títulos normales
+\renewcommand\cftloftitlefont{\Large\bf}
+\renewcommand\cftlottitlefont{\Large\bf}
+\renewcommand\cfttoctitlefont{\Large\bf}
