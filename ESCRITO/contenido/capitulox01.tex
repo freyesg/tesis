@@ -1,42 +1,16 @@
 \chapter{Introducción}
 \section{Antecedentes y motivación}
-<<<<<<< HEAD
 %La clasificación de patrones es una tarea que ha sido desarrollada por largo tiempo a través de numerosos métodos. Algunos precisan del conocimiento de la salida esperada (REFERENCIAS, REFERENCIAS, aprendizaje supervisado), mientras que otros métodos clasifican en forma automática las entradas según un criterio definido para el algoritmo en cuestion (REFERENCIAS, REFERENCIAS, aprendizaje no supervisado)
 Las redes neuronales artificiales ({\em Artificial Neural Networks}, NN) han sido ampliamente estudiadas y ampliamente utilizadas en muchas aplicaciones de la inteligencia artificial. El problema durante el proceso de aprendizaje de las NN es descrito como un problema de minimización de una función de error, la que depende de los pesos que conforman la red \cite{Rumelhart1986}. Este problema de optimización tiene la desventaja de ser no lineal, no convexo, además de tener mas de un mínimo local. Para solventar este problema se han desarrollado diversos algoritmos \cite{Grippo1994,Jacobs1988,Plagianakos2002,Rumelhart1986b,Plagianakos1998}  y su rendimiento varía según el problema a resolver.
-=======
-%[Bishop] Neural Network for pattern recognition :: 77 y 116
-Las redes neuronales ({\em Neural Networks}, NN) son sistemas de procesamiento de información que basan su estructura en una analogía de las redes neuronales biológicas. Consisten en un conjunto de elementos de procesamiento simple llamados nodos, estos nodos están dispuestos en una estructura jerarquica y conectadas entre sí por un valor numérico llamado peso que, mediante un proceso de entrenamiento, varia su valor.
->>>>>>> ed8edc3045e50c2da5b64b5d2be5a1fb11df218c
 
 El enfoque clásico para el entrenamiento de las NN es la aplicación de algoritmos basados en el gradiente como la retropropagación \cite{Rumelhart1986b}. El algoritmo de retropropagación minimiza la función de error mediante la dirección de descenso más pronunciada. Aunque la función de error disminuye rápidamente en la dirección del gradiente negativo, la retropropagación es generalmente ineficiente y poco fiable \cite{Gori1992} debido a la superficie de error. Además, su rendimiento se ve afectado por parámetros que deben ser especificados por el usuario, pues no existe una base teórica para escogerlos \cite{Nguyen1990}. Dichos parámetros tienen una importancia crucial en el buen funcionamiento del algoritmo, por lo que el diseñador está obligado a seleccionar parámetros como los pesos iniciales de la NN, la topología de la red y la tasa de aprendizaje. En diversas investigaciones \cite{Cauchy1847, Grippo1994, Plagianakos1998, Plagianakos2002} ha quedado demostrado que pequeñas modificaciones en estos valores influyen en el rendimiento de la NN. Para proporcionar una convergencia más rápida y estable se han desarrollado diversas variaciones y alternativas a la retroprogación.
 
 Varias técnicas se han propuestos, como la adaptación de un término de momento \cite{Jacobs1988, Rumelhart1986b} o de una tasa variable de aprendizaje \cite{Jacobs1988,Vogl1988}. \citeA{Magoulas1997,  Plagianakos1998} propusieron dos técnicas para evaluar en forma dinámica la tasa de aprendizaje sin el uso de alguna heurística o alguna función adicional y las evaluaciones de gradiente. El primero se basó en el algoritmo de Barzilai y Borwein \cite{Barzilai1988} que adapta la tasa de aprendizaje sin evaluar la matriz Hessiana; mientras que el segundo utiliza estimaciones de la constante de Lipschitz, eplotando la información local de la superficie de error y los pesos posteriores \cite{Magoulas1997}. Hay evidencias \cite{Magoulas1997, Plagianakos2002, Plagianakos1998} que han demostrado que la retropropagación con algoritmos que adaptan la velocidad del aprendizaje son robustas y tienen un buen rendimiento para el entrenamiento de NN.
 
-<<<<<<< HEAD
-
-=======
-El conjunto de $n$ neuronas se llamará capa, y una NN puede estar compuesta de una o más capas. Cada capa estará compuesta por una cantidad de neuronas que no necesariamente será la misma para todas las capas, y estarán dispuestas en forma consecutiva de tal manera que las capas se conecten unas con otras y siempre hacia adelante. La primera capa, la de entrada, recibirá un patrón que será entregado a las distintas neuronas que la capa posea. Cada neurona de la capa de entrada procesará los datos y generará una salida que servirá de entrada para la capa siguiente, repitiendo el proceso para cada una de las capas de la NN hasta llegar a la capa de salida, en cuyo caso la salida representará la respuesta de la red, concretando así el ciclo.
-
-% https://www.neuraldesigner.com/blog/5_algorithms_to_train_a_neural_network
-Las NN han sido utilizadas para la clasificación de entradas, y han sido diseñados diversos métodos para entrenar la red y que los pesos se adapten, de tal manera que la salida de la red sea representativa de la salida esperada; a este método de entrenamiento se le llama {\em supervisado}. Dentro de los métodos clásicos de entrenamiento se encuentra el método del gradiente descendente, el método de Newton, el gradiente conjugado, el método quasi-Newton, o el algoritmo Levenberg-Marquardt. El más utilizado es el método del gradiente, que consiste en actualizar los pesos de las distintas neuronas en función de la dirección contraría al gradiente de la función de activación, logrando minimizar el error.
->>>>>>> ed8edc3045e50c2da5b64b5d2be5a1fb11df218c
 
 
 
-<<<<<<< HEAD
-=======
-Donde $\Delta W(n)$ es la variación de los pesos para una iteración y $\lambda(n)$ es un coeficiente que minimiza la función en la dirección de descenso. %Se ha demostrado que no hay ventaja en encontrar el mínimo exacto en la dirección de búsqueda en cada iteración (Dennis y Schnabel, 1983).
-El algoritmo de retropropagación propuesto por Werbos (1974) y popularizado por Rumelhart et al (1986) se basa en una variación de la técnica de pendiente más pronunciada. No se utiliza búsqueda unidireccional sino un paso de descenso fijo, $\eta$, llamado tasa de aprendizaje, que se añade a una fracción de la última variación, $\alpha$, llamada momentum. El último término introduce algunos elementos del método de gradiente conjugado. % Este algoritmo se define por:
-%\begin{eqnarray}
-%	\nabla_{p}W_{ij}^{(L)}(n) &=& -\eta G_{p_{ij}}^{(L)}(n) + \alpha\Delta_{p}W_{ij}^{L}(n - 1)
-%\end{eqnarray}
-%
-%Al hacer una actualización continua por:
-Así la actualización se realiza como en la ecuación \ref{eq:bp_wupdate}
-\begin{eqnarray}
-	W(n) &=& -\eta G(n) + \alpha\Delta W(n - 1)\label{eq:bp_wupdate}
-\end{eqnarray}
->>>>>>> ed8edc3045e50c2da5b64b5d2be5a1fb11df218c
+
 
 %Además, otra ráfaga de investigación para mejorar las propiedades de convergencia de la retropropagación se basa en la bien establecida teoría de optimización sin restricciones, para el entrenamiento de redes neuronales.
 %Específicamente, se sugirieron una variedad de métodos de optimización de segundo orden para mejorar la eficiencia del proceso de error de minimización. Métodos que utilizan el segundo orden de información como nosotros el conjugado gradiente [15, 24, 44] y cuasi-Newton métodos [25, 34] constituyen una opción de sustitución populares.
@@ -50,15 +24,6 @@ Así la actualización se realiza como en la ecuación \ref{eq:bp_wupdate}
 %Estas estrategias combinadas con la búsqueda de líneas no monótonas permitieron definir global y superlinear convergente [57] y mejorar significativamente el rendimiento de los métodos originales para la formación de redes neuronales.
 
 
-<<<<<<< HEAD
-=======
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%% MÉTODO QUASI-NEWTON
-El método quasi-Newton utiliza el cálculo de las segundas derivadas de la función objetivo, se obtiene una mejor comprensión de la topología de la función, que conduce a su vez a elegir una dirección descendente más eficiente. Dejar:
-\begin{eqnarray}
-	\Delta W(n) &=& \lambda(n)S(n)
-\end{eqnarray}
->>>>>>> ed8edc3045e50c2da5b64b5d2be5a1fb11df218c
 
 
 
@@ -68,7 +33,7 @@ El método quasi-Newton utiliza el cálculo de las segundas derivadas de la func
 
 \section{Descripción del problema}
 % USAR [2003b] Squartini S, Hussain A, Piazza F
-La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red el gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
+La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red él gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
 
 El método de aprendizaje basado en simmulated annealing permite la actualización de los pesos de la red sin mermar la capacidad de adaptación de los pesos. El método supone una alternativa efectiva a los métodos tradicionales de aprendizaje para la convergencia de los métodos debido a la independencia que otorga a la actualización de los pesos de las distintas capas..
 
