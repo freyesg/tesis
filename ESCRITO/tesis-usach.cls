@@ -70,20 +70,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \RequirePackage{anysize} % Soporte para el comando \marginsize
-\RequirePackage[papersize={21.6cm, 27.9cm}]{geometry}
+\RequirePackage[papersize={21.6cm, 27.9cm}, letterpaper]{geometry}
 \geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliografía y referencias
-%\RequirePackage[natbibapa]{apacite}
-\RequirePackage[hidelinks]{hyperref}
-\RequirePackage[apaciteclassic]{apacite}
-%\RequirePackage{tocbibind} % Agregar referencias al índice
-\RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
-%\setcounter{secnumdepth}{2} %Mostrar numeración en las subsecciones (subsubsecciones no llevan números)
-%\setcounter{tocdepth}{2} %Mostrar las subsubsecciones en el índice
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,6 +101,15 @@
 \RequirePackage{appendix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografía y referencias
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[apaciteclassic]{apacite}
+%\RequirePackage{tocbibind} % Agregar referencias al índice
+\RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
+%\setcounter{secnumdepth}{2} %Mostrar numeración en las subsecciones (subsubsecciones no llevan números)
+%\setcounter{tocdepth}{2} %Mostrar las subsubsecciones en el índice
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuente matemática
 \RequirePackage{amssymb}
 \RequirePackage{amsmath}
@@ -139,11 +136,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Identación y spacing
+% Identación, interlineado y spacing
 \RequirePackage{setspace}
 \RequirePackage{indentfirst}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{3pt}
+\setlength{\parskip}{3mm}
+\linespread{1.5} %\renewcommand{\baselinestretch}{1.5}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,9 +170,7 @@
 \RequirePackage{xkeyval}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Interlineado
-\renewcommand{\baselinestretch}{1.5}
+
 
 
 
@@ -194,7 +191,7 @@
 \newtheorem{teorema}{Teorema}
 \newtheorem{obs}{Observación}
 %\setlength{\parindent}{2cm} % Sangrado
-\renewcommand{\baselinestretch}{1.5}                                    % Espaciado 1.5
+%\renewcommand{\baselinestretch}{1.5}                                    % Espaciado 1.5
 \renewcommand{\and}{\\&}
 
 \def\namedlabel#1#2{\begingroup

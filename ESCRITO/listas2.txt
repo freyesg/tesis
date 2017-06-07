@@ -1,0 +1,20 @@
+SIMPLE EVOLUTIONARY OPTIMIZATION CAN RIVAL STOCHASTIC GRADIENTDESCENT IN NEURAL NETWORKS
+Morse G y Stanley K
+
+4 - Bengio2009 - Y. Bengio. Learning deep architectures for AI. Foundations and Trends in Machine Learning, 2(1): 1–127, 2009.
+
+5 - Bengio2007 - Y. Bengio and Y. LeCun. Scaling learning algorithms towards ai. Large-Scale Kernel Machines, 34, 2007.
+
+6 - Bengio2006 - Y. Bengio, P. Lamblin, D. Popovici, and H. Larochelle. Greedy layer-wise training of deep networks. In Advances in Neural Information Processing Systems 19 (NIPS), Cambridge, MA, 2007. MIT Press.
+
+8 - Ciresan2012 - D. Cireşan, U. Meier, J. Masci, and J. Schmidhuber. Multi-column deep neural network for traffic sign classification. Neural Networks, 32:333–338, 2012.
+
+21 - He2015 - K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. arXiv preprint arXiv:1512.03385, 2015.
+
+22 - Hinton2006 - G. E. Hinton, S. Osindero, and Y.-W. Teh. A fast learning algorithm for deep belief nets. Neural Computation, 18(7):1527–1554, 2006.
+
+27 - Le2012 - Q. Le, M. Ranzato, R. Monga, M. Devin, K. Chen, G. Corrado, J. Dean, and A. Ng. Building high-level features using large scale unsupervised learning. In International Conference in Machine Learning (ICML-2012), 2012.
+
+33 - Ranzato2007 - R. Marc’Aurelio, L. Boureau, and Y. LeCun. Sparse feature learning for deep belief networks. In Advances in Neural Information Processing Systems 20 (NIPS), pages 1185–1192, Cambridge, MA, 2007. MIT Press.
+
+40 - Rumelhart1986b - D. E. Rumelhart, G. E. Hinton, and R. J. Williams. Learning internal representations by error propagation. In Parallel Distributed Processing, pages 318–362. 1986.

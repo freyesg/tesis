@@ -7,8 +7,6 @@
 \usepackage{import}
 \usetikzlibrary{arrows, calc, decorations.markings, math}
 \usetikzlibrary{matrix, chains, positioning, decorations.pathreplacing, shapes, snakes}
-%%%% T_max - T_min > 25 tiembla
-%\usepackage{lipsum}
 
 \title{Análisis de la eficiencia del entrenamiento de redes neuronales profundas basado en simulated annealing}
 \informe{Informe}
@@ -22,7 +20,13 @@
 \correo{felipe.reyesg@usach.cl}
 \date{\today}
 
+\let\cite\shortcite
+%\addto\captionsspanish{
+%	\renewcommand{\BOthers}[1]{et al.\hbox{}}%
+%}
+
 \begin{document}
+	\renewcommand{\BOthers}[1]{et al.\hbox{}}%
 	\maketitle
 	\makecopyright
 	\frontmatter

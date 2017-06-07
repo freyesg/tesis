@@ -1,3 +1,7 @@
+A SURVEY ON ALGORITHMS FOR TRAINING ARTIFICIAL NEURAL NETWORKS
+I.E. Livieris y P. Pintelas
+
+
 3 - Al-Baali1998 - M. Al-Baali. Numerical experience with a class of self-scaling quasi-Newton algorithms. Journal of Optimization Theory, 96:533–553, 1998.
 
 5 - Barzilai1988 - J. Barzilai and J.M. Borwein. Two point step size gradient methods. IMA Journal of
@@ -25,20 +29,20 @@ Numerical Analysis, 8:141–148, 1988.
 
 36 - Oren1972 - S.S. Oren. Self-scaling variable metric algorithms for unconstrained minimization. PhD thesis, Stanford University, California, USA, 1972. https://books.google.cl/books/about/Self_scaling_Variable_Metric_Algorithms.html?id=pIlMtwAACAAJ&redir_esc=y
 
-37 - S.S. Oren and D.G. Luenberger. Self-scaling variable metric (SSVM) algorithms, Part I: Criteria and sufficient conditions for scaling a class of algorithms. Management Science, 20:845–862, 1974.
+37 - Oren1974 - S.S. Oren and D.G. Luenberger. Self-scaling variable metric (SSVM) algorithms, Part I: Criteria and sufficient conditions for scaling a class of algorithms. Management Science, 20:845–862, 1974.
 
-39 - C.C. Peng and G.D. Magoulas. Adaptive nonmonotone conjugate gradient training algorithm for recurrent neural networks. In 19 th IEEE International Conference on Tools with Artificial Intelligence, pages 374–381, 2008.
+39 - Peng2007 - C.C. Peng and G.D. Magoulas. Adaptive nonmonotone conjugate gradient training algorithm for recurrent neural networks. In 19 th IEEE International Conference on Tools with Artificial Intelligence, pages 374–381, 2008.
 
 40 - Plagianakos2002 - V.P. Plagianakos, G.D. Magoulas, and M.N. Vrahatis. Determing nonmonotone strategies for effective training of multilayer perceptrons. IEEE Transactions on Neural Networks, 13(6):1268–1284, 2002.
 
 41 - Plagianakos1998 - V.P. Plagianakos, D.G. Sotiropoulos, and M.N. Vrahatis. Automatic adaptation of learning rate for backpropagation neural networks. In N.E. Mastorakis, editor, Recent Advantages in Circuits and Systems, pages 337–341, Singapure, 1998.
 
-44 - E. Polak and G. Ribière. Note sur la convergence de methods de directions conjuguees. Revue Francais d’Informatique et de Recherche Operationnelle, 16:35–43, 1969.
+44 - Polak1969 - E. Polak and G. Ribière. Note sur la convergence de methods de directions conjuguees. Revue Francais d’Informatique et de Recherche Operationnelle, 16:35–43, 1969.
 
 49 - Rumelhart1986b - D.E. Rumelhart, G.E. Hinton, and R.J. Williams. Learning internal representations by error propagation. In D. Rumelhart and J. McClelland, editors, Parallel Distributed Processing: Explorations in the Microstructure of Cognition, pages 318–362, Cambridge, Massachusetts, 1986.
 
-51 - D.G. Sotiropoulos, A.E. Kostopoulos, and T.N. Grapsa. A spectral version of Perry’s conjugate gradient method for neural network training. In Proceedings of the 4th GRACM Congress on Computational Mechanics, University of Patras, 2002.
+51 - Sotiropoulos2002 - D.G. Sotiropoulos, A.E. Kostopoulos, and T.N. Grapsa. A spectral version of Perry’s conjugate gradient method for neural network training. In Proceedings of the 4th GRACM Congress on Computational Mechanics, University of Patras, 2002.
 
 54 - Vogl1988 - T.P. Vogl, J.K. Mangis, J.K. Rigler, W.T. Zink, and D.L. Alkon. Accelerating the convergence of the backpropagation method. Biological Cybernetics, 59:257–263, 1988.
 
-57 - H.X. Yin and D.L. Du. The global convergence of self-scaling BFGS algorithm with nonmonotone line search for unconstrained nonconvex optimization problems. Acta Mathematica Sinica, 23(7):1233–1240, 2007.
+57 - Yin2007 - H.X. Yin and D.L. Du. The global convergence of self-scaling BFGS algorithm with nonmonotone line search for unconstrained nonconvex optimization problems. Acta Mathematica Sinica, 23(7):1233–1240, 2007.
