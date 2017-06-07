@@ -68,12 +68,12 @@ El método de BR consiste en mejorar la capacidad de generalización del modelo.
 	MSE_{w} &=& \frac{1}{N}\sum_{i = 1}^{N}w_{i}^{2}
 \end{eqnarray}
 
-Y la función de coste śe obtendría de la siguiente manera
+Y la función de coste se obtendría de la siguiente manera
 \begin{eqnarray}
 	MSE &=& \beta MSE_{d} + \mu MSE_{w}
 \end{eqnarray}
 
-donde $\beta$ y $\mu$ son parámetros que deben ser ajustados según la metodología Bayesiana de MacKay \cite{MacKay1992a, MacKay1992b}. La metodología asume que los pesos son variables aleatorias que sond escritas por distribuciones específicas, comunmente Gaussianas. Los parámetros de regularización están relacionados con las varianzas desconocidas asociadas a estas distribuciones, y es posible estimarlas mediante técnicas estadísticas. Una de las particularidades del algoritmo es que proporciona una medida de cuántos parámetros de la NN están siendo utilizados.
+donde $\beta$ y $\mu$ son parámetros que deben ser ajustados según la metodología Bayesiana de MacKay \cite{MacKay1992a, MacKay1992b}. La metodología asume que los pesos son variables aleatorias que son descritas por distribuciones específicas, comunmente Gaussianas. Los parámetros de regularización están relacionados con las varianzas desconocidas asociadas a estas distribuciones, y es posible estimarlas mediante técnicas estadísticas. Una de las particularidades del algoritmo es que proporciona una medida de cuántos parámetros de la NN están siendo utilizados.
 
 \subsection{Retropropagación resiliente}
 En las capas ocultas de las NN se utilizan con frecuencia funciones de activación sigmoidales, y estas reducen la entrada a un rango finito de salida. Se caracterizan por sus pendientes próximas a cero para entradas muy grandes, y esto representa un problema cuando se utiliza el gradiente descendente para el entrenamiento, pues se acentúa el problema del desvanecimiento del gradiente descrito en la sección \ref{sec:desvanecimiento_del_gradiente}.

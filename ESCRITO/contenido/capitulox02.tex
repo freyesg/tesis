@@ -1,0 +1,270 @@
+<<<<<<< HEAD
+=======
+\chapter{Aspectos teóricos y revisión de la literatura}
+En esta sección se abarcan los aspectos relacionados al conocimiento general para la comprensión del presente trabajo y la revisión de la literatura asociada al trabajo presentado. Para realizar un análisis de la eficiencia en la convergencia de los algoritmos de aprendizaje es necesario conocer la base teórica de ésta. Para ellos, se describen los conceptos necesarios de las redes neuronales y el desvanecimiento del gradiente. La sección \ref{sec:aspectos_teoricos} se centra en explicar las partes fundamentales para el entendimiento del problema en cuestión.
+
+\section{Aspectos teóricos}\label{sec:aspectos_teoricos}
+\subsection{El perceptrón multicapa y su arquitectura}
+Dentro de las redes neuronales, el perceptrón multicapa es una de las arquitecturas más usadas para resolver problemas. Esto es debido a que poseen la capacidad de ser un aproximador universal \cite{Minsky1969b}. Esto no implica que sea una de las redes más potentes o con mejores resultados, el perceptrón multicapa posee una serie de limitaciones, como el proceso de aprendizaje para problemas que dependan de un gran número de variables, la dificultad para realizar un análisis teórico de la red debido a la presencia de componentes no lineales y a la alta conectividad.
+
+%\subsubsection{Arquitectura}
+El perceptron multicapa posee una estructura de capas compuestas por neuronas. Cada una de las capas está formada por un conjunto de neuronas y se distinguen tres tipos de capas: la capa de entrada, las capas ocultas y la capa de salida.
+
+\begin{imagen}
+	\scalebox{0.8}{\input{img/neural_network_img}}
+	\caption{Perceptrón multicapa}
+	\label{fig:neurona}
+\end{imagen}
+
+En la figura \ref{fig:neurona} se observa que las conexiones van siempre hacia adelante. Las neuronas de la capa $l$ se conectan con las neuronas de la capa $l + 1$. Las neuronas de la capa de entrada se encargan de recibir los patrones y propagar dichas señales a las neuronas de la capa siguiente. La última capa, la capa de salida, proporciona la respuesta de la red al patrón presentado. Las neuronas de las capas ocultas realizan el procesado de las señales generadas por el patrón de entrada.
+
+\subsection{Propagación de la entrada y el algoritmo de retropropagación}
+El perceptrón multicapa define una relación entre la entrada y la salida. Esta relación se obtiene propagando hacia adelante los valores de las variables de entrada, es por esto que también se les llama redes {\em feedforward}. Cada neurona de la red procesa la entrada recibida y produce una respuesta que se propaga, mediante las conexiones, hacia las neuronas de la capa siguiente.
+
+Existen dos fases importante dentro del modelo
+\begin{itemize}
+	\item Fase de entrenamiento: Se usa un conjunto de datos o patrones de entrenamiento para determinar los pesos que definen el modelo de la NN. Se calculan de manera iterativa, de acuerdo con los valores de entrenamiento, con el objeto de minimizar el error cometido entre la salida obtenida por la NN y la salida deseada.
+
+	Los pesos óptimos se obtienen minimizando una función. Uno de los criterios utilizados es la minimización del error cuadrático medio entre el valor de salida y el valor real esperado.
+
+	\item Fase de prueba: Durante el entrenamiento, el modelo se ajusta al conjunto de entrenamiento, perdiendo la habilidad de generalizar su aprendizaje a casos nuevos, a esta situación se le llama sobreajuste.
+
+	Para evitar el sobreajuste, se utiliza un segundo grupo de datos diferentes, el conjunto de validación, que permitirá controlar el proceso de aprendizaje.
+\end{itemize}
+
+Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde $W_c = (w^{c}_{ij})$ es la matriz de pesos, $w^{c}_{ij}$ representará el peso de la conexion de la neurona $i$ de la capa $c$ hasta la neurona $j$ de la capa siguiente. Denotaremos $a^{c}_{i}$ a la activación de la neurona $i$ de la capa $c$ que se calcula de la siguiente manera:
+\begin{itemize}
+	\item {\bf Activación de una neurona de la capa de entrada}: Las neuronas se encargan de transmitir la entrada recibida, por lo tanto $$ a^{1}_{i} = x_{i}, i = 1, 2, \cdots, n$$ donde $X = (x_1, x_2, \cdots, x_n)$ representa el vector de entrada.
+
+	\item {\bf Activación de una neurona de la capa oculta}: Las neuronas de una capa oculta procesa la información recibida aplicando la función de activación $f$ a la suma de los productos de la entrada por sus pesos, es decir $$ a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{c - 1}_{ji}a^{c - 1}_{j} + \theta^{c}_{i}\right), i = 1, 2, \cdots, n_c; c = 2, 3, \cdots, C - 1$$ donde $a^{c - 1}_{j}$ es la salida de la capa anterior a $c$.
+
+	\item {\bf Activación de una neurona de la capa de salida}: La activación de una neurona de la capa de salida viene dada por la función de activación $f$ aplicada a la suma de los productos de la entrada por sus pesos, es decir $$ y_{i} = a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{C - 1}_{ji}a^{C - 1}_{j} + \theta^{C}_{i}\right), i = 1, \cdots, n_c$$ donde $Y = (y_1, y_2, \cdots, y_{n_{c}})$ es el vector de salida.
+\end{itemize}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|}\hline
+		{\bf Función}	& {\bf Fórmula}	& {\bf Rango}\\\hline
+		Identidad & $f(x) = x$	& $[-\infty, \infty]$\\\hline
+		Lineal por tramos &
+		$f(x) = \left\{
+		\begin{array}{ll}
+			-1		& x < -1\\
+			a*x		& -1 \leq x \leq 1\\
+			1		& x > 1
+		\end{array}
+		\right. $	& $[-1, 1]$\\\hline
+		Sinusoidal	& $ f(x) = \sin(\omega x + \varphi) $	& $[-1, 1]$\\\hline
+		Sigmoidal	& $f(x) = \frac{1}{1 + \exp{-x}}$	& $[0, 1]$\\\hline
+		Tangente hiperbólica	& $\frac{1 - \exp(-x)}{1 + \exp(-x)}$	& $[-1, 1]$\\\hline
+	\end{tabular}
+	\caption{Algunas funciones de activaciones.}
+	\label{tab:f_activacion}
+\end{table}
+
+La función $f$ es la función de activación de la neurona. Aunque existe gran variedad de funciones de activación (ver tabla \ref{tab:f_activacion}), las funciones de activación más utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
+\begin{eqnarray}
+	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}\\
+	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
+\end{eqnarray}
+
+Ambas funciones poseen como imagen un intervalo de valores entre $[0, 1]$ y $[-1, 1]$ como se observa en la figura \ref{fig:funciones}.% y están descritas por las ecuaciones \ref{eq:sigm} y \ref{eq:tanh}.
+
+\begin{imagen}
+	\scalebox{1.0}{\input{img/funciones}}
+	\caption{Funciones de activación mas utilizadas.}
+	\label{fig:funciones}
+\end{imagen}
+
+
+%\subsection{Algoritmo de retropropagación}
+El perceptrón multicapa actualiza sus pesos en función de una regla de aprendizaje, de tal manera que los nuevos pesos permitan reducir el error de salida. Por tanto, para cada patrón de entrada a la red es necesario disponer de un patrón de salida deseada. El objetivo es que la salida de la red sea lo más próxima posible a la salida deseada, debido a esto es que el aprendizaje de la red se describe como un problema de minimización de la siguiente manera $$ \min_{W} E $$ donde $W$ es el conjunto de parámetros de la red (pesos y umbrales) y $E$ es una función de error que evalúa la diferencia entre las salidas de la red y las salidas deseadas. En la mayor parte de los casos, la función de error se define como:
+\begin{eqnarray}
+	E = \frac{1}{N}\sum^{N}_{i = 1} e(i)
+\end{eqnarray}
+
+Donde $N$ es el número de muestras y $e(n)$ es el error cometido por la red para el patrón $i$, definido de la siguiente manera
+\begin{eqnarray}
+	e(i) = \frac{1}{n_{C}}\sum^{n_{C}}_{j = 1} (s_{j}(i) - y^{j}(n))^2\label{eq:error_patron}
+\end{eqnarray}
+
+Siendo $Y(i) = (y_{1}(i), y_{2}(i), \cdots, y_{n_{C}}(i))$ y $S(i) = (s_{1}(i), s_{2}(i), \cdots, s_{n_{C}}(i))$ los vectores de salida y salidas deseadas para el patrón $i$ respectivamente.
+
+De esta manera, si $W^{*}$ es un mínimo de la función de error $E$, en dicho punto el error será cercano a cero, y en consecuencia, la salida de la red será próxima a la salida deseada. La presencia de funciones de activación no lineales hace que la respuesta de la red sea no lineal respecto a los parámetros ajustables, por lo que el problema de minimización es un problema no lineal y se hace necesario el uso de técnicas de optimización no lineales para su resolución.
+
+Las técnicas utilizadas suelen basarse en la actualización de los parámetros de la red mediante la determinación de una dirección de búsqueda. En el caso de las redes neuronales multicapa, la dirección de búsqueda más utilizada se basa en la dirección contraria del gradiente de la función de error $E$, el método de gradiente descendente.
+
+Si bien el aprendizaje de la red busca minimizar el error total de la red, el procedimiento está basado en métodos del gradiente estocástico, que son una sucesión de minimizaciones del error $e(i)$ por cada patrón, en lugar de minimizar el error total $E$ de la red. Aplicando el método del gradiente estocástico, cada parámetro $w$ se modifica para cada patrón de entrada $n$ según la siguiente regla de aprendizaje
+\begin{eqnarray}
+	w(i) = w(n - 1) - \alpha\frac{\partial e(i)}{\partial w}
+\end{eqnarray}
+
+donde $e(i)$ es el error para el patrón de entrada $i$ dado por la ecuación \ref{eq:error_patron}, y $\alpha$ es la tasa de aprendizaje, éste último determina el desplazamiento en la superficie del error.
+
+Como las neuronas están ordenadas por capas y en distintos niveles, es posible aplicar el método del gradiente de forma eficiente, resultando en el {\em algoritmo de retropropagación} \cite{Rumelhart1986} o {\em regla delta generalizada}. El término retropropagación es utilizado debido a la forma de implementar el método del gradiente en las redes multicapa, pues el error cometido en la salida de la red es propagado hacia atrás, transformándolo en un error para cada una de las neuronas ocultas de la red.
+
+% Neural Networks for Pattern Recognition - Bishop: 140 - Error backpropagation.
+% Neural Networks for Pattern Recognition - Bishop: 263 - Gradient descent.
+El algoritmo de retropropagación es el método de entrenamiento más utilizado en redes con conexión hacia adelante. Es un método de aprendizaje supervisado, en el que se distinguen claramente dos fases:
+\begin{enumerate}
+	\item Se aplica un patrón de entrada, el cual se propaga por las distintas capas que componen la red hasta producir la salida de la misma. Esta salida se compara con la salida deseada y se calcula el error cometido por cada neurona de salida.
+
+	\item Estos errores se transmiten desde la capa de salida, hacia todas las neuronas de las capas anteriores \cite{Fritsch1996}. Cada neurona recibe un error que es proporcional a su contribución sobre el error total de la red. Basándose en el error recibido, se ajustan los errores de los pesos sinápticos de cada neurona.
+\end{enumerate}
+
+
+% http://neuralnetworksanddeeplearning.com/chap5.html
+% ME ESTOY BASANDO EN : [1998b] Hochreiter
+\subsection{El desvanecimiento del gradiente}\label{sec:desvanecimiento_del_gradiente}
+El problema del gradiente desvaneciente nace en las NN profundas, éstas utilizan funciones cuyo gradiente se encuentran entre 0 y 1. Debido a que estos gradientes pequeños se multiplican durante la retropropagación, tienden a desvanecerse a través de las capas, evitando que la red aprenda.
+
+Si se tiene una NN, la activación de una neurona de una capa intermedia $i$ con función de activación $f_i$ y con entrada $$ net_{i}(t) = \sum_{j}w_{ji}y^{j}(t - 1) $$ es $$y^{i}(t) = f_{i}(net_{i}(t))$$ Además $w_{ji}$ es el peso de la conexión desde la unidad $j$ de la capa anterior hasta la unidad $i$ de la capa actual, $d_{k}(t)$ será la respuesta esperada de la unidad $k$ de la capa de salida en el tiempo $t$. Usando el error cuadrático medio ({\em Mean square error}, MSE), el error de $k$ será
+$$ E_{k}(t) = (d_{k}(t) - y^{k}(t))^2 $$
+
+En un tiempo $\tau \leq t$ cualquiera, el error de una neurona $j$ que no sea una neurona de entrada es la suma de los errores externos y el error propagado hacia atrás desde la neurona previa será
+$$ \vartheta_{j}(\tau) = f'_{j}(net_{j}(\tau))\left(E_{j}(\tau) + \sum_{i} w_{ij}\vartheta_{i}(\tau + 1)\right) $$
+
+El peso actualizado en el tiempo $\tau$ resulta $w_{jl}^{new} = w_{jl}^{old} + \alpha\vartheta_{j}(\tau) y^{l}(\tau - 1)$ donde $\alpha$ es la tasa de aprendizaje, y $l$ es una unidad arbitraria conectada a la unidad $j$.
+
+%\citeA{Puskorius1994}
+La propagación hacia atrás de un error que ocurre en una unidad $u$ en un tiempo $t$ hacia una unidad $v$ para $q$ pasos, escala el error de la siguiente manera
+\begin{eqnarray}
+\frac{\partial\vartheta_{v}(t - q)}{\partial\vartheta_{u}(t)} =
+\left\{
+\begin{array}{lr}
+	f^{'}_{v}(net_{v}(t - 1))w_{uv}	& q = 1\\
+	\\
+	f^{'}_{v}(net_{v}(t - q))\sum^{n}_{l=1}\frac{\partial\vartheta(t - q + 1)}{\partial\vartheta_{u}(t)}w_{lv}	& q > 1
+\end{array}
+\right.
+\end{eqnarray}
+
+Con $l_{q} = v$ y $l_{0} = u$, el factor de escalamiento es
+\begin{eqnarray}
+\frac{\partial\vartheta_{v}(t - q)}{\partial\vartheta_{u}(t)} =
+\sum^{n}_{l_{1}=1}\cdots\sum^{n}_{l_{q - 1}=1}\prod^{q}_{m = 1}f^{'}_{l_{m}}(net_{l_{m}}(t - m))w_{l_{m}l_{m - 1}}\label{eq:vanishing}
+\end{eqnarray}
+
+La sumatoria de los $n^{q - 1}$ términos $\prod^{q}_{m = 1}f^{'}_{l_{m}}(net_{l_{m}}(t - m))w_{l_{m}l_{m - 1}}$ escalan el error. Los distintos términos pueden tener signos diferentes, por lo tanto, el aumento del número de unidades $n$ no implica un incremento del error absoluto. Pero con mas unidades se incrementa la expectativa de que el valor absoluto del error aumente. Si $\rho(m, l_{m}, l_{m - 1}) := |f^{'}_{l_{m}}(net_{l_{m}}(t - m))w_{l_{m}l_{m - 1}}| < 1.0$
+para todo $m$, el producto en (\ref{eq:vanishing}) decrece exponencialmente con $q$, es decir, el error se desvanece como muestra la figura \ref{fig:vanishing}. Un error que se desvanece a lo largo del flujo casi no tiene efecto en la actualización de los pesos. %Dada la constante $y^{l_{m - 1}} \neq 0$, $\rho(m, l_{m}, l_{m - 1})$ es máximo cuanto $w_{l_{m}l_{m - 1}} = \frac{1}{y^{l_{m - 1}}}\coth(\frac{net_{l_{m}}}{2})$.
+
+\begin{imagen}
+	\scalebox{1.0}{\input{img/vanishing_img}}
+	\caption{Gradiente descendente}
+	\label{fig:vanishing}
+\end{imagen}
+
+\section{Revisión de la literatura}
+\import{contenido/}{reglasaprendizaje.tex}
+%Muchos de los métodos utilizados \cite{Elman1990, Schmidhuber1992b, Pearlmutter1989, Pearlmutter1995} sufren del desvanecimiento del gradiente. Para solventar el problema hay diversos métodos que lo evitan, como los métodos de búsqueda global, el modelo de memoria a corto y largo plazo o el preprocesamiento de las señales.
+%% 13. S. E. Fahlman, "The recurrent cascade-correlation learning algorithm", in Advances in Neural Information Processing Systems 3, ed. R. P. Lippmann et al. (Morgan Kaufmann, San Mateo, 1991), pages 190-196.
+
+% 14. R. J. Williams, "Complexity of exact gradient computation algorithms for recurrent neural networks" , Technical Report NU-CCS-89-27, Boston: Northeastern Univ., College of Computer Science, 1989.
+
+%% 15. J. Schmidhuber, "A fixed size storage O(n^3) time complexity learning algorithm for fully recurrent continually running networks", Neural Computation, 4(2).243-248 (1992).
+
+%% 16. B. A. Pearlmutter, "Learning state space trajectories in recurrent neural networks", Neural Computation, 1(2):263{269 (1989).
+
+%% 17B. A. Pearlmutter, "Gradient calculations for dynamic recurrent neural networks: A survey", IEEE Transactions on Neural Networks, 6(5):1212{1228 (1995).
+
+%\subsection{Gradiente descendente}
+%\subsection{Gradiente estocástico descendente}
+% http://www.ctrl.cinvestav.mx/~yuw/pdf/MaTesER.pdf
+%El método del gradiente estocástica descendente ({\em Stochastic gradient descent}, SGD) es una aproximación estocástica del método del gradiente descendente para la minimización de la función objetivo mediante la actualización de los pesos en cada iteración.
+
+%\begin{algorithm}[H]
+%    \SetAlgoLined
+%	\KwData{Vector de pesos $W$, taza de aprendizaje $\eta$, conjunto $S$ de entrenamiento}
+%	\Repeat{}{
+%		Mezclar en forma aleatoria el conjunto $S$\;
+%		Evaluar la red con un patrón y calcular el error\;
+%		Actualizar los pesos $W = W - \eta\nabla Q_{i}(W)$\;
+%	}
+%	\caption{SGD}
+%	\label{alg:sgd}
+%\end{algorithm}
+
+%El algoritmo SGD (ver \ref{alg:sgd}) trabaja como el método del gradiente descendente tradicional, pero acelera su funcionamiento
+% http://climin.readthedocs.io/en/latest/rmsprop.html
+%\subsection{RMSProp}
+%\citeA{Tieleman2012} presentan un optimizador que utiliza la magnitud del gradiente para normalizar los gradientes. Siempre mantiene una media móvil sobre la raíz cuadrática media de los gradientes, por el cual se divide el gradiente actual. Sea $f'(\theta_{t})$ la derivada de la función de pérdida con respecto a los parámetros en la etapa $t$ del tiempo. En su forma básica, dada una tasa de paso $\alpha$ y un término de decaimiento $\gamma$ se realizan las siguientes actualizaciones:
+%\begin{eqnarray}
+%	r_{t} &=& (1 - \gamma)f'(\theta_{t})^2 + \gamma r_{t - 1}\\
+%	v_{t + 1} &=& \frac{\alpha}{\sqrt{r_{t}}}f'(\theta_{t})\\
+%	\theta_{t + 1} &=& \theta_{t} - v_{t + 1}
+%\end{eqnarray}
+
+%\subsection{Métodos de búsqueda global}
+%Los métodos de búsqueda global no utilizan el gradiente. Métodos como {\em simulated annealing} (SA), {\em multi-grid random search} \cite{Bengio1994} y {\em random weight guessing} \cite{Schmidhuber1996} han sido investigados. Se ha encontrado que los métodos de búsquedas globales funcionan bien en problemas que involucren dependencias a largo plazo y que además utilizan redes que contienen pocos parámetros y no precisan de alta precisión en sus calculos.
+%
+%El método SA es un algoritmo de búsqueda meta-heurística para problemas de optimización global. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, en el caso de que al evaluar la perturbación se obtenga un mejor desempleo que la solución actual, se actualizará la solución actual; y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
+%
+%\scalebox{0.8}{\begin{algorithm}[H]
+%    \SetAlgoLined
+%	\DontPrintSemicolon
+%	\KwData{Temperatura $T$, constante de Boltzmann $k$, factor de reducción $c$}
+%	Seleccionar el mejor vector solución $x_{0}$ a optimizar\;
+%	\While{El criterio no se cumpla}{
+%		\While{Existan soluciones en el conjunto}{
+%			Seleccionar una solución $x_{0} + \Delta x$\;
+%			\uIf{$f(x_{0} + \Delta x) < f(x_{0})$}{
+%				$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+%			}
+%			\Else{
+%				$\Delta f = f(x_{0} + \Delta x) - f(x_{0})$\;
+%				\uIf{$rand(0, 1) > \exp{(-\Delta f/kT}$)}{
+%					$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+%				}\Else{
+%					$f_{new} = f(x_{0})$\;
+%				}
+%			}
+%			$f = f_{new}$; $T = cT$\;
+%		}
+%	}
+%	\caption{Simulated annealing}
+%	\label{alg:sa}
+%\end{algorithm}}
+
+
+
+% [1998b] Hochreiter
+% Y. Bengio, P. Simard, and P. Frasconi, "Learning long-term dependencies with gradient descent is dicult", IEEE Transactions on Neural Networks, 5(2):157{166 (1994).
+%\subsubsection{(ii) Métodos que refuerzan el gradiente}
+%Los valores más grandes del gradiente pueden ser reforzados por la optimización pseudo-Newton ponderada en el tiempoy la propagación discreta del errror \cite{Bengio1994}. Presentan problemas para almacenar información real de gran valor en el tiempo.
+
+%\subsubsection{(iii) Métodos que operan en niveles mas altos}
+%Anteriormente se ha propuesto un enfoque EM para la propagación del objetivo \cite{Bengio1993}. Este enfoque utiliza un número discreto de estados y, por lo tanto, tendrá problemas con valores continuos.
+%Las técnicas de filtrado de Kallman se utilizan para el entrenamiento de redes recurrentes \cite{Puskorius1994}. Sin embargo, un factor de descuento derivado conduce a problemas de desvanecimiento del gradiente.
+%Si un problema de retraso a largo plazo contiene regularidades locales, un sistema jerárquico chunket funciona bien \cite{Schmidhuber1992a}.
+
+%%\subsubsection{(iv) Métodos que utilizan arquitecturas especiales}
+%\subsection{El modelo de memoria a corto y largo plazo}
+%\citeA{Hochreiter1997a} introdujeron el modelo de memoria a corto y largo plazo ({\em Long short-term memory}, LSTM) como solución al problema del devanecimiento del gradiente. La red LSTM se basa en el bloque de memoria, que se componse de una o más celdas de memoria, una compuerta de entrada y una compuerta de salida. Las entradas son unidades multiplicativas con activación continua y son compartidas por todas las celdas de un mismo bloque de memoria. Cada celda contiene una unidad lineal con una conexión recurrente local llamada carrusel de error constante (CEC), se conocerá como estado de la celda a la activación del CEC.
+%
+%Cada celda recibe una entrada ponderada por los pesos correspondientes a la capa anterior. La compuerta de entrada se encarga de de permitir o impedir el acceso de estos valores al CEC del interior de la celda. La compuerta de salida realiza una acción similar sobre la salida de la celda, tolerando o reprimiendo la difusión del estado del CEC al resto de la red.
+%
+%Los bloques de memoria configuran una red LSTM, donde no se indican los sesgos de las distintas neuronas del modelo. La existencia de las conexiones con pesos $W^{y, u}$  determina la naturaleza de la red. Así, si se permite la existencia de esta conexión, la red LSTM se puede considerar como una máquina neuronal de estados de MEaly, si no se permite, la red LSTM puede considerarse como una máquina neurona de estados de Moore. El estado de la red LSTM está formado por las activaciones de las compuertas, el CEC y las celdas de los bloques de memoria.
+%
+%% http://zacklipton.com/media/papers/recurrent-network-review-lipton-2015v2.pdf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LiuShenxiu.pdf
+%% Conquering vanishing gradient: Tensor Tree LSTM on aspect-sentiment classification
+%% - Tree-structures LSTMs
+%% - Tensor Tree LSTM
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Lipton2015
+%% Truncated backpropagation through time (TBPTT) is one solution to the exploding gradient problem for continuously running networks [Williams and Zipser, 1989]
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Squartini2003a
+%% PREPROCESSING BASED SOLUTION FOR THE VANISHING
+%% Squartini2003b
+%% Attempting to reduce the vanishing gradient effect through a novel recurrent multiscale architecture
+%\subsection{Preprocesamiento de la señal}
+%\citeA{Squartini2003a} propone pre-procesar la señal de entrada a través de una descomposición wavelet, buscando separar la información a corto plazo de la información a largo plazo, y entrenando diferentes NN. Los resultados son combinados para alcanzar el objetivo final. Este enfoque simplifica el proceso de aprendizaje de la NN, evitando cambios relevantes en la arquitectura de la red y las técnicas de aprendizaje.
+%
+>>>>>>> ed8edc3045e50c2da5b64b5d2be5a1fb11df218c
