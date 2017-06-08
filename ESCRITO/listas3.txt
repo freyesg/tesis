@@ -1,0 +1,20 @@
+SIMULATED ANNEALING ALGORITHM FOR DEEP LEARNING
+[2015] IMPORTANTE Rere R, Fanany M, Arymurthy
+L.M. Rasdi Rere, Mohamad Ivan Fanany, Aniati Murni Arymurthy
+
+[2] - Deng2014 - L. Deng and D. Yu, Deep Learning: Methods and Application, NOW Publisers 2014.
+
+
+DEEP LEARNING AND ITS APPLICATIONS: A REVIEW
+[2010] Arel I, Rose D, Kamowski T
+Nur Farhana Hordri, Siti Sophiayati Yuhaniz, Siti Mariyam Shamsuddin
+
+[1] - Hinton2006 - Hinton, G. E., Osindero, S., & Teh, Y. W. (2006). A fast learning algorithm for deep belief nets. Neural computation, 18(7), 1527-1554.
+
+[2] - Bengio2009 - Bengio, Y. (2009). Learning deep architectures for AI. Foundations and trends® in Machine Learning, 2(1), 1-127.
+
+[3] - Bengio2007 - Bengio, Y., & LeCun, Y. (2007). Scaling learning algorithms towards AI. Large-scale kernel machines, 34(5).
+
+[4] - Bengio2013 - Bengio, Y., Courville, A., & Vincent, P. (2013). Representation learning: A review and new perspectives. IEEE transactions on pattern analysis and machine intelligence, 35(8), 1798-1828.
+
+[5] - Arel2010 - Arel, I., Rose, D. C., & Karnowski, T. P. (2010). Deep machine learning-a new frontier in artificial intelligence research [research frontier]. IEEE Computational Intelligence Magazine, 5(4), 13-18.
