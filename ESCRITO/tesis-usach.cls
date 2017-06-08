@@ -5,19 +5,8 @@
 % See http://creativecommons.org/licenses/GPL/2.0
 %
 % See http://ankurdave.com/tex for more document classes.
-
+% https://github.com/gmartinezramirez/Master-Thesis/blob/master/tesis-usach.cls
 \ProvidesClass{tesis-usach}
-
-
-
-\newif\if@uno
-\DeclareOption{ppt1}{\@unotrue}
-
-\newif\if@dos
-\DeclareOption{ppt2}{\@dostrue}
-
-\newif\if@tres
-\DeclareOption{ppt3}{\@trestrue}
 
 \newif\if@escrito
 \DeclareOption{tesis}{\@escritotrue}
@@ -47,8 +36,9 @@
 	\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
 	\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 
-	\setcounter{secnumdepth}{3}
-	\setcounter{tocdepth}{3}
+
+	%\setcounter{secnumdepth}{3}
+	%\setcounter{tocdepth}{3}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
@@ -56,12 +46,11 @@
 \if@inf
 	\LoadClass[12pt, oneside]{article}
 	\RequirePackage{titlesec}
-	\setcounter{secnumdepth}{3}
-	\setcounter{tocdepth}{3}
+	%\setcounter{secnumdepth}{3}
+	%\setcounter{tocdepth}{3}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
-
 
 \newcommand{\autor}{\@author}
 \renewcommand{\rmdefault}{phv} % Arial
@@ -321,20 +310,6 @@
 }
 
 
-
-\if@dos
-	\mode<presentation>{}
-	\setbeamercovered{transparent}
-	\useinnertheme{default}
-	\usefonttheme{professionalfonts}
-	\setbeamercolor{framesubtitle}{fg=azul}
-	\setbeamercolor{frametitle}{fg=azul}
-	\setbeamercolor{title}{fg=azul}
-
-
-	\textwidth=0.75\paperwidth
-	\setbeamertemplate{navigation bar}{}
-\fi
 
 \if@escrito
 \makeatletter

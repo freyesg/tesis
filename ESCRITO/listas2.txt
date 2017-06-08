@@ -18,3 +18,5 @@ Morse G y Stanley K
 33 - Ranzato2007 - R. Marc’Aurelio, L. Boureau, and Y. LeCun. Sparse feature learning for deep belief networks. In Advances in Neural Information Processing Systems 20 (NIPS), pages 1185–1192, Cambridge, MA, 2007. MIT Press.
 
 40 - Rumelhart1986b - D. E. Rumelhart, G. E. Hinton, and R. J. Williams. Learning internal representations by error propagation. In Parallel Distributed Processing, pages 318–362. 1986.
+
+48 - T. Tieleman and G. Hinton. Lecture 6.5-RMSprop: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural Networks for Machine Learning, 4, 2012.
