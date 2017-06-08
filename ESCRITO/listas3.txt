@@ -1,0 +1,2 @@
+SIMULATED ANNEALING ALGORITHM FOR DEEP LEARNING
+L.M. Rasdi Rere, Mohamad Ivan Fanany, Aniati Murni Arymurthy
