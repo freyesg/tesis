@@ -1,5 +1,6 @@
 Deep Learning and Its Applications: A Review
 Nur Farhana Hordri, Siti Sophiayati Yuhaniz, Siti Mariyam Shamsuddin
+[2016] Hordri N, Yuhaniz S, Shamsuddin S
 
 [8] Hasim Sak, Andrew Senior, Kanishka Rao, Françoise Beaufays and Johan Schalkwyk (September 2015): Google voice search: faster and more accurate.
 
