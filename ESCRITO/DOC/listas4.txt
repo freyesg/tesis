@@ -1,0 +1,21 @@
+Deep Learning and Its Applications: A Review
+Nur Farhana Hordri, Siti Sophiayati Yuhaniz, Siti Mariyam Shamsuddin
+
+[8] Hasim Sak, Andrew Senior, Kanishka Rao, Françoise Beaufays and Johan Schalkwyk (September 2015): Google voice search: faster and more accurate.
+
+[10] Ciresan, D. C., Giusti, A., Gambardella, L. M., & Schmidhuber, J. (2013, September). Mitosis detection in breast cancer histology images with deep neural networks. In International Conference on Medical Image Computing and Computer-assisted Intervention (pp. 411-418). Springer Berlin Heidelberg.
+
+[12] Huang, P. S., He, X., Gao, J., Deng, L., Acero, A., & Heck, L. (2013, October). Learning deep structured semantic models for web search using clickthrough data. In Proceedings of the 22nd ACM international conference on Conference on information & knowledge management (pp. 2333- 2338). ACM.
+
+[13] Dahl, G. E., Jaitly, N., & Salakhutdinov, R. (2014). Multi-task neural networks for QSAR
+predictions. arXiv preprint arXiv:1406.1231.
+
+[14] Wallach, I., Dzamba, M., & Heifets, A. (2015). AtomNet: A Deep Convolutional Neural Network for Bioactivity Prediction in Structure-based Drug Discovery. arXiv preprint arXiv:1510.02855.
+
+[15] Tkachenko, Y. (2015). Autonomous CRM Control via CLV Approximation with Deep Reinforcement Learning in Discrete and Continuous Action Space. arXiv preprint arXiv:1504.01840.
+
+[16] Van den Oord, A., Dieleman, S., & Schrauwen, B. (2013). Deep content-based music recommendation. In Advances in Neural Information Processing Systems (pp. 2643-2651).
+
+[17] Elkahky, A. M., Song, Y., & He, X. (2015, May). A multi-view deep learning approach for cross domain user modeling in recommendation systems. In Proceedings of the 24th International Conference on World Wide Web (pp. 278-288). ACM.
+
+[18] Chicco, D., Sadowski, P., & Baldi, P. (2014, September). Deep autoencoder neural networks for gene ontology annotation predictions. In Proceedings of the 5th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics (pp. 533-540). ACM.

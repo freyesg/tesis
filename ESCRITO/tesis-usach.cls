@@ -23,20 +23,6 @@
 
 \if@escrito
 	\LoadClass[10pt, oneside]{book}
-	\RequirePackage{titlesec}
-	\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
-	\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
-	\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
-	\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
-
-	\titlespacing*{\chapter} {0pt}{85pt}{20pt}
-	\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-	\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-	\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-	\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
-	\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
-
-
 	%\setcounter{secnumdepth}{3}
 	%\setcounter{tocdepth}{3}
 
@@ -55,6 +41,26 @@
 \newcommand{\autor}{\@author}
 \renewcommand{\rmdefault}{phv} % Arial
 \renewcommand{\sfdefault}{phv} % Arial
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Personalización de los títulos de secciones
+\RequirePackage[]{titlesec}
+\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
+\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
+\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
+\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
+
+\titlespacing*{\chapter} {0pt}{85pt}{20pt}
+\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
@@ -75,6 +81,7 @@
 % Figuras y tablas
 \RequirePackage[pdftex]{graphicx} % PDFLaTeX
 %\RequirePackage[font=small]{caption}
+\RequirePackage{tikz}
 \RequirePackage{float}
 \RequirePackage{multicol}
 \RequirePackage{multirow}
@@ -91,7 +98,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliografía y referencias
-\RequirePackage[hidelinks]{hyperref}
+%\RequirePackage[hidelinks]{hyperref}
 \RequirePackage[apaciteclassic]{apacite}
 %\RequirePackage{tocbibind} % Agregar referencias al índice
 \RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
@@ -496,26 +503,24 @@
 	\end{figure}
 }
 
-\hypersetup{
-    bookmarksopen, bookmarksnumbered, pdfdisplaydoctitle=true,
-    pdftitle=\@title,
-    pdfauthor=\@autor,
-    pdfsubject=Tesis de grado,
-    pdfkeywords=,
-    pdfcreator=Universidad de Santiago de Chile,
-    pdfproducer=Felipe Reyes Gonz\'{a}lez,
-    colorlinks=true,
-    % linkcolor=red,
-    % citecolor=green,
-    % filecolor=magenta,
-    % urlcolor=cyan,
-    linkcolor=black,
-    citecolor=black,
-    filecolor=black,
-    urlcolor=black,
-    linkbordercolor={1 0 0},
-    citebordercolor={0 1 0}
-}
+%\hypersetup{
+%bookmarksopen, bookmarksnumbered, pdfdisplaydoctitle=true,
+%pdftitle=\@title,
+%pdfauthor=\@autor,
+%pdftoolbar=true,        % show Acrobat’s toolbar?
+%pdfmenubar=true,        % show Acrobat’s menu?
+%pdfsubject=Tesis de grado,
+%pdfkeywords=,
+%pdfcreator=Universidad de Santiago de Chile,
+%pdfproducer=Felipe Reyes Gonz\'{a}lez,
+%colorlinks=true,
+%linkcolor=black,
+%citecolor=black,
+%filecolor=black,
+%urlcolor=black,
+%linkbordercolor={1 0 0},
+%citebordercolor={0 1 0}
+%}
 
 % Cambios al default de spanish
 \deactivatetilden
