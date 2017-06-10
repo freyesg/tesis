@@ -98,7 +98,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliografía y referencias
-%\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[hidelinks]{hyperref}
 \RequirePackage[apaciteclassic]{apacite}
 %\RequirePackage{tocbibind} % Agregar referencias al índice
 \RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
@@ -304,16 +304,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Índice
 \newcommand{\indice}{
-	%\setcounter{page}{0}
-	%\renewcommand{\thepage}{\roman{page}}
 	\tableofcontents
-	\newpage
+	%\newpage
+	\cleardoublepage
 	\listoftables
-	\newpage
+	\cleardoublepage
 	\listoffigures
 	\newpage
-	%\setcounter{page}{1}
-	%\renewcommand{\thepage}{\arabic{page}}
 }
 
 

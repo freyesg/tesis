@@ -7,6 +7,23 @@
 %\usetikzlibrary{arrows, calc, decorations.markings, math}
 %\usetikzlibrary{matrix, chains, positioning, decorations.pathreplacing, shapes, snakes}
 
+%\makeatletter
+%\def\@makechapterhead#1{
+%\begingroup
+%	\Large\MakeUppercase{\bf \chaptertitlename\ \thechapter. #1}\vspace{15pt}
+%\endgroup
+%}
+%\makeatother
+
+%\makeatletter
+%\def\@makesectionhead#1{{\vspace{20pt}}{\MakeUppercase\thesection}\vspace{15pt}}
+%\makeatother
+%\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
+%\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
+%\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
+%\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
+
+
 \title{Análisis de la eficiencia del entrenamiento de redes neuronales profundas basado en simulated annealing}
 \informe{Informe}
 \facultad{Facultad de Ingenieria}
@@ -20,9 +37,6 @@
 \date{\today}
 
 \let\cite\shortcite
-%\addto\captionsspanish{
-%	\renewcommand{\BOthers}[1]{et al.\hbox{}}%
-%}
 
 \begin{document}
 	\renewcommand{\BOthers}[1]{et al.\hbox{}}%
