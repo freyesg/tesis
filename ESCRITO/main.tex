@@ -7,21 +7,48 @@
 %\usetikzlibrary{arrows, calc, decorations.markings, math}
 %\usetikzlibrary{matrix, chains, positioning, decorations.pathreplacing, shapes, snakes}
 
-%\makeatletter
+% https://tex.stackexchange.com/questions/129677/automatic-capitalization-of-sectioning-headings
+\makeatletter
 %\def\@makechapterhead#1{
-%\begingroup
-%	\Large\MakeUppercase{\bf \chaptertitlename\ \thechapter. #1}\vspace{15pt}
-%\endgroup
+%	\begingroup
+%		\Large\bfseries\MakeUppercase{\@chapapp{} \thechapter. #1}
+%		\vspace{20pt}
+%	\endgroup
 %}
-%\makeatother
 
-%\makeatletter
-%\def\@makesectionhead#1{{\vspace{20pt}}{\MakeUppercase\thesection}\vspace{15pt}}
-%\makeatother
-%\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
-%\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
-%\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
-%\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
+%\renewcommand{\section}{
+%	\@startsection{section}{1}{\z@}
+%	{2pt}%{6.5ex plus 1ex minus .2ex}
+%	{0.5cm}%{2.3ex plus .2ex}
+%	{\large\bfseries\MakeUppercase}%*[<altheading>]{<heading>}
+%}
+
+%%\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
+%%\titlespacing*{\chapter} {0pt}{85pt}{20pt}
+%
+%\renewcommand{\section}{
+%	\@startsection{section}{1}{\z@}
+%	{2pt}%{6.5ex plus 1ex minus .2ex}
+%	{0.5cm}%{2.3ex plus .2ex}
+%	{\large\bfseries\MakeUppercase}%*[<altheading>]{<heading>}
+%}
+%%\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
+%%\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%
+%\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+%             {-3.25ex\@plus -1ex \@minus -.2ex}%
+%             {1.5ex \@plus .2ex}%
+%             {\normalfont\large\scshape\bfseries}}
+%						 %\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
+%						 %\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%
+%\renewcommand{\subsubsection}{\@startsection{subsubsection}{2}{\z@}%
+%             {-3.25ex\@plus -1ex \@minus -.2ex}%
+%             {1.5ex \@plus .2ex}%
+%             {\normalfont\normalsize\scshape\bfseries}}
+%						 %\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
+%						 %\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatother
 
 
 \title{Análisis de la eficiencia del entrenamiento de redes neuronales profundas basado en simulated annealing}
@@ -37,8 +64,12 @@
 \date{\today}
 
 \let\cite\shortcite
+\usepackage{layouts}
 
 \begin{document}
+\printinunitsof{cm}{\pagevalues}
+
+\pagediagram
 	\renewcommand{\BOthers}[1]{et al.\hbox{}}%
 	\maketitle
 	\makecopyright

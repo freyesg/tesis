@@ -1,9 +1,11 @@
 SIMULATED ANNEALING ALGORITHM FOR DEEP LEARNING
+L.M. Rasdi Rere, Mohamad Ivan Fanany, Aniati Murni Arymurthy
 [2015] IMPORTANTE Rere R, Fanany M, Arymurthy
 L.M. Rasdi Rere, Mohamad Ivan Fanany, Aniati Murni Arymurthy
 
 [2] - Deng2014 - L. Deng and D. Yu, Deep Learning: Methods and Application, NOW Publisers 2014.
 
+[3] - Lamos2012 - J.D. Lamos Sweeney, Deep Learning using Genetic Algorithms, master thesis, Dept. of Computer Science, Rochester Institute of Technology, 2012.
 
 DEEP LEARNING AND ITS APPLICATIONS: A REVIEW
 [2010] Arel I, Rose D, Kamowski T

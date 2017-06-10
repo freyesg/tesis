@@ -23,8 +23,8 @@
 
 \if@escrito
 	\LoadClass[10pt, oneside]{book}
-	%\setcounter{secnumdepth}{3}
-	%\setcounter{tocdepth}{3}
+	\setcounter{secnumdepth}{3}
+	\setcounter{tocdepth}{3}
 
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
@@ -47,12 +47,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Personalización de los títulos de secciones
-\RequirePackage[]{titlesec}
+\RequirePackage{titlesec}
+%\renewcommand{\thesection}{\thechapter.\arabic{section}}
+
 \titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
 \titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
 \titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
 \titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
-
+%
 \titlespacing*{\chapter} {0pt}{85pt}{20pt}
 \titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
@@ -65,7 +67,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \RequirePackage{anysize} % Soporte para el comando \marginsize
-\RequirePackage[papersize={21.6cm, 27.9cm}, letterpaper]{geometry}
+\RequirePackage[papersize={21.6cm, 27.9cm}, letterpaper]{geometry} % , showframe
 \geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
