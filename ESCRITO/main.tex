@@ -1,54 +1,11 @@
+%\PassOptionsToPackage{showframe}{geometry}
 \documentclass[tesis]{tesis-usach}
-
 %\usepackage[linesnumbered, ruled, vlined, boxed, commentsnumbered, spanish]{algorithm2e}
 %\usepackage{algpseudocode}
 
 \usepackage{import}
 %\usetikzlibrary{arrows, calc, decorations.markings, math}
 %\usetikzlibrary{matrix, chains, positioning, decorations.pathreplacing, shapes, snakes}
-
-% https://tex.stackexchange.com/questions/129677/automatic-capitalization-of-sectioning-headings
-\makeatletter
-%\def\@makechapterhead#1{
-%	\begingroup
-%		\Large\bfseries\MakeUppercase{\@chapapp{} \thechapter. #1}
-%		\vspace{20pt}
-%	\endgroup
-%}
-
-%\renewcommand{\section}{
-%	\@startsection{section}{1}{\z@}
-%	{2pt}%{6.5ex plus 1ex minus .2ex}
-%	{0.5cm}%{2.3ex plus .2ex}
-%	{\large\bfseries\MakeUppercase}%*[<altheading>]{<heading>}
-%}
-
-%%\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
-%%\titlespacing*{\chapter} {0pt}{85pt}{20pt}
-%
-%\renewcommand{\section}{
-%	\@startsection{section}{1}{\z@}
-%	{2pt}%{6.5ex plus 1ex minus .2ex}
-%	{0.5cm}%{2.3ex plus .2ex}
-%	{\large\bfseries\MakeUppercase}%*[<altheading>]{<heading>}
-%}
-%%\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
-%%\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-%
-%\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
-%             {-3.25ex\@plus -1ex \@minus -.2ex}%
-%             {1.5ex \@plus .2ex}%
-%             {\normalfont\large\scshape\bfseries}}
-%						 %\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
-%						 %\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-%
-%\renewcommand{\subsubsection}{\@startsection{subsubsection}{2}{\z@}%
-%             {-3.25ex\@plus -1ex \@minus -.2ex}%
-%             {1.5ex \@plus .2ex}%
-%             {\normalfont\normalsize\scshape\bfseries}}
-%						 %\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
-%						 %\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-\makeatother
 
 
 \title{Análisis de la eficiencia del entrenamiento de redes neuronales profundas basado en simulated annealing}
@@ -64,15 +21,17 @@
 \date{\today}
 
 \let\cite\shortcite
-\usepackage{layouts}
-
+%\usepackage{layouts}
 \begin{document}
-\printinunitsof{cm}{\pagevalues}
+	\def\bibname{\vspace*{-6.2ex}\uppercase{Referencias Bibliográficas}}
+	%\def\bibname{REFERENCIAS BIBLIOGRÁFICAS}
+	%\def\refname{REFERENCIAS BIBLIOGRÁFICAS}
+	\baselineskip 23pt
 
-\pagediagram
 	\renewcommand{\BOthers}[1]{et al.\hbox{}}%
 	\maketitle
 	\makecopyright
+
 	\frontmatter
 	\indice
 	\mainmatter
@@ -80,6 +39,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Inicio contenido
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\setlength{\parskip}{3mm}
 	\include{contenido/capitulox01}
 	\include{contenido/capitulox02}
 	%\include{contenido/capitulox03}

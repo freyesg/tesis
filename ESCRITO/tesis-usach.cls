@@ -25,16 +25,13 @@
 	\LoadClass[10pt, oneside]{book}
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
-
 	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
+	%\addcontentsline{toc}{chapter}{Bibliografía}
 \fi
 
 \if@inf
 	\LoadClass[12pt, oneside]{article}
 	\RequirePackage{titlesec}
-	%\setcounter{secnumdepth}{3}
-	%\setcounter{tocdepth}{3}
-
 	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
@@ -47,28 +44,47 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Personalización de los títulos de secciones
-\RequirePackage{titlesec}
-%\renewcommand{\thesection}{\thechapter.\arabic{section}}
-
-\titleformat{\chapter}{\bfseries\Large\vspace*{-4.0cm}}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}[\vspace{1.5pt}]
-\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}[\vspace*{0.5cm}]
-\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
-\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
-%
-\titlespacing*{\chapter} {0pt}{85pt}{20pt}
-\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
-\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+% https://tex.stackexchange.com/questions/129677/automatic-capitalization-of-sectioning-headings
+\makeatletter
+	\def\@makechapterhead#1{
+		\begingroup
+			\Large\bfseries\MakeUppercase{\@chapapp{} \thechapter. #1}
+			\vspace{20pt}
+		\endgroup
+	}
+	\renewcommand{\section}{
+	\@startsection{section}{1}{0pt}
+		{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}
+		{\bfseries\large\MakeUppercase}
+	}
+	\renewcommand{\subsection}{
+	\@startsection{subsection}{1}{0pt}
+		{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}
+		{\bfseries\normalsize}
+	}
+	\renewcommand{\subsubsection}{
+	\@startsection{subsubsection}{1}{0pt}
+		{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+		{\itshape\normalsize}
+	}
+	\renewcommand{\paragraph}{
+	\@startsection{paragraph}{1}{0pt}
+		{3.25ex plus 1ex minus .2ex}{1em}
+		{\itshape\normalsize}
+	}
+	\renewcommand{\subparagraph}{
+	\@startsection{subparagraph}{1}{\parindent}
+		{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+		{\itshape\normalsize}
+	}
+\makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \RequirePackage{anysize} % Soporte para el comando \marginsize
-\RequirePackage[papersize={21.6cm, 27.9cm}, letterpaper]{geometry} % , showframe
-\geometry{left=4cm, top=2.5cm, right=2.5cm, bottom=2.5cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[papersize={21.60cm, 27.90cm}, letterpaper]{geometry} % , showframe
+\geometry{left=4.0cm, top=2.50cm, right=2.50cm, bottom=2.50cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,10 +114,34 @@
 \RequirePackage{enumerate}
 \RequirePackage{appendix}
 
+% Cambios al default de spanish
+\deactivatetilden
+\decimalpoint
+
+\addto\captionsspanish{
+	%\def\bibname{Referencias bibliográficas}
+	%\def\refname{Referencias bibliográficas}
+    \def\contentsname{TABLA DE CONTENIDO}
+    \def\listtablename{ÍNDICE DE TABLAS}
+    \def\listfigurename{ÍNDICE DE ILUSTRACIONES}
+    \def\listalgorithmname{ÍNDICE DE ALGORITMOS}
+    \def\appendixname{APÉNDICE}
+    \def\tablename{Tabla}
+    \def\figurename{Figura}
+    \def\lstlistingname{Código}
+    \def\chaptername{Capítulo}
+	\def\bibname{REFERENCIAS BIBLIOGRÁFICAS}
+}
+
+\renewcommand{\appendixname}{APÉNDICES}
+\renewcommand{\appendixtocname}{APÉNDICES}
+\renewcommand{\appendixpagename}{APÉNDICES}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliografía y referencias
 \RequirePackage[hidelinks]{hyperref}
-\RequirePackage[apaciteclassic]{apacite}
+\RequirePackage[notocbib, bibnewpage]{apacite}
+
 %\RequirePackage{tocbibind} % Agregar referencias al índice
 \RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
 %\setcounter{secnumdepth}{2} %Mostrar numeración en las subsecciones (subsubsecciones no llevan números)
@@ -306,11 +346,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Índice
 \newcommand{\indice}{
+	\vspace*{-2cm}
 	\tableofcontents
-	%\newpage
 	\cleardoublepage
+	\vspace*{-2cm}
 	\listoftables
 	\cleardoublepage
+	\vspace*{-2cm}
 	\listoffigures
 	\newpage
 }
@@ -320,7 +362,7 @@
 \if@escrito
 \makeatletter
 \def \maketitle {%
-	\newgeometry{left=4cm, top=4cm, right=2.5cm, bottom=2.5cm}
+	\newgeometry{left=4.0cm, top=4.0cm, right=2.50cm, bottom=2.50cm}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% PORTADA
 	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
@@ -502,53 +544,32 @@
 	\end{figure}
 }
 
-%\hypersetup{
-%bookmarksopen, bookmarksnumbered, pdfdisplaydoctitle=true,
-%pdftitle=\@title,
-%pdfauthor=\@autor,
-%pdftoolbar=true,        % show Acrobat’s toolbar?
-%pdfmenubar=true,        % show Acrobat’s menu?
-%pdfsubject=Tesis de grado,
-%pdfkeywords=,
-%pdfcreator=Universidad de Santiago de Chile,
-%pdfproducer=Felipe Reyes Gonz\'{a}lez,
-%colorlinks=true,
-%linkcolor=black,
-%citecolor=black,
-%filecolor=black,
-%urlcolor=black,
-%linkbordercolor={1 0 0},
-%citebordercolor={0 1 0}
-%}
 
-% Cambios al default de spanish
-\deactivatetilden
-\decimalpoint
-
-\addto\captionsspanish{
-    \def\bibname{REFERENCIAS BIBLIOGRÁFICAS}
-    \def\contentsname{TABLA DE CONTENIDO}
-    \def\listtablename{ÍNDICE DE TABLAS}
-    \def\listfigurename{ÍNDICE DE ILUSTRACIONES}
-    \def\listalgorithmname{ÍNDICE DE ALGORITMOS}
-    \def\appendixname{APÉNDICE}
-    \def\tablename{Tabla}
-    \def\figurename{Figura}
-    \def\lstlistingname{Código}
-    \def\chaptername{Capítulo}
-}
-
-\renewcommand{\appendixname}{APÉNDICES}
-\renewcommand{\appendixtocname}{APÉNDICES}
-\renewcommand{\appendixpagename}{APÉNDICES}
-
-%Se agrega la palabra 'Figura' al índice de figuras
 \usepackage{tocloft}
+%Se agrega la palabra 'Figura' y 'Tabla' al índice de figuras
 \renewcommand{\cftfigfont}{Figura }
-%Lo mismo para el índice de tablas
 \renewcommand{\cfttabfont}{Tabla }
-
 %Se cambia el tamaño del título de la lista de figuras, tablas e índice de contenido dejándolos igual que los títulos normales
-\renewcommand\cftloftitlefont{\Large\bf}
-\renewcommand\cftlottitlefont{\Large\bf}
-\renewcommand\cfttoctitlefont{\Large\bf}
+\renewcommand\cftloftitlefont{\bfseries}
+\renewcommand\cftlottitlefont{\bfseries}
+\renewcommand\cfttoctitlefont{\bfseries}
+
+\makeatletter
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}\texorpdfstring{\uppercase{#1}}{#1}}%
+                    \else
+                      \addcontentsline{toc}{chapter}{\texorpdfstring{\uppercase{#1}}{#1}}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\makeatother

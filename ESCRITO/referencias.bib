@@ -526,6 +526,22 @@
 	abstract = { We show how to use “complementary priors” to eliminate the explaining-away effects that make inference difficult in densely connected belief nets that have many hidden layers. Using complementary priors, we derive a fast, greedy algorithm that can learn deep, directed belief networks one layer at a time, provided the top two layers form an undirected associative memory. The fast, greedy algorithm is used to initialize a slower learning procedure that fine-tunes the weights using a contrastive version of the wake-sleep algorithm. After fine-tuning, a network with three hidden layers forms a very good generative model of the joint distribution of handwritten digit images and their labels. This generative model gives better digit classification than the best discriminative learning algorithms. The low-dimensional manifolds on which the digits lie are modeled by long ravines in the free-energy landscape of the top-level associative memory, and it is easy to explore these ravines by using the directed connections to display what the associative memory has in mind.}
 }
 
+@article {Hinton2006b,
+	author = {Hinton, G. E. and Salakhutdinov, R. R.},
+	title = {Reducing the Dimensionality of Data with Neural Networks},
+	volume = {313},
+	number = {5786},
+	pages = {504--507},
+	year = {2006},
+	doi = {10.1126/science.1127647},
+	publisher = {American Association for the Advancement of Science},
+	abstract = {High-dimensional data can be converted to low-dimensional codes by training a multilayer neural network with a small central layer to reconstruct high-dimensional input vectors. Gradient descent can be used for fine-tuning the weights in such {\textquotedblleft}autoencoder{\textquotedblright} networks, but this works well only if the initial weights are close to a good solution. We describe an effective way of initializing the weights that allows deep autoencoder networks to learn low-dimensional codes that work much better than principal components analysis as a tool to reduce the dimensionality of data.},
+	issn = {0036-8075},
+	URL = {http://science.sciencemag.org/content/313/5786/504},
+	eprint = {http://science.sciencemag.org/content/313/5786/504.full.pdf},
+	journal = {Science}
+}
+
 @article{Hinton2012,
 	author={G. Hinton and L. Deng and D. Yu and G. E. Dahl and A. r. Mohamed and N. Jaitly and A. Senior and V. Vanhoucke and P. Nguyen and T. N. Sainath and B. Kingsbury},
 	journal={IEEE Signal Processing Magazine},
@@ -724,6 +740,24 @@
 	author={Lamos-Sweeney, J.D.},
 	url={https://books.google.cl/books?id=RGpPMwEACAAJ},
 	year={2012}
+}
+
+@inproceedings{Le2011,
+	added-at = {2011-12-16T00:00:00.000+0100},
+	author = {Le, Quoc V. and Ngiam, Jiquan and Coates, Adam and Lahiri, Ahbik and Prochnow, Bobby and Ng, Andrew Y.},
+	biburl = {https://www.bibsonomy.org/bibtex/238963a5573e7aad3fae85240877248d4/dblp},
+	booktitle = {ICML},
+	crossref = {conf/icml/2011},
+	editor = {Getoor, Lise and Scheffer, Tobias},
+	interhash = {010b5d47baaa2c4b621d6587e82de13c},
+	intrahash = {38963a5573e7aad3fae85240877248d4},
+	keywords = {dblp},
+	pages = {265-272},
+	publisher = {Omnipress},
+	timestamp = {2011-12-17T11:33:28.000+0100},
+	title = {On optimization methods for deep learning.},
+	url = {http://dblp.uni-trier.de/db/conf/icml/icml2011.html#LeNCLPN11},
+	year = 2011
 }
 
 @inproceedings{Le2012,
