@@ -25,14 +25,13 @@
 	\LoadClass[10pt, oneside]{book}
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
-	\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
-	%\addcontentsline{toc}{chapter}{Bibliografía}
+	%\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
 
 \if@inf
 	\LoadClass[12pt, oneside]{article}
 	\RequirePackage{titlesec}
-	\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
+	%\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
 \newcommand{\autor}{\@author}
