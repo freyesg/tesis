@@ -5,14 +5,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% lista3
-El aprendizaje profundo ({\em Deep learning}, DL) se refiere a una nueva clase de métodos de las máquinas de aprendizaje ({\em Machine learning}, ML), donde el proceso de muchas capas distribuidas en una arquitectura jerárquica se puede utilizar para clasificar un patrón y el aprendizaje de características \cite{Hinton2006, Bengio2009}. Esta arquitectura se inspira en la inteligencia artificial que emula el proceso de aprendizaje profundo y en capas de las áreas sensoriales primarias del neocórtex en el cerebro humano, que extrae automáticamente rasgos y abstracciones de los datos \cite{Bengio2007, Bengio2013, Arel2010}.
+El aprendizaje profundo ({\em Deep learning}, DL) se refiere a una nueva clase de métodos de las máquinas de aprendizaje ({\em Machine learning}, ML). El proceso ocurre a través de muchas capas distribuidas en una arquitectura jerárquica que se puede utilizar para clasificar un patrón y el aprendizaje de características \cite{Hinton2006, Bengio2009}. Esta arquitectura se inspira en la inteligencia artificial que emula el proceso de aprendizaje profundo y en capas de las áreas sensoriales primarias del neocórtex en el cerebro humano, que extrae automáticamente rasgos y abstracciones de los datos \cite{Bengio2007, Bengio2013, Arel2010}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% lista5
-En los últimos años, se han desarrollado una serie de investigaciones en base a los algoritmos del DL en varios campos diferentes \cite{LeCun2015}. El DL ha sido utilizado para tareas de reconocimiento de imágenes \cite{Krizhevsky2012, Farabet2013, Tompson2014, Szegedy2015} y de reconocimiento de voz \cite{Mikolov2011, Hinton2012, Sainath2013}, y han superado otras técnicas de aprendizaje en la predicción de la actividad de las moléculas de fármacos \cite{Ma2015}, en el análisis de datos en el acelerador de partículas \cite{Ciodaro2012, Claire2015}, en la reconstrucción de los circuitos cerebrales \cite{Helmstaedter2013}, y en la predicción de los efectos de las mutaciones en el ADN no codificante en la expresión genética y en enfermedades \cite{Leung2014, Xiong2015}. Se a mostrado haber producido bueno resultados para diversas tareas en la comprensión del lenguaje natural \cite{Collobert2011}, en particular para la clasificación de temas, análisis de sentimientos, respuesta a preguntas \cite{Bordes2014} y en la traducción \cite{Jean2014, Sutskever2014}.
+En los últimos años, se han desarrollado una serie de investigaciones en base a los algoritmos del DL en varios campos diferentes \cite{LeCun2015}. El DL ha sido utilizado para tareas de reconocimiento de imágenes \cite{Krizhevsky2012, Farabet2013, Tompson2014, Szegedy2015} y de reconocimiento de voz \cite{Mikolov2011, Hinton2012, Sainath2013}, y han superado otras técnicas de aprendizaje en la predicción de la actividad de las moléculas de fármacos \cite{Ma2015}, en el análisis de datos en el acelerador de partículas \cite{Ciodaro2012, Claire2015}, en la reconstrucción de los circuitos cerebrales \cite{Helmstaedter2013}, y en la predicción de los efectos de las mutaciones en el ADN no codificante en la expresión genética y en enfermedades \cite{Leung2014, Xiong2015}. También ha producido buenos resultados en diversas tareas para la comprensión del lenguaje natural \cite{Collobert2011}, en particular para la clasificación de temas, análisis de sentimientos, respuesta a preguntas \cite{Bordes2014} y en la traducción \cite{Jean2014, Sutskever2014}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -29,16 +29,8 @@ En general, las técnicas del DL pueden clasificarse en modelos discriminativos 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% lista2
-Las redes neuronales artificiales ({\em Artificial Neural Networks}, NN) han sido protagonistas de su propio renacimiento en el campo del ML con el surgimiento del DL \cite{Bengio2006, Hinton2006, Le2012, Ranzato2007}. Las principales ideas detrás del nuevo enfoque abarcan una gama de algoritmos \cite{Bengio2007, Hinton2006}, pero un principio en común es que una NN con múltiples capas ocultas, que la convierten en profundo, puede codificar características cada vez más complejas en sus capas. Las NN fueron comunmente entrenadas a través del algoritmo de retropropagación \cite{Rumelhart1986b}, que utiliza el método del gradiente estocástico descendente ({\em Stochastics descent gradiente}, SGD), o una de sus variantes, para actualizar los pesos de la NN y de esa manera reducir el error total. Los descubrimientos en los últimos años han demostrado que, con suficientes datos de entrenamiento y con suficiente poder de procesamiento, el método de retropropagación y SGD resultan ser eficaces en la optimización de una NN de mucha profundidad y altamente conectada \cite{Ciresan2012, He2015, Le2012}. Esta realización ha llevado a registros sustantivos que se rompen en muchas áreas de las ML a través de la aplicación de la retropropagación en el aprendizaje profundo \cite{Ciresan2012, He2015, Le2012}, incluyendo el aprendizaje no supervisado \cite{Bengio2009}.
-
-%%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Nos motiva el exito de las NN para predecir, nos motiva la dificultad del gradiente estocastico para minimizar el error en estos modelos no lineales complejos. Nos motiva la excelencia del SA en resolver problemas de optimización combinatoria que aparenemente pueden considerarse mas complejos que los problemas continuos.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Un párrafo para comparar los problemas conejillos de india con los que se compara. Para evaluar el desempeño de los algoritmos tipicamente se usan problemas problemas de aprendizaje de la literatura.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Revisar la última frase.
+Las redes neuronales artificiales ({\em Artificial Neural Networks}, NN) han sido protagonistas de su propio renacimiento en el campo del ML con el surgimiento del DL \cite{Bengio2006, Hinton2006, Le2012, Ranzato2007}. Las principales ideas detrás del nuevo enfoque abarcan variados algoritmos \cite{Bengio2007, Hinton2006}, pero un principio en común es que una NN con múltiples capas ocultas, que la convierten en profunda, puede codificar características cada vez más complejas en sus capas. Las NN fueron comunmente entrenadas a través del algoritmo de retropropagación \cite{Rumelhart1986b}, que utiliza el método del gradiente estocástico descendente ({\em Stochastics descent gradiente}, SGD), o una de sus variantes, para actualizar los pesos de la NN y de esa manera reducir el error total. Los descubrimientos en los últimos años han demostrado que, con suficientes datos de entrenamiento y con suficiente poder de procesamiento, el método de retropropagación y SGD resultan ser eficaces en la optimización de una NN de mucha profundidad y altamente conectada \cite{Ciresan2012, He2015, Le2012}. %Esta realización ha llevado a registros sustantivos que se rompen en muchas áreas de las ML a través de la aplicación de la retropropagación en el aprendizaje profundo \cite{Ciresan2012, He2015, Le2012}, incluyendo el aprendizaje no supervisado \cite{Bengio2009}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -49,11 +41,12 @@ Las redes neuronales artificiales ({\em Artificial Neural Networks}, NN) han sid
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% lista1
 Las NN han sido ampliamente estudiadas y utilizadas en muchas aplicaciones de la inteligencia artificial. El problema durante el proceso de aprendizaje de las NN es descrito como un problema de minimización de una función de error, la que depende de los pesos que conforman la red \cite{Rumelhart1986}. Este problema de optimización tiene la desventaja de ser no lineal, no convexo, además de tener mas de un mínimo local. Para solventar este problema se han desarrollado diversos algoritmos \cite{Grippo1994, Jacobs1988, Plagianakos2002, Rumelhart1986b, Plagianakos1998}  y su rendimiento varía según el problema a resolver.
+
 El enfoque clásico para el entrenamiento de las NN es la aplicación de algoritmos basados en el gradiente como la retropropagación \cite{Rumelhart1986b}. El algoritmo de retropropagación busca minimizar la función de error mediante la dirección de descenso más pronunciada. Aunque la función de error disminuye rápidamente en la dirección del gradiente negativo, la retropropagación es generalmente ineficiente y poco fiable \cite{Gori1992} debido a la superficie de error. Además, su rendimiento se ve afectado por parámetros que deben ser especificados por el usuario, pues no existe una base teórica para escogerlos \cite{Nguyen1990}. Dichos parámetros tienen una importancia crucial en el buen funcionamiento del algoritmo, por lo que el diseñador está obligado a seleccionar parámetros como los pesos iniciales de la NN, la topología de la red y la tasa de aprendizaje. En diversas investigaciones \cite{Cauchy1847, Grippo1994, Plagianakos1998, Plagianakos2002} ha quedado demostrado que pequeñas modificaciones en estos valores influyen en el rendimiento de la NN.
 
 Para proporcionar una convergencia más rápida y estable se han desarrollado diversas variaciones y alternativas a la retroprogación. Algunos de estos métodos son la adaptación de un término de momento \cite{Jacobs1988, Rumelhart1986b} o de una tasa variable de aprendizaje \cite{Jacobs1988, Vogl1988}. \citeA{Magoulas1997,  Plagianakos1998} propusieron dos técnicas para evaluar en forma dinámica la tasa de aprendizaje sin el uso de alguna heurística o alguna función adicional y las evaluaciones de gradiente. El primero se basó en el algoritmo de Barzilai y Borwein \cite{Barzilai1988} que adapta la tasa de aprendizaje sin evaluar la matriz Hessiana; mientras que el segundo utiliza estimaciones de la constante de Lipschitz, explotando la información local de la superficie de error y los pesos posteriores \cite{Magoulas1997}. Hay evidencias \cite{Magoulas1997, Plagianakos2002, Plagianakos1998} que han demostrado que la retropropagación con algoritmos que adaptan la velocidad del aprendizaje son robustas y tienen un buen rendimiento para el entrenamiento de NN.
 
-Se han sugerido diversos  para mejorar la eficiencia del proceso de minimización del error. Algunos de los métodos utilizados son métodos de segundo orden como el gradiente conjugado \cite{Fletcher1964, Hestenes1952, Polak1969} y el quasi-Newton \cite{Huang1970, Nocedal2006}. Los métodos del gradiente conjugado utiliza una combinación lineal de la dirección de búsqueda anterior y el gradiente actual lo que produce una convergencia generalmente más rápida, es adecuado para redes neuronales de gran escala debido a su simplicidad, sus propiedades de convergencia y la poca memoria que requiere. En la literatura  se encuentran diversos métodos basados en el gradiente conjugado \cite{Birgin2001, Moller1993} que han sido utilizados para la construcción de NN en varias aplicaciones \cite{Charalambous1992, Peng2007, Sotiropoulos2002}. Los métodos quasi-Newton se consideran como los algoritmos más sofisticados para el entrenamiendo rápido de una NN. Definen la dirección de búsqueda mediante una aproximación de la matriz Hessiana, requiriendo información adicional. Se han propuesto diversas estrategias para  obtener una aproximación a la matriz Hessiana \cite{Al-Baali1998, Nocedal1993, Oren1972, Oren1974, Yin2007}; estas estrategias combinadas con búsquedas lineales han permitido definir una convergencia superlineal \cite{Yin2007}, mejorando significativamente el rendimiento de los métodos originales.
+Se han sugerido diversos métodos para mejorar la eficiencia del proceso de minimización del error. Algunos de los métodos utilizados son métodos de segundo orden como el gradiente conjugado \cite{Fletcher1964, Hestenes1952, Polak1969} y el quasi-Newton \cite{Huang1970, Nocedal2006}. Los métodos del gradiente conjugado utiliza una combinación lineal de la dirección de búsqueda anterior y el gradiente actual lo que produce una convergencia generalmente más rápida, es adecuado para redes neuronales de gran escala debido a su simplicidad, sus propiedades de convergencia y la poca memoria que requiere. En la literatura  se encuentran diversos métodos basados en el gradiente conjugado \cite{Birgin2001, Moller1993} que han sido utilizados para la construcción de NN en varias aplicaciones \cite{Charalambous1992, Peng2007, Sotiropoulos2002}. Los métodos quasi-Newton se consideran como los algoritmos más sofisticados para el entrenamiendo rápido de una NN. Definen la dirección de búsqueda mediante una aproximación de la matriz Hessiana, requiriendo información adicional. Se han propuesto diversas estrategias para  obtener una aproximación a la matriz Hessiana \cite{Al-Baali1998, Nocedal1993, Oren1972, Oren1974, Yin2007}; estas estrategias combinadas con búsquedas lineales han permitido definir una convergencia superlineal \cite{Yin2007}, mejorando significativamente el rendimiento de los métodos originales.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -64,11 +57,10 @@ Aunque el DL tiene buena reputación para resolver la tarea de aprendizaje, no e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 %%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Las características del SGD y el problema del desvanecimiento. Las heurísticas y metaheurísticas.
+%Nos motiva el exito de las NN para predecir, nos motiva la dificultad del gradiente estocastico para minimizar el error en estos modelos no lineales complejos. Nos motiva la excelencia del SA en resolver problemas de optimización combinatoria que aparenemente pueden considerarse mas complejos que los problemas continuos.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 
@@ -85,6 +77,33 @@ Aunque el DL tiene buena reputación para resolver la tarea de aprendizaje, no e
 La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red él gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
 
 El método de aprendizaje basado en simmulated annealing permite la actualización de los pesos de la red sin mermar la capacidad de adaptación de los pesos. El método supone una alternativa efectiva a los métodos tradicionales de aprendizaje para la convergencia de los métodos debido a la independencia que otorga a la actualización de los pesos de las distintas capas.
+%Los problemas que se abordan en el presente trabajo (PCMR, PACMG y PVVG) presentan diversos estudios en la literatura, a pesar de esto siguen siendo un desafı́o computacional. Entre los estudios relacionados existen algunos que utilizan la Programación Genética de forma tradicional, sin embargo, no existen estudios que utilizen los componentes elementales de los problemas fáciles para dar solución a los problemas difı́ciles utilizando Programación Genética.
+
+%Para el desarrollo de este estudio se analiza el comportamiento de la generación de algoritmos basados en los componentes elementales de los problemas fáciles y considerando la incorporación gradual de nuevos elementos de refinamiento que permiten encontrar mejores resultados computacionales para cada uno de los problemas en estudio. Para el desarrollo de éstos, surgen diversas preguntas que son consideradas como parte de este trabajo, entre ellas: ¿los algoritmos generados utilizando sólo los componentes elementales son suficientes para dar solución a los problemas?, ¿estos algoritmos son eficientes?, ¿cómo afecta al desempeño computacional de los algoritmos generados los grupos de instancias de adaptación? y ¿cómo afecta al desempeño computacional de los algoritmos generados la función de evaluación?.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %el gap: han tenido un desempeño relevante para resolver problemas de optimización combinatoria. Sorprende que no hayan sido explorados estos métodos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

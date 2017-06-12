@@ -7,7 +7,7 @@ L.M. Rasdi Rere, Mohamad Ivan Fanany, Aniati Murni Arymurthy
 
 [3] - Lamos2012 - J.D. Lamos Sweeney, Deep Learning using Genetic Algorithms, master thesis, Dept. of Computer Science, Rochester Institute of Technology, 2012.
 
-[4] - Hinton2006b - G. Hinton and R. Salakhutdinov, “Reducing the dimensionality of data with neural network”, Science, 313:504-507, 2006.
+[4] - Hinton2006b - G. Hinton and R. Salakhutdinov, "Reducing the dimensionality of data with neural network", Science, 313:504-507, 2006.
 
 [5] - Le2011 - Q.V. Lee, J. Ngiam, A. Coates, A. Lahiri, B. Prochnow, and A.Y. Ng, ”On Optimization methods for deep learning,,” in Proc. The 28 th International Conference on Machine Learning, Bellevue, WA, USA, 2011.
 
