@@ -1,6 +1,5 @@
 METAHEURISTIC DESIGN OF FEEDFORWARDNEURAL NETWORKS: A REVIEW OF TWO DECADES OF RESEARCH
 Varun Kumar Ojha, Ajith Abraham, Václav Snášel
-
 [2017] Ojha V, Abraham A, Snásel V
 @article{Ojha201797,
 title = "Metaheuristic design of feedforward neural networks: A review of two decades of research ",
