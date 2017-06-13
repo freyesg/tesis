@@ -1,4 +1,4 @@
-%\PassOptionsToPackage{showframe}{geometry}
+\PassOptionsToPackage{showframe}{geometry}
 \documentclass[tesis]{tesis-usach}
 %\usepackage[linesnumbered, ruled, vlined, boxed, commentsnumbered, spanish]{algorithm2e}
 %\usepackage{algpseudocode}
@@ -23,10 +23,10 @@
 \let\cite\shortcite
 %\usepackage{layouts}
 \begin{document}
-	\def\bibname{\vspace*{-6.2ex}\Large\uppercase{Referencias Bibliográficas}}
+\baselineskip 23pt
+	\def\bibname{\uppercase{Referencias Bibliográficas}}
 	%\def\bibname{REFERENCIAS BIBLIOGRÁFICAS}
 	%\def\refname{REFERENCIAS BIBLIOGRÁFICAS}
-	\baselineskip 23pt
 
 	\renewcommand{\BOthers}[1]{et al.\hbox{}}%
 	\maketitle
@@ -39,7 +39,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Inicio contenido
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\setlength{\parskip}{3mm}
+	%\setlength{\parskip}{3mm}
 	\include{contenido/capitulox01}
 	%\include{contenido/capitulox02}
 	%\include{contenido/capitulox03}

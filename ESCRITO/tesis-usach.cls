@@ -22,7 +22,7 @@
 \ProcessOptions\relax
 
 \if@escrito
-	\LoadClass[10pt, oneside]{book}
+	\LoadClass[10pt, oneside, letterpaper]{book}
 	\setcounter{secnumdepth}{3}
 	\setcounter{tocdepth}{3}
 	%\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
@@ -44,39 +44,51 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Personalización de los títulos de secciones
 % https://tex.stackexchange.com/questions/129677/automatic-capitalization-of-sectioning-headings
-\makeatletter
-	\def\@makechapterhead#1{
-		\begingroup
-			\Large\bfseries\MakeUppercase{\@chapapp{} \thechapter. #1}
-			\vspace{20pt}
-		\endgroup
-	}
-	\renewcommand{\section}{
-	\@startsection{section}{1}{0pt}
-		{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}
-		{\bfseries\large\MakeUppercase}
-	}
-	\renewcommand{\subsection}{
-	\@startsection{subsection}{1}{0pt}
-		{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}
-		{\bfseries\normalsize}
-	}
-	\renewcommand{\subsubsection}{
-	\@startsection{subsubsection}{1}{0pt}
-		{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-		{\itshape\normalsize}
-	}
-	\renewcommand{\paragraph}{
-	\@startsection{paragraph}{1}{0pt}
-		{3.25ex plus 1ex minus .2ex}{1em}
-		{\itshape\normalsize}
-	}
-	\renewcommand{\subparagraph}{
-	\@startsection{subparagraph}{1}{\parindent}
-		{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-		{\itshape\normalsize}
-	}
-\makeatother
+%\makeatletter
+	%\def\@makechapterhead#1{\begingroup\Large\bfseries\MakeUppercase{\@chapapp{} \thechapter. #1}\vspace{20pt}\endgroup}
+	%\renewcommand{\section}{\@startsection{section}{1}{0pt}{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}{\bfseries\large\MakeUppercase}}
+	%\renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}{\bfseries\normalsize}}
+	%\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}{\itshape\normalsize}}
+	%\renewcommand{\paragraph}{\@startsection{paragraph}{1}{0pt}{3.25ex plus 1ex minus .2ex}{1em}{\itshape\normalsize}}
+	%\renewcommand{\subparagraph}{\@startsection{subparagraph}{1}{\parindent}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}{\itshape\normalsize}}
+%\makeatother
+
+\usepackage[compact]{titlesec}
+\titleformat{\chapter}
+{\bfseries\Large\vspace*{-4.0cm}} %Formato título
+{ % Contenido de la etiqueta
+    \filright
+    \Large\MakeUppercase\chaptertitlename\ \thechapter.\
+} %Contenido de la etiqueta
+{0pt} % espacio mínimo entre etiqueta y cuerpo
+{\filright\MakeUppercase} %código que precede al cuerpo del título
+[\vspace{1.5pt}] %1,5
+
+\titleformat{\section}
+{\bfseries\large\vspace{2pt}}
+{\large\MakeUppercase\thesection\ \vspace{2pt} } % 3 espacios luego del titulo de una seccion
+{0pt}
+{\MakeUppercase}
+[\vspace*{0.5cm}]
+
+\titleformat{\subsection}
+{\bfseries\normalsize\vspace{2pt}}
+{\normalsize\thesubsection\ }
+{0pt}
+{\vspace*{0.5cm}}
+
+\titleformat{\subsubsection}
+{\itshape\normalsize\vspace{1.0cm}}
+{\itshape\thesubsubsection\ }
+{0pt}
+{\vspace*{0.5cm}\itshape}
+
+\titlespacing*{\chapter} {0pt}{85pt}{20pt}
+\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

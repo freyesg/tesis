@@ -356,17 +356,17 @@
 [\vspace{1.5pt}] %1,5
 
 \titleformat{\section}
-{\bfseries\large\vspace{2pt}}
-{\large\MakeUppercase\thesection\ \vspace{2pt} } % 3 espacios luego del titulo de una seccion
-{0pt}
-{\MakeUppercase}
-[\vspace*{0.5cm}]
+	{\bfseries\large\vspace{2pt}}
+	{\large\MakeUppercase\thesection\ \vspace{2pt} } % 3 espacios luego del titulo de una seccion
+	{0pt}
+	{\MakeUppercase}
+	[\vspace*{0.5cm}]
 
 \titleformat{\subsection}
-{\bfseries\normalsize\vspace{2pt}}
-{\normalsize\thesubsection\ }
-{0pt}
-{\vspace*{0.5cm}}
+	{\bfseries\normalsize\vspace{2pt}}
+	{\normalsize\thesubsection\ }
+	{0pt}
+	{\vspace*{0.5cm}}
 
 \titleformat{\subsubsection}
 {\itshape\normalsize\vspace{1.0cm}}

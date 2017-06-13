@@ -1,0 +1,38 @@
+METAHEURISTIC DESIGN OF FEEDFORWARDNEURAL NETWORKS: A REVIEW OF TWO DECADES OF RESEARCH
+Varun Kumar Ojha, Ajith Abraham, Václav Snášel
+
+[2017] Ojha V, Abraham A, Snásel V
+@article{Ojha201797,
+title = "Metaheuristic design of feedforward neural networks: A review of two decades of research ",
+journal = "Engineering Applications of Artificial Intelligence ",
+volume = "60",
+number = "",
+pages = "97 - 116",
+year = "2017",
+note = "",
+issn = "0952-1976",
+doi = "https://doi.org/10.1016/j.engappai.2017.01.013",
+url = "http://www.sciencedirect.com/science/article/pii/S0952197617300234",
+author = "Varun Kumar Ojha and Ajith Abraham and Václav Snášel",
+keywords = "Feedforward neural network",
+keywords = "Metaheuristics",
+keywords = "Nature-inspired algorithms",
+keywords = "Multiobjective",
+keywords = "Ensemble ",
+abstract = "Abstract Over the past two decades, the feedforward neural network (FNN) optimization has been a key interest among the researchers and practitioners of multiple disciplines. The \{FNN\} optimization is often viewed from the various perspectives: the optimization of weights, network architecture, activation nodes, learning parameters, learning environment, etc. Researchers adopted such different viewpoints mainly to improve the FNN's generalization ability. The gradient-descent algorithm such as backpropagation has been widely applied to optimize the FNNs. Its success is evident from the FNN's application to numerous real-world problems. However, due to the limitations of the gradient-based optimization methods, the metaheuristic algorithms including the evolutionary algorithms, swarm intelligence, etc., are still being widely explored by the researchers aiming to obtain generalized \{FNN\} for a given problem. This article attempts to summarize a broad spectrum of \{FNN\} optimization methodologies including conventional and metaheuristic approaches. This article also tries to connect various research directions emerged out of the \{FNN\} optimization practices, such as evolving neural network (NN), cooperative coevolution NN, complex-valued NN, deep learning, extreme learning machine, quantum NN, etc. Additionally, it provides interesting research challenges for future research to cope-up with the present information processing era. "
+}
+
+
+(Hornik, 1991) - Hornik1991 - Hornik, K., 1991. Approximation capabilities of multilayer feedforward networks. Neural Netw. 4 (October (2)), 251–257.
+
+(Jain et al., 2000) - Jain2000 - Jain, A., Duin, R., Mao, J., 2000. Statistical pattern recognition: a review. IEEE Trans. Pattern Anal. Mach. Intell. 22 (January (1)), 4–37.
+
+(Zhang, 2000) - Zhang2000 - Zhang, G., 2000. Neural networks for classification: a survey. IEEE Trans. Syst. Man. Cybern. C Appl. Rev. 30 (November (4)), 451–462.
+
+(Selmic y Lewis, 2006) - Selmic2002 - Selmic, R., Lewis, F., 2002. Neural-network approximation of piecewise continuous functions: application to friction compensation. IEEE Trans. Neural Netw. 13 (May (3)), 745–751.
+
+(Mitra y Hayashi, 2006) - Mitra2006 - Mitra, S., Hayashi, Y., 2006. Bioinformatics with soft computing. IEEE Trans. Syst. Man Cybern. C, Appl. Rev. 36 (September (5)), 616–635.
+
+(Niranjan y Príncipe, 1997) - Hwang1997 - Niranjan, M., Principe, J., 1997. The past, present, and future of neural networks for signal processing. IEEE Signal Process. Mag. 14 (November (6)), 28–48.
+
+(Gorin y Mammone, 1994) - Gorin1994 - Gorin, A., Mammone, R., 1994. Introduction to the special issue on neural networks for speech processing. IEEE Trans. Speech Audio Process. 2 (January (1)), 113–114.
