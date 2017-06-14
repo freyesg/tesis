@@ -14,13 +14,5 @@ all: $(MAIN).tex $(REF).bib
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	make clean
 
-upgrade:
-	git pull origin master
-
-git:
-	git add .
-	git commit --author="freyesg <felipe.reyesg@usach.cl>" -m "ACTUALIZACIÓN $(shell date +%FT%T%Z)"
-	git push origin master
-
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.out *.lof *.lot *.toc *.cut ./contenido/*.aux

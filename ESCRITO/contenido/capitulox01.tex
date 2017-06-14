@@ -52,16 +52,16 @@ El enfoque clásico para el entrenamiento de las NN es la aplicación de algorit
 
 Para proporcionar una convergencia más rápida y estable se han desarrollado diversas variaciones y alternativas a la retroprogación. Algunos de estos métodos son la adaptación de un término de momento \cite{Jacobs1988, Rumelhart1986b} o de una tasa variable de aprendizaje \cite{Jacobs1988, Vogl1988}. \citeA{Magoulas1997,  Plagianakos1998} propusieron dos técnicas para evaluar en forma dinámica la tasa de aprendizaje sin el uso de alguna heurística o alguna función adicional y las evaluaciones de gradiente. El primero se basó en el algoritmo de Barzilai y Borwein \cite{Barzilai1988} que adapta la tasa de aprendizaje sin evaluar la matriz Hessiana; mientras que el segundo utiliza estimaciones de la constante de Lipschitz, explotando la información local de la superficie de error y los pesos posteriores \cite{Magoulas1997}. Hay evidencias \cite{Magoulas1997, Plagianakos2002, Plagianakos1998} que han demostrado que la retropropagación con algoritmos que adaptan la velocidad del aprendizaje son robustas y tienen un buen rendimiento para el entrenamiento de NN.
 
-Se han sugerido diversos métodos para mejorar la eficiencia del proceso de minimización del error. Algunos de los métodos utilizados son métodos de segundo orden como el gradiente conjugado \cite{Fletcher1964, Hestenes1952, Polak1969} y el quasi-Newton \cite{Huang1970, Nocedal2006}. Los métodos del gradiente conjugado utiliza una combinación lineal de la dirección de búsqueda anterior y el gradiente actual lo que produce una convergencia generalmente más rápida, es adecuado para redes neuronales de gran escala debido a su simplicidad, sus propiedades de convergencia y la poca memoria que requiere. En la literatura  se encuentran diversos métodos basados en el gradiente conjugado \cite{Birgin2001, Moller1993} que han sido utilizados para la construcción de NN en varias aplicaciones \cite{Charalambous1992, Peng2007, Sotiropoulos2002}. Los métodos quasi-Newton se consideran como los algoritmos más sofisticados para el entrenamiendo rápido de una NN. Definen la dirección de búsqueda mediante una aproximación de la matriz Hessiana, requiriendo información adicional. Se han propuesto diversas estrategias para  obtener una aproximación a la matriz Hessiana \cite{Al-Baali1998, Nocedal1993, Oren1972, Oren1974, Yin2007}; estas estrategias combinadas con búsquedas lineales han permitido definir una convergencia superlineal \cite{Yin2007}, mejorando significativamente el rendimiento de los métodos originales. Otras propuestas han utilizado capas de preentrenamiento \cite{Hinton2006b}, y algoritmos metaheurísticos basados en población \cite{Lamos2012}.
+Se han sugerido diversos métodos para mejorar la eficiencia del proceso de minimización del error. Algunos de los métodos utilizados son métodos de segundo orden como el gradiente conjugado \cite{Fletcher1964, Hestenes1952, Polak1969} y el quasi-Newton \cite{Huang1970, Nocedal2006}. Los métodos del gradiente conjugado utiliza una combinación lineal de la dirección de búsqueda anterior y el gradiente actual lo que produce una convergencia generalmente más rápida, es adecuado para redes neuronales de gran escala debido a su simplicidad, sus propiedades de convergencia y la poca memoria que requiere. En la literatura  se encuentran diversos métodos basados en el gradiente conjugado \cite{Birgin2001, Moller1993} que han sido utilizados para la construcción de NN en varias aplicaciones \cite{Charalambous1992, Peng2007, Sotiropoulos2002}. Los métodos quasi-Newton se consideran como los algoritmos más sofisticados para el entrenamiendo rápido de una NN. Definen la dirección de búsqueda mediante una aproximación de la matriz Hessiana, requiriendo información adicional. Se han propuesto diversas estrategias para  obtener una aproximación a la matriz Hessiana \cite{Al-Baali1998, Nocedal1993, Oren1972, Oren1974, Yin2007}; estas estrategias combinadas con búsquedas lineales han permitido definir una convergencia superlineal \cite{Yin2007}, mejorando significativamente el rendimiento de los métodos originales. Otras propuestas han utilizado capas de preentrenamiento \cite{Hinton2006b}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%% lista3-1
-%Aunque el DL tiene buena reputación para resolver la tarea de aprendizaje, no es fácil el proceso de entrenamiento \cite{Lamos2012}. Recientes propuestas de técnicas de optimización han utilizado capas de pre-entrenamiento \cite{Hinton2006b}. Algunos ejemplos de los métodos exitosos para el entrenamiento de esta técnica son el Descenso de Gradiente Estocástico, Gradiente de Conjugado, Optimización Hessian y el Descenso de Subespacio de Krylov. Existen propuesta de algoritmos metaheurísticos que se pueden clasificar en base a la trayectoria (una sola solución) y basado en la población \cite{Lamos2012}.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Debido a que la retropropagación suele minimizar una función de error no convexa con técnicas determinísticas locales (métodos de gradiente de primer y segundo orden), la probabilidad de converger a un mínimo local es alta \cite{Bianchini1996, Bishop1995, Battiti1995}. Este y otros problemas asociados con la retropropagación, como la convergencia lenta y la sobreejecución, podrían hacer que el proceso de aprendizaje fuera ineficiente. Para hacer frente a estos problemas, las técnicas del campo de la optimización global \cite{Battiti1995, Tsai2006, Rocha2003, Chelouah2000, Zheng2005}, además de técnicas metaheurísticas basadas en población \cite{Lamos2012}. Y es \citeA{Morse2016} quién retoma el uso de métodos metaheurísticos, esto sugiere que otros métodos, como el {\em Simulated annealing} (SA), pueden tener un buen desempeño estudiando problemas de minimización, de este modo se plantea que el SA tiene un desempeño computaciona competitivo frente al GSD al resolver instancias de un problema de regresión típica de la literatura
+
+%Para la minimización de la función de error cuadrático medio BP, el método propuesto combina una técnica de búsqueda global basada en secuencias de puntos discretos [9], [10], y Nelder-Mead simplex local optimizer [11].
+
+
+%sin embargo después recién en 2015 se retoma con ESTE PAPER, donde propone el uso de un método metaheurístico, esto sugiere que el SA puede tener un buen desempeño estudiando problemas de minimización, de este modo se plantea: SA tiene un desempeño computacional competitivo frente al GSD al resolver instancias de un problema de regresión tipica de la literatura (esto es la hipótesis nula)
 
 %%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Nos motiva el exito de las NN para predecir, nos motiva la dificultad del gradiente estocastico para minimizar el error en estos modelos no lineales complejos. Nos motiva la excelencia del SA en resolver problemas de optimización combinatoria que aparenemente pueden considerarse mas complejos que los problemas continuos.
@@ -81,43 +81,9 @@ Se han sugerido diversos métodos para mejorar la eficiencia del proceso de mini
 
 
 
-
-
-
-
-
 \section{Descripción del problema}
 % USAR [2003b] Squartini S, Hussain A, Piazza F
-La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la red él gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que el gradiente disminuirá de manera exponencial, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
-
-El método de aprendizaje basado en simmulated annealing permite la actualización de los pesos de la red sin mermar la capacidad de adaptación de los pesos. El método supone una alternativa efectiva a los métodos tradicionales de aprendizaje para la convergencia de los métodos debido a la independencia que otorga a la actualización de los pesos de las distintas capas.
-%Los problemas que se abordan en el presente trabajo (PCMR, PACMG y PVVG) presentan diversos estudios en la literatura, a pesar de esto siguen siendo un desafı́o computacional. Entre los estudios relacionados existen algunos que utilizan la Programación Genética de forma tradicional, sin embargo, no existen estudios que utilizen los componentes elementales de los problemas fáciles para dar solución a los problemas difı́ciles utilizando Programación Genética.
-
-%Para el desarrollo de este estudio se analiza el comportamiento de la generación de algoritmos basados en los componentes elementales de los problemas fáciles y considerando la incorporación gradual de nuevos elementos de refinamiento que permiten encontrar mejores resultados computacionales para cada uno de los problemas en estudio. Para el desarrollo de éstos, surgen diversas preguntas que son consideradas como parte de este trabajo, entre ellas: ¿los algoritmos generados utilizando sólo los componentes elementales son suficientes para dar solución a los problemas?, ¿estos algoritmos son eficientes?, ¿cómo afecta al desempeño computacional de los algoritmos generados los grupos de instancias de adaptación? y ¿cómo afecta al desempeño computacional de los algoritmos generados la función de evaluación?.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la NN el gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que los pesos de las capas mas cercanas a la capa de entrada no sufrirán una actualización significativa, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
 %%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %el gap: han tenido un desempeño relevante para resolver problemas de optimización combinatoria. Sorprende que no hayan sido explorados estos métodos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +95,7 @@ El método de aprendizaje basado en simmulated annealing permite la actualizaci�
 
 \section{Solución propuesta}
 \subsection{Características de la solución}
-Mediante el uso de el algoritmo {\em simulated annealing} se busca analizar la eficiencia que la NN alcanza en una red neuronal profunda frente a otros métodos de aprendizaje tales como SGD y RMSPROP.
+El método de aprendizaje basado en simmulated annealing permite la actualización de los pesos de la red. El método supone una alternativa efectiva a los métodos tradicionales de aprendizaje para la convergencia de los métodos debido a la independencia que otorga a la actualización de los pesos de las distintas capas.
 
 \subsection{Propósito de la solución}
 El propósito de la solución es aportar en el campo de las redes neuronales y la clasificación de datos, proporcionando un análisis comparativo de la convergencia de distintas redes.

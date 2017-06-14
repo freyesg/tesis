@@ -19,12 +19,13 @@
 
 \newif\ifpropuesta\propuestafalse
 \DeclareOption{propuesta}{\propuestatrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 
 \if@escrito
 	\LoadClass[10pt, oneside, letterpaper]{book}
-	\setcounter{secnumdepth}{3}
-	\setcounter{tocdepth}{3}
+	\setcounter{secnumdepth}{2}
+	\setcounter{tocdepth}{2}
 	%\newcommand{\bibliografia}{\addcontentsline{toc}{chapter}{Bibliografía}}
 \fi
 
@@ -43,61 +44,48 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Personalización de los títulos de secciones
-% https://tex.stackexchange.com/questions/129677/automatic-capitalization-of-sectioning-headings
-%\makeatletter
-	%\def\@makechapterhead#1{\begingroup\Large\bfseries\MakeUppercase{\@chapapp{} \thechapter. #1}\vspace{20pt}\endgroup}
-	%\renewcommand{\section}{\@startsection{section}{1}{0pt}{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}{\bfseries\large\MakeUppercase}}
-	%\renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{6.5ex plus 1ex minus .2ex}{4.6ex plus 0.2ex}{\bfseries\normalsize}}
-	%\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}{\itshape\normalsize}}
-	%\renewcommand{\paragraph}{\@startsection{paragraph}{1}{0pt}{3.25ex plus 1ex minus .2ex}{1em}{\itshape\normalsize}}
-	%\renewcommand{\subparagraph}{\@startsection{subparagraph}{1}{\parindent}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}{\itshape\normalsize}}
-%\makeatother
 
 \usepackage[compact]{titlesec}
-\titleformat{\chapter}
-{\bfseries\Large\vspace*{-4.0cm}} %Formato título
-{ % Contenido de la etiqueta
-    \filright
-    \Large\MakeUppercase\chaptertitlename\ \thechapter.\
-} %Contenido de la etiqueta
-{0pt} % espacio mínimo entre etiqueta y cuerpo
-{\filright\MakeUppercase} %código que precede al cuerpo del título
-[\vspace{1.5pt}] %1,5
+\titleformat{\chapter}{\bfseries\Large}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}%[\vspace{1.5pt}]
+\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}%[\vspace*{0.5cm}]
+\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
+\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
 
-\titleformat{\section}
-{\bfseries\large\vspace{2pt}}
-{\large\MakeUppercase\thesection\ \vspace{2pt} } % 3 espacios luego del titulo de una seccion
-{0pt}
-{\MakeUppercase}
-[\vspace*{0.5cm}]
-
-\titleformat{\subsection}
-{\bfseries\normalsize\vspace{2pt}}
-{\normalsize\thesubsection\ }
-{0pt}
-{\vspace*{0.5cm}}
-
-\titleformat{\subsubsection}
-{\itshape\normalsize\vspace{1.0cm}}
-{\itshape\thesubsubsection\ }
-{0pt}
-{\vspace*{0.5cm}\itshape}
-
-\titlespacing*{\chapter} {0pt}{85pt}{20pt}
+\titlespacing*{\chapter} {0pt}{-5ex}{20pt}
 \titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 \titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
 \titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+%\titlespacing*{\chapter} {0pt}{85pt}{20pt}
+%\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+%\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+%\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografía y referencias
+\RequirePackage[hidelinks, pdftex]{hyperref}
+\RequirePackage[notocbib]{apacite}
+\RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \RequirePackage{anysize} % Soporte para el comando \marginsize
-\RequirePackage[papersize={21.60cm, 27.90cm}, letterpaper]{geometry} % , showframe
-\geometry{left=4.0cm, top=2.50cm, right=2.50cm, bottom=2.50cm}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\RequirePackage[papersize={21.6cm, 27.9cm}, includefoot]{geometry} % , showframe
+\geometry{left=4.0cm, top=2.5cm, right=2.5cm, bottom=2.5cm}
+%--------Otros margenes
+\setlength{\parindent}{0cm}
+\setlength{\headsep}{20pt}
+\setlength{\voffset}{0.0cm}
+\setlength{\hoffset}{0.0cm}
+\setlength{\footskip}{20pt}
+%--------Evitar que corte las palabras al final
+\setlength{\pretolerance}{2000}
+\setlength{\tolerance}{3000}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Idioma español y carácteres utf8x
 %\RequirePackage[T1]{fontenc}
@@ -149,16 +137,6 @@
 \renewcommand{\appendixpagename}{APÉNDICES}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliografía y referencias
-\RequirePackage[hidelinks]{hyperref}
-\RequirePackage[notocbib, bibnewpage]{apacite}
-
-%\RequirePackage{tocbibind} % Agregar referencias al índice
-\RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
-%\setcounter{secnumdepth}{2} %Mostrar numeración en las subsecciones (subsubsecciones no llevan números)
-%\setcounter{tocdepth}{2} %Mostrar las subsubsecciones en el índice
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuente matemática
 \RequirePackage{amssymb}
 \RequirePackage{amsmath}
@@ -186,11 +164,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Identación, interlineado y spacing
-\RequirePackage{setspace}
-\RequirePackage{indentfirst}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{3mm}
-\linespread{1.5} %\renewcommand{\baselinestretch}{1.5}
+%\RequirePackage{setspace}
+%\RequirePackage{indentfirst}
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{3mm}
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+\renewcommand{\baselinestretch}{1.5}%\linespread{1.5}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -216,7 +196,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Para crear argumentos para los comandos
-\RequirePackage{xkeyval}
+%\RequirePackage{xkeyval}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -332,12 +312,14 @@
 % Agradecimientos
 \newenvironment{agradecimientos}{
   \chapter*{Agradecimientos} % si no queremos que añada la palabra "Capitulo"
+  \cleardoublepage
   \addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 }{}
 %
 % Resumen
 \newenvironment{resumen}{
   \chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
+  \cleardoublepage
   \addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 }{}
 %
@@ -357,15 +339,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Índice
 \newcommand{\indice}{
-	\vspace*{-2cm}
 	\tableofcontents
 	\cleardoublepage
-	\vspace*{-2cm}
 	\listoftables
 	\cleardoublepage
-	\vspace*{-2cm}
 	\listoffigures
-	\newpage
+	\cleardoublepage
 }
 
 
@@ -374,6 +353,7 @@
 \makeatletter
 \def \maketitle {%
 	\newgeometry{left=4.0cm, top=4.0cm, right=2.50cm, bottom=2.50cm}
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% PORTADA
 	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
@@ -429,63 +409,58 @@
 	\begin{center}
 		{\fontsize{10}{1} Santiago, Chile\\ \the\year}
 	\end{center}
-	\newpage
-	\restoregeometry
 }
 \makeatother
 \fi
 
 
 
-\if@inf
-\makeatletter
-\def \maketitle {%
-	\newgeometry{left=4cm, right=2.5cm, top=4cm, bottom=2.5cm}
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% PORTADA
-	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
-	\thispagestyle{empty}
-	\begin{center}
-		\vspace{0.5cm}
-		{\fontsize{14}{1} {\bf \upper{\usach}}}\\
-		{\fontsize{12}{1} {\bf \upper{\@facultad}}}\\
-		{\fontsize{12}{1} {\bf \upper{\@depto}}}
-	\end{center}
-
-	\vfill
-	\begin{center}
-		{\fontsize{12}{1} {\bf \@title}}\\
-		{\fontsize{10}{1} \upper{{\bf \@subtitle}}}
-	\end{center}
-
-	\vspace{1em}
-	\begin{center}
-		{\fontsize{12}{1} {\bf \@informe}}
-	\end{center}
-
-	\vfill
-	\begin{minipage}[h]{0.36\textwidth}
-	\hspace*{0.0cm}
-	\end{minipage}
-	\begin{minipage}[h]{0.5\textwidth}
-	\begin{flushleft}
-	\begin{tabular}{r}
-		{\fontsize{10}{1} Nombre: \@author}\\
-		{\fontsize{10}{1} Programa: \@programa}\\
-		{\fontsize{10}{1} Profesor patrocinante: \@prof}\\
-		{\fontsize{10}{1} Cel.: \@celular}\\
-		{\fontsize{10}{1} email: \@correo}\\
-		{\fontsize{10}{1} \@date}\\
-	\end{tabular}
-    \end{flushleft}
-    \end{minipage}
-
-	\newpage
-	\restoregeometry
-}
-\makeatother
-\fi
+%\if@inf
+%\makeatletter
+%\def \maketitle {%
+%	\newgeometry{left=4cm, right=2.5cm, top=4cm, bottom=2.5cm}
+%
+%	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	% PORTADA
+%	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
+%	\thispagestyle{empty}
+%	\begin{center}
+%		\vspace{0.5cm}
+%		{\fontsize{14}{1} {\bf \upper{\usach}}}\\
+%		{\fontsize{12}{1} {\bf \upper{\@facultad}}}\\
+%		{\fontsize{12}{1} {\bf \upper{\@depto}}}
+%	\end{center}
+%
+%	\vfill
+%	\begin{center}
+%		{\fontsize{12}{1} {\bf \@title}}\\
+%		{\fontsize{10}{1} \upper{{\bf \@subtitle}}}
+%	\end{center}
+%
+%	\vspace{1em}
+%	\begin{center}
+%		{\fontsize{12}{1} {\bf \@informe}}
+%	\end{center}
+%
+%	\vfill
+%	\begin{minipage}[h]{0.36\textwidth}
+%	\hspace*{0.0cm}
+%	\end{minipage}
+%	\begin{minipage}[h]{0.5\textwidth}
+%	\begin{flushleft}
+%	\begin{tabular}{r}
+%		{\fontsize{10}{1} Nombre: \@author}\\
+%		{\fontsize{10}{1} Programa: \@programa}\\
+%		{\fontsize{10}{1} Profesor patrocinante: \@prof}\\
+%		{\fontsize{10}{1} Cel.: \@celular}\\
+%		{\fontsize{10}{1} email: \@correo}\\
+%		{\fontsize{10}{1} \@date}\\
+%	\end{tabular}
+%    \end{flushleft}
+%    \end{minipage}
+%}
+%\makeatother
+%\fi
 
 
 
@@ -558,29 +533,13 @@
 
 \usepackage{tocloft}
 %Se agrega la palabra 'Figura' y 'Tabla' al índice de figuras
+\setlength{\cftbeforetoctitleskip}{-1em}
+\setlength{\cftbeforeloftitleskip}{-1em}
+\setlength{\cftbeforelottitleskip}{-1em}
+
 \renewcommand{\cftfigfont}{Figura }
 \renewcommand{\cfttabfont}{Tabla }
 %Se cambia el tamaño del título de la lista de figuras, tablas e índice de contenido dejándolos igual que los títulos normales
 \renewcommand\cftloftitlefont{\bfseries}
 \renewcommand\cftlottitlefont{\bfseries}
 \renewcommand\cfttoctitlefont{\bfseries}
-
-\makeatletter
-\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
-                         \refstepcounter{chapter}%
-                         \typeout{\@chapapp\space\thechapter.}%
-                         \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}\texorpdfstring{\uppercase{#1}}{#1}}%
-                    \else
-                      \addcontentsline{toc}{chapter}{\texorpdfstring{\uppercase{#1}}{#1}}%
-                    \fi
-                    \chaptermark{#1}%
-                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
-                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
-                    \if@twocolumn
-                      \@topnewpage[\@makechapterhead{#2}]%
-                    \else
-                      \@makechapterhead{#2}%
-                      \@afterheading
-                    \fi}
-\makeatother

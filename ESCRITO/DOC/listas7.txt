@@ -1,0 +1,33 @@
+NEURAL NETWORK LEARNING WITH GLOBAL HEURISTIC SEARCH
+Ivan Jordanov, Antoniya Georgieva
+[2007] Jordanov I, Georgieva A
+
+@article{Jordanov2007,
+	author={I. Jordanov and A. Georgieva},
+	journal={IEEE Transactions on Neural Networks},
+	title={Neural Network Learning With Global Heuristic Search},
+	year={2007},
+	volume={18},
+	number={3},
+	pages={937-942},
+	keywords={feedforward neural nets;learning (artificial intelligence);mean square error methods;optimisation;search problems;LPT low-discrepancy sequences;LPTNM optimization technique;backpropagation method;differential evolution method;feedforward neural network supervised learning;global heuristic search;hybrid global optimization algorithm;mean square error;multimodal mathematical functions;simplex local search;Backpropagation;Benchmark testing;Feedforward neural networks;Hypercubes;Machine learning;Mean square error methods;Medical diagnosis;Neural networks;Optimization methods;Supervised learning;Global optimization (GO);heuristic methods;low- discrepancy sequences;neural network (NN) learning;simplex search;Algorithms;Artificial Intelligence;Computer Simulation;Decision Support Techniques;Information Storage and Retrieval;Models, Statistical;Neural Networks (Computer);Pattern Recognition, Automated},
+	doi={10.1109/TNN.2007.891633},
+	ISSN={1045-9227},
+	month={May},
+}
+
+[2] - Bianchini1996 - M. Bianchini and M. Gori, “Optimal learning in artificial neural networks: A review of theoretical results,” Neurocomput., vol. 13, pp. 313–346, 1996.
+
+
+[3] - Bishop1995 - C. Bishop, Neural Networks for Pattern Recognition. Oxford, U.K.: Clarendon, 1995.
+
+[4] - Battiti1995 - R. Battiti and G. Tecchiolli, “Training neural nets with the reactive tabu search,” IEEE Trans. Neural Netw., vol. 6, no. 5, pp. 1185–1200, Sep. 1995.
+
+[5] - Tsai2006 - J.-T. Tsai, J.-H. Chou, and T.-K. Liu, “Tuning the structure and parameters of a neural network by using hybrid Taguchi-genetic algorithm,” IEEE Trans. Neural Netw., vol. 17, no. 1, pp. 69–80, Jan. 2006.
+
+[6] - Rocha2003 - M. Rocha, P. Cortez, and J. Neves, “Evolutionary neural network learning,” in Lecture Notes in Artificial Intelligence 2902. Berlin, Germany: Springer-Verlag, 2003, pp. 740–741.
+
+[7] - Chelouah2000 - R. Chelouah and R. Siarry, “Tabu search applied to global optimization,” Eur. J. Oper. Res., vol. 123, pp. 256–270, 2000.
+
+[8] - Zheng2005 - R. T. Zheng, N. Q. Ngo, P. Shum, and S. C. Tjin, “A staged continuous tabu search algorithm for global optimization and its applications to the design of fiber Bragg gratings,” Comput. Optim. Appl., vol. 30, pp. 319–335, 2005.
+[2005] Zheng R, Ngo N, Shum P, Tjin S
