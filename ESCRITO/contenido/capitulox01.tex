@@ -83,7 +83,19 @@ Debido a que la retropropagación suele minimizar una función de error no conve
 
 \section{Descripción del problema}
 % USAR [2003b] Squartini S, Hussain A, Piazza F
-La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la NN el gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que los pesos de las capas mas cercanas a la capa de entrada no sufrirán una actualización significativa, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
+%La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la NN el gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que los pesos de las capas mas cercanas a la capa de entrada no sufrirán una actualización significativa, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
+
+El problema que se aborda en el presente trabajo presenta diversos estudios en la literatura, a pesar de esto siguen siendo un desafío computacional. Entre los últimos estudios relacionados existen algunos que utilizan Programación Genética mostrando las bondades de las heurísticas al aplicarlas sobre las NN, a pesar de esto, no existen nuevo estudios que utilizen otras técnicas heurísticas para dar solución al problema que presenta la actualización de los pesos en el entrenamiento de las NN.
+
+Para el desarrollo de este estudio se analiza la convergencia de una NN al entrenarla utilizando un método heurístico para minimizar el error. Para el desarrollo de éstos, surgen algunas preguntas que permitirían evaluar el desempeño del método: ¿La convergencia ofrecida por el método heurístico ofrece un mejor desempeño respecto a métodos tradicionales?
+%Los problemas que se abordan en el presente trabajo (PCMR, PACMG y PVVG) presentan diversos estudios en la literatura, a pesar de esto siguen siendo un desafı́o computacional. Entre los estudios relacionados existen algunos que utilizan la Programación Genética de forma tradicional, sin embargo, no existen estudios que utilizen los componentes elementales de los problemas fáciles para dar solución a los problemas difı́ciles utilizando Programación Genética.
+
+%Para el desarrollo de este estudio se analiza el comportamiento de la generación de algoritmos basados en los componentes elementales de los problemas fáciles y considerando la incorporación gradual de nuevos elementos de refinamiento que permiten encontrar mejores resultados computacionales para cada uno de los problemas en estudio. Para el desarrollo de éstos, surgen diversas preguntas que son consideradas como parte de este trabajo, entre ellas: ¿los algoritmos generados utilizando sólo los componentes elementales son suficientes para dar solución a los problemas?, ¿estos algoritmos son eficientes?, ¿cómo afecta al desempeño computacional de los algoritmos generados los grupos de instancias de adaptación? y ¿cómo afecta al desempeño computacional de los algoritmos generados la función de evaluación?.
+
+
+
+
+
 %%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %el gap: han tenido un desempeño relevante para resolver problemas de optimización combinatoria. Sorprende que no hayan sido explorados estos métodos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
