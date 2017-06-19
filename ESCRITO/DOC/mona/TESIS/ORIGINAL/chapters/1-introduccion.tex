@@ -1,0 +1,147 @@
+
+\chapter{INTRODUCCIÓN}
+\label{cap:intro}
+
+%DESCOMENTAR ESTAS LINEAS SI EL CAPÍTULO TIENE FIGURAS O TABLAS
+%\addtocontents{lof}{{\bf \noindent Figuras del capítulo \arabic{chapter}}}
+%\addtocontents{lot}{{\bf \noindent Tablas del capítulo \arabic{chapter}}}
+
+
+
+\section{Antecedentes y motivación}
+\label{intro:motivacion}
+
+Es común encontrar en la literatura problemas de optimización combinatoria similares entre sí, en los cuales uno de ellos posee un algoritmo polinomial que lo resuelve \citep{papadimitriou1982combinatorial}. y el otro es del tipo NP-Hard. A un par de problemas que tienen estas características, en este proyecto se les denomina problema fácil - problema difícil. El problema fácil es aquel que puede ser resuelto por un algorismo polinominal, mientras que el otro se denomina problema difícil \citep{cook1995combinatorial}. 
+
+Estos problemas relacionados tienen diversos orígenes, los cuales pueden ser problemas del mundo real como problemas en el mundo teórico formulados en grafos. Un caso típico lo constituye el problema del camino mínimo (PCM) \citep{papadimitriou1982combinatorial}, el cual consiste en identificar la ruta más corta entre dos puntos de un grafo dado. Donde puede existir más de un camino entre ellos, los arcos tienen una distancia que es dada por un número entero en general, no negativo (problema fácil). Este problema ha sido ampliamente estudiado en la literatura, \cite{dijkstra1959note} y otros científicos propusieron un algoritmo polinomial que lo resuelve conocido como el algoritmo de Dijkstra, que permite encontrar todos los caminos mínimos entre los pares e nodos \citep{cook1995combinatorial}. El problema difícil asociado es el problema del camino mínimo con restricción (PCMR), el cual pertenece a la clase NP-Hard \citep{handler1980dual}, consiste en determinar el mejor camino que une un par de nodos dados, pero considerando como restricción que, el camino posee un costo asociado que no se debe sobrepasar, lo que constituye una restricción del tipo mochila (PM). El problema del árbol de cobertura de costo mínimo (PACCM)\citep{papadimitriou1982combinatorial} tanmbien es un problema típico, el cual consiste en encontrar un árbol de costo minimo, que cubra todos los vértices de un grafo, y el problema relacionado es el problema del árbol de cobertira generalizado (PACCMG) \citep{dror2000generalized}, que consiste en encontrar en un grafo no dirigido un árbol de cobertura de costo mínimo, Los vértice de cada grupo, donde el árbol de cobertura debe incluir sólo un vértice de cada grupo. Este problema es de gran interés debido  a las diversas aplicaciones, tales como aplicaciones en la física \citep{kansal2001globally}, riesgos agricolas \citep{dror2000generalized}, además de aplicaciones en el área de la toma de decisiones de ubicaciones de centro de distribución, entre otros \citep{myung1995generalized}. Otro par de problemas relacionades es el PACCM y el problema relacionado es el vendedor viajero generalizado (PVVG) \citep{srivastava1969generalized}. El problema coonsiste en encontrar un recorrido en el que existen grupos predefinidos y el viajero debe visitar exactamente un nodo en cada grupo minimizado el costo total del viaje. El problema posee una serie de aplicaciones, entre las que destacan el despacho del correo \citep{laporte1996some}, orden de selección en bodegas \citep{noon1991lagrangian}, secuenciamiento de archivos computacionales \citep{henrylab1969record}, entre otros.
+
+  Los métodos que se han utilizado para abordar el problema complejo a partir del correspondiente problema fácil, son generalizaciones del método que resuelve el problema fácil. Por ejemplo, la determinación de un circuito hamiltoniano que corresponde a una solución factible para el problema del vendedor viajero (problema difícil) puede ser encontrada de manera heurística generando el árbol de cobertura de costo mínimo (problema fácil) y adaptándolo como solución para el vendedor viajero \citep{Applegate09}. La generalización de este método fácil es el que da origen comúnmente a un método heurístico que resuelve el problema complejo, debido a que hasta ahora nadie ha encontrado un método polinomial que resuelva el problema difícil. Esto conduce a pensar que los elementos que se utilizan para resolver el problema fácil, es decir, los elementos algorítmicos que se utilizan para el problema sencillo, pueden ser reutilizados para dar solución al problema complejo, aunque esto de alguna forma genera un sesgo. Debido a que los nuevos algoritmos que se van a generar para el problema difícil van a estar inspirados en el problema fácil, se podría pensar que la exploración de todo el dominio de posibilidades algorítmicas que existen para resolver el problema difícil es mucho más amplio. Sin embargo, este tema ha sido poco explorado en la literatura y los resultados recientes a través de hiper-heurística o de generación automática de algoritmos, algo de luz muestran sobre esta problemática de explorar otras posibilidades para generar soluciones para los problemas difíciles.
+
+
+Los problemas relacionados considerados en este trabajo de investigación son el PCM - PCMR; PACCM - PACCMG y PACCM - PVVG. 
+
+Para dar solución a los problemas mencionados, que pertenecen a la clase NP-Hard se requieres algoritmos que encuentren en tiempos razonables. para esto, dentro de la optimización heuristica existe una rama llamada computación Evolutiva, que se encarga de encontrar dichos algoritmos. Esta rama pertenece a un área de la inteligencia artificial que se compone de un conjunto de técnica basadas en los procesos que propuso Charles Darwin, que son la evolución y selección natural de kas especies, donde apartir de una población compuesta por diferentes suluciones que resuelven el problema de forma preogresiva, se van formando nuevas solucionesrespetendo el principio de que las soluciones mas aptas, son las que dan origen a a las nuevas poblaciones de solucion \citep{koza1999genetic}. 
+
+Una de las tecnicas utilizadas de ka computación Evolutiva es las Programación Genética donde las soluciones representan componentes elementales de programas, lo que permite que, a partir de algunas especificaciones del problema en estudio, se produzca automáticamente un algoritmo que lo resuelva. Con ello, se puede decir que es el computador el que genera la nueva solución factible. A partir de este anunciado es posible beneficiarse de heuristicas elementales para este problema de optimizacion y, de forma evolutiva, generar nuevas soliciones, Para conseguir estas nuevas soluciones, se seleccionan tales heurísticas y se combinan de manera evolutiva, para obtener una huerística genérica que pueda resolver cuelquier instancia de un problema de optimización. La combinación de heurísticas se conoce como hiper-hierística \citep{burke2010genetic}, la cial realiza una búsqueda en el espacio de las heurísticas, en vez de buscar en el espacio de la solución del problema. La programación genética ha generado distintos descubrimientos e inventos, donde su principal exponente, ohn Koza, a travéz de distintos experimentos, genera productos patentable electrónicos, como antenas o circuitosm entre otros \citep{Koza03}. en cuanto la generación de algoritmos, se ha utilizado para resolver problemas NP-Hard como el problema de coloración de vértices \citep{bolton2013}, problema de la mochila \citep{parada_2015}, dejado en evidencia la efectividad de esta técnica. 
+
+
+A pesar de los enormes esfuerzos existentes en la literatura para resolver los pares de problemas relacionados que pertenecen a los problemas difíciles, todavía existe una gran brecha para lograr que algoritmos exactos puedan ser utilizados para resolver instancias de cualquier tamaño del problema. Pocos investigadores se han preocupado de estudiar la relación que existe entre los componentes elementales de los algoritmos polinomiales  y los potenciales algoritmos que existen para los problemas difíciles. Aunque la computación evolutiva, específicamente la  programación genética ha sido utilizada para generar heurísticas en un concepto que es conocido como hiperheurística, no se detectan nuevos algoritmos para el problema, más bien métodos de resolución que son difíciles de comprender que generalmente están escritos en lenguaje Lisp, al partir del cual es difícil descifrar como se relacionaron esas componentes algorítmicas para dar origen a estos nuevos métodos de resolución. En consecuencia es poco conocimiento el que se puede obtener a partir de esas estructuras debido a que no fue el enfoque esencial de esos autores en su trabajo. Generar automáticamente algoritmos para problemas difíciles a partir de los componentes del problema directamente relacionado, podría transformarse en una nueva metodología de resolución que se puede aplicar y extender a todos los problemas de optimización combinatoria que pertenecen a la clase difícil.
+
+Generar automáticamente algoritmos eficientes para problemas de optimización facilitaría el trabajo de muchas personas que manualmente buscan un heurística eficiente para un determinado problema. La potencialidad de poder encontrar algoritmos eficientes para los problemas, en términos prácticos algoritmos que resuelven en muy corto tiempo la solución con un alto nivel de precisión tiene consecuencias enormes en el mundo de la gestión. La mayoría de los problemas que surgen en la gestión de operaciones, tales como la planificación rutas, tareas, operaciones, del procesamiento de las máquinas de un sistema productivo, entre otros.  Día a día enfrentan este problema manualmente, típicamente resolviéndolos con heurísticas que provienen del mismo mundo real. Esto se debe a que las mismas herramientas computacionales para resolver estos problemas en la práctica no existen. Debido a que no es posible crear una herramienta que resuelva todos los casos posibles y de existir, sería muy cara. Los resultados de esta tesis podrían ir en directo beneficio para el desarrollo de una herramienta computacional que sea capaz de abordar pares de problemas relacionados.
+
+
+\section{Descripción del problema}
+\label{intro:problema}
+
+Los problemas seleccionados para el presente trabajo (PVV y PM-01) presentan diversos estudios en la literatura, a pesar de esto siguen siendo un desafío computacional. Entre los estudios relacionados existen algunos que utilizan la PG de forma tradicional, sin embargo, no existen estudios que comparen los métodos de PG tradicional con PG utilizando co-evolución.
+
+Para el desarrollo de este estudio se analiza el comportamiento de la generación de algoritmos basados en diversas heurísticas para ambos problemas utilizando las técnicas de PG tradicional y PG con co-evolución. Para el desarrollo de éstos, surgen diversas preguntas que son consideradas como parte de este trabajo, entre ellas: ¿los algoritmos generados por ambos métodos pueden resolver los problemas?, ¿estos algoritmos son eficientes?, ¿cómo afecta al desempeño computacional de los algoritmos generados los grupos de instancias de adaptación?, ¿cómo afecta al desempeño computacional de los algoritmos generados la función de evaluación?, para finalmente preguntar ¿es mejor el método de PG con co-evolución que el de PG tradicional?.
+
+
+\section{Solución propuesta}
+\label{intro:solucion}
+
+
+\subsection{Características de la solución}
+
+Como ya se ha mencionado, la PG requiere que se determinen distintas variables que se ajustan a medida que se van realizando pruebas y se revisan resultados generados. Estas variables son los terminales a utilizar para este problema, las funciones básicas que utilizan los problemas, la función objetivo que calcula cuan bueno es el programa que se está evaluando (en base a las soluciones óptimas conocidas por la literatura). Además, se ajustan los porcentajes con que los individuos se cruzan, mutan y los métodos de selección que existen.
+
+Para llevar a cabo todo esto se realiza un programa en Java donde se representan todas las fases ya mencionadas. Este programa utiliza bibliotecas que hacen más fácil ciertos métodos y procedimientos. La biblioteca utilizada para el desarrollo del experimento es la ECJ, la cual es una de las librerías más utilizadas en la literatura \citep{arcuri_2014}.
+
+La entrada del programa son archivos de texto que contienen casos de prueba de los problemas PM-01 y PVV, los que son utilizados por los métodos descritos para generar archivos de salida que contienen el detalle del proceso realizado.
+La solución definitiva se logra vislumbrar después de realizar pruebas y revisiones de acuerdo al comportamiento que se observa durante el desarrollo del experimento. Esto se debe a que una de las características de una solución entregada por la PG, es que no se puede predecir la forma correcta con la que se debe abordar un problema, más bien se obtienen resultados preliminares que deben ser ajustados. Finalmente, la solución está dada por un estudio que permita a cualquier investigador comprender el comportamiento de los algoritmos obtenidos mediante PG, utilizando co-evolución en comparación a los que solo utilizan PG. La validación y estudio de los datos se realiza por medio del uso de análisis estadísticos \citep{derrac_2011}.
+
+
+\subsection{Propósito de la solución}
+
+El propósito de la solución es desarrollar un estudio de distintos tipos de problemas de alta complejidad computacional (NP-Difícil y NP-Completo) mediante la definición de terminales y funciones de carácter general, para obtener algoritmos a través de la co-evolución, los que posteriormente son estudiados y comparados con los resultados ya conocidos en la literatura con el objetivo de facilitar a investigadores el análisis del comportamiento y los resultados de este tipo de algoritmos utilizando los conceptos de co-evolución mediante la PG, con el objetivo de entregar de forma justificada cómo la co-evolución afecta a los resultados de los algoritmos obtenidos mediante el uso de la PG.
+
+
+\section{Objetivos y alcances del proyecto}
+\label{intro:objetivos}
+
+
+\subsection{Objetivo general}
+
+El objetivo de este trabajo es obtener un conjunto de algoritmos que permitan resolver los problemas del PVV y PM-01 mediante el uso de PG con co-evolución y otro conjunto de algoritmos utilizando PG tradicional. Estos algoritmos son utilizados para analizar el comportamiento y los resultados que éstos provean, evaluando y analizando los resultados del conjunto de algoritmos donde se utiliza co-evolución en comparación a los obtenidos sin el uso de co-evolución.
+
+
+\subsection{Objetivos específicos}
+\begin{itemize}
+    \item Realizar un estado del arte y revisión de la literatura sobre los conceptos relacionados a los métodos y los problemas utilizados.
+    \item Diseñar un programa utilizando PG en la plataforma ECJ (\textit{A Java-based Evolutionary computation Research System}) e implementar los parámetros correspondientes, es decir, un conjunto de terminales y un conjunto de funciones de alto nivel que permitan conectar los diferentes terminales y que cumplan con las propiedades de suficiencia y clausura para el PVV y PM-01.
+    \item Seleccionar y evaluar conjuntos de instancias de entrenamiento y otros de evaluación para PVV y PM-01.
+    \item Diseñar y realizar diversos experimentos computacionales para generar un conjunto de algoritmos de forma automática que resuelvan los problemas del PVV y PM-01 utilizando PG y co-evolución y otro que sólo utilice PG.
+    \item Seleccionar un conjunto de algoritmos de alto desempeño, entendiéndose éstos por algoritmos que entreguen solución óptima o una aproximación a ésta, para posteriormente analizar los algoritmos obtenidos y compararlos midiendo su calidad (soluciones eficientes con un error igual o menor al obtenido en trabajos similares) al evaluarlos con un conjunto de instancias variadas de los problemas a estudiar.
+\end{itemize}
+
+
+\subsection{Alcances}
+
+El programa resultante de este trabajo entrega algoritmos que permiten resolver el PVV y PM-01, no considerando otros similares ni variantes de éstos. Esto debido al método de solución escogido, donde la solución se especializa en estos problemas.
+
+Todas las instancias de evaluación utilizadas en este trabajo son de carácter público y extraídas desde la literatura, existiendo gran cantidad y variedad de éstas. Las instancias son suficientes para realizar un estudio que permite obtener una conclusión adecuada, es decir, el número de instancias son suficientes para obtener los resultados necesarios para concluir al respecto del comportamiento de los algoritmos.
+
+Este trabajo no está sujeto a ninguna regulación externa. Solo se somete a la impuesta por la Universidad para las tesis de postgrado.
+
+La solución es el estudio de algoritmos que puedan resolver los problemas propuestos obtenidos mediante el uso de la PG con co-evolución y realizar una comparación con los obtenidos sin co-evolución.
+
+Para poner a prueba cada algoritmo obtenido se evalúa un número determinado de instancias presentadas por la literatura que son intercambiadas durante las generaciones requeridas para obtener un programa mediante la PG utilizando los métodos tradicional y con co-evolución.
+
+Como la evaluación de los algoritmos obtenidos es importante para mejorar la solución, este procedimiento se repite muchas veces, ya que se prueban distintos parámetros e instancias para la evolución y, finalmente, con los resultados obtenidos se decide la solución definitiva. Estas pruebas se realizan de forma iterativa dentro de lo que dure la planificación establecida para el desarrollo de esta tesis, que consta preliminarmente de 623 horas.
+
+Los resultados obtenidos por los algoritmos generados buscan obtener buenas soluciones, idealmente óptimos o cercanos a éste. Sin embargo, no se asegura que los resultados de este trabajo alcancen siempre soluciones óptimas.
+
+\section{Metodologías y herramientas utilizadas}
+
+\subsection{Metodología de trabajo}
+
+La metodología para desarrollar el presente trabajo se basa en los siguientes objetivos: desarrollar, medir y evaluar la experiencia. El proceso a seguir para lograr estos objetivos consiste en las siguientes tres etapas:
+
+\begin{itemize}
+  \item Desarrollo y obtención del conjunto de algoritmos. Para el desarrollo del programa necesario para obtener los algoritmos a evaluar, se utiliza el método propuesto por Riccardo Poli para utilizar la PG. De acuerdo a Poli, para resolver un problema aplicando PG, se debe tomar algunas decisiones; estas decisiones se llaman a menudo los pasos preparatorios \citep{poli_2008}. Estos 5 pasos son:
+  \begin{enumerate}
+    \item Conjunto de terminales: entradas externas al programa, funciones sin argumento y constantes.
+    \item Conjunto de funciones: son funciones definidas de acuerdo al dominio del problema. Éstas deben cumplir ciertos criterios:
+    \begin{itemize}
+      \item Clausura: se refiere a que una función u operador debería ser capaz de aceptar como entrada cualquier salida producida por cualquier función u operador del conjunto de no terminales.
+      \item Suficiencia: hace referencia al hecho de que el poder expresivo del conjunto de no terminales debe bastar para representar una solución para el problema en cuestión. 
+    \end{itemize}
+    \item Función de evaluación o \textit{fitness}: se definen inicialmente las instancias de datos con que será evaluado el problema y en base a éstos, se definen funciones que midan el rendimiento y comportamiento de los resultados.
+    \item Parámetros de la PG: se definen los parámetros propios de la PG, los principales son: tamaño de la población, porcentaje de mutación y cruzamiento, casos de \textit{fitness}.
+    \item Criterio de término y diseño de la solución: se definen los parámetros asociados a la cantidad de generaciones que se deben correr y cuando éstas deben detenerse o un resultado al que se espera llegar para obtener la solución.
+  \end{enumerate}
+  \item Desempeño computacional de los algoritmos: esta etapa mide la calidad de los algoritmos generados por el proceso evolutivo y que son seleccionados para ser estudiados. En este caso, la calidad de un algoritmo se determina a partir de su capacidad para encontrar buenas soluciones con instancias distintas a las utilizadas durante el proceso evolutivo y evaluar sus resultados numéricos a fin de determinar qué tan buenos son realmente.
+  \item Evaluación: consiste en comparar los algoritmos con otras técnicas. Estas técnicas son las propuestas por Derrac \citep{derrac_2011}, donde se utiliza una serie de evaluaciones estadísticas para comparar el rendimiento de algoritmos como los que se obtienen en el desarrollo de este trabajo. Se busca concluir si los algoritmos utilizando co-evolución son mejores que los que no utilizan co-evolución, en función de los resultados entregados.
+\end{itemize}
+
+\subsection{Herramientas de desarrollo}
+
+En este capítulo se describen las herramientas utilizadas en los diversos experimentos, ya sea para el desarrollo, experimentación y análisis de éstos.
+Para ejecutar los procesos evolutivos y de evaluación de los algoritmos es necesario optar por alguna de las plataformas computacionales o librerías disponibles que proporcione la implementación de la PG. Para el desarrollo de los experimentos de este trabajo, se ha seleccionado la librería ECJ (\textit{A Java-Based Evolutionary Computation Research System}) en su versión número 23. Es un \textit{framework} comunitario de desarrollo escrito en \textit{java}. Fue diseñado para ser altamente flexible, con casi todas las clases disponibles (y todos sus ajustes respectivos). Todas las estructuras en el sistema están dispuestas para ser fácilmente modificables y son diseñadas con énfasis hacia la eficiencia. ECJ es ampliamente utilizado por la comunidad de la PG y bastante popular en la comunidad de la CE, dado que se encuentra en un desarrollo continuo (la última versión fue lanzada el 15 de junio de 2015) y cuenta con un manual actualizado, con una descripción completa de todas las características que posee y muchos ejemplos de uso de la librería \citep{luke_2015}.
+
+La librería ECJ cuenta con todos los métodos necesarios para el desarrollo de los experimentos de este trabajo. Por lo que solo es necesario definir las estructuras a utilizar, funciones, terminales y establecer los parámetros correspondientes. Adicionalmente, esta librería posee integración con Graphviz (es un \textit{software} para visualizar gráficos “\textit{open source}”). Por lo que es posible utilizar estas herramientas en su conjunto para entregar una representación gráfica (una imagen) que es interpretada como algoritmo.
+
+En relación al control de versiones, se utiliza la plataforma de desarrollo colaborativo \textit{Github}, que utiliza el sistema de control de versiones de \textit{Git}. Finalmente, con relación al desarrollo, ECLIPSE es utilizado para facilitar la integración de las librerías e IDE de \textit{java}.
+
+Para realizar los \textit{test} estadísticos, se utiliza el \textit{software} STATA. Es un paquete de \textit{software} estadístico que permite realizar todos los \textit{test} propuestos por Derrac \citep{derrac_2011}.
+
+Todos los experimentos realizados son ejecutados en un equipo con sistema operativo Windows 10, con un procesador AMD Phenom™ X6 1090T 3.20 Ghz, memoria RAM de 8 GB y 350 GB de disco solido disponibles aproximados (Samsung SSD 850 EVO).
+
+\section{Organización del documento}
+\label{intro:organizacion}
+
+El presente documento se encuentra dividido en varios capítulos. El contenido de cada uno de éstos se encuentra descrito a continuación:
+
+\begin{itemize}
+    \item Capítulo 2 (Aspectos teóricos y revisión de la literatura): presenta los aspectos teóricos básicos necesarios para la comprensión del presente trabajo. Adicionalmente, se realiza una revisión de la literatura asociada al trabajo, incluyendo los métodos utilizados por otros autores, estudios sobre los parámetros e instancias, la generación automática de algoritmos, entre otros aspectos relacionados.
+    \item Capítulo 3 (Diseño y procedimiento del experimento): se describe la metodología a utilizar para el desarrollo del trabajo y el diseño del experimento, especificando las semejanzas y diferencias entre los métodos a utilizar y las consideraciones para cada uno de éstos.
+    \item Capítulo 4 (Diseño del experimento PM-01): en este capítulo se especifican los aspectos del diseño específicos al problema de la mochila binaria.
+    \item Capítulo 5 (Diseño del experimento PVV): en este capítulo se especifican los aspectos del diseño específicos al problema del vendedor viajero.
+    \item Capítulo 6 (Resultados): son presentados los resultados de cada uno de los experimentos del trabajo junto a un análisis.
+    \item Capítulo 7 (Discusión de los resultados): se presentan las discusiones y análisis de los resultados, abordando sugerencias y propuestas para futuros trabajos.
+    \item Capítulo 8 (Conclusiones): en este capítulo se escriben las conclusiones del trabajo, donde se habla de si los objetivos fueron cumplidos y si la hipótesis es aceptada o rechazada.
+    % \item Glosario: Incluye un listado de las palabras claves del documento con su respectivo significado.
+\end{itemize}
+
+

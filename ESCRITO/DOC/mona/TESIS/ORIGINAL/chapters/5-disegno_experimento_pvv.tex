@@ -1,0 +1,547 @@
+
+\chapter{DISEÑO EXPERIMENTO PVV}
+\label{cap:disegno_pvv}
+
+%DESCOMENTAR ESTAS LÍNEAS SI EL CAPÍTULO TIENE FIGURAS O TABLAS
+% \addtocontents{lof}{{\bf \noindent Figuras del capítulo \arabic{chapter}}}
+\addtocontents{lot}{{\bf \noindent Tablas del capítulo \arabic{chapter}}}
+
+En este capítulo se describen en conjunto los experimentos 3 y 4 correspondientes al PVV. Estos experimentos poseen gran parte de su estructura en común y las diferencias son especificadas en cada una de las secciones correspondientes.
+
+\section{Estructura de datos}
+
+Los algoritmos generados se construyen utilizando varias estructuras de datos. Estas estructuras se diseñaron en base al modelo matemático y a las funciones y terminales que operan sobre ellas. Se dividen en dos clases: estructuras variables y estructuras fijas.
+
+\subsection{Estructura de datos variables}
+
+Las estructuras variables mantienen la información de las ciudades que han sido ingresadas al circuito y las ciudades que aún restan por ingresar y una matriz completa de las distancias. Estas estructuras varían de acuerdo a la acción que realicen los terminales, son las siguientes:
+
+\begin{itemize}
+	\item Lista de ciudades disponibles (LCD): lista que contiene todas las ciudades disponibles para trabajar en el problema, las ciudades pertenecientes a esta lista varían de acuerdo al proceso de la solución. Esta lista se inicializa con todas las ciudades disponibles por la instancia del problema.
+	\item Lista de ciudades agregadas (LCA): lista que contiene todas las ciudades agregadas al circuito en algún instante del proceso. Esta lista se encuentra vacía al momento de inicializar el proceso de obtención de la solución.
+\end{itemize}
+
+Sobre estas listas solo se pueden realizar dos acciones: agregar o remover una ciudad. Toda acción realizada sobre una de ellas, repercute de forma inversa en la otra. Es decir, si se agrega una ciudad en LCD, se debe quitar de forma inmediata de LCA.
+
+\subsection{Estructura de datos fijas}
+
+Las estructuras fijas son creadas al momento de iniciar el proceso evolutivo. Son utilizadas por los terminales para poder realizar las acciones que éstos tengan definidas, donde cada una de estas estructuras es inicializada de acuerdo a los valores que se obtienen de las instancias. A continuación se presenta el detalle de éstas:
+
+\begin{itemize}
+	\item Matriz de costos (MC): lista de listas que contiene la matriz completa de distancias. En esta matriz se encuentran los costos de viajar de cada una de las ciudades a otra. Esta es inicializada al momento de iniciar el proceso evolutivo.
+	\item Ciudades cercanas al centro (CCC): lista que contiene de forma ordenada la mitad de las ciudades cercanas al centro. El orden de éstas está dado por las más cercanas a las más lejanas.
+	\item Ciudades lejanas al centro (CLC): lista que contiene de forma ordenada la mitad de las ciudades cercanas al centro. Esta lista es el complemento de la lista de CCC. El orden de éstas está dado por las más lejanas a las más cercanas.
+	\item Valor óptimo de la instancia: contiene el valor óptimo del beneficio de la instancia.
+	\item Total de ciudades: contiene el número de ciudades del circuito.
+	\item Peor arco: contiene el valor del peor arco de la instancia.
+\end{itemize}
+
+\section{Funciones y terminales}
+
+Las funciones y terminales son las operaciones elementales sobre las estructuras de datos anteriormente definidas. La definición de éstos permite realizar las operaciones sobre las estructuras definidas con el objetivo de completar el circuito de costo mínimo que utilice todas las ciudades. Se construyen terminales en base a heurísticas existentes para el PVV, y funciones que permitan operar en diversas combinaciones sobre estos terminales.
+
+Los elementos del conjunto de funciones y terminales deben cumplir con las propiedades de suficiencia y clausura \citep{poli_2008}. Las funciones y terminales cumplen la propiedad de clausura, ya que todas retornan un valor verdadero o falso, y las funciones solo pueden recibir parámetros de entrada de ese tipo. Los terminales utilizados están basados en heurísticas del PVV,en su conjunto proveen variabilidad de algoritmos que permiten solucionar el problema, es con esto que se cumple la propiedad de suficiencia. 
+
+\subsection{Conjunto de funciones}
+
+Las funciones que conforman los algoritmos generados contienen instrucciones básicas utilizadas en su mayoría por todos los lenguajes de programación. Desde el punto de vista de la PG, las funciones corresponden a los nodos internos del árbol \citep{koza_poli_2005}. En la Tabla \ref{tab:func_pvv} se muestran las funciones utilizadas, éstas son las mismas utilizadas en los experimentos correspondientes al PM-01.
+
+\begin{table}[hbt!]
+\caption{Grupo de funciones para el PVV}\label{tab:func_pvv}
+\small
+\centering
+\rowcolors{2}{gray!25}{white}
+\begin{tabular}{lcl}
+\hline
+{\textbf{Nº}} & {\textbf{Nombre}} & {\textbf{Descripción}} \\ \hline
+1	& $while(A, B)$				&	\begin{tabular}[c]{@{}l@{}}
+										Mientras la expresión A sea Verdadera se ejecuta la instrucción B. \\
+										Tiene como límite de iteraciones que el valor del beneficio no varíe \\
+										en tres iteraciones.\\ 
+										Devuelve verdadero en caso de realizar una o más iteraciones y \\
+										falso en caso contrario.
+									\end{tabular} \\
+2	& $IfThenElse(A, B, C)$		&	\begin{tabular}[c]{@{}l@{}}
+										Ejecuta B si A es verdadero y C si A es falso. \\
+										Devuelve el valor de B o C según sea el caso.
+									\end{tabular} \\
+3	& $IfThen(A, B)$			&	\begin{tabular}[c]{@{}l@{}}
+										Ejecuta B si A es verdadero.\\
+										Devuelve verdadero si logra ejecutar B al menos una vez y \\
+										devuelve falso en caso contrario.
+									\end{tabular} \\
+4	& $Not(A)$					&	\begin{tabular}[c]{@{}l@{}}
+										Función lógica que implementa la negación lógica. \\
+										Devuelve verdadero si A es falso y devuelve falso si A \\
+										es verdadero.
+									\end{tabular} \\
+5	& $And(A, B)$				&	\begin{tabular}[c]{@{}l@{}}
+										Función lógica que implementa la conjunción lógica. \\
+										Devuelve verdadero si A y B son verdaderos y devuelve falso \\
+										en los otros casos.
+									\end{tabular} \\
+6	& $Or(A, B)$				&	\begin{tabular}[c]{@{}l@{}}
+										Función lógica que implementa la disyunción lógica. \\
+										Devuelve verdadero si A o B son verdaderos y devuelve falso \\
+										en los otros casos.
+									\end{tabular} \\
+7	& $Equal(A, B)$				&	\begin{tabular}[c]{@{}l@{}}
+										Función que compara la igualdad de A y B. \\
+										Devuelve verdadero si A y B son iguales y devuelve falso \\
+										en caso contrario.
+									\end{tabular} \\
+\hline
+\end{tabular}
+%\caption*{(Elaboración propia, 2015)}
+\end{table}
+
+\subsection{Conjunto de terminales}
+
+Los terminales son funciones diseñadas para el PVV, los que permiten agregar ciudades o elementos de la lista de ciudades disponibles a la lista de ciudades agregadas de acuerdo a algún criterio establecido. Cada uno de los terminales es una heurística elemental capaz de modificar la estructura de datos definida generando nuevas soluciones. Se ha restringido a los terminales para que no puedan generar soluciones infactibles para el problema, es decir, no es posible generar soluciones que no cumplan alguna de las restricciones propias del problema.
+
+Los terminales utilizados son componentes elementales de las heurísticas descritas en la sección \ref{cap:rev_lit_pvv}, es decir, representan una acción mínima de alguna de las heurísticas que permiten realizar alguna acción para completar el circuito del PVV. Éstos son descritos en la Tabla \ref{tab:term_pvv}.
+
+\begin{table}[hbtp!]
+\caption{Grupo de terminales para el PVV}\label{tab:term_pvv}
+\small
+\centering
+\rowcolors{2}{gray!25}{white}
+\begin{tabular}{lcl}
+\hline
+{\textbf{Nº}} & {\textbf{Nombre}} & {\textbf{Descripción}} \\ \hline
+1	& AgregarMejorVecino			&	\begin{tabular}[c]{@{}l@{}}
+											Busca en la lista de ciudades disponibles, la ciudad que agregue el \\
+											menor costo al circuito al ser agregada al final de éste. Si encuentra \\
+											una ciudad (si el circuito no está completo), ésta es agregada al \\
+											final del circuito. \\
+											Retorna verdadero si agrega la ciudad, falso en caso contrario.
+										\end{tabular} \\
+2	& AgregarPeorVecino				&	\begin{tabular}[c]{@{}l@{}}
+											Busca en la lista de ciudades disponibles, la ciudad que agregue el \\
+											mayor costo al circuito al ser agregada al final de éste. Si encuentra \\
+											una ciudad (si el circuito no está completo), ésta es agregada al \\
+											final del circuito. \\
+											Retorna verdadero si agrega la ciudad, falso en caso contrario.
+										\end{tabular} \\
+3	& AgregarCercaCentro			&	\begin{tabular}[c]{@{}l@{}}
+											Busca la ciudad más cercana a las coordenadas del centro que se \\
+											encuentre disponible. Si encuentra una ciudad (si el circuito no está \\
+											completo), ésta es agregada al final del circuito. \\
+											Retorna verdadero si agrega la ciudad, falso en caso contrario.
+										\end{tabular} \\
+4	& AgregarLejosCentro			&	\begin{tabular}[c]{@{}l@{}}
+											Busca la ciudad más lejana a las coordenadas del centro que se \\
+											encuentre disponible. Si encuentra una ciudad (si el circuito no está \\
+											completo), ésta es agregada al final del circuito. \\
+											Retorna verdadero si agrega la ciudad, falso en caso contrario.
+										\end{tabular} \\
+5	& AgregarCercano				&	\begin{tabular}[c]{@{}l@{}}
+											Busca la ciudad que al ser insertada en cualquier posición del \\
+											circuito, agregue el menor costo a éste. Por ejemplo, se tiene el circuito \\
+											$[A, B, C]$ donde ingresa $D$, siendo $A->D < B->D < C->D$. El \\
+											resultado luego de la inserción es $[A, D, B, C]$. \\
+											Retorna verdadero si agrega la ciudad, falso en caso contrario.
+										\end{tabular} \\
+6	& AgregarLejano					&	\begin{tabular}[c]{@{}l@{}}
+											Busca la ciudad que al ser insertada en cualquier posición del \\
+											circuito, agregue el mayor costo a éste. Por ejemplo, se tiene el circuito \\
+											$[A, B, C]$ donde ingresa $D$, siendo $A->D < B->D < C->D$. El \\
+											resultado luego de la inserción es $[A, B, C, D]$. \\
+											Retorna verdadero si agrega la ciudad, falso en caso contrario.
+										\end{tabular} \\
+7	& AgregarArcoMenor				&	\begin{tabular}[c]{@{}l@{}}
+											De forma similar a agregar cercano, busca una ciudad que al ser \\
+											insertada agregue el menor costo al circuito. La diferencia está en \\
+											que el menor costo es considerando el nuevo arco a formar. Por \\
+											ejemplo, se tiene el circuito $[A, B, C]$ y se agrega $X$, \\
+											siendo $A->X->B > B->X->C > C->X$. El resultado \\
+											es $[A, X, B, C]$. \\
+											Retorna verdadero si agrega la ciudad, falso en caso contrario.
+										\end{tabular} \\
+
+\hline
+\end{tabular}
+%\caption*{(Elaboración propia, 2015)}
+\end{table}
+
+\addtocounter{table}{-1}
+\begin{table}[hbtp!]
+\caption{Grupo de terminales para el PVV (continuación)}\label{tab:term_pvv_2}
+\small
+\centering
+\rowcolors{2}{gray!25}{white}
+\begin{tabular}{lcl}
+\hline
+{\textbf{Nº}} & {\textbf{Nombre}} & {\textbf{Descripción}} \\ \hline
+8	& AgregarArcoMayor				&	\begin{tabular}[c]{@{}l@{}}
+											De forma similar a agregar lejano, busca una ciudad que al ser \\
+											insertada agregue el mayor costo al circuito. La diferencia en este \\
+											caso se encuentra en que el mayor costo considera el nuevo \\
+											arco a formar. Por ejemplo, se tiene el circuito $[A, B, C]$ y se agrega \\
+											$X$, siendo $A->X->B < B->X->C < C->X$. \\
+											El resultado es $[A, B, C, X]$.
+										\end{tabular} \\
+9	& Invertir						&	\begin{tabular}[c]{@{}l@{}}
+											Cambia el orden de las ciudades sólo en el caso en que este \\
+											cambio produzca alguna mejora. El cambio se realiza mediante la \\
+											inversión de las posiciones de los extremos hacia adentro. Por \\
+											ejemplo, la primera se invierte con la última, la segunda con \\
+											la penúltima y así sucesivamente. \\
+											Retorna verdadero si logra mejorar el costo del circuito y \\
+											falso en caso contrario.
+										\end{tabular} \\
+10	& EliminarPeorArco				&	\begin{tabular}[c]{@{}l@{}}
+											Busca en el circuito dos ciudades que produzcan el peor arco \\
+											(el mayor costo al circuito). Ambas ciudades correspondientes \\
+											al peor arco son eliminadas. \\
+											Retorna verdadero si logra eliminar el arco y falso en caso\\
+											contrario.
+										\end{tabular} \\
+11	& EliminarPeorNodo\_i			&	\begin{tabular}[c]{@{}l@{}}
+											Busca en el circuito dos ciudades que produzcan el peor arco \\
+											(el mayor costo al circuito). Sólo es eliminada la ciudad que \\
+											inicia el arco. \\
+											Retorna verdadero si logra eliminar el arco y falso en caso \\
+											contrario.
+										\end{tabular} \\
+12	& EliminarPeorNodo\_j			&	\begin{tabular}[c]{@{}l@{}}
+											Busca en el circuito dos ciudades que produzcan el peor arco \\
+											(el mayor costo al circuito). Sólo es eliminada la ciudad que \\
+											termina el arco. \\
+											Retorna verdadero si logra eliminar el arco y falso en caso \\
+											contrario.
+										\end{tabular} \\
+13	& 2-opt							&	\begin{tabular}[c]{@{}l@{}}
+											Optimizador que utiliza la heurística \textit{2-opt}. \\
+											Retorna verdadero si puede realizar alguna mejora al circuito \\
+											y falso en caso contrario.
+										\end{tabular} \\
+\hline
+\end{tabular}
+\caption*{(Elaboración propia, 2015)}
+\end{table}
+
+Dentro de los terminales descritos en la Tabla \ref{tab:term_pvv}, el terminal \textit{“2-opt”} es siempre utilizado, tanto en las pruebas preliminares como en otros trabajos que utilizan este terminal, por lo que éste se utiliza como parte de la estructura fija que tienen los algoritmos \citep{sepulveda_2011}, es decir, es parte de la estructura de todos los algoritmos generados para los experimentos 3 y 4.
+
+\section{Función de evaluación}
+\label{cap:func_eval_pvv}
+
+La función de evaluación es el mecanismo primario para comunicar la declaración de alto nivel de los requisitos del problema con el sistema de PG \citep{koza_poli_2005}. En el capítulo \ref{cap:disegno_experimento} se muestra que los experimentos 3 y 4 difieren en la función de evaluación que utilizan. En el caso de la PG tradicional, se utiliza una función de evaluación compuesta por las dos funciones de evaluación utilizadas en el experimento de las islas. La función de evaluación para cada uno de los experimentos tiene por objetivo medir la calidad de los algoritmos y su legibilidad desde el punto de vista de un humano. La calidad está dada por “que tan bien resuelve el algoritmo el problema”, es decir, que tan “cerca” estoy del valor óptimo. La legibilidad está dada por “que tan fácil es leer, entender y ejecutar el algoritmo por un humano”. La estructura de los algoritmos generados es representada por nodos de un árbol sintáctico, siendo estos nodos los terminales y funciones. Mientras menor sea la cantidad de nodos es más fácil leer el algoritmo representado por el árbol sintáctico. Por lo tanto, la legibilidad de un algoritmo se considera como opuesta al tamaño de éste.
+
+La calidad de los algoritmos es el factor que varía entre las distintas funciones objetivos de los experimentos, mientras que la legibilidad es una función común a todos los casos. Estos factores de calidad y legibilidad son considerados de forma compuesta para la función de evaluación que es utilizada en cada uno de los experimentos. A diferencia de las funciones de evaluación utilizadas en los experimentos relacionados al PM-01, en las relacionadas al PVV no se utilizan factores de relevancia. Adicionalmente, para el PVV no es posible restringir infactibilidades por medio de los terminales, lo que obliga a incluir un factor penalización si las soluciones entregadas por un algoritmo no son factibles. Finalmente, las funciones de evaluación de para los experimentos relacionados a este problema están compuestas por las ecuaciones que representen la calidad, el factor de legibilidad y la penalización del algoritmo. Tanto la función de legibilidad como de penalización son la misma para ambos experimentos.
+
+La función de legibilidad $leg_{p}$ para el algoritmo $p$ está dada por la ecuación (\ref{eq:leg_pvv}).Donde $N_{p}$ es el número de nodos del algoritmo $p$, mientras que $M_{p}$ es el número máximo de nodos permitidos para los algoritmos.
+
+\begin{equation}
+\label{eq:leg_pvv}
+	leg_{p} = 	\begin{cases}
+					0       & \quad \text{si } N_{p} \leq M_{p} \\
+					\frac{M_{p}-N_{p}}{M_{p}}  & \quad \text{si } N_{p} > M_{p}\\
+				\end{cases}
+\end{equation}
+
+El factor de penalización se compone del producto del error relativo del número de ciudades (ERC) representado por la ecuación (\ref{eq:ERC_pvv}) con el promedio del peor arco (PPA) representado por la ecuación (\ref{eq:PPA_pvv}). Siendo $ERC_{s}$ el error relativo del número de ciudades para el conjunto de instancias $S$, $c_{i}$ el número de ciudades actualmente ingresadas por el algoritmo $p$ en la instancia $i$ y $x_{i}$ el número de total ciudades de la instancia $i$. $PPA_{s}$ representa promedio del peor arco para el conjunto de instancias $S$, donde $e_{i}$ es el peor arco de la instancia $i$.
+
+\begin{equation}
+\label{eq:ERC_pvv}
+	ERC_{s} = \frac{1}{n_{s}} \cdot \sum\limits_{i=1}^{n_{s}} \frac{x_{i} - c_{i}}{x_{i}} 
+\end{equation}
+
+\begin{equation}
+\label{eq:PPA_pvv}
+	PPA_{s} = \frac{1}{n_{s}} \cdot \sum\limits_{i=1}^{n_{s}} e_{i}
+\end{equation}
+
+\subsection{Función de evaluación experimento con co-evolución}
+
+Para el experimento con co-evolución, durante el proceso evolutivo se requieren dos funciones de evaluación que cumplan con evaluar la calidad de los algoritmos de acuerdo al problema. Para esto se utilizan las siguientes funciones de evaluación.
+
+Función de evaluación de la calidad por medio del ERP: Como se mencionó en las secciones \ref{cap:experimento_tradicional} y \ref{cap:experimento_islas}, el ERP consiste en el error relativo promedio de los algoritmos obtenidos. Para cada grupo de instancias de evaluación $S$, se determina el porcentaje promedio por el cual el beneficio obtenido $o_{i}$ se encuentra distanciado de la mejor solución $z_{i}$ para cada instancia del conjunto $S$. Esto se representa en la siguiente ecuación (\ref{eq:ERP_pvv}), donde $n_{s}$ representa el número de instancias del conjunto $S$.
+
+\begin{equation}
+\label{eq:ERP_pvv}
+	ERP_{s} =  \frac{1}{n_{s}} \cdot \sum\limits_{i=1}^{n_{s}} \frac{\|z_{i} - o_{i}\|}{z_{i}} 
+\end{equation}
+
+Función de evaluación de la calidad por medio de los HITS: esta función de evaluación representa que tantas instancias $i$ del conjunto $S$ evaluadas con el algoritmo $p$ obtienen un error relativo menor a $0,05$ ($5\%$). La ecuación (\ref{eq:ER_pvv}) representa el ER de la instancia $i$, el cual es utilizado en la ecuación (\ref{eq:HIT_pvv}) para determinar si el resultado de éste es $1$ o $0$. Finalmente la ecuación (\ref{eq:HITS_pvv}) utiliza los resultados obtenidos en la evaluación de cada una de las instancias $i$ por la ecuación (\ref{eq:HIT_pvv}) para calcular el número de \textit{hits} (aciertos) que obtiene el algoritmo $p$.
+
+\begin{equation}
+\label{eq:ER_pvv}
+	ER_{i} = \frac{\|z_{i}-o{i}\|}{z_{i}}
+\end{equation}
+
+\begin{equation}
+\label{eq:HIT_pvv}
+	HIT_{i} = 	\begin{cases}
+					1       & \quad \text{si } ER_{i} \leq 5\% \\
+					0  		& \quad \text{si } ER_{i} > 5\%	   \\
+				\end{cases}
+\end{equation}
+
+\begin{equation}
+\label{eq:HITS_pvv}
+	HITS_{s} = 	\frac{n_{s} - \sum\limits_{i=1}^{n_{s}} HIT_{i} }{n_{s}}
+\end{equation}
+
+Para obtener las funciones de evaluación para el experimento 4 es necesario combinar los factores de calidad, legibilidad y penalización. Éstas funciones de evaluación quedan representadas por las ecuaciones (\ref{eq:f1_islas_pvv}) y (\ref{eq:f2_islas_pvv}).
+
+\begin{equation}
+\label{eq:f1_islas_pvv}
+	fe_{3} = ERP_{s} + leg_{p} + ERC_{s} \cdot PPA_{s}
+\end{equation}
+
+\begin{equation}
+\label{eq:f2_islas_pvv}
+	fe_{4} = HITS_{s} + leg_{p} + ERC_{s} \cdot PPA_{s}
+\end{equation}
+
+
+\subsection{Función de evaluación experimento sin co-evolución}
+
+Para el experimento sin co-evolución o tradicional, durante el proceso evolutivo se utiliza una función objetivo combinada de las funciones (\ref{eq:ERP_pvv}) y (\ref{eq:HITS_pvv}) de acuerdo a lo mencionado en la sección \ref{cap:experimento_islas}. La ecuación (\ref{eq:comb_trad_pvv}) representa la combinación de las ecuaciones mencionadas, siendo $\alpha$ y $\beta=(1-\alpha)$ los factores de relevancia para cada uno de los parámetros de la función.
+
+\begin{equation}
+\label{eq:comb_trad_pvv}
+	fe_{pvv} = \alpha\cdot ERP_{s}+ \beta\cdot HITS_{s}
+\end{equation}
+
+Como se menciona al inicio de esta sección (\ref{cap:func_eval_pvv}) la función de evaluación está dada por la composición de la evaluación de la calidad, legibilidad y penalización por infactibilidades, por lo que a la ecuación (\ref{eq:comb_trad_pvv}) es necesario agregarle el factor de legibilidad y los elementos que componen la penalización, como resultado de la combinación de estos tres factores se obtiene la ecuación (\ref{eq:final_trad_pvv}).
+
+\begin{equation}
+\label{eq:final_trad_pvv}
+	fe = (\alpha\cdot ERP_{s}+ \beta\cdot HITS_{s}) + leg_{p} + ERC_{s} + PPA_{s}
+\end{equation}
+
+
+\section{Selección casos de adaptación}
+\label{cap:sel_casos_adapt_pvv}
+
+Los casos de adaptación (instancias) para el problema fueron extraídos de la TSPLIB, que consiste en una librería con distintos casos de prueba del PVV. Esta librería ha sido ampliamente utilizada en trabajos relacionados a este problema utilizando diversos métodos y no solo de PG. Algunas de las instancias disponibles en la librería poseen el circuito óptimo. Adicionalmente, estas instancias poseen el valor del costo mínimo del circuito. El conjunto de instancias extraído cuenta con un total de 53 instancias, las que varían con un mínimo de 42 ciudades y un máximo de 783 ciudades. Las instancias pueden ser extraídas de \url{http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp/}.
+
+Del total de instancias se ha seleccionado un grupo como caso de adaptación para el proceso evolutivo y otro grupo para la evaluación de los algoritmos generados en el proceso evolutivo. Las instancias disponibles para el problema varían en tamaño, por lo que para la evolución se utilizan instancias que no tengan más de 500 ciudades o nodos. La razón de este criterio para la división se debe a que el proceso evolutivo es lento para este problema tardando aproximadamente 24 horas por ejecución. En los casos de adaptación, el número de instancias varía de acuerdo a cada uno de los experimentos 3 y 4, ya que como se mencionó en el capítulo \ref{cap:disegno_experimento}, las instancias es otro factor que varía para el diseño de éstos. El tamaño de las instancias (cantidad de ciudades) para los casos de adaptación varía con un mínimo de 52 y un máximo de 192. Para las instancias de evaluación, son utilizadas las instancias restantes.
+
+\subsection{Conjuntos de instancias de adaptación con co-evolución}
+\label{cap:ins_trad_pvv}
+
+Para el experimento con co-evolución, durante el proceso evolutivo se requieren dos conjuntos de instancias de adaptación. Estos grupos de instancias son diferenciados por su coeficiente de correlación \citep{smith_2012}. Este coeficiente determina la cantidad de diferencias existentes en las distancias de la matriz de costos o distancias entre las ciudades, es decir, si una instancia posee 48 ciudades, tiene una matriz de 2304 elementos. Si estos elementos tuviesen $1.033$ diferencias, tiene un coeficiente de $0,5561$. Para el grupo 1 de instancias se utilizan las instancias que tengan un coeficiente mayor a $0,9$, mientras que para el grupo 2 se utilizan instancias de con un coeficiente entre $0,6$ y $0,8$. El número de instancias para cada grupo es de 9 instancias. Este número ha sido determinado en trabajos relacionados \citep{parada_2015, contreras_2013} y permite obtener bueno resultados para el proceso evolutivo. En la Tabla \ref{tab:ins_islas_pvv} se encuentran las instancias de adaptación divididas por isla.
+
+\begin{table}[hbt!]
+\caption{Conjunto de instancias de adaptación proceso evolutivo del experimento 4}\label{tab:ins_islas_pvv}
+\small
+\centering
+\begin{center}
+\begin{tabular}{cccc}
+\hline
+{\textbf{Grupo Instancias}} & {\textbf{Nombre }} & {\textbf{Nº Ciudades}} & {\textbf{Coeficiente correlación}} \\ \hline
+Grupo 1 & 	\begin{tabular}[c]{@{}l@{}}
+								pr124 \\
+								berlin52 \\
+								kroC100 \\
+								kroE100 \\
+								kroA100 \\
+								kroB100 \\
+								pr76 \\
+								kroD100 \\
+								lin105
+							\end{tabular} & \begin{tabular}[c]{@{}l@{}}
+												124 \\
+												52 \\
+												100 \\
+												100 \\
+												100 \\
+												100 \\
+												76 \\
+												100 \\
+												105 \\
+											\end{tabular} & 
+													\begin{tabular}[c]{@{}l@{}}
+													 	$0.6828$ \\
+														$0.7016$ \\
+														$0.7349$ \\
+														$0.7354$ \\
+														$0.7395$ \\
+														$0.7404$ \\
+														$0.7413$ \\
+														$0.7467$ \\
+														$0.8142$
+													\end{tabular}\\
+\hline
+Grupo 2 				& 	\begin{tabular}[c]{@{}l@{}}
+								pr136 \\
+								ch130 \\
+								ch150 \\
+								eil51 \\
+								st70 \\
+								rat99 \\
+								eil76 \\
+								eil101 \\
+								rat195
+							\end{tabular} & \begin{tabular}[c]{@{}l@{}}
+												136 \\
+												130 \\
+												150 \\
+												51 \\
+												70 \\
+												99 \\
+												76 \\
+												101 \\
+												195
+											\end{tabular} & 
+													\begin{tabular}[c]{@{}l@{}}
+													 	$0.9423$ \\
+														$0.9535$ \\
+														$0.9652$ \\
+														$0.9712$ \\
+														$0.9757$ \\
+														$0.9783$ \\
+														$0.9860$ \\
+														$0.9914$ \\
+														$0.9922$
+													\end{tabular}\\
+\hline
+\end{tabular}
+\end{center}
+\caption*{(Elaboración propia, 2015)}
+\end{table}
+
+\subsection{Conjuntos de instancias de adaptación sin co-evolución}
+
+El conjunto de instancias de adaptación para el experimento sin co-evolución es la combinación de los grupos 1 y 2 utilizados en \ref{cap:ins_trad_pvv}. En la Tabla \ref{tab:ins_trad_pvv} se pueden apreciar las instancias utilizadas por la PG tradicional.
+
+\begin{table}[ht!]
+\caption{Conjunto instancias de adaptación proceso evolutivo experimento 3}\label{tab:ins_trad_pvv}
+\small
+\centering
+\begin{center}
+\rowcolors{2}{gray!25}{white}
+\begin{tabular}{ccc}
+\hline
+{\textbf{Nombre }} & {\textbf{Nº Ciudades}} & {\textbf{Coeficiente correlación}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}
+	pr124 \\
+	berlin52 \\
+	kroC100 \\
+	kroE100 \\
+	kroA100 \\
+	kroB100 \\
+	pr76 \\
+	kroD100 \\
+	lin105 \\
+	pr136 \\
+	ch130 \\
+	ch150 \\
+	eil51 \\
+	st70 \\
+	rat99 \\
+	eil76 \\
+	eil101 \\
+	rat195
+\end{tabular} & \begin{tabular}[c]{@{}l@{}}
+					124 \\
+					52 \\
+					100 \\
+					100 \\
+					100 \\
+					100 \\
+					76 \\
+					100 \\
+					105 \\
+					136 \\
+					130 \\
+					150 \\
+					51 \\
+					70 \\
+					99 \\
+					76 \\
+					101 \\
+					195
+				\end{tabular} & 
+						\begin{tabular}[c]{@{}l@{}}
+						 	$0.6828$ \\
+							$0.7016$ \\
+							$0.7349$ \\
+							$0.7354$ \\
+							$0.7395$ \\
+							$0.7404$ \\
+							$0.7413$ \\
+							$0.7467$ \\
+							$0.8142$ \\
+							$0.9423$ \\
+							$0.9535$ \\
+							$0.9652$ \\
+							$0.9712$ \\
+							$0.9757$ \\
+							$0.9783$ \\
+							$0.9860$ \\
+							$0.9914$ \\
+							$0.9922$
+						\end{tabular}\\
+\hline
+\end{tabular}
+\end{center}
+\caption*{(Elaboración propia, 2015)}
+\end{table}
+
+\section{Parámetros}
+
+Los parámetros a utilizar son los mismos definidos para el PM-01. Como se mencionó, estos valores se encuentran basados en otros trabajos que utilizan la PG \citep{contreras_2013, drake_2014, parada_2015} y siguiendo los valores teóricos mencionados en \citep{karafotias_2014, karafotias_2015}. La lista completa con los valores para ambos experimentos se presenta en la Tabla \ref{tab:param_exp3_exp4}. 
+
+\begin{table}[ht!]
+\caption{Resumen de parámetros para experimentos 3 y 4}\label{tab:param_exp3_exp4}
+\small
+\centering
+\rowcolors{2}{gray!25}{white}
+\begin{tabular}{lcc}
+\hline
+{\textbf{Datos}} & {\textbf{\begin{tabular}[c]{@{}c@{}}Experimento con \\co-evolución\end{tabular}}} & {\textbf{\begin{tabular}[c]{@{}c@{}}Experimento sin \\co-evolución\end{tabular}}} \\ \hline
+Número de poblaciones                     &  4                               &  1  \\
+Tamaño de población                       &  125 por cada población                &  500 \\
+Número de generaciones                    &  \multicolumn{2}{c}{300} \\
+Probabilidad de cruzamiento               &  \multicolumn{2}{c}{80\%} \\
+Probabilidad de reproducción              &  \multicolumn{2}{c}{10\%} \\
+Probabilidad de mutación                  &  \multicolumn{2}{c}{5\% \textit{subtree mutation} y 5\% \textit{one node mutation}} \\
+\begin{tabular}[l]{@{}l@{}}
+  Método de generación de \\
+población inicial 
+\end{tabular}                             &  \multicolumn{2}{c}{\textit{Ramped Half and Half}} \\
+Método de selección de individuos         &  \multicolumn{2}{c}{Torneo con 4 individuos} \\
+Método de selección de nodos              &  \multicolumn{2}{c}{\textit{Koza Node Selector}} \\
+Probabilidad de selección de nodos        &  \multicolumn{2}{c}{90\% terminales y 10\% funciones} \\
+Altura máxima de evolución                &  \multicolumn{2}{c}{15} \\
+Criterio de término                       &  \multicolumn{2}{c}{Completar todas las generaciones} \\
+\begin{tabular}[l]{@{}l@{}}
+  Individuos a compartir con otra \\
+  población
+\end{tabular}                             &  5 (son replicados y compartidos)      & no aplica \\
+Poblaciones a las que compartir           &  \begin{tabular}[c]{@{}c@{}}Cada población comparte \\con todas las demás \end{tabular} & no aplica \\
+\begin{tabular}[l]{@{}l@{}}
+  Número de generaciones que la \\          
+  población espera para enviar \\
+  inmigrantes
+\end{tabular}                             &  10                                    & no aplica  \\
+\begin{tabular}[l]{@{}l@{}}
+  Generación en la que se inicia \\
+  el envío de inmigrantes
+\end{tabular}                             &  1                                     & no aplica  \\
+Selección de inmigrantes a enviar         &  Torneo con 4 individuos               & no aplica  \\
+Selección de individuos a eliminar        &  \begin{tabular}[c]{@{}c@{}}
+                                              Torneo inverso con 4 \\
+                                              individuos
+                                             \end{tabular}                         & no aplica  \\
+
+\hline
+\end{tabular}
+%\caption*{(Elaboración propia, 2015)}
+\end{table}
+
+
+Las cuatro poblaciones están compuestas por la combinación de las funciones objetivo y grupos de instancias de evolución, siendo éstas las siguientes:
+	
+\begin{itemize}
+	\item Población 1: utiliza la función de evaluación $fe_{4}$ y el grupo de instancias G2.
+	\item Población 2: utiliza la función de evaluación $fe_{3}$ y el grupo de instancias G1.
+	\item Población 3: utiliza la función de evaluación $fe_{3}$ y el grupo de instancias G2.
+	\item Población 3: utiliza la función de evaluación $fe_{4}$ y el grupo de instancias G1.
+\end{itemize}
+
+La población única está compuesta por la función de evaluación $fe_{pvv}$ y el grupo de instancias G3.

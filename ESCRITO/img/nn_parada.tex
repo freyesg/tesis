@@ -2,7 +2,7 @@
 
 	\tikzstyle{nodo}=[circle, draw, minimum size=5ex]
 	\tikzstyle{upw}=[dashed, red, ->, line width = 1pt]
-	\tikzstyle{bold}=[line width=0.5ex]
+	\tikzstyle{bold}=[line width=0.2ex]
 
 	\coordinate (l_0) at (0, 3.5);
 	\coordinate (l_1) at (7, 3.5);
@@ -14,8 +14,8 @@
 	\coordinate (f_1_1) at (0, 2.5); % CAPA ENTRADA
 	\coordinate (f_1_2) at (0, 0); % CAPA ENTRADA
 	\coordinate (f_1_3) at (0, -2.50); % CAPA ENTRADA
-	\coordinate (f_2_1) at (7, 1.8); % CAPA OCULTA 1
-	\coordinate (f_2_2) at (7, -1.8); % CAPA OCULTA 1
+	\coordinate (f_2_1) at (7, 2.5); % CAPA OCULTA 1
+	\coordinate (f_2_2) at (7, -2.5); % CAPA OCULTA 1
 	\coordinate (f_3_1) at (12, 0); % CAPA SALIDA
 	\coordinate (f_out) at (14, 0); % CAPA SALIDA
 
@@ -46,28 +46,34 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%% PROPAGACIÓN DE LA SEÑAL %%%%%%%%
-	\draw[upw, blue] (f_1_1) to [bend left=10] (f_2_1);
-	\draw[upw, blue] (f_1_2) to [bend left=10] (f_2_1);
-	\draw[upw, blue] (f_1_3) to [bend left=10] (f_2_1);
+	\draw[upw, bold, blue] (f_1_1) to [bend left=10] (f_2_1);
+	\draw[upw, bold, blue] (f_1_2) to [bend left=10] (f_2_1);
+	\draw[upw, bold, blue] (f_1_3) to [bend left=10] (f_2_1);
 
-	\draw[upw, blue] (f_2_1) to [bend left=10] (f_3_1);
-	\draw[upw, blue] (f_2_2) to [bend left=10] (f_3_1);
+	\draw[upw, bold, blue] (f_2_1) to [bend left=20] (f_3_1);
+	\draw[upw, bold, blue] (f_2_2) to [bend right=20] (f_3_1);
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%% PROPAGACIÓN DEL ERROR %%%%%%%%
-	\draw[upw] (f_out) to [bend left=40] node[below]{$\delta$} (f_3_1);
+	\draw[upw, bold, teal] (f_out) to [bend left=40] node[below] {$\delta$} (f_3_1);
+	\draw[upw, bold, teal] (f_3_1) to [bend left=20] node[near end, below] {$\delta$} (f_2_1);
+	\draw[upw, bold, teal] (f_3_1) to [bend right=20] node[near end, above] {$\delta$} (f_2_2);
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	\draw[upw] (f_3_1) to [bend left=20] (w_3_1);
-	\draw[upw] (w_3_1) to [bend left=20] node[below] {$\delta'$} (f_2_1);
-	\draw[upw] (f_3_1) to [bend left=20] node[below , font=\scriptsize] {$w + \alpha \delta'$} (w_3_2);
-	\draw[upw] (w_3_2) to [bend left=20] node[below] {$\delta'$} (f_2_2);
 
-	\draw[upw] (f_2_2) to [bend left=10] node[above right , font=\scriptsize] {$w + \alpha \delta'$} (w_2_1);
-	\draw[upw] (f_2_2) to [bend left=20] node[below , font=\scriptsize] {$w + \alpha \delta'$} (w_2_2);
-	\draw[upw] (f_2_2) to [bend left=35] node[below , font=\scriptsize] {$w + \alpha \delta'$} (w_2_3);
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%% ACTUALIZACIÓN DE PESOS %%%%%%%%
+	\draw[upw, bold] (f_3_1) to [bend right=50] node[above, near end] {$w + \alpha \delta$} (w_3_1);
+	\draw[upw, bold] (f_3_1) to [bend left=50] node[below, near end] {$w + \alpha \delta$} (w_3_2);
+
+	\draw[upw, bold] (f_2_2) to [bend left=10] node[above right, near end] {$w + \alpha \delta$} (w_2_1);
+	\draw[upw, bold] (f_2_2) to [bend left=10] node[below, near end] {$w + \alpha \delta$} (w_2_2);
+	\draw[upw, bold] (f_2_2) to [bend left=20] node[below, near end] {$w + \alpha \delta$} (w_2_3);
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{tikzpicture}

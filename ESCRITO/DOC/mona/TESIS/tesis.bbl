@@ -1,0 +1,443 @@
+\begin{thebibliography}{69}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Affenzeller(2001)}]{affenzeller_2001}
+Affenzeller, M. (2001).
+\newblock Connectionist models of neurons, learning processes, and artificial
+  intelligence: 6th international work-conference on artificial and natural
+  neural networks, iwann 2001 granada, spain, june 13--15, 2001 proceedings,
+  part 1.
+\newblock (pp. 594--601).
+
+\bibitem[{Ahandani et~al.(2012)Ahandani, Baghmisheh, Zadeh, \&
+  Ghaemi}]{alinia_2012}
+Ahandani, M.~A., Baghmisheh, M. T.~V., Zadeh, M. A.~B., \& Ghaemi, S. (2012).
+\newblock Hybrid particle swarm optimization transplanted into a
+  hyper-heuristic structure for solving examination timetabling problem.
+\newblock {\em Swarm and Evolutionary Computation\/}, {\em 7\/}, 21 -- 34.
+
+\bibitem[{AL(1969)}]{henrylab1969record}
+AL, H. (1969).
+\newblock Record balancing problem-a dynamic programming solution of a
+  generalized traveling salesman problem.
+\newblock {\em Revue Francaise D Informatique De Recherche Operationnelle\/},
+  {\em 3\/}(NB 2), 43.
+
+\bibitem[{Applegate et~al.(2009)Applegate, Bixby, Chvatal, \&
+  Cook}]{Applegate09}
+Applegate, D.~L., Bixby, R.~E., Chvatal, V., \& Cook, W.~J. (2009).
+\newblock {\em The Traveling Salesman Problem: A Computational Study\/}.
+\newblock Princeton, NJ, USA: Princeton University Press.
+
+\bibitem[{Ardalan et~al.(2015)Ardalan, Karimi, Poursabzi, \&
+  Naderi}]{ardalan2015novel}
+Ardalan, Z., Karimi, S., Poursabzi, O., \& Naderi, B. (2015).
+\newblock A novel imperialist competitive algorithm for generalized traveling
+  salesman problems.
+\newblock {\em Applied Soft Computing\/}, {\em 26\/}, 546--555.
+
+\bibitem[{Ben-Arieh et~al.(2003)Ben-Arieh, Gutin, Penn, Yeo, \&
+  Zverovitch}]{ben2003transformations}
+Ben-Arieh, D., Gutin, G., Penn, M., Yeo, A., \& Zverovitch, A. (2003).
+\newblock Transformations of generalized atsp into atsp.
+\newblock {\em Operations Research Letters\/}, {\em 31\/}(5), 357--365.
+
+\bibitem[{Bolton et~al.(2013)Bolton, Gatica, \& Parada}]{bolton2013}
+Bolton, C.~C., Gatica, G., \& Parada, V. (2013).
+\newblock Automatically generated algorithms for the vertex coloring problem.
+\newblock {\em PloS one\/}, {\em 8\/}(3), e58551.
+
+\bibitem[{Bontoux et~al.(2010)Bontoux, Artigues, \&
+  Feillet}]{bontoux2010memetic}
+Bontoux, B., Artigues, C., \& Feillet, D. (2010).
+\newblock A memetic algorithm with a large neighborhood crossover operator for
+  the generalized traveling salesman problem.
+\newblock {\em Computers \& Operations Research\/}, {\em 37\/}(11), 1844--1852.
+
+\bibitem[{Burke et~al.(2013)Burke, Gendreau, Hyde, Kendall, Ochoa, Ozcan, \&
+  Qu}]{burke_2013}
+Burke, E.~K., Gendreau, M., Hyde, M., Kendall, G., Ochoa, G., Ozcan, E., \& Qu,
+  R. (2013).
+\newblock Hyper-heuristics.
+\newblock {\em J Oper Res Soc\/}, {\em 64\/}(12), 1695--1724.
+
+\bibitem[{Burke et~al.(2010)Burke, Hyde, Kendall, \&
+  Woodward}]{burke2010genetic}
+Burke, E.~K., Hyde, M., Kendall, G., \& Woodward, J. (2010).
+\newblock A genetic programming hyper-heuristic approach for evolving 2-{D}
+  strip packing heuristics.
+\newblock {\em IEEE Transactions on Evolutionary Computation\/}, {\em 14\/}(6),
+  942--958.
+
+\bibitem[{Cant{\'u}-Paz \& Goldberg(2003)}]{cantu_2003}
+Cant{\'u}-Paz, E., \& Goldberg, D.~E. (2003).
+\newblock Genetic and evolutionary computation --- gecco 2003: Genetic and
+  evolutionary computation conference chicago, il, usa, july 12--16, 2003
+  proceedings, part i.
+\newblock (pp. 801--812).
+
+\bibitem[{Carlyle et~al.(2008)Carlyle, Royset, \&
+  Kevin~Wood}]{carlyle2008lagrangian}
+Carlyle, W.~M., Royset, J.~O., \& Kevin~Wood, R. (2008).
+\newblock Lagrangian relaxation and enumeration for solving constrained
+  shortest-path problems.
+\newblock {\em Networks\/}, {\em 52\/}(4), 256--270.
+
+\bibitem[{Contreras-Bolton et~al.(2016)Contreras-Bolton, Gatica, Barra, \&
+  Parada}]{contreras2016multi}
+Contreras-Bolton, C., Gatica, G., Barra, C.~R., \& Parada, V. (2016).
+\newblock A multi-operator genetic algorithm for the generalized minimum
+  spanning tree problem.
+\newblock {\em Expert Systems with Applications\/}, {\em 50\/}, 1--8.
+
+\bibitem[{Contreras~Bolton et~al.(2013)Contreras~Bolton, Gatica, \&
+  Parada}]{contreras_2013}
+Contreras~Bolton, C., Gatica, G., \& Parada, V. (2013).
+\newblock Automatically generated algorithms for the vertex coloring problem.
+\newblock {\em PLoS ONE\/}, {\em 8\/}(3), 1--9.
+\newline\urlprefix\url{http://dx.doi.org/10.1371%2Fjournal.pone.0058551}
+
+\bibitem[{Cook et~al.(1995)Cook, Lov{\'a}sz, Seymour
+  et~al.}]{cook1995combinatorial}
+Cook, W., Lov{\'a}sz, L., Seymour, P.~D., et~al. (1995).
+\newblock {\em Combinatorial optimization: papers from the DIMACS Special
+  Year\/}, vol.~20.
+\newblock American Mathematical Soc.
+
+\bibitem[{Derrac et~al.(2011)Derrac, García, Molina, \& Herrera}]{derrac_2011}
+Derrac, J., García, S., Molina, D., \& Herrera, F. (2011).
+\newblock A practical tutorial on the use of nonparametric statistical tests as
+  a methodology for comparing evolutionary and swarm intelligence algorithms.
+\newblock {\em Swarm and Evolutionary Computation\/}, {\em 1\/}(1), 3 -- 18.
+
+\bibitem[{Desale et~al.(2015)Desale, Rasool, Andhale, \& Rane}]{desale_2015}
+Desale, S., Rasool, A., Andhale, S., \& Rane, P. (2015).
+\newblock Heuristic and meta-heuristic algorithms and their relevance to the
+  real world: A survey.
+\newblock {\em International journal of computer engineering in research
+  trends\/}, {\em 2\/}, 296--304.
+
+\bibitem[{Devika et~al.(2014)Devika, Jafarian, \&
+  Nourbakhsh}]{devika2014designing}
+Devika, K., Jafarian, A., \& Nourbakhsh, V. (2014).
+\newblock Designing a sustainable closed-loop supply chain network based on
+  triple bottom line approach: A comparison of metaheuristics hybridization
+  techniques.
+\newblock {\em European Journal of Operational Research\/}, {\em 235\/}(3),
+  594--615.
+
+\bibitem[{Dijkstra(1959)}]{dijkstra1959note}
+Dijkstra, E.~W. (1959).
+\newblock A note on two problems in connexion with graphs.
+\newblock {\em Numerische mathematik\/}, {\em 1\/}(1), 269--271.
+
+\bibitem[{Drake et~al.(2014)Drake, Hyde, Ibrahim, \& Ozcan}]{drake_2014}
+Drake, J.~H., Hyde, M., Ibrahim, K., \& Ozcan, E. (2014).
+\newblock A genetic programming hyper-heuristic for the multidimensional
+  knapsack problem.
+\newblock {\em Kybernetes\/}, {\em 43\/}(9/10), 1500--1511.
+\newline\urlprefix\url{http://dx.doi.org/10.1108/K-09-2013-0201}
+
+\bibitem[{Dror et~al.(2000)Dror, Haouari, \& Chaouachi}]{dror2000generalized}
+Dror, M., Haouari, M., \& Chaouachi, J. (2000).
+\newblock Generalized spanning trees.
+\newblock {\em European Journal of Operational Research\/}, {\em 120\/}(3),
+  583--592.
+
+\bibitem[{Dumitrescu \& Boland(2001)}]{dumitrescu2001algorithms}
+Dumitrescu, I., \& Boland, N. (2001).
+\newblock Algorithms for the weight constrained shortest path problem.
+\newblock {\em International Transactions in Operational Research\/}, {\em
+  8\/}(1), 15--29.
+
+\bibitem[{Dumitrescu \& Boland(2003)}]{dumitrescu2003improved}
+Dumitrescu, I., \& Boland, N. (2003).
+\newblock Improved preprocessing, labeling and scaling algorithms for the
+  weight-constrained shortest path problem.
+\newblock {\em Networks\/}, {\em 42\/}(3), 135--153.
+
+\bibitem[{Ferreira et~al.(2012)Ferreira, Ochi, Parada, \&
+  Uchoa}]{ferreira2012grasp}
+Ferreira, C.~S., Ochi, L.~S., Parada, V., \& Uchoa, E. (2012).
+\newblock A grasp-based approach to the generalized minimum spanning tree
+  problem.
+\newblock {\em Expert Systems with Applications\/}, {\em 39\/}(3), 3526--3536.
+
+\bibitem[{Fischetti et~al.(1995)Fischetti, Gonz{\'a}lez, \&
+  Toth}]{fischetti1995symmetric}
+Fischetti, M., Gonz{\'a}lez, J. J.~S., \& Toth, P. (1995).
+\newblock The symmetric generalized traveling salesman polytope.
+\newblock {\em Networks\/}, {\em 26\/}(2), 113--123.
+
+\bibitem[{Fischetti et~al.(1997)Fischetti, Salazar~Gonzalez, \&
+  Toth}]{fischetti1997branch}
+Fischetti, M., Salazar~Gonzalez, J.~J., \& Toth, P. (1997).
+\newblock A branch-and-cut algorithm for the symmetric generalized traveling
+  salesman problem.
+\newblock {\em Operations Research\/}, {\em 45\/}(3), 378--394.
+
+\bibitem[{Ghasemi et~al.(2014)Ghasemi, Ghavidel, Rahmani, Roosta, \&
+  Falah}]{ghasemi2014novel}
+Ghasemi, M., Ghavidel, S., Rahmani, S., Roosta, A., \& Falah, H. (2014).
+\newblock A novel hybrid algorithm of imperialist competitive algorithm and
+  teaching learning algorithm for optimal power flow problem with non-smooth
+  cost functions.
+\newblock {\em Engineering Applications of Artificial Intelligence\/}, {\em
+  29\/}, 54--69.
+
+\bibitem[{Golden et~al.(2005)Golden, Raghavan, \&
+  Stanojevi{\'c}}]{golden2005heuristic}
+Golden, B., Raghavan, S., \& Stanojevi{\'c}, D. (2005).
+\newblock Heuristic search for the generalized minimum spanning tree problem.
+\newblock {\em INFORMS Journal on Computing\/}, {\em 17\/}(3), 290--304.
+
+\bibitem[{Handler \& Zang(1980)}]{handler1980dual}
+Handler, G.~Y., \& Zang, I. (1980).
+\newblock A dual algorithm for the constrained shortest path problem.
+\newblock {\em Networks\/}, {\em 10\/}(4), 293--309.
+
+\bibitem[{Haouari \& Chaouachi(2006)}]{haouari2006upper}
+Haouari, M., \& Chaouachi, J.~S. (2006).
+\newblock Upper and lower bounding strategies for the generalized minimum
+  spanning tree problem.
+\newblock {\em European Journal of Operational Research\/}, {\em 171\/}(2),
+  632--647.
+
+\bibitem[{Hassin(1992)}]{hassin1992approximation}
+Hassin, R. (1992).
+\newblock Approximation schemes for the restricted shortest path problem.
+\newblock {\em Mathematics of Operations research\/}, {\em 17\/}(1), 36--42.
+
+\bibitem[{Holland(1975)}]{holland_1975}
+Holland, J.~H. (1975).
+\newblock {\em Adaptation in Natural and Artificial Systems\/}.
+\newblock The MIT Press.
+
+\bibitem[{Joksch(1966)}]{joksch1966shortest}
+Joksch, H.~C. (1966).
+\newblock The shortest route problem with constraints.
+\newblock {\em Journal of Mathematical analysis and applications\/}, {\em
+  14\/}(2), 191--197.
+
+\bibitem[{Kansal \& Torquato(2001)}]{kansal2001globally}
+Kansal, A.~R., \& Torquato, S. (2001).
+\newblock Globally and locally minimal weight spanning tree networks.
+\newblock {\em Physica A: Statistical Mechanics and its Applications\/}, {\em
+  301\/}(1), 601--619.
+
+\bibitem[{Kouchakpour et~al.(2009)Kouchakpour, Zaknich, \&
+  Br{\"a}unl}]{kouchakpour_2009}
+Kouchakpour, P., Zaknich, A., \& Br{\"a}unl, T. (2009).
+\newblock A survey and taxonomy of performance improvement of canonical genetic
+  programming.
+\newblock {\em Journal Knowledge and Information Systems\/}, {\em 21\/}, 1--39.
+
+\bibitem[{Koza(1992{\natexlab{a}})}]{koza_1992}
+Koza, J.~R. (1992{\natexlab{a}}).
+\newblock {\em Genetic Programming: On the Programming of Computers by Means of
+  Natural Selection\/}.
+\newblock The MIT press.
+
+\bibitem[{Koza(1992{\natexlab{b}})}]{koza1992genetic}
+Koza, J.~R. (1992{\natexlab{b}}).
+\newblock {\em Genetic programming: on the programming of computers by means of
+  natural selection\/}, vol.~1.
+\newblock MIT press.
+
+\bibitem[{Koza(1999)}]{koza1999genetic}
+Koza, J.~R. (1999).
+\newblock Genetic programming {III}: Darwinian invention and problem solving.
+\newblock San Francisco: CA: Morgan Kaufmann.
+
+\bibitem[{Koza(2003)}]{Koza03}
+Koza, J.~R. (2003).
+\newblock {\em Genetic Programming IV: Routine Human-Competitive Machine
+  Intelligence\/}.
+\newblock Norwell, MA, USA: Kluwer Academic Publishers.
+
+\bibitem[{Koza et~al.(2003)Koza, Keane, Streeter, Mydlowec, Yu, \&
+  Lanza}]{koza_2003}
+Koza, J.~R., Keane, M.~A., Streeter, M.~J., Mydlowec, W., Yu, J., \& Lanza, G.
+  (2003).
+\newblock {\em Genetic Programming IV: Routine Human-Competitive Machine
+  Intelligence.\/}.
+\newblock Springer US.
+
+\bibitem[{Koza \& Poli(2005)}]{koza_poli_2005}
+Koza, J.~R., \& Poli, R. (2005).
+\newblock {\em Search Methodologies: Introductory Tutorials in Optimization and
+  Decision Support Techniques\/}, chap. Genetic Programming, (pp. 127--164).
+\newblock Boston, MA: Springer US.
+\newline\urlprefix\url{http://dx.doi.org/10.1007/0-387-28356-0_5}
+
+\bibitem[{Laporte et~al.(1996)Laporte, Asef-Vaziri, \&
+  Sriskandarajah}]{laporte1996some}
+Laporte, G., Asef-Vaziri, A., \& Sriskandarajah, C. (1996).
+\newblock Some applications of the generalized travelling salesman problem.
+\newblock {\em Journal of the Operational Research Society\/}, {\em 47\/}(12),
+  1461--1467.
+
+\bibitem[{Laporte \& Semet(1999)}]{laporte1999computational}
+Laporte, G., \& Semet, F. (1999).
+\newblock Computational evaluation of a transformation procedure for the
+  symmetric generalized traveling salesman problem.
+\newblock {\em INFOR\/}, {\em 37\/}(2), 114.
+
+\bibitem[{Li \& Ciesielski(2004)}]{li_2004}
+Li, X., \& Ciesielski, V. (2004).
+\newblock Analysis of genetic programming runs.
+\newblock \url{http://goanna.cs.rmit.edu.au/~vc/papers/aspgp04.pdf}.
+
+\bibitem[{Lien et~al.(1993)Lien, Ma, \& Wah}]{lien1993transformation}
+Lien, Y.-N., Ma, E., \& Wah, B. W.-S. (1993).
+\newblock Transformation of the generalized traveling-salesman problem into the
+  standard traveling-salesman problem.
+\newblock {\em Information Sciences\/}, {\em 74\/}(1), 177--189.
+
+\bibitem[{Lorenz \& Raz(2001)}]{lorenz2001simple}
+Lorenz, D.~H., \& Raz, D. (2001).
+\newblock A simple efficient approximation scheme for the restricted shortest
+  path problem.
+\newblock {\em Operations Research Letters\/}, {\em 28\/}(5), 213--219.
+
+\bibitem[{Lozano \& Medaglia(2013)}]{lozano2013exact}
+Lozano, L., \& Medaglia, A.~L. (2013).
+\newblock On an exact method for the constrained shortest path problem.
+\newblock {\em Computers \& Operations Research\/}, {\em 40\/}(1), 378--384.
+
+\bibitem[{Mohammadi et~al.(2014)Mohammadi, Torabi, \&
+  Tavakkoli-Moghaddam}]{mohammadi2014sustainable}
+Mohammadi, M., Torabi, S., \& Tavakkoli-Moghaddam, R. (2014).
+\newblock Sustainable hub location under mixed uncertainty.
+\newblock {\em Transportation Research Part E: Logistics and Transportation
+  Review\/}, {\em 62\/}, 89--115.
+
+\bibitem[{Muhandiramge \& Boland(2009)}]{muhandiramge2009simultaneous}
+Muhandiramge, R., \& Boland, N. (2009).
+\newblock Simultaneous solution of lagrangean dual problems interleaved with
+  preprocessing for the weight constrained shortest path problem.
+\newblock {\em Networks\/}, {\em 53\/}(4), 358--381.
+
+\bibitem[{Myung et~al.(1995)Myung, Lee, \& Tcha}]{myung1995generalized}
+Myung, Y.-S., Lee, C.-H., \& Tcha, D.-W. (1995).
+\newblock On the generalized minimum spanning tree problem.
+\newblock {\em Networks\/}, {\em 26\/}(4), 231--241.
+
+\bibitem[{Nakagaki et~al.(2001)Nakagaki, Yamada, \& Toth}]{nakagaki2001path}
+Nakagaki, T., Yamada, H., \& Toth, A. (2001).
+\newblock Path finding by tube morphogenesis in an amoeboid organism.
+\newblock {\em Biophysical chemistry\/}, {\em 92\/}(1), 47--52.
+
+\bibitem[{Noon \& Bean(1991)}]{noon1991lagrangian}
+Noon, C.~E., \& Bean, J.~C. (1991).
+\newblock A lagrangian based approach for the asymmetric generalized traveling
+  salesman problem.
+\newblock {\em Operations Research\/}, {\em 39\/}(4), 623--632.
+
+\bibitem[{Noon \& Bean(1993)}]{noon1993efficient}
+Noon, C.~E., \& Bean, J.~C. (1993).
+\newblock An efficient transformation of the generalized traveling salesman
+  problem.
+\newblock {\em INFOR: Information Systems and Operational Research\/}, {\em
+  31\/}(1), 39--44.
+
+\bibitem[{Papadimitriou \& Steiglitz(1982)}]{papadimitriou1982combinatorial}
+Papadimitriou, C.~H., \& Steiglitz, K. (1982).
+\newblock {\em Combinatorial optimization: algorithms and complexity\/}.
+\newblock Upper Saddle River, NJ, USA: Prentice-Hall, Inc.
+
+\bibitem[{Parada et~al.(2015)Parada, Herrera, Sep{\'u}lveda, \&
+  Parada}]{parada_2015}
+Parada, L., Herrera, C., Sep{\'u}lveda, M., \& Parada, V. (2015).
+\newblock Evolution of new algorithms for the binary knapsack problem.
+\newblock {\em Natural Computing\/}, (pp. 1--13).
+
+\bibitem[{Poli et~al.(2008)Poli, Langdon, \& McPhee}]{poli_2008}
+Poli, R., Langdon, W.~B., \& McPhee, N.~F. (2008).
+\newblock {\em A Field Guide to Genetic Programming\/}.
+\newblock Lulu Press, Inc.
+
+\bibitem[{Pop(2009)}]{pop2009survey}
+Pop, P. (2009).
+\newblock A survey of different integer programming formulations of the
+  generalized minimum spanning tree problem.
+\newblock {\em Carpathian Journal of Mathematics\/}, {\em 25\/}(1), 104--118.
+
+\bibitem[{Pop(2002)}]{pop2002generalized}
+Pop, P.~C. (2002).
+\newblock {\em The generalized minimum spanning tree problem\/}.
+\newblock Twente University Press.
+
+\bibitem[{Reinelt(1991)}]{reinelt_1991}
+Reinelt, G. (1991).
+\newblock Tsplib - a traveling salesman problem library.
+\newblock {\em ORSA Journal on Computing\/}, {\em 3\/}(4), 376--384.
+\newline\urlprefix\url{http://dx.doi.org/10.1287/ijoc.3.4.376}
+
+\bibitem[{Renaud \& Boctor(1998)}]{renaud1998efficient}
+Renaud, J., \& Boctor, F.~F. (1998).
+\newblock An efficient composite heuristic for the symmetric generalized
+  traveling salesman problem.
+\newblock {\em European Journal of Operational Research\/}, {\em 108\/}(3),
+  571--584.
+
+\bibitem[{Renaud et~al.(1996)Renaud, Boctor, \& Laporte}]{renaud1996fast}
+Renaud, J., Boctor, F.~F., \& Laporte, G. (1996).
+\newblock A fast composite heuristic for the symmetric traveling salesman
+  problem.
+\newblock {\em INFORMS Journal on Computing\/}, {\em 8\/}(2), 134--143.
+
+\bibitem[{Samuel(1959)}]{samuel1959some}
+Samuel, A.~L. (1959).
+\newblock Some studies in machine learning using the game of checkers.
+\newblock {\em IBM Journal of research and development\/}, {\em 3\/}(3),
+  210--229.
+
+\bibitem[{Santos et~al.(2007)Santos, Coutinho-Rodrigues, \&
+  Current}]{santos2007improved}
+Santos, L., Coutinho-Rodrigues, J., \& Current, J.~R. (2007).
+\newblock An improved solution algorithm for the constrained shortest path
+  problem.
+\newblock {\em Transportation Research Part B: Methodological\/}, {\em
+  41\/}(7), 756--771.
+
+\bibitem[{Smith-Miles \& Lopes(2012)}]{smith_2012}
+Smith-Miles, K., \& Lopes, L. (2012).
+\newblock Measuring instance difficulty for combinatorial optimization
+  problems.
+\newblock {\em Computers \& Operations Research\/}, {\em 39\/}(5), 875 -- 889.
+
+\bibitem[{Snyder \& Daskin(2006)}]{snyder2006random}
+Snyder, L.~V., \& Daskin, M.~S. (2006).
+\newblock A random-key genetic algorithm for the generalized traveling salesman
+  problem.
+\newblock {\em European Journal of Operational Research\/}, {\em 174\/}(1),
+  38--53.
+
+\bibitem[{Srivastava et~al.(1969)Srivastava, Kumar, Garg, \&
+  Sen}]{srivastava1969generalized}
+Srivastava, S., Kumar, S., Garg, R., \& Sen, P. (1969).
+\newblock Generalized traveling salesman problem through n sets of nodes.
+\newblock {\em CORS journal\/}, {\em 7\/}, 97--101.
+
+\bibitem[{Talbi(2009)}]{talbi2009metaheuristics}
+Talbi, E.-G. (2009).
+\newblock {\em Metaheuristics: from design to implementation\/}.
+\newblock NJ:Wiley.
+
+\bibitem[{Zhang et~al.(2013)Zhang, Zhang, Hu, Deng, \&
+  Mahadevan}]{zhang2013adaptive}
+Zhang, X., Zhang, Y., Hu, Y., Deng, Y., \& Mahadevan, S. (2013).
+\newblock An adaptive amoeba algorithm for constrained shortest paths.
+\newblock {\em Expert Systems with Applications\/}, {\em 40\/}(18), 7607--7616.
+
+\bibitem[{Zhu \& Wilhelm(2012)}]{zhu2012three}
+Zhu, X., \& Wilhelm, W.~E. (2012).
+\newblock A three-stage approach for the resource-constrained shortest path as
+  a sub-problem in column generation.
+\newblock {\em Computers \& Operations Research\/}, {\em 39\/}(2), 164--178.
+
+\end{thebibliography}

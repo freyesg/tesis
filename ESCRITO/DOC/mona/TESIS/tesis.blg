@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: tesis.aux
+A level-1 auxiliary file: preliminares/cubierta.aux
+A level-1 auxiliary file: chapters/1-introduccion.aux
+A level-1 auxiliary file: chapters/2-estado_del_arte.aux
+A level-1 auxiliary file: chapters/3-disegno_experimento.aux
+The style file: apa-good.bst
+Database file #1: referencias.bib
+Warning--empty journal in affenzeller_2001
+Warning--empty journal in cantu_2003
+Warning--empty booktitle in koza1999genetic
+Warning--can't use both author and editor fields in koza_poli_2005
+You've used 69 entries,
+            2804 wiz_defined-function locations,
+            995 strings with 17502 characters,
+and the built_in function-call counts, 41109 in all, are:
+= -- 3298
+> -- 1655
+< -- 41
++ -- 673
+- -- 549
+* -- 3260
+:= -- 6329
+add.period$ -- 207
+call.type$ -- 69
+change.case$ -- 515
+chr.to.int$ -- 68
+cite$ -- 73
+duplicate$ -- 2988
+empty$ -- 3094
+format.name$ -- 764
+if$ -- 7945
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 652
+newline$ -- 356
+num.names$ -- 276
+pop$ -- 1176
+preamble$ -- 1
+purify$ -- 458
+quote$ -- 0
+skip$ -- 1046
+stack$ -- 0
+substring$ -- 2114
+swap$ -- 1698
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 585
+warning$ -- 4
+while$ -- 311
+width$ -- 0
+write$ -- 894
+(There were 4 warnings)

@@ -1,0 +1,158 @@
+
+\chapter{INTRODUCCIÓN}
+\label{cap:intro}
+
+%DESCOMENTAR ESTAS LINEAS SI EL CAPÍTULO TIENE FIGURAS O TABLAS
+%\addtocontents{lof}{{\bf \noindent Figuras del capítulo \arabic{chapter}}}
+%\addtocontents{lot}{{\bf \noindent Tablas del capítulo \arabic{chapter}}}
+
+
+
+\section{Antecedentes y motivación}
+\label{intro:motivacion}
+
+Es común encontrar en la literatura problemas de optimización combinatoria similares entre sí, en los cuales uno de ellos posee un algoritmo polinomial que lo resuelve \citep{papadimitriou1982combinatorial} y el otro es de tipo NP-Hard. 
+A un par de problemas que tienen estas características, en este proyecto se les denomina problema fácil - problema difícil. El problema fácil es aquel que puede ser resuelto por un algoritmo polinominal, mientras que el otro se denomina problema difícil \citep{cook1995combinatorial}. 
+
+Estos problemas relacionados tienen diversos orígenes, los cuales pueden ser problemas del mundo real o problemas en el mundo teórico formulados en grafos. 
+Un caso típico lo constituye el problema del camino mínimo (PCM) \citep{papadimitriou1982combinatorial}, el cual consiste en identificar la ruta más corta entre dos puntos de un grafo dado. Donde puede existir más de un camino entre ellos, los arcos tienen una distancia que es dada por un número entero en general, no negativo (problema fácil). Este problema ha sido ampliamente estudiado en la literatura, \cite{dijkstra1959note} y otros científicos propusieron un algoritmo polinomial que lo resuelve conocido como el algoritmo de Dijkstra, que permite encontrar todos los caminos mínimos entre los pares de nodos \citep{cook1995combinatorial}. El problema difícil asociado es el problema del camino mínimo con restricción (PCMR), el cual pertenece a la clase NP-Hard \citep{handler1980dual}, consiste en determinar el mejor camino que une un par de nodos dados, pero considerando como restricción que, el camino posee un costo asociado que no se debe sobrepasar, lo que constituye una restricción del tipo mochila (PM). El problema del árbol de cobertura de costo mínimo (PACCM)\citep{papadimitriou1982combinatorial} tanmbién es un problema típico, el cual consiste en encontrar un árbol de costo mínimo, que cubra todos los vértices de un grafo, y el problema relacionado es el problema del árbol de cobertura mínima generalizado (PACMG) \citep{dror2000generalized}, que consiste en encontrar en un grafo no dirigido un árbol de cobertura de costo mínimo, Los vértices de cada grupo, donde el árbol de cobertura debe incluir sólo un vértice de cada grupo. Este problema es de gran interés debido  a las diversas aplicaciones, tales como, aplicaciones en la física \citep{kansal2001globally}, riesgos agrícolas \citep{dror2000generalized}, además de aplicaciones en el área de la toma de decisiones de ubicaciones de centro de distribución, entre otros \citep{myung1995generalized}. Otro par de problemas relacionados es el PACCM y el problema del vendedor viajero generalizado (PVVG) \citep{srivastava1969generalized}. El problema consiste en encontrar un recorrido en el que existen grupos predefinidos y el viajero debe visitar exactamente un nodo en cada grupo minimizando el costo total del viaje. El problema posee una serie de aplicaciones, entre las que destacan el despacho del correo \citep{laporte1996some}, orden de selección en bodegas \citep{noon1991lagrangian}, secuenciamiento de archivos computacionales \citep{henrylab1969record} entre otros.
+
+Los métodos que se han utilizado para abordar el problema complejo a partir del correspondiente problema fácil, son generalizaciones del método que resuelve el problema fácil. Por ejemplo, la determinación de un circuito hamiltoniano que corresponde a una solución factible para el problema del vendedor viajero (problema difícil), puede ser encontrada de manera heurística generando el árbol de cobertura de costo mínimo (problema fácil) y adaptándolo como solución para el vendedor viajero \citep{Applegate09}. La generalización de este método fácil es el que da origen comúnmente a un método heurístico que resuelve el problema complejo, debido a que hasta ahora nadie ha encontrado un método polinomial que resuelva el problema difícil. Esto conduce a pensar que los elementos que se utilizan para resolver el problema fácil, es decir, los elementos algorítmicos que se utilizan para el problema sencillo, pueden ser reutilizados para dar solución al problema complejo, aunque esto de alguna forma genera un sesgo, debido a que los nuevos algoritmos que se van a generar para el problema difícil van a estar inspirados en el problema fácil. Se podría pensar que la exploración de todo el dominio de posibilidades algorítmicas que existen para resolver el problema difícil es mucho más amplio, sin embargo, este tema ha sido poco explorado en la literatura y los resultados recientes a través de hiper-heurística o de generación automática de algoritmos, algo de luz muestran sobre esta problemática de explorar otras posibilidades para generar soluciones a los problemas difíciles.
+
+
+Los problemas relacionados considerados en este trabajo de investigación son el PCM - PCMR; PACCM - PACMG y PACCM - PVVG. 
+
+Para dar solución a los problemas mencionados que pertenecen a la clase NP-Hard se requieren algoritmos que encuentren en tiempos razonables para esto. Dentro de la optimización heurística existe una rama llamada Computación Evolutiva, que se encarga de encontrar dichos algoritmos. Esta rama pertenece a un área de la inteligencia artificial que se compone de un conjunto de técnicas basadas en los procesos que propuso Charles Darwin, que son: la evolución y selección natural de las especies, donde a partir de una población compuesta por diferentes soluciones que resuelven el problema de forma progresiva, se van generando nuevas soluciones respetando el principio de que las soluciones mas aptas, son las que dan origen a las nuevas poblaciones de solución \citep{koza1999genetic}. 
+
+Una de las técnicas utilizadas de la Computación Evolutiva es la Programación Genética donde las soluciones representan componentes elementales de programas, lo que permite que a partir de algunas especificaciones del problema en estudio, se produzca automáticamente un algoritmo que lo resuelva. Con ello, se puede decir que es el computador el que genera la nueva solución factible. 
+A partir de este enunciado es posible beneficiarse de heurísticas elementales para este problema de optimización y de forma evolutiva, generar nuevas soluciones. Para conseguir estas nuevas soluciones, se seleccionan tales heurísticas y se combinan de manera evolutiva, para obtener una huerística genérica que pueda resolver cualquier instancia de un problema de optimización. 
+La combinación de heurísticas se conoce como hiper-heurística \citep{burke2010genetic}, la cual realiza una búsqueda en el espacio de las heurísticas en vez de buscar en el espacio de la solución del problema. 
+La Programación Genética ha generado distintos descubrimientos e inventos, donde su principal exponente, John Koza, a través de distintos experimentos, genera productos electrónicos patentables, como antenas o circuitos \citep{Koza03}. En cuanto a la generación de algoritmos, se ha utilizado para resolver problemas NP-Hard como el problema de coloración de vértices \citep{bolton2013} y el problema de la mochila \citep{parada_2015}, dejado en evidencia la efectividad de esta técnica. 
+
+
+A pesar de los enormes esfuerzos existentes en la literatura para resolver los pares de problemas relacionados que pertenecen a los problemas difíciles, todavía existe una gran brecha para lograr que algoritmos exactos puedan ser utilizados para resolver instancias de cualquier tamaño del problema. Pocos investigadores se han preocupado de estudiar la relación que existe entre los componentes elementales de los algoritmos polinomiales  y los potenciales algoritmos que existen para los problemas difíciles. Aunque la computación evolutiva, específicamente la  Programación Genética ha sido utilizada para generar heurísticas en un concepto que es conocido como hiper-heurística, no se detectan nuevos algoritmos para el problema, más bien métodos de resolución que son difíciles de comprender que generalmente están escritos en lenguaje Lisp, al partir del cual es difícil descifrar como se relacionaron esos componentes algorítmicos para dar origen a estos nuevos métodos de resolución. En consecuencia es poco conocimiento el que se puede obtener a partir de esas estructuras debido a que no fue el enfoque esencial de esos autores en su trabajo. Generar automáticamente algoritmos para problemas difíciles a partir de los componentes del problema directamente relacionado, podría transformarse en una nueva metodología de resolución que se puede aplicar y extender a todos los problemas de optimización combinatoria que pertenecen a la clase difícil.
+
+Generar automáticamente algoritmos eficientes para problemas de optimización facilitaría el trabajo de muchas personas que manualmente buscan una heurística eficiente para un determinado problema. La potencialidad de poder encontrar algoritmos eficientes para los problemas, en términos prácticos, algoritmos que resuelven en corto tiempo la solución con un alto nivel de precisión tiene consecuencias enormes en el mundo de la gestión. La mayoría de los problemas que surgen en la gestión de operaciones, tales como: la planificación de rutas, tareas, operaciones del procesamiento de las máquinas de un sistema productivo entre otros, día a día enfrentan este problema manualmente, típicamente resolviéndolos con heurísticas que provienen del mismo mundo real. Esto se debe a que las mismas herramientas computacionales para resolver estos problemas en la práctica no existen. Debido a que no es posible crear una herramienta que resuelva todos los casos posibles y de existir, sería costosa. Los resultados de esta tesis podrían ir en directo beneficio para el desarrollo de una herramienta computacional que sea capaz de abordar pares de problemas relacionados.
+
+
+\section{Descripción del problema}
+\label{intro:problema}
+
+Los problemas que se abordan en el presente trabajo (PCMR, PACMG y PVVG) presentan diversos estudios en la literatura, a pesar de esto siguen siendo un desafío computacional. Entre los estudios relacionados existen algunos que utilizan la Programación Genética de forma tradicional, sin embargo, no existen estudios que utilizen los componentes elementales de los problemas fáciles para dar solución a los problemas difíciles utilizando Programación Genética.
+
+Para el desarrollo de este estudio se analiza el comportamiento de la generación de algoritmos basados en los componentes elementales de los problemas fáciles y considerando la incorporación gradual de nuevos elementos de refinamiento que permiten encontrar mejores resultados computacionales para cada uno de los problemas en estudio. Para el desarrollo de éstos, surgen diversas preguntas que son consideradas como parte de este trabajo, entre ellas: ¿los algoritmos generados utilizando sólo los componentes elementales son suficientes para dar solución a los problemas?, ¿estos algoritmos son eficientes?, ¿cómo afecta al desempeño computacional de los algoritmos generados los grupos de instancias de adaptación? y ¿cómo afecta al desempeño computacional de los algoritmos generados la función de evaluación?.
+
+\section{Solución propuesta}
+\label{intro:solucion}
+
+
+\subsection{Características de la solución}
+
+Utilizando Computación Evolutiva, se pretende generar algoritmos que sean capaces de resolver problemas de optimización combinatoria. Estos algorimos son creados por una máquina computacional de forma automática utilizando componentes del problema fácil como heurística para la generación de algoritmos que resuelvan el problema difícil. Los algoritmos obtenidos serán estudiados comparativamente con los propuestos en la literatura utilizando las instancias propias de los problemas 
+que se tratarán en este trabajo de tesis, los cuales son: el PCMR, el PACMG y el PVVG. 
+
+\subsection{Propósito de la solución}
+
+El propósito de la solución es aportar en el campo de la Computación Evolutiva y la optimización combinatoria, generando algoritmos automáticamente mediante el uso de componentes de los problemas fáciles, para los problemas difíciles que aún no poseen solución en un tiempo razonable.
+
+
+\section{Objetivos y alcances del proyecto}
+\label{intro:objetivos}
+En ésta sección se presenta el objetivo general, los objetivos específicos y el alcance y limitaciones que componen la presente investigación.
+
+\subsection{Objetivo general}
+
+Diseñar automáticamente algoritmos para problemas de optimización combinatoria considerados computacionalmente difíciles, a partir de componentes elementales que provienen de problemas estrechamente relacionados.
+
+Las parejas de problemas que se abordan son: problema del camíno mínimo - problema del camíno mínimo con restricción; problema del árbol de cobertura de costo mínimo - problema del árbol de cobertura mínima generalizado; problema del árbol de cobertura de costo mínimo - problema del vendedor viajero generalizado. 
+
+\subsection{Objetivos específicos}
+\begin{itemize}
+
+    \item Diseñar el proceso evolutivo para la creación de algoritmos.
+   
+    \item Definir las estructuras de datos necesarios para el PCMR, el PACMG y el PVVG, que soporten las instancias computacionales de los problemas y las respectivas soluciones algorítmicas.
+    
+    \item Definir los componentes a utilizar como funciones y terminales para la generación de los nuevos algoritmos.
+    
+    \item Realizar un conjunto de experimentos computacionales para generar los algortimos que resuelvan los casos de estudio.
+    
+    \item Analizar la complejidad, principios de funcionamiento y calidad de la soluciones obtenidas por los mejores algoritmos generados.
+    
+\end{itemize}
+
+
+\subsection{Alcances}
+
+\begin{itemize}
+
+    \item El trabajo de ésta investigación se concentra escencialmente en descubrir nuevos algoritmos para el PCMG, el PACMG  y el PVVG, basandose en los componentes algorítmicos del problema para el cual se conoce su algoritmo polinomial. Los algoritmos se van a construir evolutivamente mediante el uso de programación genética.
+    
+    \item Los algoritmos van a ser probados con un grupo de instancias típicas para cada problema abordado en el presente trabajo.
+    
+     \item Se medirá el tiempo computacional de los algoritmos y la calidad de solución que se encuentren y en base a ellos se va a obtener una conclusión sobre los descubrimientos principales que se realicen en este trabajo.
+    
+  \end{itemize}  
+   
+
+
+\section{Metodologías y herramientas utilizadas}
+
+A continuación se especifica la metodología, herramientas y ambiente de desarrollo que se utilizará para llevar a cabo esta tesis.
+
+\subsection{Metodología de trabajo}
+
+La metodología para desarrollar el presente trabajo se basa en los siguientes objetivos: desarrollar, medir y evaluar la experiencia. El proceso a seguir para lograr estos objetivos consiste en las siguientes tres etapas:
+
+\begin{itemize}
+  \item Desarrollo y obtención del conjunto de algoritmos: para el desarrollo del programa necesario para obtener los algoritmos a evaluar, se utiliza el método propuesto por Riccardo Poli para usar la Programación Genética \cite{poli_2008}.
+Para resolver un problema aplicando Programación Genética, se deben tomar en consideración 5 pasos preparatorios, los cuales son:
+  \begin{enumerate}
+    \item Conjunto de terminales: son entradas externas al programa, funciones sin argumento y constantes.
+    \item Conjunto de funciones: son funciones definidas de acuerdo al dominio del problema. Éstas deben cumplir dos criterios:
+    \begin{itemize}
+      \item Clausura: se refiere a que una función u operador debería ser capaz de aceptar como entrada cualquier salida producida por cualquier función u operador del conjunto de no terminales.
+      \item Suficiencia: hace referencia al hecho de que el poder expresivo del conjunto de no terminales debe ser suficiente para representar una solución para el problema en cuestión. 
+    \end{itemize}
+    \item Función de evaluación o \textit{fitness}: se definen inicialmente las instancias de datos con que será evaluado el problema y en base a éstos, se definen funciones que midan el rendimiento y comportamiento de los resultados.
+    \item Parámetros de la Programación Genética: se definen los parámetros propios de la Programación Genética. Los principales son: tamaño de la población, porcentaje de mutación y cruzamiento, casos de \textit{fitness}.
+    \item Criterio de término y diseño de la solución: se definen los parámetros asociados a la cantidad de generaciones que se deben correr y cuando estas deben detenerse, o  resultado al que se espera llegar para obtener la solución.
+  \end{enumerate}
+  \item Desempeño computacional de los algoritmos: esta etapa mide la calidad de los algoritmos generados por el proceso evolutivo y que son seleccionados para ser estudiados. En este caso, la calidad de un algoritmo se determina a partir de su capacidad para encontrar buenas soluciones con instancias distintas a las utilizadas durante el proceso evolutivo y evaluar sus resultados numéricos a fin de determinar qué tan buenos son realmente.
+  
+  \item Evaluación: consiste en comparar los algoritmos con otras técnicas. Estas técnicas son las propuestas por \cite{derrac_2011}, donde se utiliza una serie de evaluaciones estadísticas para comparar el rendimiento de algoritmos como los que se obtienen en el desarrollo de este trabajo.
+\end{itemize}
+
+\subsection{Herramientas de desarrollo}
+
+
+Para el desarrollo y ejecución de los experimentos se utilizarán dos equipos con las siguientes características:
+\begin{itemize}
+
+\item Computador personal:Procesador:Intel\textregistered Core\texttrademark i5-3317U CPU @ 1.70GHZ y 8 GB de memoria RAM DDR3
+\item Clúster del Departamento de Ingeniería Industrial de la Universidad de Chile: 9 nodos, Intel (R) Xeon (R) CPU E5620 2.40GHZ y una memoria total de 400 GB.
+
+las herramientas de software que se utilizarán son:
+\item Sistema operativo: Ubuntu GNU/Linux.
+\item Sistema de computación evolutiva: ECJ 23
+\item Plataforma de desarrollo: Eclipse IDE for Java Developers.
+\item Herramienta ofimática: \LaTeX.
+\item Herramienta estadística: STATA.
+
+\end{itemize}
+%\section{Organización del documento}
+%\label{intro:organizacion}
+
+%El presente documento se encuentra dividido en varios capítulos. El contenido de cada uno de éstos se encuentra descrito a continuación:
+
+%\begin{itemize}
+%    \item Capítulo 2 (Aspectos teóricos y revisión de la literatura): presenta los aspectos teóricos básicos necesarios para la comprensión del presente trabajo. Adicionalmente, se realiza una revisión de la literatura asociada al mismo, incluyendo los métodos utilizados por otros autores, estudios sobre los parámetros e instancias, la generación automática de algoritmos, entre otros aspectos relacionados.
+   % \item Capítulo 3 (Diseño y procedimiento del experimento): se describe la metodología a utilizar para el desarrollo del trabajo y el diseño del experimento. 
+  %  \item 
+  %  \item Capítulo 6 (Resultados): son presentados los resultados de cada uno de los experimentos del trabajo junto a un análisis.
+  %  \item Capítulo 7 (Discusión de los resultados): se presentan las discusiones y análisis de los resultados, abordando sugerencias y propuestas para futuros trabajos.
+  %  \item Capítulo 8 (Conclusiones): en este capítulo se escriben las conclusiones del trabajo, donde se habla de si los objetivos fueron cumplidos y si la hipótesis es aceptada o rechazada.
+    % \item Glosario: Incluye un listado de las palabras claves del documento con su respectivo significado.
+%\end{itemize}
+
+

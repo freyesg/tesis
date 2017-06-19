@@ -1,0 +1,42 @@
+\BOOKMARK [0][]{chapter.1}{1 INTRODUCCI\323N}{}% 1
+\BOOKMARK [1][]{section.1.1}{1.1 Antecedentes y motivaci\363n}{chapter.1}% 2
+\BOOKMARK [1][]{section.1.2}{1.2 Descripci\363n del problema}{chapter.1}% 3
+\BOOKMARK [1][]{section.1.3}{1.3 Soluci\363n propuesta}{chapter.1}% 4
+\BOOKMARK [2][]{subsection.1.3.1}{1.3.1 Caracter\355sticas de la soluci\363n}{section.1.3}% 5
+\BOOKMARK [2][]{subsection.1.3.2}{1.3.2 Prop\363sito de la soluci\363n}{section.1.3}% 6
+\BOOKMARK [1][]{section.1.4}{1.4 Objetivos y alcances del proyecto}{chapter.1}% 7
+\BOOKMARK [2][]{subsection.1.4.1}{1.4.1 Objetivo general}{section.1.4}% 8
+\BOOKMARK [2][]{subsection.1.4.2}{1.4.2 Objetivos espec\355ficos}{section.1.4}% 9
+\BOOKMARK [2][]{subsection.1.4.3}{1.4.3 Alcances}{section.1.4}% 10
+\BOOKMARK [1][]{section.1.5}{1.5 Metodolog\355as y herramientas utilizadas}{chapter.1}% 11
+\BOOKMARK [2][]{subsection.1.5.1}{1.5.1 Metodolog\355a de trabajo}{section.1.5}% 12
+\BOOKMARK [2][]{subsection.1.5.2}{1.5.2 Herramientas de desarrollo}{section.1.5}% 13
+\BOOKMARK [0][]{chapter.2}{2 ASPECTOS TE\323RICOS Y REVISI\323N DE LA LITERATURA}{}% 14
+\BOOKMARK [1][]{section.2.1}{2.1 Aspectos te\363ricos}{chapter.2}% 15
+\BOOKMARK [2][]{subsection.2.1.1}{2.1.1 Computaci\363n Evolutiva}{section.2.1}% 16
+\BOOKMARK [2][]{subsection.2.1.2}{2.1.2 Programaci\363n Gen\351tica}{section.2.1}% 17
+\BOOKMARK [1][]{section.2.2}{2.2 Revisi\363n de la literatura}{chapter.2}% 18
+\BOOKMARK [2][]{subsection.2.2.1}{2.2.1 Generaci\363n autom\341tica de algoritmos}{section.2.2}% 19
+\BOOKMARK [2][]{subsection.2.2.2}{2.2.2 Heur\355sticas y meta-heur\355sticas}{section.2.2}% 20
+\BOOKMARK [2][]{subsection.2.2.3}{2.2.3 Hiper-heur\355sticas}{section.2.2}% 21
+\BOOKMARK [2][]{subsection.2.2.4}{2.2.4 Instancias}{section.2.2}% 22
+\BOOKMARK [2][]{subsection.2.2.5}{2.2.5 Revisi\363n de la literatura para PCMR}{section.2.2}% 23
+\BOOKMARK [2][]{subsection.2.2.6}{2.2.6 Revisi\363n de la literatura para PACMG}{section.2.2}% 24
+\BOOKMARK [2][]{subsection.2.2.7}{2.2.7 Revisi\363n de la literatura para PVVG}{section.2.2}% 25
+\BOOKMARK [0][]{chapter.3}{3 Dise\361o de la experimentaci\363n}{}% 26
+\BOOKMARK [1][]{section.3.1}{3.1 L\363gica del dise\361o}{chapter.3}% 27
+\BOOKMARK [1][]{section.3.2}{3.2 Metodolog\355a del experimento}{chapter.3}% 28
+\BOOKMARK [2][]{subsection.3.2.1}{3.2.1 El proceso evolutivo}{section.3.2}% 29
+\BOOKMARK [2][]{subsection.3.2.2}{3.2.2 El proceso de evaluaci\363n}{section.3.2}% 30
+\BOOKMARK [1][]{section.3.3}{3.3 Consideraciones generales}{chapter.3}% 31
+\BOOKMARK [2][]{subsection.3.3.1}{3.3.1 Resultados}{section.3.3}% 32
+\BOOKMARK [2][]{subsection.3.3.2}{3.3.2 Instancias}{section.3.3}% 33
+\BOOKMARK [2][]{subsection.3.3.3}{3.3.3 Ejecuciones}{section.3.3}% 34
+\BOOKMARK [1][]{section.3.4}{3.4 Estructuras de datos de los problemas}{chapter.3}% 35
+\BOOKMARK [1][]{section.3.5}{3.5 Identificaci\363n de Componentes Elementales}{chapter.3}% 36
+\BOOKMARK [2][]{subsection.3.5.1}{3.5.1 Descomponiendo Algoritmo Dijkstra}{section.3.5}% 37
+\BOOKMARK [2][]{subsection.3.5.2}{3.5.2 Descomponiendo Algoritmo Prim}{section.3.5}% 38
+\BOOKMARK [1][]{section.3.6}{3.6 Definici\363n de funciones y terminales}{chapter.3}% 39
+\BOOKMARK [2][]{subsection.3.6.1}{3.6.1 Conjunto de funciones}{section.3.6}% 40
+\BOOKMARK [2][]{subsection.3.6.2}{3.6.2 Conjunto de terminales}{section.3.6}% 41
+\BOOKMARK [0][]{chapter*.4}{REFERENCIAS BIBLIOGR\301FICAS}{}% 42

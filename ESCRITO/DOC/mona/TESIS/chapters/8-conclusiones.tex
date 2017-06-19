@@ -1,0 +1,19 @@
+
+\chapter{CONCLUSIONES}
+\label{cap:conclusiones}
+
+%DESCOMENTAR ESTAS LÍNEAS SI EL CAPÍTULO TIENE FIGURAS O TABLAS
+% \addtocontents{lof}{{\bf \noindent Figuras del capítulo \arabic{chapter}}}
+% \addtocontents{lot}{{\bf \noindent Tablas del capítulo \arabic{chapter}}}
+
+El desarrollo de este trabajo tenía como objetivo general comparar los algoritmos obtenidos mediante el uso de los métodos de PG tradicional con el de PG con co-evolución para los problemas de la mochila binaria y el problema del vendedor viajero.
+
+En base al estudio del estado del arte y revisión de la literatura, se ha podido encontrar que existen diversas técnicas para afrontar estos problemas con buenos resultados. Sin embargo, aun queda trabajo por realizar, ya que mientras no se encuentre la solución para éstos problemas, los estudios sobre estos siguen sumando importancia. Dentro de estos estudios, la PG como una hiper-heurística sigue cobrando mayor importancia.
+
+Los resultados de este estudio indican que los algoritmos tienen alta eficiencia y efectividad para resolver los problemas. Específicamente, los algoritmos para el PM-01 obtienen resultados que son similares al óptimo, en promedio $0,1\%$ de error que son similares a los obtenidos por otros autores utilizando la PG \citep{sepulveda_2011, parada_2015} y los del PVV un $7\%$ de error que igualmente poseen similitud a los obtenidos en la literatura \citep{sepulveda_2011}. Estos resultados pueden ser constatados en la tabla de resultados, donde cada algoritmo fue evaluado con un conjunto de instancias de evaluación las que contenían tanto similares como diferentes características a las utilizadas en los casos de adaptación del proceso evolutivo.
+
+No todos los terminales ni funciones aparecen en las estructuras de los algoritmos obtenidos, lo que indica claramente que algunas de éstas son mejores durante el proceso evolutivo. Como se especificó en los capítulos donde se habla de las estructuras y en los resultados, sólo algunos de los terminales y funciones destacan para cada problema, siendo muchos más los utilizados. Para el PM-01, ocurre un proceso de llenado y refinamiento de la mochila, mientras que para el PVV se arma el circuito de menor costo para posteriormente refinarlo utilizando la heurística \textit{2-opt}.
+
+Las instancias obtenidas para el desarrollo del experimento, han servido para concluir respecto a la importancia que tienen las características propias de éstas para la GAA, de acuerdo a su clasificación para la calidad de los los resultados que finalmente obtienen los algoritmos. En particular destacan las clasificaciones utilizadas en los experimentos 1 y 2, las que permiten concluir que la sobre-especialización con la que se generan los algoritmos para determinados grupos. Además, permiten dar a conocer que instancias que generan los mejores algoritmos en el proceso evolutivo, son las que presentan mayor diversidad entre beneficio y peso, mientras que las peores tienen una relación directa o de igualdad. Por otra parte, la clasificación de instancias para el PVV, los resultados del proceso evolutivo y los hallazgos sobre la sobre-especialización en el PM-01, permiten inferir que un grupo de instancias con un menor coeficiente de correlación son mejores para la calidad de los algoritmos generados.
+
+La PG es un proceso en el que se explora combinaciones de diversos componentes elementales de heurísticas, que entregan un resultado de acuerdo a alguna combinación de estos componentes. Al incluir el método de co-evolución, resultó solo en una nueva forma de explorar de estas combinaciones alcanzando valores muy similares a los obtenidos por la PG tradicional. Finalmente, no es posible mostrar una diferencia estadística sobre los resultados obtenidos mediante el uso de PG con co-evolución en comparación a los obtenidos utilizando la PG de forma tradicional, por lo que las Hipótesis presentadas en este trabajo son rechazadas.
