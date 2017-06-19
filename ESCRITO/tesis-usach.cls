@@ -35,48 +35,21 @@
 	%\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
+\raggedbottom
 \newcommand{\autor}{\@author}
 \renewcommand{\rmdefault}{phv} % Arial
 \renewcommand{\sfdefault}{phv} % Arial
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Personalización de los títulos de secciones
-
-\usepackage[compact]{titlesec}
-\titleformat{\chapter}{\bfseries\Large}{\filright\Large\MakeUppercase\chaptertitlename\ \thechapter.\ }{0pt}{\filright\MakeUppercase}%[\vspace{1.5pt}]
-\titleformat{\section}{\bfseries\large\vspace{2pt}}{\large\MakeUppercase\thesection\ \vspace{2pt} }{0pt}{\MakeUppercase}%[\vspace*{0.5cm}]
-\titleformat{\subsection}{\bfseries\normalsize\vspace{2pt}}{\normalsize\thesubsection\ }{0pt}{\vspace*{0.5cm}}
-\titleformat{\subsubsection}{\itshape\normalsize\vspace{1.0cm}}{\itshape\thesubsubsection\ }{0pt}{\vspace*{0.5cm}\itshape}
-
-\titlespacing*{\chapter} {0pt}{-5ex}{20pt}
-\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
-\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
-%\titlespacing*{\chapter} {0pt}{85pt}{20pt}
-%\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-%\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-%\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-%\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
-%\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliografía y referencias
-\RequirePackage[hidelinks, pdftex]{hyperref}
-\RequirePackage[notocbib]{apacite}
-\RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tamaño de la hoja
 \RequirePackage{anysize} % Soporte para el comando \marginsize
-\RequirePackage[papersize={21.6cm, 27.9cm}, includefoot]{geometry} % , showframe
-\geometry{left=4.0cm, top=2.5cm, right=2.5cm, bottom=2.5cm}
+\RequirePackage[papersize={21.6cm, 27.9cm}, letterpaper]{geometry} % , showframe
+\geometry{left=4.0cm, top=2.5cm, right=2.5cm, bottom=2.5cm, includefoot}
+%\RequirePackage[headheight=25.1pt, letterpaper]{geometry}
+%\geometry{top=2.5cm, bottom=2.5cm, left=4cm, right=2.5cm, includefoot}
+
 %--------Otros margenes
 \setlength{\parindent}{0cm}
 \setlength{\headsep}{20pt}
@@ -87,21 +60,84 @@
 \setlength{\pretolerance}{2000}
 \setlength{\tolerance}{3000}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Personalización de los títulos de secciones
+
+\usepackage[compact]{titlesec}
+\titleformat{\chapter}
+{\bfseries\Large\vspace*{-4.0cm}} %Formato título
+{ % Contenido de la etiqueta
+    \filright
+    \Large\MakeUppercase\chaptertitlename\ \thechapter.\
+} %Contenido de la etiqueta
+{0pt} % espacio mínimo entre etiqueta y cuerpo
+{\filright\MakeUppercase} %código que precede al cuerpo del título
+[\vspace{1.5pt}] %1,5
+
+\titleformat{\section}
+	{\bfseries\large\vspace{2pt}}
+	{\large\MakeUppercase\thesection\ \vspace{2pt} } % 3 espacios luego del titulo de una seccion
+	{0pt}
+	{\MakeUppercase}
+	[\vspace*{0.5cm}]
+
+\titleformat{\subsection}
+	{\bfseries\normalsize\vspace{2pt}}
+	{\normalsize\thesubsection\ }
+	{0pt}
+	{\vspace*{0.5cm}}
+
+\titleformat{\subsubsection}
+{\itshape\normalsize\vspace{1.0cm}}
+{\itshape\thesubsubsection\ }
+{0pt}
+{\vspace*{0.5cm}\itshape}
+
+\titlespacing*{\chapter} {0pt}{85pt}{20pt}
+\titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografía y referencias
+\RequirePackage[hidelinks, pdftex, linktoc=all]{hyperref}
+\RequirePackage[notocbib]{apacite}
+\RequirePackage[nottoc, notlof, notlot]{tocbibind}%evita que índice de contenidos, ilustraciones y tablas aparezca en tabla de contenido.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Idioma español y carácteres utf8x
 %\RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{url}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figuras y tablas
 \RequirePackage[pdftex]{graphicx} % PDFLaTeX
 %\RequirePackage[font=small]{caption}
+\usepackage[labelfont=bf]{caption}
+\DeclareCaptionFont{captionsize}{\fontsize{9}{1}\mdseries}
+\captionsetup{font=captionsize}
 \RequirePackage{tikz}
 \RequirePackage{float}
 \RequirePackage{multicol}
 \RequirePackage{multirow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{comment}
@@ -415,64 +451,6 @@
 
 
 
-%\if@inf
-%\makeatletter
-%\def \maketitle {%
-%	\newgeometry{left=4cm, right=2.5cm, top=4cm, bottom=2.5cm}
-%
-%	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	% PORTADA
-%	\setlength{\unitlength}{1cm} %Especificar unidad de trabajo
-%	\thispagestyle{empty}
-%	\begin{center}
-%		\vspace{0.5cm}
-%		{\fontsize{14}{1} {\bf \upper{\usach}}}\\
-%		{\fontsize{12}{1} {\bf \upper{\@facultad}}}\\
-%		{\fontsize{12}{1} {\bf \upper{\@depto}}}
-%	\end{center}
-%
-%	\vfill
-%	\begin{center}
-%		{\fontsize{12}{1} {\bf \@title}}\\
-%		{\fontsize{10}{1} \upper{{\bf \@subtitle}}}
-%	\end{center}
-%
-%	\vspace{1em}
-%	\begin{center}
-%		{\fontsize{12}{1} {\bf \@informe}}
-%	\end{center}
-%
-%	\vfill
-%	\begin{minipage}[h]{0.36\textwidth}
-%	\hspace*{0.0cm}
-%	\end{minipage}
-%	\begin{minipage}[h]{0.5\textwidth}
-%	\begin{flushleft}
-%	\begin{tabular}{r}
-%		{\fontsize{10}{1} Nombre: \@author}\\
-%		{\fontsize{10}{1} Programa: \@programa}\\
-%		{\fontsize{10}{1} Profesor patrocinante: \@prof}\\
-%		{\fontsize{10}{1} Cel.: \@celular}\\
-%		{\fontsize{10}{1} email: \@correo}\\
-%		{\fontsize{10}{1} \@date}\\
-%	\end{tabular}
-%    \end{flushleft}
-%    \end{minipage}
-%}
-%\makeatother
-%\fi
-
-
-
-
-
-
-
-
-
-
-
-
 
 \newenvironment{descripcion}{
 \scriptsize
@@ -518,6 +496,7 @@
 			%\fi
         \end{flushleft}
     \fi
+	\restoregeometry
 }
 \makeatother
 

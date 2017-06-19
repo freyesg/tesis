@@ -56,9 +56,6 @@ Se han sugerido diversos métodos para mejorar la eficiencia del proceso de mini
 
 Debido a que la retropropagación suele minimizar una función de error no convexa con técnicas determinísticas locales (métodos de gradiente de primer y segundo orden), la probabilidad de converger a un mínimo local es alta \cite{Bianchini1996, Bishop1995, Battiti1995}. Este y otros problemas asociados con la retropropagación, como la convergencia lenta y la sobreejecución, podrían hacer que el proceso de aprendizaje fuera ineficiente. Para hacer frente a estos problemas han surgido técnicas para solucionarlo, algunas son del campo de la optimización global \cite{Battiti1995, Tsai2006, Rocha2003, Chelouah2000, Zheng2005}, además de técnicas metaheurísticas basadas en población \cite{Lamos2012}. Y es \citeA{Morse2016} quién retoma el uso de métodos metaheurísticos, esto sugiere que otros métodos, como el {\em Simulated annealing} (SA), pueden tener un buen desempeño estudiando problemas de minimización, de este modo se plantea que el SA tiene un desempeño computacional competitivo frente al SDG al resolver instancias de un problema de regresión típica de la literatura
 
-%Para la minimización de la función de error cuadrático medio BP, el método propuesto combina una técnica de búsqueda global basada en secuencias de puntos discretos [9], [10], y Nelder-Mead simplex local optimizer [11].
-
-
 %sin embargo después recién en 2015 se retoma con ESTE PAPER, donde propone el uso de un método metaheurístico, esto sugiere que el SA puede tener un buen desempeño estudiando problemas de minimización, de este modo se plantea: SA tiene un desempeño computacional competitivo frente al GSD al resolver instancias de un problema de regresión tipica de la literatura (esto es la hipótesis nula)
 
 %%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,9 +77,6 @@ Debido a que la retropropagación suele minimizar una función de error no conve
 
 
 \section{Descripción del problema}
-% USAR [2003b] Squartini S, Hussain A, Piazza F
-%La retropropagación basa su funcionamiento en multiplicaciones sucesivas basadas en el error para poder calcular los gradientes, y a medida que el error se propaga hacia la capa de entrada de la NN el gradiente comienza a disminuír su valor por cada capa que atraviesa. Esto significa que los pesos de las capas mas cercanas a la capa de entrada no sufrirán una actualización significativa, lo que representa un problema para redes profundas, ya que las capas mas cercanas a la capa de entrada necesitarán más tiempo para ser entrenadas.
-
 El problema que se aborda en el presente trabajo presenta diversos estudios en la literatura, a pesar de esto siguen siendo un desafío computacional. Entre los últimos estudios relacionados existen algunos que utilizan programación genética, mostrando las bondades de las metaheurísticas al aplicarlas sobre las NN. A pesar de esto, no existen nuevos estudios que utilizen otras técnicas metaheurísticas para dar solución al problema que presenta la actualización de los pesos en el entrenamiento de las NN.
 
 Para el desarrollo de este estudio se analiza la convergencia de una NN al entrenarla utilizando un método metaheurístico para minimizar el error. Para el desarrollo del estudio es preciso establecer si la convergencia ofrecida por el método ofrece un mejor desempeño respecto a métodos tradicionales y si es una alternativa que se deba considerar.
@@ -148,6 +142,7 @@ Considerando el aspecto investigativo del trabajo, se considera la utilización 
 Para el desarrollo y ejecución de los experimentos se utilizará un equipo con las siguientes características
 \begin{table}[H]
 	\centering
+	\caption{Especificaciones del equipo}
 	\begin{tabular}{|l|l|}\hline
 		Sistema Operativo	& Solus 2017.04.18.0 64-bit\\\hline
 		Procesador				 & Intel$^\circledR$ Core\texttrademark i5-2450M CPU @ 2.50GHz x 4\\\hline
@@ -155,7 +150,6 @@ Para el desarrollo y ejecución de los experimentos se utilizará un equipo con 
 		Gráficos					& Intel$^\circledR$ Sandybridge Mobile\\\hline
 		Almacenamiento	   & 935.6 GB\\\hline
 	\end{tabular}
-	\caption{Especificaciones del equipo}
 \end{table}
 
 El software que se utilizará es:

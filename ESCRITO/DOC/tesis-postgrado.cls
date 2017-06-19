@@ -381,16 +381,18 @@
 \titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
 \titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 
-%Se agrega la palabra 'Figura' al índice de figuras
 \usepackage{tocloft}
-\renewcommand{\cftfigfont}{Figura }
-%Lo mismo para el índice de tablas
-\renewcommand{\cfttabfont}{Tabla }
+%Se agrega la palabra 'Figura' y 'Tabla' al índice de figuras
+\setlength{\cftbeforetoctitleskip}{-1em}
+\setlength{\cftbeforeloftitleskip}{-1em}
+\setlength{\cftbeforelottitleskip}{-1em}
 
+\renewcommand{\cftfigfont}{Figura }
+\renewcommand{\cfttabfont}{Tabla }
 %Se cambia el tamaño del título de la lista de figuras, tablas e índice de contenido dejándolos igual que los títulos normales
-\renewcommand\cftloftitlefont{\Large\bf}
-\renewcommand\cftlottitlefont{\Large\bf}
-\renewcommand\cfttoctitlefont{\Large\bf}
+\renewcommand\cftloftitlefont{\bfseries}
+\renewcommand\cftlottitlefont{\bfseries}
+\renewcommand\cfttoctitlefont{\bfseries}
 
 
 %--------Margenes segun reglamento: izq=4cm y inf=der=sup=2.5cm
