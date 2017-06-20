@@ -31,7 +31,6 @@
 
 \if@inf
 	\LoadClass[12pt, oneside]{article}
-	\RequirePackage{titlesec}
 	%\newcommand{\bibliografia}{\addcontentsline{toc}{section}{Bibliografía}}
 \fi
 
@@ -67,7 +66,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Personalización de los títulos de secciones
 
-\usepackage[compact]{titlesec}
+\RequirePackage[compact]{titlesec}
 \titleformat{\chapter}
 {\bfseries\Large\vspace*{-4.0cm}} %Formato título
 { % Contenido de la etiqueta
