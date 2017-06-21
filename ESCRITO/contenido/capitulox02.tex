@@ -1,6 +1,6 @@
 \chapter{Aspectos teóricos y revisión de la literatura}
 
-En esta sección se abarcan los aspectos relacionados al conocimiento general para la comprensión del presente trabajo (aspectos teóricos) y la revisión de la literatura asociada al trabajo presentado en esta tesis. %Para realizar un análisis de la Programación Genética aplicada a problemas NP-Hard es necesario conocer la base teórica de ésta. Para ello, se exponen los conceptos fundamentales de la computación evolutiva y la Programación Genética. La sección 2.1 se centra en explicar aquellas partes fundamentales al tema que se trata en esta tesis. De la revisión de la literatura se desprende lo presentado en la sección 2.2.
+En esta sección se abarcan los aspectos relacionados al conocimiento general para la comprensión del presente trabajo (aspectos teóricos) y la revisión de la literatura asociada.% al trabajo presentado en esta tesis. %Para realizar un análisis de la Programación Genética aplicada a problemas NP-Hard es necesario conocer la base teórica de ésta. Para ello, se exponen los conceptos fundamentales de la computación evolutiva y la Programación Genética. La sección 2.1 se centra en explicar aquellas partes fundamentales al tema que se trata en esta tesis. De la revisión de la literatura se desprende lo presentado en la sección 2.2.
 
 %%%%%%%%%%%%% IDEA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Un párrafo para comparar los problemas conejillos de india con los que se compara. Para evaluar el desempeño de los algoritmos tipicamente se usan problemas problemas de aprendizaje de la literatura.
@@ -83,7 +83,7 @@ Si un perceptrón multicapa con $C$ capas y $n_c$ neuronas en la capa $c$, donde
 	\item {\bf Activación de una neurona de la capa de salida}: La activación de una neurona de la capa de salida viene dada por la función $f$ aplicada a la suma de los productos de la entrada por sus pesos, es decir $$ y_{i} = a^{c}_{i} = f\left(\sum^{n_{c - 1}}_{j=1} w^{C - 1}_{ji}a^{C - 1}_{j} + \theta^{C}_{i}\right), i = 1, \cdots, n_c$$ donde $Y = (y_1, y_2, \cdots, y_{n_{c}})$ es el vector de salida.
 \end{itemize}
 
-La función $f$ es la función de activación de la neurona. Aunque existe gran variedad de funciones de activación (ver tabla \ref{tab:f_activacion}), las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las escuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
+La función $f$ es la función de activación de la neurona. Aunque existe gran variedad de funciones de activación (ver tabla \ref{tab:f_activacion}), las funciones de activación mas utilizadas son la sigmoidal y la tangente hiperbólica, descritas en las ecuaciones \ref{eq:sigm} y \ref{eq:tanh} respectivamente.
 \begin{eqnarray}
 	f_{sigm}(x) &=& \frac{1}{1+\exp(-x)}\label{eq:sigm}\\
 	f_{tanh}(x) &=& \frac{1 - \exp(-x)}{1 + \exp(-x)}\label{eq:tanh}
@@ -171,7 +171,7 @@ para todo $m$, el producto en (\ref{eq:vanishing}) decrece exponencialmente con 
 % http://leon.bottou.org/publications/pdf/nimes-1991.pdf
 % http://papers.nips.cc/paper/4006-parallelized-stochastic-gradient-descent
 % Amari1993
-El gradiente estocástico descendente es una drástica simplificación del método tradicional. En vez de calcular el gradiente exacto de la función de error $E$, en cada iteración se estima el valor del gradiente basado en un ejemplo escogido de manera aleatoria. El algoritmo de descenso de gradiente tradicional actualiza los parámetros $W$ según la siguiente expresión
+El gradiente estocástico descendente es una drástica simplificación del método tradicional. En lugar de calcular el gradiente exacto de la función de error $E$, en cada iteración se estima el valor del gradiente basado en un ejemplo escogido de manera aleatoria. El algoritmo de descenso de gradiente tradicional actualiza los parámetros $W$ según la siguiente expresión
 $$ w^{(i)} = w^{(i - 1)} - \alpha\frac{\partial E^{(i)}}{\partial w} $$ y en el algoritmo \ref{alg:gd} se describe su funcionamiento en términos generales.
 
 \begin{algorithm}[H]
@@ -240,7 +240,7 @@ Los algoritmos meta-heurísticos son un proceso iterativo que guía una heuríst
 %Desde Kirkpatrick et al., [23] y Cerny [11] introdujeron los conceptos de recocido [30] en el campo de la optimización combinatoria, se ha prestado mucha atención a la investigación sobre la teoría y las aplicaciones de SA [25]
 % https://link.springer.com/chapter/10.1007/978-3-642-83069-3_15
 % lista8
-El método {\em simulated annealing} (SA) es un algoritmo de búsqueda meta-heurística para problemas de optimización combinatoria introducido por \cite{Kirkpatrick1983} y \cite{Cerny1985}. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, en el caso de que al evaluar la perturbación se obtenga un mejor desempleo que la solución actual, se actualizará la solución actual; y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
+El método {\em simulated annealing} (SA) es un algoritmo de búsqueda meta-heurística para problemas de optimización combinatoria introducido por \cite{Kirkpatrick1983} y \cite{Cerny1985}. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, en el caso de que al evaluar la perturbación se obtenga un mejor desempeño que la solución actual, se actualizará la solución actual; y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
 
 \scalebox{0.8}{\begin{algorithm}[H]
     \SetAlgoLined

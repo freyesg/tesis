@@ -54,7 +54,7 @@ Se han sugerido diversos métodos para mejorar la eficiencia del proceso de mini
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Debido a que la retropropagación suele minimizar una función de error no convexa con técnicas determinísticas locales (métodos de gradiente de primer y segundo orden), la probabilidad de converger a un mínimo local es alta \cite{Bianchini1996, Bishop1995, Battiti1995}. Este y otros problemas asociados con la retropropagación, como la convergencia lenta y la sobreejecución, podrían hacer que el proceso de aprendizaje fuera ineficiente. Para hacer frente a estos problemas han surgido técnicas para solucionarlo, algunas son del campo de la optimización global \cite{Battiti1995, Tsai2006, Rocha2003, Chelouah2000, Zheng2005}, además de técnicas metaheurísticas basadas en población \cite{Lamos2012}. Y es \citeA{Morse2016} quién retoma el uso de métodos metaheurísticos, esto sugiere que otros métodos, como el {\em Simulated annealing} (SA), pueden tener un buen desempeño estudiando problemas de minimización, de este modo se plantea que el SA tiene un desempeño computacional competitivo frente al SDG al resolver instancias de un problema de regresión típica de la literatura
+Debido a que la retropropagación suele minimizar una función de error no convexa con técnicas determinísticas locales (métodos de gradiente de primer y segundo orden), la probabilidad de converger a un mínimo local es alta \cite{Bianchini1996, Bishop1995, Battiti1995}. Este y otros problemas asociados con la retropropagación, como la convergencia lenta y la sobreejecución, podrían hacer que el proceso de aprendizaje fuera ineficiente. Para hacer frente a estos problemas han surgido diversas técnicas, algunas son del campo de la optimización global \cite{Battiti1995, Tsai2006, Rocha2003, Chelouah2000, Zheng2005}, además de técnicas metaheurísticas basadas en población \cite{Lamos2012}. Y es \citeA{Morse2016} quién retoma el uso de métodos metaheurísticos, esto sugiere que otros métodos, como el {\em Simulated annealing} (SA), pueden tener un buen desempeño estudiando problemas de minimización, de este modo se plantea que el SA tiene un desempeño computacional competitivo frente al SDG al resolver instancias de un problema de regresión típica de la literatura
 
 %sin embargo después recién en 2015 se retoma con ESTE PAPER, donde propone el uso de un método metaheurístico, esto sugiere que el SA puede tener un buen desempeño estudiando problemas de minimización, de este modo se plantea: SA tiene un desempeño computacional competitivo frente al GSD al resolver instancias de un problema de regresión tipica de la literatura (esto es la hipótesis nula)
 
@@ -92,13 +92,13 @@ Para el desarrollo de este estudio se analiza la convergencia de una NN al entre
 
 \section{Solución propuesta}
 \subsection{Características de la solución}
-El método de aprendizaje basado en simmulated annealing permite la actualización de los pesos de la red. El método supone una alternativa a los métodos tradicionales de aprendizaje para la convergencia de los métodos debido a la independencia que otorga a la actualización de los pesos de las distintas capas y la capacidad de salir de los mínimos locales.
+El método de aprendizaje basado en {\em simmulated annealing} permite la actualización de los pesos de la red. Ademas, supone una alternativa a los métodos tradicionales de aprendizaje para la convergencia de los métodos debido a la independencia que otorga a la actualización de los pesos de las distintas capas y la capacidad de salir de los mínimos locales.
 
 \subsection{Propósito de la solución}
 El propósito de la solución es aportar en el campo de las redes neuronales y la clasificación de datos, proporcionando un análisis comparativo de la convergencia de un método metaheuristico aplicado sobre las NN frente a métodos tradicionales.
 
 \section{Objetivos y alcances del proyecto}
-En ésta sección se presenta el objetivo general, los objetivos específicos además del alcance y limitaciones de la presenta investigación.
+En ésta sección se presenta el objetivo general, los objetivos específicos además del alcance y limitaciones de la presente investigación.
 
 \subsection{Objetivo general}
 Evaluar el desempeño del algoritmo {\em simulated annealing} y su efecto sobre el entrenamiento de redes neuronales profundas en comparación con otros métodos. Los métodos que se comparan son: SDG, RMSProp y SA.
