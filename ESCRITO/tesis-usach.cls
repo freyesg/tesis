@@ -145,6 +145,7 @@
 
 
 \RequirePackage[spanish, es-lcroman, es-tabla, es-noquoting]{babel}
+\selectlanguage{spanish} 
 \RequirePackage{enumerate}
 \RequirePackage{appendix}
 

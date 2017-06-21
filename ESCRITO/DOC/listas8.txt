@@ -1,0 +1,22 @@
+Simulated Annealing: A Pedestrian Review of the Theory and Some Applications
+https://link.springer.com/chapter/10.1007/978-3-642-83069-3_15
+
+@Inbook{Aarts1987,
+author="Aarts, Emile H. L.
+and van Laarhoven, Peter J. M.",
+editor="Devijver, Pierre A.
+and Kittler, Josef",
+title="Simulated Annealing: A Pedestrian Review of the Theory and Some Applications",
+bookTitle="Pattern Recognition Theory and Applications",
+year="1987",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="179--192",
+isbn="978-3-642-83069-3",
+doi="10.1007/978-3-642-83069-3_15",
+url="http://dx.doi.org/10.1007/978-3-642-83069-3_15"
+}
+
+[11] - Cerny1985 - Cerny, V., Thermodynamics! Approach to the Traveling Salesman Problem: An Efficient Simulation Algorithm, J. Opt Theory Appl, 45 (1985) 41–51.
+
+[23] - Kirkpatrick1983 - Kirkpatrick, S., C.D. Gelatt Jr. and M.P. Vecchi, Optimization by Simulated Annealing, Science, 220 (1983) 671–680.

@@ -67,7 +67,6 @@ Existen dos fases importante dentro del modelo
 \subsection{El algoritmo de entrenamiento por retropropagación y el desvanecimiento del gradiente}
 El algoritmo de retropropagación del error, también conocido como la regla delta, fue el primer algoritmo de entrenamiento para redes multicapas  \cite{Werbos1974, Rumelhart1986}. El término retropropagación es utilizado debido a la forma de implementar el método del gradiente en las redes multicapa, pues el error cometido en la salida de la red es propagado hacia atrás, transformándolo en un error para cada una de las neuronas ocultas de la red. El entrenamiento de una red por retropropagación implica tres etapas: la propagación del patrón de entrada, el cálculo del error y su propagación hacia las capas anteriores, y el ajuste de los pesos. Después del entrenamiento, la aplicación de la red implica solamente los cálculos de la fase de propagación. En caso de que el entrenamiento sea lento, una red ya entrenada puede producir su salida rápidamente.
 
-
 El funcionamiento del agoritmo de retropropagación se puede apreciar en la figura \ref{fig:backprop}. Se representa en azul primera fase del algoritmo, donde la entrada de la red se propaga hacia la salida a través de las neuronas transformandola en cada neurona de la red. La segunda fase, en verde, muestra como se propaga, desde la salida, el error hacia las capas anteriores. Finalmente, se puede ver en rojo como el algoritmo actualiza los pesos de la red utilizando el error que genera la red.
 \begin{imagen}
 	\scalebox{1.0}{\input{img/nn_parada}}
@@ -168,18 +167,60 @@ para todo $m$, el producto en (\ref{eq:vanishing}) decrece exponencialmente con 
 
 \section{Revisión de la literatura}
 \subsection{El gradiente estocástico descendente}
+% https://link.springer.com/chapter/10.1007/978-3-7908-2604-3_16
+% http://leon.bottou.org/publications/pdf/nimes-1991.pdf
+% http://papers.nips.cc/paper/4006-parallelized-stochastic-gradient-descent
+% Amari1993
+El gradiente estocástico descendente es una drástica simplificación del método tradicional. En vez de calcular el gradiente exacto de la función de error $E$, en cada iteración se estima el valor del gradiente basado en un ejemplo escogido de manera aleatoria. El algoritmo de descenso de gradiente tradicional actualiza los parámetros $W$ según la siguiente expresión
+$$ w^{(i)} = w^{(i - 1)} - \alpha\frac{\partial E^{(i)}}{\partial w} $$ y en el algoritmo \ref{alg:gd} se describe su funcionamiento en términos generales.
+
+\begin{algorithm}[H]
+ \For{uno o más epocas}{
+	 \For{cada peso $j$}{
+		 $w_{j} := w + \Delta w_{j}$ donde $\Delta w_{j} = \alpha\sum_{i}(target^{i} - output^{i})x_{j}^{i}$
+	 }
+ }
+ \caption{Algoritmo del gradiente descendente}
+ \label{alg:gd}
+\end{algorithm}
+
+Donde el resultado obtenido es aproximado evaluando el costo y el gradiente sobre el conjunto de entrenamiento completo. El gradiente estocástico descendente (SGD) elimina la necesidad de analizar el conjunto de entrenamiento en cada iteración, calculando el gradiente de los parámetros utilizando sólo un único, o pocos, ejemplos de entrenamiento como muestra el algoritmo \ref{alg:sgd}. La forma de actualización que propone el método SGD está dada por la ecuación \ref{eq:sgd}.
+\begin{eqnarray}
+	w^{(i)} = w^{(i - 1)} - \alpha\frac{\partial E(x^{(i)}, y^{(i)})}{\partial w}\label{eq:sgd}
+\end{eqnarray}
+
+Con un par $(x^{(i)}, y^{(i)})$ del conjunto de entrenamiento.
+
+Generalmente cada actualización de parámetros en SGD analiza algunos ejemplos de entrenamiento en lugar de un solo ejemplo. Esto reduce la varianza en la actualización de parámetros y puede conducir a una convergencia más estable. Un tamaño de minibatch típico es 256, aunque el tamaño óptimo del minibatch puede variar para diferentes aplicaciones y arquitecturas.
+
+Un punto final pero importante con respecto a SGD es el orden en que presentamos los datos al algoritmo. Si los datos se dan en algún orden significativo, esto puede sesgar el gradiente y conducir a la convergencia pobres. Generalmente un buen método para evitar esto es mezclar aleatoriamente los datos antes de cada época de entrenamiento.
+
+\begin{algorithm}[H]
+	\For{uno o más epocas o el costo mínimo deseado ha sido alcanzado}{
+		\For{ejemplo de entrenamiento $i$ aleatorio}{
+			\For{cada peso $j$}{
+				$w_{j} = w + \alpha(target^{i} - output^{i})x_{j}^{i}$\;
+			}
+		}
+	}
+	\caption{Algoritmo del gradiente descendente estocástico}
+	\label{alg:sgd}
+\end{algorithm}
+
+
+
+
+
 \subsection{Retropropagación resiliente y RMSProp}
-%\subsection{Retropropagación resiliente}
 En las capas ocultas de las NN se utilizan con frecuencia funciones de activación sigmoidales, y estas reducen la entrada a un rango finito de salida. Se caracterizan por sus pendientes próximas a cero para entradas muy grandes, y esto representa un problema cuando se utiliza el gradiente descendente para el entrenamiento, pues se acentúa el problema del desvanecimiento del gradiente.
 
 \citeA{Riedmiller1993} presenta el algoritmo de retropropagación resiliente ({\em Resilient retropropagation}, RPROP), con el que busca eliminar los efectos del desvanecimiento del gradiente, esto mediante el uso del signo de la derivada para determinar la dirección del ajuste de los pesos, haciendo que la magnitud de la derivada no tenga efecto sobre la actualización de los pesos de la NN. Los pesos de la NN se incrementarán por un factor $\Delta{i}$ cuando la derivada de la función respecto a dicho peso tenga el mismo signo que las dos iteraciones anteriores. Mientras que si la derivada de la función respecto a dicho peso cambia de signo respecto de la iteración anterior los pesos se decrementarán por un factor $\Delta_{d}$. En caso de que la derivada de la función respecto de dicho peso sea igual a cero, el valor de actualización no varía.
 
 %\subsubsection{Root Mean Square RPROP}
-\citeA{Tieleman2012} presentan el algoritmo de la raíz cuadratica media de retropropagación resiliente ({\em Root mean square resilient retropropagation}, RMSPROP), una variante  del algoritmo RPROP. Se propone mantener una media móvil del cuadrado del gradiente para cada peso
+En 2012 \citeA{Tieleman2012} presentan una variante del algoritmo RPROP, el algoritmo de la raíz cuadratica media de retropropagación resiliente ({\em Root mean square resilient retropropagation}, RMSPROP). Se propone mantener una media móvil del cuadrado del gradiente para cada peso
 \begin{eqnarray}
 	MeanSquare(w, t) &=& 0.9MeanSquare(w, t - 1) + 0.1\frac{\partial E}{\partial w^{(t)}}^{2}
 \end{eqnarray}
-
 Y dividiendo el gradiente por $\sqrt{MeanSquare(w, t)}$ hace que el aprendizaje funcione de mejor manera.
 
 
@@ -187,20 +228,53 @@ Y dividiendo el gradiente por $\sqrt{MeanSquare(w, t)}$ hace que el aprendizaje 
 Hoy en día, resolver problemas computacionalmente complejos precisa el desarrollo de algoritmos más avanzados. Los algoritmos exactos a menudo utilizan una gran cantidad de tiempo debido al tamaño del espacio de soluciones factibles. Para resolver este inconveniente, se han diseñado algoritmos aproximados basados en el uso de heurísticas y meta-heurísticas, los que permiten encontrar soluciones que se aproximan a la mejor solución. Estos algoritmos utilizan funciones que están diseñadas para encontrar el espacio de soluciones de forma inteligente.
 
 La figura \ref{fig:tax_opt} muestra la clasificación de diferentes problemas de optimización, los que se categorizan en: algoritmos exactos y algoritmos aproximados \cite{Desale2015}
-%En la Figura \ref{fig:tax_opt} se muestra la clasificación de diferentes problemas de optimización, los cuales están divididos en dos categorías: algoritmos exactos y algoritmos aproximados \cite{Desale2015}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{img/tax_opt.png}
     \caption{Métodos para resolver problemas de optimización \protect\cite{Desale2015}.}
 		\label{fig:tax_opt}
 \end{figure}
-
 Los algoritmos meta-heurísticos son un proceso iterativo que guía una heurística para explorar el espacio de búsqueda. Estos tipos de algoritmos son utilizados para encontrar una solución en un espacio de búsqueda discreto en problemas de optimización combinatoria.
 
-%Las heurísticas y meta-heurísticas son utilizadas para encontrar una solución óptima en un espacio de búsqueda discreto en problemas de optimización combinatoria. Un ejemplo es el problema del vendedor viajero, donde la búsqueda del espacio de soluciones factibles crece exponencialmente en función del tamaño del problema aumenta, lo que hace inviable la realización de una búsqueda exhaustiva de la solución óptima \cite{Desale2015}.
+\subsubsection{Simulated Annealing}
+%Desde Kirkpatrick et al., [23] y Cerny [11] introdujeron los conceptos de recocido [30] en el campo de la optimización combinatoria, se ha prestado mucha atención a la investigación sobre la teoría y las aplicaciones de SA [25]
+% https://link.springer.com/chapter/10.1007/978-3-642-83069-3_15
+% lista8
+El método {\em simulated annealing} (SA) es un algoritmo de búsqueda meta-heurística para problemas de optimización combinatoria introducido por \cite{Kirkpatrick1983} y \cite{Cerny1985}. La técnica está basada en el proceso de calentamiento de un metal, vidrio o cristal hasta su punto de fusión, para luego enfriarlo hasta obtener una estructura cristalina. El algoritmo \ref{alg:sa} decribe el procedimiento de la siguiente manera: dada una solución inicial se genera un conjunto de soluciones que son una perturbación de la solución actual, en el caso de que al evaluar la perturbación se obtenga un mejor desempleo que la solución actual, se actualizará la solución actual; y en caso contrario, existirá una probabilidad de que la solución actual sea actualizada de igual manera.
+
+\scalebox{0.8}{\begin{algorithm}[H]
+    \SetAlgoLined
+	\DontPrintSemicolon
+	\KwData{Temperatura $T$, constante de Boltzmann $k$, factor de reducción $c$}
+	Seleccionar un vector solución $x_{0}$\;
+	\While{El criterio no se cumpla}{
+		\While{Existan soluciones en el conjunto}{
+			Seleccionar una solución $x_{0} + \Delta x$\;
+			\uIf{$f(x_{0} + \Delta x) < f(x_{0})$}{
+				$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+			}
+			\Else{
+				$\Delta f = f(x_{0} + \Delta x) - f(x_{0})$\;
+				\uIf{$rand(0, 1) > \exp{(-\Delta f/kT}$)}{
+					$f_{new} = f(x_{0} + \Delta x)$; $x_{0} = x_{0} + \Delta x$\;
+				}\Else{
+					$f_{new} = f(x_{0})$\;
+				}
+			}
+			$f = f_{new}$; $T = cT$\;
+		}
+	}
+	\caption{Simulated annealing}
+	\label{alg:sa}
+\end{algorithm}}
 
 
 
+%\subsection{Instancias}
+%El desarrollo de algoritmos cada vez más sofisticados precisa de un parámetro común de comparación. Estos algoritmos incluyen distintas técnicas, los que han de someterce a estudios experimentales sobre conjuntos de datos que permiten analizar el rendimiento que poseen, donde estos conjuntos suelen ser públicos.
 
-\subsection{Simulated Annealing}
-\subsection{Instancias}
+%%El teorema de \textit{no free lunch} (NFL) indica que no existe un algoritmo supere a los existentes en todas las instancas disponibles de un problema. Si un algoritmo se declarase como mejor que otro conjunto de algoritmos, entonces es posible esperar que existan instancias que aún no han sido probadas. Es por esto que una de las claves para poder realizar un correcto estudio es caracterizar las instancias del problema de acuerdo a su dificultad y al espacio de soluciones que las representa \citep{smith_2012}.
+
+%%Las características más sencillas de una instancia para un problema de optimización son las que se definen como parte de la sub-clase de la instancia: características como el número de variables y restricciones, o si las matrices que almacenan los parámetros son simétricas, etc.
+
+%%Para el PCMR, una forma de clasificar las instancias es mediante la distribución de costos que posee (distancias entre los nodos o ciudades), donde se muestra el número de valores distintos que poseen las distancias \citep{smith_2012}. Las instancias a utilizar para este problema, son obtenidas de la TSPLib \citep{reinelt_1991}. Esta librería contiene instancias ampliamente utilizadas en la literatura, las que en su totalidad cuentan con su valor óptimo y, en algunos casos, con una posible solución.
