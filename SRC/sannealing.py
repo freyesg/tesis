@@ -52,10 +52,13 @@ class SANet():
 		"""
 		np.random.seed(datetime.datetime.now().microsecond)
 		s = []
+		giro = 0
 		for i in range(self.n_sol):
 			aux = nn.Net(net_input=self.input, i=self.i)
+			#giro = np.random.uniform(0, 360)
+			giro = giro + 360.0/self.n_sol
 			w = self.net.rotate(
-				np.radians(np.random.uniform(0, 360)),
+				np.radians(giro),
 				#self.net,
 				r=np.random.uniform(0, radio)
 			)
